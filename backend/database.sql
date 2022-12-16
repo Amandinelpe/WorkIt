@@ -193,3 +193,6 @@ REFERENCES `offer` (`id`);
 ALTER TABLE `user_offer` ADD CONSTRAINT `fk_user_offer_user_id` FOREIGN KEY(`user_id`)
 REFERENCES `user` (`id`);
 
+-- INSERT INTO `user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNOTE) 
+-- VALUES(1,1,'Paul','Battault','chibredoudu33@gpine.com','Bordeaux','33000','France','45 pimpon la fougere','60606060606',TRUE,'p.bato@linkedin.com','','p.bato@github.com','clown',1,100000,'wallou',FALSE,'elchibroloco','Footsal',2,1,1,'Gros chibre');
+
