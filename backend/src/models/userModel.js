@@ -4,7 +4,7 @@ const findAll = () => {
   return db
     .promise()
     .query("SELECT * FROM user")
-    .then(([users]) => users);
+    .then((users) => users);
 };
 
 const findOne = (id) => {
