@@ -4,7 +4,7 @@ const findAll = () => {
   return db
     .promise()
     .query("SELECT * FROM role")
-    .then(([roles]) => roles);
+    .then((roles) => roles);
 };
 
 const findOne = (id) => {
