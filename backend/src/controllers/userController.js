@@ -1,10 +1,10 @@
 const userModel = require("../models/userModel");
 
 const userController = {
-  getAllUsers: (req, res) => {
+  getAllUsers: (_, res) => {
     userModel
       .findAll()
-      .then(([users]) => res.status(200).send(users))
+      .then((users) => res.status(200).send(users))
       .catch((err) => console.error(err));
   },
   getUserById: (req, res) => {
