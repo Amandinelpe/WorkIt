@@ -37,6 +37,8 @@ CREATE TABLE `user` (
 CREATE TABLE `admin` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
+     /* Rajout gender */
+    `gender` int  NOT NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(40)  NOT NULL ,
@@ -49,10 +51,13 @@ CREATE TABLE `admin` (
 CREATE TABLE `consultant` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
+    /* Rajout gender */
+    `gender` int  NOT NULL ,
     `firstname` VARCHAR(30)  NOT NULL ,
     `lastname` VARCHAR(30)  NOT NULL ,
     `phone` VARCHAR(100)  NOT NULL ,
     `city` VARCHAR(100)  NOT NULL ,
+    `postal_code` int  NOT NULL ,
     `email` VARCHAR(40)  NOT NULL ,
     `password` VARCHAR(100)  NOT NULL ,
     `linkedin` VARCHAR(100)  NOT NULL ,
