@@ -98,7 +98,7 @@ CREATE TABLE `job` (
 
 CREATE TABLE `experience` (
     `id` int AUTO_INCREMENT NOT NULL ,
-    `experience` int  NOT NULL ,
+    `experience` VARCHAR(50)  NOT NULL ,
     PRIMARY KEY (
         `id`
     )
@@ -196,3 +196,4 @@ REFERENCES `user` (`id`);
 INSERT INTO role (status) VALUES('user');
 INSERT INTO role (status) VALUES('consultant');
 INSERT INTO role (status) VALUES('admin');
+

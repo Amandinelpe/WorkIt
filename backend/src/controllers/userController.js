@@ -1,6 +1,6 @@
 const userModel = require("../models/userModel");
 
-const userControler = {
+const userController = {
   getAllUsers: (req, res) => {
     userModel
       .findAll()
@@ -16,4 +16,4 @@ const userControler = {
   },
 };
 
-module.exports = userControler;
+module.exports = userController;
