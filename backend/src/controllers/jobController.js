@@ -12,7 +12,7 @@ const jobController = {
     jobModel
       .findOne(id)
       .then(([job]) => res.status(200).send(job))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
 };
 

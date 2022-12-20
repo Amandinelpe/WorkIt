@@ -12,7 +12,7 @@ const offerController = {
     offerModel
       .findOne(id)
       .then(([offer]) => res.status(200).send(offer))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
 };
 

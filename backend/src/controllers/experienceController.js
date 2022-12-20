@@ -12,7 +12,7 @@ const experienceController = {
     experienceModel
       .findOne(id)
       .then(([experience]) => res.status(200).send(experience))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
 };
 
