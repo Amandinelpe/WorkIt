@@ -5,7 +5,7 @@ const offerController = {
     offerModel
       .findAll()
       .then(([offers]) => res.status(200).send(offers))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
   getOfferById: (req, res) => {
     const { id } = req.params;

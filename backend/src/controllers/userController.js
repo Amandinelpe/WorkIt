@@ -5,7 +5,7 @@ const userController = {
     userModel
       .findAll()
       .then(([users]) => res.status(200).send(users))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
   getUserById: (req, res) => {
     const { id } = req.params;

@@ -5,7 +5,7 @@ const consultantController = {
     consultantModel
       .findAll()
       .then(([consultants]) => res.status(200).send(consultants))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
   getConsultantById: (req, res) => {
     const { id } = req.params;

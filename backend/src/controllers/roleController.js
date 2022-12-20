@@ -5,7 +5,7 @@ const roleController = {
     roleModel
       .findAll()
       .then(([roles]) => res.status(200).send(roles))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
   getRoleById: (req, res) => {
     const { id } = req.params;
