@@ -92,7 +92,7 @@ CREATE TABLE `job` (
 );
 CREATE TABLE `experience` (
     `id` int AUTO_INCREMENT NOT NULL ,
-    `experience` int  NOT NULL ,
+    `experience` VARCHAR(50)  NOT NULL ,
     PRIMARY KEY (
         `id`
     )
@@ -170,40 +170,22 @@ INSERT INTO role (status) VALUES('user');
 INSERT INTO role (status) VALUES('consultant');
 INSERT INTO role (status) VALUES('admin');
 
-INSERT INTO job (category, job_title) VALUES ('Technologies','Développeur Back End');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Développeur Front End');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Développeur Full Stack');
-INSERT INTO job (category, job_title) VALUES ('Technologies','DevOps');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Lead technique');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Architecte Infrastructure');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Scrum master');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Product owner');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Product Manager');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Ingénieur Test');
-INSERT INTO job (category, job_title) VALUES ('Technologies','UX / UI designer');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Administrateur Système  Réseaux');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Ingénieur Système Cloud');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Architecte Logiciel');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Ingénieur Hardware');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Analyste fonctionnel / AMOA');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Intégrateur Web');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Ingénieur Logiciel Embarqué');
-INSERT INTO job (category, job_title) VALUES ('Technologies','Technicien support');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Directeur du Système d Informations');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Directeur / chef de projet');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Directeur technique / CTO');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Responsable de la Sécurité du Système Informatique');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Directeur Marketing');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Service Delivery Manager');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Customer Success Manager');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Chief Operating Officer');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Business Developper');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Growth Hacker');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Expert SEO Trafic content Manager');
-INSERT INTO job (category, job_title) VALUES ('Management / Marketing','Chef de projet Web');
-INSERT INTO job (category, job_title) VALUES ('DATA','Data Architect');
-INSERT INTO job (category, job_title) VALUES ('DATA','Data Engineer');
-INSERT INTO job (category, job_title) VALUES ('DATA','Data Analyst');
-INSERT INTO job (category, job_title) VALUES ('DATA','Data Scientist');
-INSERT INTO job (category, job_title) VALUES ('Ressources humaines','Consultant en recrutement IT');
-INSERT INTO job (category, job_title) VALUES ('Ressources humaines','Recruteur tech');
+
+
+INSERT INTO job (category, job_title) VALUES ('Technologies','Développeur Back End'), ('Technologies','Développeur Front End'), ('Technologies','Développeur Full Stack'), ('Technologies','DevOps'), ('Technologies','Lead technique'), ('Technologies','Architecte Infrastructure'), ('Technologies','Scrum master'), ('Technologies','Product owner'), ('Technologies','Product Manager'), ('Technologies','Ingénieur Test'), ('Technologies','UX / UI designer'),  ('Technologies','Administrateur Système  Réseaux'), ('Technologies','Ingénieur Système Cloud'),('Technologies','Architecte Logiciel'),('Technologies','Ingénieur Hardware'), ('Technologies','Analyste fonctionnel / AMOA'), ('Technologies','Intégrateur Web'), ('Technologies','Ingénieur Logiciel Embarqué'), ('Technologies','Technicien support'), ('Management / Marketing','Directeur du Système d Informations'), ('Management / Marketing','Directeur / chef de projet'), ('Management / Marketing','Directeur technique / CTO'), ('Management / Marketing','Responsable de la Sécurité du Système Informatique'), ('Management / Marketing','Directeur Marketing'),('Management / Marketing','Service Delivery Manager'),('Management / Marketing','Customer Success Manager'), ('Management / Marketing','Chief Operating Officer'), ('Management / Marketing','Business Developper'), ('Management / Marketing','Growth Hacker'), ('Management / Marketing','Expert SEO Trafic content Manager'), ('Management / Marketing','Chef de projet Web'), ('DATA','Data Architect'), ('DATA','Data Engineer'), ('DATA','Data Analyst'), ('DATA','Data Scientist'), ('Ressources humaines','Consultant en recrutement IT'), ('Ressources humaines','Recruteur tech');
+
+INSERT INTO experience (experience) VALUES
+     ('Debutant'),
+     ('2-3 ans'),
+     ('4-10 ans'),
+     ('10 ans et +');
+
+INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,linkedin) VALUES
+     (1,'Paul','Delos','0625456289','Bordeaux','pauldelos@gmail.com','avrtuyiop','https://www.linkedin.com/in/paul-delos/%27),
+     (1,'Jeremie','Cavanier','0625458978','Bordeaux','jeremiecavanier@gmail.com','256poulpom','https://www.linkedin.com/in/jeremie-cavanier/%27),
+     (2,'Claire ','Jacquier','0625694563','Pessac','clairejacquier@gmail.com','25mpelodpmpe','https://www.linkedin.com/in/claire-jacquier/%27),
+     (2,'Charlotte','Calier','0647852697','Cadillac','cha.calier@gmail.com','54789oopzmlpdo','https://www.linkedin.com/in/charlotte-calier/%27),
+     (1,'Romain','Permontade','0647859632','Bordeaux','romain.permontade@gmail.com','sampodjk41255','https://www.linkedin.com/in/romain-permontade/%27),
+     (2,'Ophelie','Gavernie','0796896321','Begles','opheliegaverie@gmail.com','gdteej#48569','https://www.linkedin.com/in/ophelie-gavernie/%27),
+     (1,'Bertrand','Pomelo','0769365478','Bordeaux','bertrandpomelo@gmail.com','89654derop#klmp','https://www.linkedin.com/in/bertrand-pomelo/%27),
+     (2,'Carole','Artelis','0658963250','Cauderan','carole.artelis@gmail.com','7856aldopme','https://www.linkedin.com/in/carole-artelis/%27);
