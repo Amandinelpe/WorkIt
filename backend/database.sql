@@ -5,7 +5,7 @@ USE externatic;
 CREATE TABLE `user` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
-    `gender` int  NOT NULL ,
+    `gender` VARCHAR(50)  NOT NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(50)  NOT NULL ,
@@ -127,7 +127,7 @@ CREATE TABLE `offer` (
         `id`
     )
 );
-CREATE TABLE `user_offer` (
+CREATE TABLE `userOffer` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `isFavorite` BOOLEAN  NOT NULL ,
     `candidated` BOOLEAN  NOT NULL ,
@@ -187,10 +187,10 @@ REFERENCES `contract` (`id`);
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_consultant_id` FOREIGN KEY(`consultant_id`)
 REFERENCES `consultant` (`id`);
 
-ALTER TABLE `user_offer` ADD CONSTRAINT `fk_user_offer_offer_id` FOREIGN KEY(`offer_id`)
+ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_offer_id` FOREIGN KEY(`offer_id`)
 REFERENCES `offer` (`id`);
 
-ALTER TABLE `user_offer` ADD CONSTRAINT `fk_user_offer_user_id` FOREIGN KEY(`user_id`)
+ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_user_id` FOREIGN KEY(`user_id`)
 REFERENCES `user` (`id`);
 
 INSERT INTO role (status) VALUES('user');
