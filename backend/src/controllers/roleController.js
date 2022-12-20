@@ -5,14 +5,14 @@ const roleController = {
     roleModel
       .findAll()
       .then(([roles]) => res.status(200).send(roles))
-      .catch((err) => console.error(err).send("Communication failed"));
+      .catch((err) => res.status(500).send(err));
   },
   getRoleById: (req, res) => {
     const { id } = req.params;
     roleModel
       .findOne(id)
       .then(([role]) => res.status(200).send(role))
-      .catch((err) => console.error(err).send("Communication failed"));
+      .catch((err) => res.status(500).send(err));
   },
 };
 

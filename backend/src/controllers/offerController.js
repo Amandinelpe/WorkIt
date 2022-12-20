@@ -5,14 +5,14 @@ const offerController = {
     offerModel
       .findAll()
       .then(([offers]) => res.status(200).send(offers))
-      .catch((err) => console.error(err).send("Communication failed"));
+      .catch((err) => res.status(500).send(err));
   },
   getOfferById: (req, res) => {
     const { id } = req.params;
     offerModel
       .findOne(id)
       .then(([offer]) => res.status(200).send(offer))
-      .catch((err) => console.error(err).send("Communication failed"));
+      .catch((err) => res.status(500).send(err));
   },
 };
 
