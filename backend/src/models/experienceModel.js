@@ -3,15 +3,15 @@ const db = require("../../config");
 const findAll = () => {
   return db
     .promise()
-    .query("SELECT * FROM user")
-    .then(([users]) => users);
+    .query("SELECT * FROM experience")
+    .then((experiences) => experiences);
 };
 
 const findOne = (id) => {
   return db
     .promise()
-    .query("SELECT * FROM user where id = ?", [id])
-    .then(([user]) => user);
+    .query("SELECT * FROM experience where id = ?", [id])
+    .then(([experience]) => experience);
 };
 
 module.exports = { findAll, findOne };
