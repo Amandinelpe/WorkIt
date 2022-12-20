@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS externatic;
 CREATE DATABASE externatic;
 USE externatic;
@@ -35,6 +36,7 @@ CREATE TABLE `user` (
 CREATE TABLE `admin` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
+    `gender` VARCHAR(50)  NOT NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(40)  NOT NULL ,
@@ -104,10 +106,9 @@ CREATE TABLE `offer` (
     `firm_city` VARCHAR(500)  NULL ,
     `date` DATE  NOT NULL ,
     `postal_code` int  NOT NULL ,
-    `country` int  NOT NULL ,
-    `adress` VARCHAR(60)  NOT NULL ,
+    `country` VARCHAR(500)  NOT NULL ,
     `job_id` int  NOT NULL ,
-    `salary` int  NULL ,
+    `salary` VARCHAR(500)  NULL ,
     `description_firm` VARCHAR(500)  NOT NULL ,
     `description_mission` VARCHAR(500)  NOT NULL ,
     `soft_skills` VARCHAR(500)  NOT NULL ,
@@ -115,6 +116,9 @@ CREATE TABLE `offer` (
     `experience_id` int  NOT NULL ,
     `contract_type` int  NOT NULL ,
     `consultant_id` int  NOT NULL ,
+     `urgency_id` int  NOT NULL ,
+      `state_offer_id` int  NOT NULL ,
+
     PRIMARY KEY (
         `id`
     )
@@ -136,6 +140,24 @@ CREATE TABLE `contract` (
         `id`
     )
 );
+
+CREATE TABLE `urgency` (
+	`id` INT auto_increment NOT NULL,
+	`urgency_type` varchar(100) NOT NULL,
+    PRIMARY KEY (
+        `id`
+    )
+);
+
+CREATE TABLE `state_offer` (
+	`id` INT auto_increment NOT NULL,
+	`type_state` varchar(100) NOT NULL,
+	PRIMARY KEY (
+        `id`
+    )
+);
+
+
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_job_id` FOREIGN KEY(`job_id`)
@@ -162,6 +184,10 @@ ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_contract_type` FOREIGN KEY(`contrac
 REFERENCES `contract` (`id`);
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_consultant_id` FOREIGN KEY(`consultant_id`)
 REFERENCES `consultant` (`id`);
+ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_urgency_id` FOREIGN KEY(`urgency_id`)
+REFERENCES `urgency` (`id`);
+ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_state_offer_id` FOREIGN KEY(`state_offer_id`)
+REFERENCES `state_offer` (`id`);
 
 ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_offer_id` FOREIGN KEY(`offer_id`)
 REFERENCES `offer` (`id`);
@@ -191,3 +217,21 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
      (2,'Ophelie','Gavernie','0796896321','Begles','opheliegaverie@gmail.com','gdteej#48569','https://www.linkedin.com/in/ophelie-gavernie/%27'),
      (1,'Bertrand','Pomelo','0769365478','Bordeaux','bertrandpomelo@gmail.com','89654derop#klmp','https://www.linkedin.com/in/bertrand-pomelo/%27'),
      (2,'Carole','Artelis','0658963250','Cauderan','carole.artelis@gmail.com','7856aldopme','https://www.linkedin.com/in/carole-artelis/%27');
+
+INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
+	 (3,1,'Michael','Birepinte','mickael.birepinte@gmail.com','Salut'),
+	 (3,1,'Olga','Yasno','olga_yasn@hotmail.com','Coucou'),
+	 (3,2,'Luc','Jaubert','lucjaubert@gmail.com','Pessac');
+
+     INSERT INTO urgency (urgency_type) VALUES
+	 ('faible'),
+	 ('moyenne'),
+	 ('forte'),
+	 ('absolue');
+
+     INSERT INTO state_offer (type_state) VALUES
+	 ('En traitement'),
+	 ('Pourvu'),
+	 ('Clôturé'),
+	 ('Suspendu'),
+	 ('Abandonné');
