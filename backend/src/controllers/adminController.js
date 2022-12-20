@@ -5,14 +5,14 @@ const adminController = {
     adminModel
       .findAll()
       .then(([admins]) => res.status(200).send(admins))
-      .catch((err) => console.error(err).send("Admins not found"));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
   getAdminById: (req, res) => {
     const { id } = req.params;
     adminModel
       .findOne(id)
       .then(([admin]) => res.status(200).send(admin))
-      .catch((err) => console.error(err).send("Admin not found"));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
 };
 
