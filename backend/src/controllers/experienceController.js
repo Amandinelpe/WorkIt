@@ -5,14 +5,14 @@ const experienceController = {
     experienceModel
       .findAll()
       .then(([experiences]) => res.status(200).send(experiences))
-      .catch((err) => console.error(err).send("Communication failed"));
+      .catch((err) => res.status(500).send(err));
   },
   getExperienceById: (req, res) => {
     const { id } = req.params;
     experienceModel
       .findOne(id)
       .then(([experience]) => res.status(200).send(experience))
-      .catch((err) => console.error(err).send("Communication failed"));
+      .catch((err) => res.status(500).send(err));
   },
 };
 
