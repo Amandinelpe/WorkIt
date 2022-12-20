@@ -202,6 +202,13 @@ INSERT INTO role (status) VALUES('user');
 INSERT INTO role (status) VALUES('consultant');
 INSERT INTO role (status) VALUES('admin');
 
-INSERT INTO user (role_id,gender,firstname,lastname,email,password,) VALUES('3','1','Michael ','Birepinte','mickael.birepinte@gmail.com','Salut);
-INSERT INTO user (role_id,gender,firstname,lastname,email,password,) VALUES('3','1','Roger','Ladmin','j.cavanier@caramail.fr','Bordeaux);
-INSERT INTO user (role_id,gender,firstname,lastname,email,password,) VALUES('3','2','Claire','Mbappé','c.mbappe@hotmail.fr','Pessac);
+INSERT INTO admin (role_id,gender,firstname,lastname,email,password) VALUES('3','1','Michael ','Birepinte','mickael.birepinte@gmail.com','Salut');
+INSERT INTO admin (role_id,gender,firstname,lastname,email,password) VALUES('3','1','Roger','Ladmin','j.cavanier@caramail.fr','Bordeaux');
+INSERT INTO admin (role_id,gender,firstname,lastname,email,password) VALUES('3','2','Claire','Mbappe','c.mbappe@hotmail.fr','Pessac');
+
+INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
+VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
+('contact@cdiscount.com', 'password', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
+('contact@kwantic.com', 'password', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3);
+
+INSERT INTO contract (id, contract_type) VALUES(1, 'CDI'), (2, 'CDD'), (3, 'Stage'), (4, 'Alternance');
