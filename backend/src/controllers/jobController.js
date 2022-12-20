@@ -5,14 +5,14 @@ const jobController = {
     jobModel
       .findAll()
       .then(([jobs]) => res.status(200).send(jobs))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
   getJobById: (req, res) => {
     const { id } = req.params;
     jobModel
       .findOne(id)
       .then(([job]) => res.status(200).send(job))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err).send("Communication failed"));
   },
 };
 
