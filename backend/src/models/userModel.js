@@ -18,10 +18,10 @@ const createOne = (newUser) => {
   return db
     .promise()
     .query(
-      "INSERT INTO user (firstname, lastname, job, city, password) SET ?",
+      "INSERT INTO user (firstname, lastname, job, city, password) VALUES ?",
       [newUser]
     )
-    .then(([user]) => user);
+    .then((user) => user);
 };
 
 module.exports = { findAll, findOne, createOne };

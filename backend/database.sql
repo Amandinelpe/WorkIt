@@ -14,7 +14,7 @@ CREATE TABLE `user` (
     `country` VARCHAR(100)  NOT NULL ,
     `adress` VARCHAR(100)  NOT NULL ,
     `phone` VARCHAR(100)  NULL ,
-    `isActive` BOOLEAN  NOT NULL ,
+    `isActive` BOOLEAN  NOT NULL DEFAULT FALSE,
     `linkedin` VARCHAR(100)  NULL ,
     `website` VARCHAR(100)  NULL ,
     `github` VARCHAR(100)  NULL ,
@@ -22,7 +22,7 @@ CREATE TABLE `user` (
     `job_id` int  NULL ,
     `salary` int  NULL ,
     `diploma` VARCHAR(200)  NULL ,
-    `handicap` BOOLEAN  NOT NULL ,
+    `handicap` BOOLEAN  NOT NULL DEFAULT FALSE,
     `password` VARCHAR(100)  NOT NULL ,
     `hard_skills` VARCHAR(500)  NULL ,
     `experience_id` int  NULL ,
@@ -125,8 +125,8 @@ CREATE TABLE `offer` (
 );
 CREATE TABLE `userOffer` (
     `id` int AUTO_INCREMENT NOT NULL ,
-    `isFavorite` BOOLEAN  NOT NULL ,
-    `candidated` BOOLEAN  NOT NULL ,
+    `isFavorite` BOOLEAN  NOT NULL DEFAULT FALSE ,
+    `candidated` BOOLEAN  NOT NULL DEFAULT FALSE,
     `offer_id` int  NOT NULL ,
     `user_id` int  NOT NULL ,
     PRIMARY KEY (
@@ -235,3 +235,6 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 	 ('Clôturé'),
 	 ('Suspendu'),
 	 ('Abandonné');
+     
+INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNote) VALUES
+	 (1,'1','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'test',NULL,1,NULL,1,NULL);
