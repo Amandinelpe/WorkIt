@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import Messagerie from "./pages/Messagerie";
 import MonProfil from "./pages/MonProfil";
 import Error from "./pages/Error";
+import connexionCandidat from "./pages/connexionCandidat";
 import "./App.css";
 
 const App = () => {
@@ -11,12 +12,14 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/connexionCandidat" element={<connexionCandidat />} />
         <Route path="/Main" element={<MainPage />} />
         <Route path="/Messagerie" element={<Messagerie />} />
         <Route path="/MonProfil" element={<MonProfil />} />
         <Route path="*" element={<Error />} />
+      
       </Routes>
-    </Router>
+    </Router> 
   );
 };
 
