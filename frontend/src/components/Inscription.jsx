@@ -15,14 +15,14 @@ const Inscription = () => {
         Je m'appelle{" "}
         <input
           type="text"
-          name="firstName"
+          name="firstname"
           placeholder="Prénom"
           value={profile.firstName}
           onChange={updateProfile}
         />{" "}
         <input
           type="text"
-          name="lastName"
+          name="lastname"
           placeholder="Nom"
           value={profile.lastName}
           onChange={updateProfile}
