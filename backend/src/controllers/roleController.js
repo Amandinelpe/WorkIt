@@ -12,7 +12,7 @@ const roleController = {
     roleModel
       .findOne(id)
       .then(([role]) => res.status(200).send(role))
-      .catch((err) => console.error(err));
+      .catch((err) => res.status(500).send(err));
   },
 };
 

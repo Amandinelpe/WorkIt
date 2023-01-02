@@ -24,7 +24,7 @@
     },
     {
       "file": "frontend/.env.sample",
-      "description": "Here we have a `.env` safe copy. Ask your trainer for more details on it as you see fit, but please note that:\n- every information you don't want everyone to get their hands on should end here. API keys, your bank account number, passwords, ...\n- all the variables you'll list here (in the \".sample\" version) should have **FAKE** values: the `.env.sample` file will go on GHub, whereas the `.env` one won't",
+      "description": "Here we have a '.env' safe copy. Ask your trainer for more details on it as you see fit, but please note that:\n- every information you don't want everyone to get their hands on should end here. API keys, your bank account number, passwords, ...\n- all the variables you'll list here (in the \".sample\" version) should have **FAKE** values: the '.env.sample' file will go on GHub, whereas the '.env' one won't",
       "line": 1
     },
     {

@@ -12,7 +12,7 @@ const userController = {
     userModel
       .findOne(id)
       .then(([user]) => res.status(200).send(user))
-      .catch((err) => console.error(err));
+      .catch((err) => res.status(500).send(err));
   },
 };
 
