@@ -5,14 +5,14 @@ const userController = {
     userModel
       .findAll()
       .then(([users]) => res.status(200).send(users))
-      .catch((err) => console.error(err));
+      .catch((err) => res.status(500).send(err));
   },
   getUserById: (req, res) => {
     const { id } = req.params;
     userModel
       .findOne(id)
       .then(([user]) => res.status(200).send(user))
-      .catch((err) => console.error(err));
+      .catch((err) => res.status(500).send(err));
   },
 };
 

@@ -1,11 +1,11 @@
+
 DROP DATABASE IF EXISTS externatic;
 CREATE DATABASE externatic;
 USE externatic;
-
 CREATE TABLE `user` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
-    `gender` int  NOT NULL ,
+    `gender` VARCHAR(50)  NOT NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(50)  NOT NULL ,
@@ -33,10 +33,10 @@ CREATE TABLE `user` (
         `id`
     )
 );
-
 CREATE TABLE `admin` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
+    `gender` VARCHAR(50)  NOT NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(40)  NOT NULL ,
@@ -45,7 +45,6 @@ CREATE TABLE `admin` (
         `id`
     )
 );
-
 CREATE TABLE `consultant` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
@@ -60,7 +59,6 @@ CREATE TABLE `consultant` (
         `id`
     )
 );
-
 CREATE TABLE `firm` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `email` VARCHAR(100)  NOT NULL ,
@@ -79,7 +77,6 @@ CREATE TABLE `firm` (
         `id`
     )
 );
-
 CREATE TABLE `role` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `status` VARCHAR(60)  NOT NULL ,
@@ -87,15 +84,14 @@ CREATE TABLE `role` (
         `id`
     )
 );
-
 CREATE TABLE `job` (
     `id` int AUTO_INCREMENT NOT NULL ,
-    `job` VARCHAR(300)  NOT NULL ,
+     `category` VARCHAR(300)  NOT NULL ,
+    `job_title` VARCHAR(300)  NOT NULL ,
     PRIMARY KEY (
         `id`
     )
 );
-
 CREATE TABLE `experience` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `experience` VARCHAR(50)  NOT NULL ,
@@ -103,19 +99,16 @@ CREATE TABLE `experience` (
         `id`
     )
 );
-
 CREATE TABLE `offer` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `title` VARCHAR(100)  NOT NULL ,
     `firm_id` int  NOT NULL ,
-    `firm_logo_url` VARCHAR(200)  NULL ,
-    `firm_city` int  NULL ,
+    `firm_city` VARCHAR(500)  NULL ,
     `date` DATE  NOT NULL ,
     `postal_code` int  NOT NULL ,
-    `country` int  NOT NULL ,
-    `adress` VARCHAR(60)  NOT NULL ,
+    `country` VARCHAR(500)  NOT NULL ,
     `job_id` int  NOT NULL ,
-    `salary` int  NULL ,
+    `salary` VARCHAR(500)  NULL ,
     `description_firm` VARCHAR(500)  NOT NULL ,
     `description_mission` VARCHAR(500)  NOT NULL ,
     `soft_skills` VARCHAR(500)  NOT NULL ,
@@ -123,11 +116,14 @@ CREATE TABLE `offer` (
     `experience_id` int  NOT NULL ,
     `contract_type` int  NOT NULL ,
     `consultant_id` int  NOT NULL ,
+     `urgency_id` int  NOT NULL ,
+      `state_offer_id` int  NOT NULL ,
+
     PRIMARY KEY (
         `id`
     )
 );
-CREATE TABLE `user_offer` (
+CREATE TABLE `userOffer` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `isFavorite` BOOLEAN  NOT NULL ,
     `candidated` BOOLEAN  NOT NULL ,
@@ -137,7 +133,6 @@ CREATE TABLE `user_offer` (
         `id`
     )
 );
-
 CREATE TABLE `contract` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `contract_type` VARCHAR(100)  NOT NULL ,
@@ -146,71 +141,96 @@ CREATE TABLE `contract` (
     )
 );
 
+CREATE TABLE `urgency` (
+	`id` INT auto_increment NOT NULL,
+	`urgency_type` varchar(100) NOT NULL,
+    PRIMARY KEY (
+        `id`
+    )
+);
+
+CREATE TABLE `state_offer` (
+	`id` INT auto_increment NOT NULL,
+	`type_state` varchar(100) NOT NULL,
+	PRIMARY KEY (
+        `id`
+    )
+);
 
 
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
-
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_job_id` FOREIGN KEY(`job_id`)
 REFERENCES `job` (`id`);
-
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_experience_id` FOREIGN KEY(`experience_id`)
 REFERENCES `experience` (`id`);
-
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_contract_id` FOREIGN KEY(`contract_id`)
 REFERENCES `contract` (`id`);
-
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_consultant_id` FOREIGN KEY(`consultant_id`)
 REFERENCES `consultant` (`id`);
-
 ALTER TABLE `admin` ADD CONSTRAINT `fk_admin_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
-
 ALTER TABLE `consultant` ADD CONSTRAINT `fk_consultant_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
-
 ALTER TABLE `firm` ADD CONSTRAINT `fk_firm_consultant_id` FOREIGN KEY(`consultant_id`)
 REFERENCES `consultant` (`id`);
-
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_firm_id` FOREIGN KEY(`firm_id`)
 REFERENCES `firm` (`id`);
-
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_job_id` FOREIGN KEY(`job_id`)
 REFERENCES `job` (`id`);
-
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_experience_id` FOREIGN KEY(`experience_id`)
 REFERENCES `experience` (`id`);
-
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_contract_type` FOREIGN KEY(`contract_type`)
 REFERENCES `contract` (`id`);
-
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_consultant_id` FOREIGN KEY(`consultant_id`)
 REFERENCES `consultant` (`id`);
+ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_urgency_id` FOREIGN KEY(`urgency_id`)
+REFERENCES `urgency` (`id`);
+ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_state_offer_id` FOREIGN KEY(`state_offer_id`)
+REFERENCES `state_offer` (`id`);
 
-ALTER TABLE `user_offer` ADD CONSTRAINT `fk_user_offer_offer_id` FOREIGN KEY(`offer_id`)
+ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_offer_id` FOREIGN KEY(`offer_id`)
 REFERENCES `offer` (`id`);
 
-ALTER TABLE `user_offer` ADD CONSTRAINT `fk_user_offer_user_id` FOREIGN KEY(`user_id`)
+ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_user_id` FOREIGN KEY(`user_id`)
 REFERENCES `user` (`id`);
-
 INSERT INTO role (status) VALUES('user');
 INSERT INTO role (status) VALUES('consultant');
 INSERT INTO role (status) VALUES('admin');
 
-INSERT INTO externatic.consultant (role_id,firstname,lastname,phone,city,email,password,linkedin) VALUES
-	 (1,'Paul','Delos','0625456289','Bordeaux','pauldelos@gmail.com','avrtuyiop','https://www.linkedin.com/in/paul-delos/'),
-	 (1,'Jeremie','Cavanier','0625458978','Bordeaux','jeremiecavanier@gmail.com','256poulpom','https://www.linkedin.com/in/jeremie-cavanier/'),
-	 (2,'Claire ','Jacquier','0625694563','Pessac','clairejacquier@gmail.com','25mpelodpmpe','https://www.linkedin.com/in/claire-jacquier/'),
-	 (2,'Charlotte','Calier','0647852697','Cadillac','cha.calier@gmail.com','54789oopzmlpdo','https://www.linkedin.com/in/charlotte-calier/'),
-	 (1,'Romain','Permontade','0647859632','Bordeaux','romain.permontade@gmail.com','sampodjk41255','https://www.linkedin.com/in/romain-permontade/'),
-	 (2,'Ophelie','Gavernie','0796896321','Begles','opheliegaverie@gmail.com','gdteej#48569','https://www.linkedin.com/in/ophelie-gavernie/'),
-	 (1,'Bertrand','Pomelo','0769365478','Bordeaux','bertrandpomelo@gmail.com','89654derop#klmp','https://www.linkedin.com/in/bertrand-pomelo/'),
-	 (2,'Carole','Artelis','0658963250','Cauderan','carole.artelis@gmail.com','7856aldopme','https://www.linkedin.com/in/carole-artelis/');
 
+INSERT INTO job (category, job_title) VALUES ('Technologies','Développeur Back End'), ('Technologies','Développeur Front End'), ('Technologies','Développeur Full Stack'), ('Technologies','DevOps'), ('Technologies','Lead technique'), ('Technologies','Architecte Infrastructure'), ('Technologies','Scrum master'), ('Technologies','Product owner'), ('Technologies','Product Manager'), ('Technologies','Ingénieur Test'), ('Technologies','UX / UI designer'),  ('Technologies','Administrateur Système  Réseaux'), ('Technologies','Ingénieur Système Cloud'),('Technologies','Architecte Logiciel'),('Technologies','Ingénieur Hardware'), ('Technologies','Analyste fonctionnel / AMOA'), ('Technologies','Intégrateur Web'), ('Technologies','Ingénieur Logiciel Embarqué'), ('Technologies','Technicien support'), ('Management / Marketing','Directeur du Système d Informations'), ('Management / Marketing','Directeur / chef de projet'), ('Management / Marketing','Directeur technique / CTO'), ('Management / Marketing','Responsable de la Sécurité du Système Informatique'), ('Management / Marketing','Directeur Marketing'),('Management / Marketing','Service Delivery Manager'),('Management / Marketing','Customer Success Manager'), ('Management / Marketing','Chief Operating Officer'), ('Management / Marketing','Business Developper'), ('Management / Marketing','Growth Hacker'), ('Management / Marketing','Expert SEO Trafic content Manager'), ('Management / Marketing','Chef de projet Web'), ('DATA','Data Architect'), ('DATA','Data Engineer'), ('DATA','Data Analyst'), ('DATA','Data Scientist'), ('Ressources humaines','Consultant en recrutement IT'), ('Ressources humaines','Recruteur tech');
 
+INSERT INTO experience (experience) VALUES
+     ('Debutant'),
+     ('2-3 ans'),
+     ('4-10 ans'),
+     ('10 ans et +');
 
-INSERT INTO externatic.experience (experience) VALUES
-	 ('Debutant'),
-	 ('2-3 ans'),
-	 ('4-10 ans'),
-	 ('10 ans et +');
+INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,linkedin) VALUES
+     (1,'Paul','Delos','0625456289','Bordeaux','pauldelos@gmail.com','avrtuyiop','https://www.linkedin.com/in/paul-delos/%27'),
+     (1,'Jeremie','Cavanier','0625458978','Bordeaux','jeremiecavanier@gmail.com','256poulpom','https://www.linkedin.com/in/jeremie-cavanier/%27'),
+     (2,'Claire ','Jacquier','0625694563','Pessac','clairejacquier@gmail.com','25mpelodpmpe','https://www.linkedin.com/in/claire-jacquier/%27'),
+     (2,'Charlotte','Calier','0647852697','Cadillac','cha.calier@gmail.com','54789oopzmlpdo','https://www.linkedin.com/in/charlotte-calier/%27'),
+     (1,'Romain','Permontade','0647859632','Bordeaux','romain.permontade@gmail.com','sampodjk41255','https://www.linkedin.com/in/romain-permontade/%27'),
+     (2,'Ophelie','Gavernie','0796896321','Begles','opheliegaverie@gmail.com','gdteej#48569','https://www.linkedin.com/in/ophelie-gavernie/%27'),
+     (1,'Bertrand','Pomelo','0769365478','Bordeaux','bertrandpomelo@gmail.com','89654derop#klmp','https://www.linkedin.com/in/bertrand-pomelo/%27'),
+     (2,'Carole','Artelis','0658963250','Cauderan','carole.artelis@gmail.com','7856aldopme','https://www.linkedin.com/in/carole-artelis/%27');
+
+INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
+	 (3,1,'Michael','Birepinte','mickael.birepinte@gmail.com','Salut'),
+	 (3,1,'Olga','Yasno','olga_yasn@hotmail.com','Coucou'),
+	 (3,2,'Luc','Jaubert','lucjaubert@gmail.com','Pessac');
+
+     INSERT INTO urgency (urgency_type) VALUES
+	 ('faible'),
+	 ('moyenne'),
+	 ('forte'),
+	 ('absolue');
+
+     INSERT INTO state_offer (type_state) VALUES
+	 ('En traitement'),
+	 ('Pourvu'),
+	 ('Clôturé'),
+	 ('Suspendu'),
+	 ('Abandonné');
