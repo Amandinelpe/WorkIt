@@ -7,7 +7,7 @@ const Inscription = () => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
-  console.warn(profile, "my state");
+
 
   return (
     <div>
