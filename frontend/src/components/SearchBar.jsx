@@ -10,7 +10,6 @@ const SearchBar = () => {
       <div className="inputBox">
         <input type="text" required="required" placeholder="Ou ?" />
       </div>
-      <button></button>
     </div>
   );
 };

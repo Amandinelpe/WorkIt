@@ -12,7 +12,7 @@ const MainPage = () => {
           Comprendre ton histoire, ton parcours, ton projet, c'est ce qui nous
           motive.
         </h2>
-          <SearchBar />
+        <SearchBar />
       </div>
     </div>
   );
