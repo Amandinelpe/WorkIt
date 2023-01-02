@@ -7,8 +7,6 @@ const Inscription = () => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
-
-
   return (
     <div>
       <div>
