@@ -14,7 +14,7 @@ CREATE TABLE `user` (
     `country` VARCHAR(100)  NOT NULL ,
     `adress` VARCHAR(100)  NOT NULL ,
     `phone` VARCHAR(100)  NULL ,
-    `isActive` BOOLEAN  NOT NULL ,
+    `isActive` BOOLEAN  NOT NULL DEFAULT FALSE,
     `linkedin` VARCHAR(100)  NULL ,
     `website` VARCHAR(100)  NULL ,
     `github` VARCHAR(100)  NULL ,
@@ -22,7 +22,7 @@ CREATE TABLE `user` (
     `job_id` int  NULL ,
     `salary` int  NULL ,
     `diploma` VARCHAR(200)  NULL ,
-    `handicap` BOOLEAN  NOT NULL ,
+    `handicap` BOOLEAN  NOT NULL DEFAULT FALSE,
     `password` VARCHAR(100)  NOT NULL ,
     `hard_skills` VARCHAR(500)  NULL ,
     `experience_id` int  NULL ,
@@ -124,8 +124,8 @@ CREATE TABLE `offer` (
 );
 CREATE TABLE `userOffer` (
     `id` int AUTO_INCREMENT NOT NULL ,
-    `isFavorite` BOOLEAN  NOT NULL ,
-    `candidated` BOOLEAN  NOT NULL ,
+    `isFavorite` BOOLEAN  NOT NULL DEFAULT FALSE ,
+    `candidated` BOOLEAN  NOT NULL DEFAULT FALSE,
     `offer_id` int  NOT NULL ,
     `user_id` int  NOT NULL ,
     PRIMARY KEY (
@@ -265,3 +265,9 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
      ('Senior JAVA Developpeur', 2,'Bègles','2022-12-23','33130','France',2,'45000 €','Netfective Technology est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Prendre en charge la conception, le développement, les tests et la documentation, participer aux phases d analyse, de recette et de mise en production, Assurer le support aux utilisateurs, corriger les dysfonctionnements et prendre en charge les évolutions, proposer des actions d optimisation des process et outils de développement','-','Connaissances requises en développement Web autour des technologies Java, HTML, CSS, Javascript, XSL, SQL',3, 1, 2, 2,1),
      ('PHP Developpeur', 3,'Bordeaux','2022-12-10','33000','France',2,'33000 €','Betclic Group est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Gestion des anomalies remontées sur le périmètre technique dans le respect des engagements de service (délais) et des bonnes pratiques (qualité, sécurité) via l outil de ticketing, assurer et coordonner les demandes sur le périmètre technique, réalisation de l analyse technico-fonctionnelle avec les équipes de SI et du métier, participation à la conception et à la réalisation de la solution avec les équipes','Vous êtes curieux, force de proposition et avez le sens du service. Vous savez gérer les priorités, prendre des initiatives, et vous adapter à différents acteurs. Vous avez une capacité d écoute et d analyse et vous savez être force de proposition. Vous faites preuve d une bonne aisance rédactionnelle','Issu d une formation informatique vous avez une première expérience en développement sur SAGE X3',2, 1, 1, 1,2);
 	
+
+INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNote) VALUES
+	 (1,'homme','luc','thebest','lucthebest@gmail.com','Bordeaux',33000,'FRANCE','43 rue du loup','0640899345',1,'lebgdu33',NULL,NULL,'Developpeur',2,NULL,NULL,0,'test',NULL,NULL,NULL,1,NULL),
+	 (1,'femme','josette','colin','josettecol@gmail.com','Nantes',44000,'FRANCE','5 rue du temple','0640899678',1,NULL,NULL,NULL,'chomage',3,NULL,NULL,0,'test',NULL,NULL,NULL,7,NULL),
+	 (1,'homme','bertrand','molina','btr@gmail.com','soustons',40140,'FRANCE','8 rue des pins','0558411032',1,NULL,NULL,NULL,'boulanger',7,NULL,NULL,1,'test',NULL,NULL,NULL,8,NULL),
+     (1,'1','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'test',NULL,1,NULL,1,NULL);
