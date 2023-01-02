@@ -3,24 +3,8 @@ import React, { useState } from "react";
 const Inscription = () => {
   const [profile, setProfile] = useState({});
 
-  const handleFirstName = (event) => {
-    setProfile({ ...profile, firstName: event.target.value });
-  };
-
-  const handleLastName = (event) => {
-    setProfile({ ...profile, lastName: event.target.value });
-  };
-
-  const handleJob = (event) => {
-    setProfile({ ...profile, job: event.target.value });
-  };
-
-  const handleCity = (event) => {
-    setProfile({ ...profile, city: event.target.value });
-  };
-
-  const handlePassword = (event) => {
-    setProfile({ ...profile, password: event.target.value });
+  const updateProfile = (event) => {
+    setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
   console.warn(profile, "my state");
@@ -34,14 +18,14 @@ const Inscription = () => {
           name="firstName"
           placeholder="Prénom"
           value={profile.firstName}
-          onChange={handleFirstName}
+          onChange={updateProfile}
         />{" "}
         <input
           type="text"
           name="lastName"
           placeholder="Nom"
           value={profile.lastName}
-          onChange={handleLastName}
+          onChange={updateProfile}
         />{" "}
         et je cherche un poste{" "}
       </div>
@@ -52,7 +36,7 @@ const Inscription = () => {
           name="job"
           placeholder="Développeur"
           value={profile.job}
-          onChange={handleJob}
+          onChange={updateProfile}
         />{" "}
         à{" "}
         <input
@@ -60,17 +44,27 @@ const Inscription = () => {
           name="city"
           placeholder="Bordeaux"
           value={profile.city}
-          onChange={handleCity}
+          onChange={updateProfile}
         />{" "}
+      </div>
+      <div>
+        Vous pouvez me joindre à l'adresse suivante:{" "}
+        <input
+          type="text"
+          name="email"
+          placeholder="Mon adresse email"
+          value={profile.email}
+          onChange={updateProfile}
+        />
       </div>
       <div>
         Je choisis mon mot de passe :{" "}
         <input
           type="text"
-          name="passWord"
+          name="password"
           placeholder="Mot de passe"
           value={profile.password}
-          onChange={handlePassword}
+          onChange={updateProfile}
         />
       </div>
     </div>
