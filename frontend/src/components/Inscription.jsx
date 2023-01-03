@@ -1,28 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import api from "../services/api";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({});
+  const [job, setJob] = useState([]);
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
-  console.warn(profile, "my state");
+  const getJob = () => {
+    api.get("/job/jobtitles").then((response) => setJob(response.data));
+  };
+  useEffect(() => getJob, []);
 
+  console.warn(job, "job");
   return (
     <div>
       <div>
         Je m'appelle{" "}
         <input
           type="text"
-          name="firstName"
+          name="firstname"
           placeholder="Prénom"
           value={profile.firstName}
           onChange={updateProfile}
         />{" "}
         <input
           type="text"
-          name="lastName"
+          name="lastname"
           placeholder="Nom"
           value={profile.lastName}
           onChange={updateProfile}
