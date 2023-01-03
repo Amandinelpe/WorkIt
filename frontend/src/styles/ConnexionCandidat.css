@@ -69,5 +69,6 @@ h3 {
   display: flex;
   justify-content: flex-end;
   color: #7bc5c6;
-  width: 25vh;
+  width: 23vw;
+  height: 3vh;
 }
