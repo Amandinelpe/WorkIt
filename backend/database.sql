@@ -64,7 +64,6 @@ CREATE TABLE `firm` (
     `email` VARCHAR(100)  NOT NULL ,
     `password` VARCHAR(100)  NOT NULL ,
     `name` VARCHAR(50)  NOT NULL ,
-    `contact` VARCHAR(100)  NOT NULL ,
     `contact_phone` VARCHAR(100)  NOT NULL ,
     `city` VARCHAR(100)  NULL ,
     `postal_code` int  NOT NULL ,
@@ -194,6 +193,7 @@ REFERENCES `offer` (`id`);
 
 ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_user_id` FOREIGN KEY(`user_id`)
 REFERENCES `user` (`id`);
+
 INSERT INTO role (status) VALUES('user');
 INSERT INTO role (status) VALUES('consultant');
 INSERT INTO role (status) VALUES('admin');
@@ -224,6 +224,11 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
      (1,'Bertrand','Pomelo','0769365478','Bordeaux','bertrandpomelo@gmail.com','89654derop#klmp','https://www.linkedin.com/in/bertrand-pomelo/%27'),
      (2,'Carole','Artelis','0658963250','Cauderan','carole.artelis@gmail.com','7856aldopme','https://www.linkedin.com/in/carole-artelis/%27');
 
+     INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
+VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
+('contact@cdiscount.com', 'password', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
+('contact@kwantic.com', 'password', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3);
+
 INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
 	 (3,1,'Michael','Birepinte','mickael.birepinte@gmail.com','Salut'),
 	 (3,1,'Olga','Yasno','olga_yasn@hotmail.com','Coucou'),
@@ -241,6 +246,31 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 	 ('Clôturé'),
 	 ('Suspendu'),
 	 ('Abandonné');
+
+     INSERT INTO contract (id, contract_type) VALUES(1, 'CDI'), (2, 'CDD'), (3, 'Stage'), (4, 'Contrat de professionnalisation'), (5, 'Contrat d apprentissage');
+
+     INSERT INTO externatic.offer (title,
+    firm_id,
+    firm_city,
+    date,
+    postal_code,
+   country,
+    job_id,
+    salary,
+   description_firm,
+    description_mission,
+    soft_skills,
+    hard_skills,
+    experience_id,
+    contract_type,
+    consultant_id,
+    urgency_id,
+     state_offer_id 
+) VALUES
+	 ('Front-End Developpeur',1,'Bordeaux','2023-01-01','92000','France',2,'35000 €','Betclic Group est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Gestion des anomalies remontées sur le périmètre technique dans le respect des engagements de service (délais) et des bonnes pratiques (qualité, sécurité) via l outil de ticketing, assurer et coordonner les demandes sur le périmètre technique, réalisation de l analyse technico-fonctionnelle avec les équipes de SI et du métier, participation à la conception et à la réalisation de la solution avec les équipes','Vous êtes curieux, force de proposition et avez le sens du service. Vous savez gérer les priorités, prendre des initiatives, et vous adapter à différents acteurs. Vous avez une capacité d écoute et d analyse et vous savez être force de proposition. Vous faites preuve d une bonne aisance rédactionnelle','Issu d une formation informatique vous avez une première expérience en développement sur SAGE X3',2, 1, 1, 1,1),
+     ('Senior JAVA Developpeur', 2,'Bègles','2022-12-23','33130','France',2,'45000 €','Netfective Technology est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Prendre en charge la conception, le développement, les tests et la documentation, participer aux phases d analyse, de recette et de mise en production, Assurer le support aux utilisateurs, corriger les dysfonctionnements et prendre en charge les évolutions, proposer des actions d optimisation des process et outils de développement','-','Connaissances requises en développement Web autour des technologies Java, HTML, CSS, Javascript, XSL, SQL',3, 1, 2, 2,1),
+     ('PHP Developpeur', 3,'Bordeaux','2022-12-10','33000','France',2,'33000 €','Betclic Group est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Gestion des anomalies remontées sur le périmètre technique dans le respect des engagements de service (délais) et des bonnes pratiques (qualité, sécurité) via l outil de ticketing, assurer et coordonner les demandes sur le périmètre technique, réalisation de l analyse technico-fonctionnelle avec les équipes de SI et du métier, participation à la conception et à la réalisation de la solution avec les équipes','Vous êtes curieux, force de proposition et avez le sens du service. Vous savez gérer les priorités, prendre des initiatives, et vous adapter à différents acteurs. Vous avez une capacité d écoute et d analyse et vous savez être force de proposition. Vous faites preuve d une bonne aisance rédactionnelle','Issu d une formation informatique vous avez une première expérience en développement sur SAGE X3',2, 1, 1, 1,2);
+	
 
 INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNote) VALUES
 	 (1,'homme','luc','thebest','lucthebest@gmail.com','Bordeaux',33000,'FRANCE','43 rue du loup','0640899345',1,'lebgdu33',NULL,NULL,'Developpeur',2,NULL,NULL,0,'test',NULL,NULL,NULL,1,NULL),
