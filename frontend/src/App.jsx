@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import Messagerie from "./pages/Messagerie";
 import CreateProfile from "./pages/CreateProfile";
 import MonProfil from "./pages/MonProfil";
+import ConnexionCandidat from "./pages/ConnexionCandidat";
 import Error from "./pages/Error";
 import "./App.css";
 
@@ -12,7 +13,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/connexionCandidat" element={<connexionCandidat />} />
+        <Route path="/ConnexionCandidat" element={<ConnexionCandidat />} />
         <Route path="/Main" element={<MainPage />} />
         <Route path="/Messagerie" element={<Messagerie />} />
         <Route path="/MonProfil" element={<MonProfil />} />
