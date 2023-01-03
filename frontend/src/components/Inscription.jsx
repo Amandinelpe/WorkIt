@@ -10,11 +10,8 @@ const Inscription = () => {
   };
 
   const getJob = () => {
-    api.get("/api/job").then((res) => {
-      setJob(res.data);
-    });
+    api.get("/job/jobtitles").then((response) => setJob(response.data));
   };
-
   useEffect(() => getJob, []);
 
   console.warn(job, "job");
