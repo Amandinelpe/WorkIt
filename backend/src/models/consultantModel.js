@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const db = require("../../config");
 
 const findAll = () => {
@@ -14,4 +15,23 @@ const findOne = (id) => {
     .then(([consultant]) => consultant);
 };
 
-module.exports = { findAll, findOne };
+const create = ({
+  role_id,
+  firstname,
+  lastname,
+  phone,
+  city,
+  email,
+  password,
+  linkedin,
+}) => {
+  return db
+    .promise()
+    .query(
+      "INSERT INTO consultant (role_id, firstname, lastname, phone, city, email, password, linkedin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [role_id, firstname, lastname, phone, city, email, password, linkedin]
+    )
+    .then(([consultant]) => consultant);
+};
+
+module.exports = { findAll, findOne, create };

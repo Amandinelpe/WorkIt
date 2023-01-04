@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const consultantModel = require("../models/consultantModel");
 
 const consultantController = {
@@ -12,6 +13,12 @@ const consultantController = {
     consultantModel
       .findOne(id)
       .then(([consultant]) => res.status(200).send(consultant))
+      .catch((err) => next(err));
+  },
+  createConsultant: (req, res, next) => {
+    consultantModel
+      .create(req.body)
+      .then(([consultant]) => res.status(201).send(consultant))
       .catch((err) => next(err));
   },
 };
