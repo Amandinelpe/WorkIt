@@ -128,7 +128,6 @@ table {
   src: url(./assets/fonts/Jost-Regular.ttf);
 }
 
-
 @font-face {
   font-family: JostBold;
   src: url(./assets/fonts/Jost-Bold.ttf);
@@ -162,6 +161,7 @@ body {
 
 * {
   font-family: var(--text-font-family-jost);
+  box-sizing: border-box;
 }
 
 h1,
@@ -171,4 +171,12 @@ h4,
 h5,
 h6 {
   font-family: var(--title-font-family-jost);
+}
+
+.logo_workit {
+  position: absolute;
+  top: 0;
+  left: 1vw;
+  width: 11vw;
+  margin: 3vh 3vw;
 }

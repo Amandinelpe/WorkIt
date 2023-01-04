@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
+import "../styles/Inscription.css";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({});
@@ -16,7 +17,7 @@ const Inscription = () => {
 
   console.warn(job, "job");
   return (
-    <div>
+    <div className="inscription_bloc">
       <div>
         Je m'appelle{" "}
         <input
