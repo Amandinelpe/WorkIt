@@ -6,6 +6,7 @@ const requestApi = (finalUrl) => {
   return axios.get(apiUrl + finalUrl).then((response) => response.data);
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export const GetFiveOffers = () => {
   return requestApi("offer/");
 };

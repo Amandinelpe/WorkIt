@@ -1,18 +1,9 @@
-.logo {
-  width: 12vw;
-  height: auto;
-  padding: 3%;
-  margin-left: 10%;
-  margin-top: 5%;
-}
-
 .navbar {
   width: 100vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   height: 15vh;
-  color: black;
 }
 
 .navbar ul {

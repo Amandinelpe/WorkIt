@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
 import Messagerie from "./pages/Messagerie";
@@ -12,7 +12,6 @@ import "./App.css";
 const App = () => {
   return (
     <div>
-      <img className="logo_workit" src={LOGO} alt="logo" />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,6 +22,9 @@ const App = () => {
           <Route path="/CreateProfile" element={<CreateProfile />} />
           <Route path="*" element={<Error />} />
         </Routes>
+        <Link to="/Main">
+          <img className="logo_workit" src={LOGO} alt="logo" />
+        </Link>
       </Router>
     </div>
   );
