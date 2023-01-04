@@ -1,18 +1,18 @@
 const offerModel = require("../models/offerModel");
 
 const offerController = {
-  getAllOffers: (_, res) => {
+  getAllOffers: (req, res, next) => {
     offerModel
       .findAll()
       .then(([offers]) => res.status(200).send(offers))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
-  getOfferById: (req, res) => {
+  getOfferById: (req, res, next) => {
     const { id } = req.params;
     offerModel
       .findOne(id)
       .then(([offer]) => res.status(200).send(offer))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
 };
 

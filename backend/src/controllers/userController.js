@@ -1,25 +1,26 @@
 const userModel = require("../models/userModel");
 
 const userController = {
-  getAllUsers: (_, res) => {
+  getAllUsers: (req, res, next) => {
     userModel
       .findAll()
       .then((users) => res.status(200).send(users))
-      .catch((err) => console.error(err));
+      .catch((err) => next(err));
   },
-  getUserById: (req, res) => {
+  getUserById: (req, res, next) => {
     const { id } = req.params;
     userModel
       .findOne(id)
       .then(([user]) => res.status(200).send(user))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
-  createUser: (req, res) => {
-    const newUser = req.body;
+  createUser: (req, res, next) => {
     userModel
-      .createOne(newUser)
-      .then(([user]) => res.status(201).send(user))
-      .catch((err) => res.status(500).send(err));
+      .createOne(req.body)
+      .then(
+        ([user]) => console.warn(user, "user") || res.status(201).send(user)
+      )
+      .catch((err) => next(err));
   },
 };
 
