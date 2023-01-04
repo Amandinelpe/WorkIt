@@ -15,10 +15,11 @@ const userController = {
       .catch((err) => next(err));
   },
   createUser: (req, res, next) => {
-    const newUser = req.body;
     userModel
-      .createOne(newUser)
-      .then(([user]) => res.status(201).send(user))
+      .createOne(req.body)
+      .then(
+        ([user]) => console.warn(user, "user") || res.status(201).send(user)
+      )
       .catch((err) => next(err));
   },
 };
