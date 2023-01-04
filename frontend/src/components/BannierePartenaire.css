@@ -5,7 +5,6 @@
   -moz-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
   color: #7bc5c6;
   margin-bottom: 20px;
-  width: 50vw;
   height: 14vh;
   display: flex;
   flex-direction: column;
@@ -15,11 +14,13 @@
 }
 
 .banniere p {
+  margin-top: 1vw;
   margin-left: 1vw;
   font-weight: bold;
 }
 
 .banniere-logo {
+  margin-top: 1vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -28,5 +29,5 @@
 }
 
 .banniere-logo img {
-  height: 4.5vh;
+  height: 5vh;
 }

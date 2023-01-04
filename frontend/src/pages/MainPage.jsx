@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import "./MainPage.css";
+import Footer from "../components/Footer";
 
 const MainPage = () => {
   return (
@@ -14,6 +15,7 @@ const MainPage = () => {
         </h2>
         <SearchBar />
       </div>
+      <Footer />
     </div>
   );
 };

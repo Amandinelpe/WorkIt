@@ -22,6 +22,7 @@
   height: 45vh;
   border-radius: 25px;
   gap: 4vh;
+  margin-top: 3vw;
 }
 
 .connexion-input {
@@ -73,6 +74,7 @@
   align-items: center;
   justify-content: center;
   gap: 2vh;
+  font-size: 1.6em;
 }
 
 .connexion-candidat .title h1,
@@ -80,6 +82,7 @@ h3 {
   color: #ff5400;
   font-weight: bold;
   margin: 0;
+  font-size: 2em;
 }
 
 .connexion-form .forget-password {
