@@ -17,7 +17,7 @@ const jobController = {
   getAllTitles: (_, res) => {
     jobModel
       .findAllTitles()
-      .then(([jobs]) => res.status(200).send(jobs))
+      .then((jobs) => res.status(200).send(jobs))
       .catch((err) => res.status(500).send(err));
   },
 };

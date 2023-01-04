@@ -3,21 +3,24 @@ import api from "../services/api";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({});
-  const [job, setJob] = useState([]);
+  const [jobs, setJobs] = useState([]);
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
   const getJob = () => {
-    api.get("/job/jobtitles").then((response) => setJob(response.data));
+    api.get("api/job").then((response) => setJobs(response.data));
   };
+
   useEffect(() => getJob, []);
 
-  console.warn(job, "job");
+  console.warn(jobs, "jobs");
+  console.warn(typeof jobs, "typeof(jobs)");
+
   return (
     <div>
-      <div>
+      <form>
         Je m'appelle{" "}
         <input
           type="text"
@@ -34,7 +37,7 @@ const Inscription = () => {
           onChange={updateProfile}
         />{" "}
         et je cherche un poste{" "}
-      </div>
+      </form>
       <div>
         de{" "}
         <input
@@ -63,7 +66,7 @@ const Inscription = () => {
           onChange={updateProfile}
         />
       </div>
-      <div>
+      <form>
         Je choisis mon mot de passe :{" "}
         <input
           type="text"
@@ -72,7 +75,7 @@ const Inscription = () => {
           value={profile.password}
           onChange={updateProfile}
         />
-      </div>
+      </form>
     </div>
   );
 };
