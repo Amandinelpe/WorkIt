@@ -21,6 +21,8 @@ const Inscription = () => {
   return (
     <div>
       <form>
+        Bonjour futur.e Worker. Bienvenue chez WorkIT!<br/><br/>
+        Faisons connaissance et trouvons ensemble l'entreprise qui te correspond le mieux.<br/><br/>
         Je m'appelle{" "}
         <input
           type="text"
@@ -37,8 +39,7 @@ const Inscription = () => {
           onChange={updateProfile}
         />{" "}
         et je cherche un poste{" "}
-      </form>
-      <div>
+      
         de{" "}
         <input
           type="text"
@@ -46,7 +47,7 @@ const Inscription = () => {
           placeholder="Développeur"
           value={profile.job}
           onChange={updateProfile}
-        />{" "}
+          />{" "}
         à{" "}
         <input
           type="text"
@@ -54,18 +55,21 @@ const Inscription = () => {
           placeholder="Bordeaux"
           value={profile.city}
           onChange={updateProfile}
-        />{" "}
-      </div>
+          />{" "}
+     
+          </form>
+      <br/>
       <div>
         Vous pouvez me joindre à l'adresse suivante:{" "}
         <input
-          type="text"
+          type="email"
           name="email"
           placeholder="Mon adresse email"
           value={profile.email}
           onChange={updateProfile}
         />
       </div>
+      <br/>
       <form>
         Je choisis mon mot de passe :{" "}
         <input
@@ -75,6 +79,7 @@ const Inscription = () => {
           value={profile.password}
           onChange={updateProfile}
         />
+        <br/><br/>
       </form>
     </div>
   );
