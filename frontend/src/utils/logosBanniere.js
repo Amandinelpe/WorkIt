@@ -1,4 +1,3 @@
-import abylsen from "../assets/img/Abylsen.png";
 import akeneo from "../assets/img/logo-akeneo.png";
 import allovoisins from "../assets/img/logo-allovoisins.png";
 import beapp from "../assets/img/logo-beapp.png";
@@ -9,36 +8,31 @@ import tester from "../assets/img/logo-tester.png";
 const logosBannière = [
   {
     number: 1,
-    title: "Abylsen",
-    image: abylsen,
-  },
-  {
-    number: 2,
     title: "Akeneo",
     image: akeneo,
   },
   {
-    number: 3,
+    number: 2,
     title: "Allovoisins",
     image: allovoisins,
   },
   {
-    number: 4,
+    number: 3,
     title: "Beapp",
     image: beapp,
   },
   {
-    number: 5,
+    number: 4,
     title: "Gieiris",
     image: gieiris,
   },
   {
-    number: 6,
+    number: 5,
     title: "Nickel",
     image: nickel,
   },
   {
-    number: 7,
+    number: 6,
     title: "Tester",
     image: tester,
   },

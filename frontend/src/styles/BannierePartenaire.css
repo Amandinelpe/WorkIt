@@ -11,6 +11,7 @@
   flex-direction: column;
   justify-content: flex-start;
   border-radius: 25px;
+  margin-top: 20px;
 }
 
 .banniere p {
@@ -23,9 +24,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2vw;
+  gap: 3vw;
 }
 
 .banniere-logo img {
-  height: 4vh;
+  height: 4.5vh;
 }

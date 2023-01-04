@@ -8,11 +8,7 @@ const BannierePartenaire = () => {
       <p>Ils nous font confiance</p>
       <div className="banniere-logo">
         {logosBannière.map((logo) => (
-          <img
-            src={logo.image}
-            alt={logo.title}
-            key={logo.number}
-          />
+          <img src={logo.image} alt={logo.title} key={logo.number} />
         ))}
       </div>
     </div>
