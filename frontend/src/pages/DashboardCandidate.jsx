@@ -1,12 +1,15 @@
 import React from "react";
 import NavBar from "../components/NavBar";
-import DashboardBoxCandidate from "../components/DashboardBoxCandidate";
+import BoxCandidate from "../components/BoxCandidate";
+import "../styles/DashboardCandidate.css";
 
 const DashboardCandidate = () => {
   return (
-    <div className="mydashboard">
+    <div>
       <NavBar />
-      <DashboardBoxCandidate />
+      <div className="mydashboard">
+        <BoxCandidate />
+      </div>
     </div>
   );
 };

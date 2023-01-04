@@ -158,8 +158,6 @@ table {
   --red: #ca2061;
   --white: #ffffff;
   --black: #000000;
-  --title-font-family-regular: "InterBold";
-  --text-font-family-inter: "InterRegular";
   --title-font-family-jost: "JostBold";
   --text-font-family-jost: "JostRegular";
 }
@@ -177,7 +175,7 @@ body {
 }
 
 * {
-  font-family: var(--text-font-family-inter);
+  font-family: var(--text-font-family-jost);
 }
 
 h1,
@@ -187,3 +185,4 @@ h4,
 h5,
 h6 {
   font-family: var(--title-font-family-jost);
+}
