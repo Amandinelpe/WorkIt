@@ -1,18 +1,18 @@
 const roleModel = require("../models/roleModel");
 
 const roleController = {
-  getAllRoles: (_, res) => {
+  getAllRoles: (req, res, next) => {
     roleModel
       .findAll()
-      .then(([roles]) => res.status(200).send(roles))
-      .catch((err) => res.status(500).send(err));
+      .then((roles) => res.status(200).send(roles))
+      .catch((err) => next(err));
   },
-  getRoleById: (req, res) => {
+  getRoleById: (req, res, next) => {
     const { id } = req.params;
     roleModel
       .findOne(id)
       .then(([role]) => res.status(200).send(role))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
 };
 

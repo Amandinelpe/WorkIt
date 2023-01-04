@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import "../styles/Offer.css";
 import PropTypes from "prop-types";
 // import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/Md";
-import logo from "../assets/img/entreprise.png";
+import logo from "../assets/img/logo.png";
 
 const Offer = ({ date }) => {
   const [isFavorite, setIsFavorite] = useState(false);

@@ -20,7 +20,10 @@
     "husky": "^7.0.0"
   },
   "dependencies": {
+    "react-autosuggestions": "^3.4.0",
     "axios": "^1.2.2",
+    "mysql2": "^2.3.3",
+    "react-icons": "^4.7.1",
     "react-router-dom": "^6.6.1"
   }
 }

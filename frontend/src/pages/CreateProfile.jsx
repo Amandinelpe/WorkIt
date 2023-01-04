@@ -1,13 +1,13 @@
 import React from "react";
-import Trust from "../components/Trust";
 import Inscription from "../components/Inscription";
+import BannierePartenaire from "./BannierePartenaire";
 import "../styles/CreateProfile.css";
 
 const CreateProfile = () => {
   return (
-    <div className="Profile">
+    <div className="page_createprofile">
       <Inscription />
-      <Trust />
+      <BannierePartenaire />
     </div>
   );
 };

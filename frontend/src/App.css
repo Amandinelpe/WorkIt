@@ -83,7 +83,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   text-decoration: none;
 }
@@ -125,21 +124,6 @@ table {
 }
 
 @font-face {
-  font-family: InterRegular;
-  src: url(./assets/fonts/Inter-Regular.ttf);
-}
-
-@font-face {
-  font-family: InterBold;
-  src: url(./assets/fonts/Inter-Bold.ttf);
-}
-
-@font-face {
-  font-family: JostRegular;
-  src: url(./assets/fonts/Jost-Regular.ttf);
-}
-
-@font-face {
   font-family: JostRegular;
   src: url(./assets/fonts/Jost-Regular.ttf);
 }
@@ -169,6 +153,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+
 .App {
   width: 100vw;
   height: 100vh;
@@ -176,6 +161,7 @@ body {
 
 * {
   font-family: var(--text-font-family-jost);
+  box-sizing: border-box;
 }
 
 h1,
@@ -185,4 +171,12 @@ h4,
 h5,
 h6 {
   font-family: var(--title-font-family-jost);
+}
+
+.logo_workit {
+  position: absolute;
+  top: 0;
+  left: 1vw;
+  width: 11vw;
+  margin: 3vh 3vw;
 }

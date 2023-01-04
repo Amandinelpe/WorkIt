@@ -1,18 +1,18 @@
 const adminModel = require("../models/adminModel");
 
 const adminController = {
-  getAllAdmins: (req, res) => {
+  getAllAdmins: (req, res, next) => {
     adminModel
       .findAll()
       .then(([admins]) => res.status(200).send(admins))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
-  getAdminById: (req, res) => {
+  getAdminById: (req, res, next) => {
     const { id } = req.params;
     adminModel
       .findOne(id)
       .then(([admin]) => res.status(200).send(admin))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
 };
 
