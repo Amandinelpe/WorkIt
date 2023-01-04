@@ -1,22 +1,9 @@
-import { React, useEffect, useState } from "react";
+import React from "react";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
-import Footer from "../components/Footer";
-import { GetOffers } from "../utils/GetOffers";
-import "../styles/MainPage.css";
-import Offer from "../components/Offer";
+import "./MainPage.css";
 
 const MainPage = () => {
-  const [offers, setOffers] = useState([]);
-
-  const getOffers = async () => {
-    setOffers(await GetOffers());
-  };
-
-  useEffect(() => {
-    getOffers();
-  }, []);
-
   return (
     <div className="mainPage">
       <NavBar />
@@ -26,11 +13,6 @@ const MainPage = () => {
           motive.
         </h2>
         <SearchBar />
-        {offers.map((offer) => (
-          <Offer date={offer.date} />
-        ))}
-
-        <Footer />
       </div>
     </div>
   );

@@ -1,32 +1,39 @@
-.contact {
-  margin-top: 50px;
+.connexion-candidat {
   display: flex;
-  margin-left: 420px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
+  gap: 2.5vh;
+}
+
+.connexion-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
   padding: 20px;
   background: #ffffff;
-  box-shadow: 0px 0px 8px 4px rgba(123, 197, 198, 0.78);
-  -webkit-box-shadow: 0px 0px 8px 4px rgba(123, 197, 198, 0.78);
-  -moz-box-shadow: 0px 0px 8px 4px rgba(123, 197, 198, 0.78);
+  box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
+  -webkit-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
+  -moz-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
   color: #7bc5c6;
-  width: 40vw;
+  width: 30vw;
   height: 45vh;
+  border-radius: 25px;
+  gap: 4vh;
 }
 
-.contact-form {
+.connexion-input {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  text-align: left;
-  border-radius: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1vh;
 }
 
-.contact-form input,
-.contact-form button {
-  margin: 15px;
+.connexion-input input,
+.connexion-button button {
   padding: 1rem;
   border-radius: 10px;
   border: #7bc5c6 1px solid;
@@ -35,33 +42,65 @@
   width: 20vw;
   height: 2vh;
   box-shadow: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+.connexion-form button {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 16px;
+  background-color: #7bc5c6;
+  color: #ffffff;
+  width: 14vw;
 }
 
-.login_logo {
+.login-logo {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
+}
+
+.login-logo img {
   width: 10vw;
-  height: 10vh;
   padding-left: 3vh;
   padding-top: 2vh;
 }
 
-.title h1,
-h3 {
-  color: #ff5400;
+.connexion-candidat .title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-weight: uppercase;
+  justify-content: center;
+  gap: 2vh;
 }
 
-.contact a {
+.connexion-candidat .title h1,
+h3 {
+  color: #ff5400;
+  font-weight: bold;
+  margin: 0;
+}
+
+.connexion-form .forget-password {
   display: flex;
+  flex-direction: row;
+  align-items: flex-end;
   justify-content: flex-end;
+  margin-top: 0;
+  width: 100%;
+}
+
+.connexion-form .forget-password a {
   color: #7bc5c6;
-  width: 23vw;
-  height: 3vh;
+  font-size: 0.7em;
+}
+
+.connexion-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+  width: 20vw;
 }
