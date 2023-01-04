@@ -1,24 +1,24 @@
 const jobModel = require("../models/jobModel");
 
 const jobController = {
-  getAllJobs: (_, res) => {
+  getAllJobs: (req, res, next) => {
     jobModel
       .findAll()
       .then(([jobs]) => res.status(200).send(jobs))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
-  getJobById: (req, res) => {
+  getJobById: (req, res, next) => {
     const { id } = req.params;
     jobModel
       .findOne(id)
       .then(([job]) => res.status(200).send(job))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
-  getAllTitles: (_, res) => {
+  getAllTitles: (req, res, next) => {
     jobModel
       .findAllTitles()
       .then(([jobs]) => res.status(200).send(jobs))
-      .catch((err) => res.status(500).send(err));
+      .catch((err) => next(err));
   },
 };
 

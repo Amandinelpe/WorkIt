@@ -3,8 +3,8 @@ const db = require("../../config");
 const findAll = () => {
   return db
     .promise()
-    .query("SELECT * FROM user")
-    .then(([users]) => users);
+    .query("SELECT * FROM users")
+    .then((users) => users);
 };
 
 const findOne = (id) => {
