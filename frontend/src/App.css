@@ -124,24 +124,10 @@ table {
 }
 
 @font-face {
-  font-family: Jost;
-  src: url(./assets/fonts/Inter-Regular.ttf);
-}
-
-@font-face {
-  font-family: InterBold;
-  src: url(./assets/fonts/Inter-Bold.ttf);
-}
-
-@font-face {
   font-family: JostRegular;
   src: url(./assets/fonts/Jost-Regular.ttf);
 }
 
-@font-face {
-  font-family: JostRegular;
-  src: url(./assets/fonts/Jost-Regular.ttf);
-}
 
 @font-face {
   font-family: JostBold;
