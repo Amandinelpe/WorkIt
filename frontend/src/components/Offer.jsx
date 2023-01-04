@@ -1,9 +1,10 @@
 import { React, useState } from "react";
 import "../styles/Offer.css";
+import PropTypes from "prop-types";
 // import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/Md";
 import logo from "../assets/img/entreprise.png";
 
-const Offer = () => {
+const Offer = ({ date }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
@@ -15,7 +16,7 @@ const Offer = () => {
           <p className="border_button">Contrat</p>
           <p className="border_button">City</p>
         </div>
-        <p id="text_date">Le 02/01/2022</p>
+        <p id="text_date">{date}</p>
       </div>
       <div className="offer_block_details">
         <p id="border_button_offer">Voir l'offre</p>
@@ -34,6 +35,10 @@ const Offer = () => {
       <img src={logo} alt="logo entreprise" className="offer_logo" />
     </div>
   );
+};
+
+Offer.propTypes = {
+  date: PropTypes.string.isRequired,
 };
 
 export default Offer;
