@@ -2,18 +2,19 @@ import { React, useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import { GetFiveOffers } from "../utils/GetOffers";
+import { GetOffers } from "../utils/GetOffers";
 import "../styles/MainPage.css";
 import Offer from "../components/Offer";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
-  const getFiveOffers = async () => {
-    setOffers(await GetFiveOffers());
+
+  const getOffers = async () => {
+    setOffers(await GetOffers());
   };
 
   useEffect(() => {
-    getFiveOffers();
+    getOffers();
   }, []);
 
   return (

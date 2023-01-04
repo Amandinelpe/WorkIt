@@ -1,5 +1,5 @@
 import React from "react";
-// import { BiSearchAlt } from "react-icons/Bi";
+import { BiSearchAlt } from "react-icons/bi";
 import "../styles/SearchBar.css";
 
 const SearchBar = () => {
@@ -11,7 +11,7 @@ const SearchBar = () => {
       <div className="inputBox">
         <input type="text" required="required" placeholder="Ou ?" />
       </div>
-      {/* <BiSearchAlt className="searchButton" /> */}
+      <BiSearchAlt className="searchButton" />
     </div>
   );
 };

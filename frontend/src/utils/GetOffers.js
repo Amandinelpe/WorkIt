@@ -6,7 +6,6 @@ const requestApi = (finalUrl) => {
   return axios.get(apiUrl + finalUrl).then((response) => response.data);
 };
 
-export const GetFiveOffers = () => {
-  //   return requestApi("/offer?limit=5");
+export const GetOffers = () => {
   return requestApi("offer/");
 };
