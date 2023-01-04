@@ -1,17 +1,28 @@
 .logo_home {
   position: absolute;
   top: 0;
+  left: 1vw;
   width: 11vw;
   margin: 3vh 3vw;
 }
 
+.home_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .title_block {
   margin: 20vh 0 5vh 0;
+  font-size: 1.1rem;
+  color: var(--purple-dark);
+  width: 60vw;
+  text-align: center;
 }
 
 .title_block h1 {
-  text-align: center;
-  font-size: 1rem;
+  margin-top: 2vh;
 }
 
 .main_container_home {
@@ -41,7 +52,6 @@
   z-index: 5;
   position: absolute;
   width: 11vw;
-  left: 43.5vw;
 }
 
 .container_text {
@@ -50,12 +60,18 @@
   position: relative;
 }
 
+.container_text h2 {
+  font-size: 1.2rem;
+  margin-bottom: 6vh;
+}
+
 .container_candidat {
   z-index: 10;
   width: 20vw;
   position: absolute;
   left: -26vw;
   top: -18vh;
+  color: var(--bleu);
 }
 
 .container_consultant {
@@ -64,4 +80,50 @@
   position: absolute;
   top: -18vh;
   right: -28vw;
+  color: var(--white);
+}
+
+.button_mainpage_candidat {
+  position: relative;
+  margin-top: 5vh;
+  background-color: var(--bleu);
+  border-radius: 20px;
+  border: none;
+  box-shadow: 3px 3px rgb(186, 185, 185);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  color: white;
+  width: 15vw;
+}
+
+.container_text button {
+  position: relative;
+  margin-top: 5vh;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 3px 3px rgb(186, 185, 185);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-family: var(--text-font-family-jost);
+  width: 15vw;
+}
+
+.button_mainpage_candidat {
+  background-color: var(--bleu);
+  color: white;
+}
+
+.button_mainpage_consultant {
+  background-color: var(--white);
+  color: var(--purple-light);
+}
+
+.p_small {
+  font-size: 0.6rem;
+  margin: 2vh 0;
+}
+
+.link_p {
+  font-weight: bold;
+  color: var(--blue);
 }

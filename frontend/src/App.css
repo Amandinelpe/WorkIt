@@ -83,7 +83,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   text-decoration: none;
 }
@@ -158,8 +157,6 @@ table {
   --red: #ca2061;
   --white: #ffffff;
   --black: #000000;
-  --title-font-family-regular: "InterBold";
-  --text-font-family-inter: "InterRegular";
   --title-font-family-jost: "JostBold";
   --text-font-family-jost: "JostRegular";
 }
@@ -177,7 +174,7 @@ body {
 }
 
 * {
-  font-family: var(--text-font-family-inter);
+  font-family: var(--text-font-family-jost);
 }
 
 h1,
