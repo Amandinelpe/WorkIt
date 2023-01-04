@@ -83,7 +83,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   text-decoration: none;
 }
@@ -125,24 +124,10 @@ table {
 }
 
 @font-face {
-  font-family: InterRegular;
-  src: url(./assets/fonts/Inter-Regular.ttf);
-}
-
-@font-face {
-  font-family: InterBold;
-  src: url(./assets/fonts/Inter-Bold.ttf);
-}
-
-@font-face {
   font-family: JostRegular;
   src: url(./assets/fonts/Jost-Regular.ttf);
 }
 
-@font-face {
-  font-family: JostRegular;
-  src: url(./assets/fonts/Jost-Regular.ttf);
-}
 
 @font-face {
   font-family: JostBold;
@@ -158,8 +143,6 @@ table {
   --red: #ca2061;
   --white: #ffffff;
   --black: #000000;
-  --title-font-family-regular: "InterBold";
-  --text-font-family-inter: "InterRegular";
   --title-font-family-jost: "JostBold";
   --text-font-family-jost: "JostRegular";
 }
@@ -171,13 +154,14 @@ body {
   background-size: cover;
   background-attachment: fixed;
 }
+
 .App {
   width: 100vw;
   height: 100vh;
 }
 
 * {
-  font-family: var(--text-font-family-inter);
+  font-family: var(--text-font-family-jost);
 }
 
 h1,
@@ -188,3 +172,4 @@ h5,
 h6 {
   font-family: var(--title-font-family-jost);
 }
+
