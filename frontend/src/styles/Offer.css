@@ -1,0 +1,67 @@
+.bloc_offer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50vw;
+  height: 20vh;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: #4e55ad 10px 10px 25px;
+}
+.offer_block_job {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  height: 90%;
+  margin-left: 1.5vw;
+}
+#text_entreprise {
+  font-size: 1vw;
+  color: #4e55ad;
+}
+#text_job {
+  font-size: 1.2vw;
+  color: #4e55ad;
+}
+#text_date {
+  font-size: 0.8vw;
+  color: #4e55ad;
+  opacity: 0.7;
+}
+.offer_filter {
+  display: flex;
+  width: 50%;
+}
+.border_button {
+  color: #4e55ad;
+  border: 1px solid #4e55ad;
+  border-radius: 10px;
+  padding: 1vh 2vw;
+  margin-right: 5%;
+}
+#border_button_offer {
+  color: #4e55ad;
+  border: 1px solid #4e55ad;
+  border-radius: 10px;
+  padding: 1vh 2vw;
+}
+.offer_block_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 55%;
+  width: 30%;
+}
+#full_earth {
+  font-size: 2vw;
+  color: red;
+}
+#empty_earth {
+  font-size: 2vw;
+}
+.offer_logo {
+  height: 50%;
+  margin-right: 5%;
+}
