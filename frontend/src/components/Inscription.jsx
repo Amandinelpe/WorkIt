@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
+import "../styles/CreateProfile.css";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({});
