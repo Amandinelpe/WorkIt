@@ -17,7 +17,7 @@ const Inscription = () => {
   useEffect(() => getJob, []);
 
   console.warn(jobs, "jobs");
-  console.warn(typeof jobs, "typeof(jobs)");
+  console.warn(profile, "profile");
 
   return (
     <div>
