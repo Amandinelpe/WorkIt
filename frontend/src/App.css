@@ -136,7 +136,17 @@ table {
 
 @font-face {
   font-family: JostRegular;
-  src: url(./assets/fonts/Inter-Bold.ttf);
+  src: url(./assets/fonts/Jost-Regular.ttf);
+}
+
+@font-face {
+  font-family: JostRegular;
+  src: url(./assets/fonts/Jost-Regular.ttf);
+}
+
+@font-face {
+  font-family: JostBold;
+  src: url(./assets/fonts/Jost-Bold.ttf);
 }
 
 :root {
@@ -148,8 +158,9 @@ table {
   --red: #ca2061;
   --white: #ffffff;
   --black: #000000;
-  --title-font-family: "InterBold";
+  --title-font-family-regular: "InterBold";
   --text-font-family-inter: "InterRegular";
+  --title-font-family-jost: "JostBold";
   --text-font-family-jost: "JostRegular";
 }
 
@@ -167,4 +178,13 @@ body {
 
 * {
   font-family: var(--text-font-family-inter);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--title-font-family-jost);
 }
