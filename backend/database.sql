@@ -115,8 +115,8 @@ CREATE TABLE `offer` (
     `experience_id` int  NOT NULL ,
     `contract_type` int  NOT NULL ,
     `consultant_id` int  NOT NULL ,
-     `urgency_id` int  NOT NULL ,
-      `state_offer_id` int  NOT NULL ,
+    `urgency_id` int  NOT NULL ,
+    `state_offer_id` int  NOT NULL ,
 
     PRIMARY KEY (
         `id`
