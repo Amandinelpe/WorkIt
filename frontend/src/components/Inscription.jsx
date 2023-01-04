@@ -10,7 +10,7 @@ const Inscription = () => {
   };
 
   const getJob = () => {
-    api.get("api/job").then((response) => setJobs(response.data));
+    api.get("job").then((response) => setJobs(response.data));
   };
 
   useEffect(() => getJob, []);
@@ -21,8 +21,13 @@ const Inscription = () => {
   return (
     <div>
       <form>
-        Bonjour futur.e Worker. Bienvenue chez WorkIT!<br/><br/>
-        Faisons connaissance et trouvons ensemble l'entreprise qui te correspond le mieux.<br/><br/>
+        Bonjour futur.e Worker. Bienvenue chez WorkIT!
+        <br />
+        <br />
+        Faisons connaissance et trouvons ensemble l'entreprise qui te correspond
+        le mieux.
+        <br />
+        <br />
         Je m'appelle{" "}
         <input
           type="text"
@@ -38,16 +43,14 @@ const Inscription = () => {
           value={profile.lastName}
           onChange={updateProfile}
         />{" "}
-        et je cherche un poste{" "}
-      
-        de{" "}
+        et je cherche un poste de{" "}
         <input
           type="text"
           name="job"
           placeholder="Développeur"
           value={profile.job}
           onChange={updateProfile}
-          />{" "}
+        />{" "}
         à{" "}
         <input
           type="text"
@@ -55,10 +58,9 @@ const Inscription = () => {
           placeholder="Bordeaux"
           value={profile.city}
           onChange={updateProfile}
-          />{" "}
-     
-          </form>
-      <br/>
+        />{" "}
+      </form>
+      <br />
       <div>
         Vous pouvez me joindre à l'adresse suivante:{" "}
         <input
@@ -69,7 +71,7 @@ const Inscription = () => {
           onChange={updateProfile}
         />
       </div>
-      <br/>
+      <br />
       <form>
         Je choisis mon mot de passe :{" "}
         <input
@@ -79,7 +81,8 @@ const Inscription = () => {
           value={profile.password}
           onChange={updateProfile}
         />
-        <br/><br/>
+        <br />
+        <br />
       </form>
     </div>
   );
