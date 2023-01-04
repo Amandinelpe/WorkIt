@@ -1,0 +1,11 @@
+.mainPage_body {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainPage_body h2 {
+  margin-bottom: 10vh;
+  color: #4e55ad;
+}

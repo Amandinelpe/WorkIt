@@ -56,3 +56,12 @@ a {
   box-shadow: 8px 8px 2px 1px #ff8150;
   transform: scale(1.1);
 }
+
+.my_profile_icon {
+  font-size: 55px;
+  color: #4e55ad;
+}
+.my_profile_icon:hover {
+  color: #ff8150;
+  transform: scale(1.1);
+}

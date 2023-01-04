@@ -4,7 +4,7 @@ const userController = {
   getAllUsers: (req, res, next) => {
     userModel
       .findAll()
-      .then(([users]) => res.status(200).send(users))
+      .then((users) => res.status(200).send(users))
       .catch((err) => next(err));
   },
   getUserById: (req, res, next) => {
