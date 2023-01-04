@@ -1,23 +1,34 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
+import "../styles/CreateProfile.css";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({});
-  const [job, setJob] = useState([]);
+  const [jobs, setJobs] = useState([]);
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
   const getJob = () => {
-    api.get("/job/jobtitles").then((response) => setJob(response.data));
+    api.get("job").then((response) => setJobs(response.data));
   };
+
   useEffect(() => getJob, []);
 
-  console.warn(job, "job");
+  console.warn(jobs, "jobs");
+  console.warn(profile, "profile");
+
   return (
     <div>
-      <div>
+      <form>
+        Bonjour futur.e Worker. Bienvenue chez WorkIT!
+        <br />
+        <br />
+        Faisons connaissance et trouvons ensemble l'entreprise qui te correspond
+        le mieux.
+        <br />
+        <br />
         Je m'appelle{" "}
         <input
           type="text"
@@ -33,10 +44,7 @@ const Inscription = () => {
           value={profile.lastName}
           onChange={updateProfile}
         />{" "}
-        et je cherche un poste{" "}
-      </div>
-      <div>
-        de{" "}
+        et je cherche un poste de{" "}
         <input
           type="text"
           name="job"
@@ -52,18 +60,20 @@ const Inscription = () => {
           value={profile.city}
           onChange={updateProfile}
         />{" "}
-      </div>
+      </form>
+      <br />
       <div>
         Vous pouvez me joindre à l'adresse suivante:{" "}
         <input
-          type="text"
+          type="email"
           name="email"
           placeholder="Mon adresse email"
           value={profile.email}
           onChange={updateProfile}
         />
       </div>
-      <div>
+      <br />
+      <form>
         Je choisis mon mot de passe :{" "}
         <input
           type="text"
@@ -72,7 +82,9 @@ const Inscription = () => {
           value={profile.password}
           onChange={updateProfile}
         />
-      </div>
+        <br />
+        <br />
+      </form>
     </div>
   );
 };
