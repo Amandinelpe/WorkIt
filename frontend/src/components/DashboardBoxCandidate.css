@@ -1,0 +1,44 @@
+.dashboardBoxCandidate {
+  font-size: 0.8rem;
+  padding: 16px 40px;
+  margin: 0 20px 0 5px;
+  color: white;
+  list-style-type: none;
+  background: #93A9EB;
+  backdrop-filter: blur(20px);
+  align-items: center;
+  border-radius: 60px;
+  border-radius: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-right: 2%;
+}
+
+.dashboardBoxCandidate-body ul {
+  font-size: 0.8rem;
+  padding: 16px 40px;
+  margin: 0 20px 0 5px;
+  color: white;
+  backdrop-filter: blur(20px);
+  border-radius: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-right: 2%;
+
+}
+   
+
+.dashboardBoxCandidate {
+  background:  #93A9EB;
+  color:white;
+  align-items: center;
+}
+
+.dashboardBoxCandidate-body {
+  background: white;
+  color: #93A9EB;
+}
