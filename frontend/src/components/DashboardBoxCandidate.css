@@ -4,7 +4,7 @@
   margin: 300px 600px 0 600px;
   color: white;
   list-style-type: none;
-  background: #93A9EB;
+  background: #93a9eb;
   align-items: center;
   border-radius: 100px;
   display: flex;
@@ -25,11 +25,9 @@
   justify-content: start;
   align-items: center;
   padding-right: 2%;
-
 }
-   
 
 .dashboardBoxCandidate-body {
   background: white;
-  color: #93A9EB;
+  color: #93a9eb;
 }
