@@ -14,4 +14,11 @@ const findOne = (id) => {
     .then(([job]) => job);
 };
 
-module.exports = { findAll, findOne };
+const findAllTitles = () => {
+  return db
+    .promise()
+    .query("SELECT job_title FROM job")
+    .then((jobs) => jobs);
+};
+
+module.exports = { findAll, findOne, findAllTitles };

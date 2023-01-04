@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { navBarUser } from "../utils/navBarLinks";
 import LOGO from "../assets/img/logo.png";
-import "./NavBar.css";
+import "../styles/NavBar.css";
 
 const NavBar = () => {
   return (
