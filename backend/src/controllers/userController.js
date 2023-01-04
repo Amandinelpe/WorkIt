@@ -1,11 +1,11 @@
 const userModel = require("../models/userModel");
 
 const userController = {
-  getAllUsers: (req, res) => {
+  getAllUsers: (_, res) => {
     userModel
       .findAll()
-      .then(([users]) => res.status(200).send(users))
-      .catch((err) => res.status(500).send(err));
+      .then((users) => res.status(200).send(users))
+      .catch((err) => console.error(err));
   },
   getUserById: (req, res) => {
     const { id } = req.params;
