@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
-import "../styles/CreateProfile.css";
+import "../styles/Inscription.css";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({});
@@ -20,17 +20,16 @@ const Inscription = () => {
   console.warn(profile, "profile");
 
   return (
-    <div>
+    <div className="inscription_bloc">
+      <p>
+        Bonjour futur.e Worker! Bienvenue chez WorkIT! <br /> Faisons
+        connaissance et trouvons ensemble l'entreprise qui te correspond le
+        mieux.{" "}
+      </p>
       <form>
-        Bonjour futur.e Worker. Bienvenue chez WorkIT!
-        <br />
-        <br />
-        Faisons connaissance et trouvons ensemble l'entreprise qui te correspond
-        le mieux.
-        <br />
-        <br />
         Je m'appelle{" "}
         <input
+          className="form_input"
           type="text"
           name="firstname"
           placeholder="Prénom"
@@ -38,6 +37,7 @@ const Inscription = () => {
           onChange={updateProfile}
         />{" "}
         <input
+          className="form_input"
           type="text"
           name="lastname"
           placeholder="Nom"
@@ -46,6 +46,7 @@ const Inscription = () => {
         />{" "}
         et je cherche un poste de{" "}
         <input
+          className="form_input"
           type="text"
           name="job"
           placeholder="Développeur"
@@ -54,36 +55,43 @@ const Inscription = () => {
         />{" "}
         à{" "}
         <input
+          className="form_input"
           type="text"
           name="city"
           placeholder="Bordeaux"
           value={profile.city}
           onChange={updateProfile}
         />{" "}
-      </form>
-      <br />
-      <div>
-        Vous pouvez me joindre à l'adresse suivante:{" "}
-        <input
-          type="email"
-          name="email"
-          placeholder="Mon adresse email"
-          value={profile.email}
-          onChange={updateProfile}
-        />
-      </div>
-      <br />
-      <form>
+        en CDI, car chez WorkIT nous ne proposons que des postes avec ce type de
+        contrat directement chez des startup / éditeur de logiciel / DSI / etc.
+        Pas en ESN. Ainsi, vous serez salarié de l’entreprise accompagnée et non
+        de WorkIT.
+        <div>
+          Vous pouvez me joindre à l'adresse suivante:{" "}
+          <input
+            className="form_input"
+            type="email"
+            name="email"
+            placeholder="Mon adresse email"
+            value={profile.email}
+            onChange={updateProfile}
+          />
+        </div>
         Je choisis mon mot de passe :{" "}
         <input
+          className="form_input"
           type="text"
           name="password"
           placeholder="Mot de passe"
           value={profile.password}
           onChange={updateProfile}
         />
-        <br />
-        <br />
+        <div className="button_section">
+          <button className="inscription_button" type="submit">
+            {" "}
+            JE M'INSCRIS
+          </button>
+        </div>
       </form>
     </div>
   );

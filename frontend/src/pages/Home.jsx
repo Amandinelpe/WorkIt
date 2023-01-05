@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import LOGO from "../assets/img/logo.png";
 import shape1 from "../assets/img/bloc-blanc.png";
 import shape2 from "../assets/img/bloc-violet.png";
 import wlogo from "../assets/img/logo-central.png";
@@ -8,7 +7,6 @@ import "../styles/Home.css";
 const Home = () => {
   return (
     <div className="home_page">
-      <img className="logo_home" src={LOGO} alt="logo" />
       <div className="title_block">
         <h1>
           Chez WorkIT, nous te connectons avec les meilleures entreprises.
@@ -26,10 +24,12 @@ const Home = () => {
               Rejoins notre communauté de workers et trouve une entreprise qui
               te correspond
             </p>
-            <button type="button" className="button_mainpage_candidat">
-              {" "}
-              ACCES CANDIDAT
-            </button>
+            <Link to="/ConnexionCandidat">
+              <button type="button" className="button_mainpage_candidat">
+                {" "}
+                ACCES CANDIDAT
+              </button>
+            </Link>
             <p className="p_small">
               Vous n’avez pas de compte ?{" "}
               <Link to="/CreateProfile" className="link_p">
