@@ -8,6 +8,7 @@ import "../styles/MainPage.css";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
+
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
   };
@@ -35,6 +36,7 @@ const MainPage = () => {
         </div>
         <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

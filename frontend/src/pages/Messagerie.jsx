@@ -5,7 +5,9 @@ const Messagerie = () => {
   return (
     <div className="messagerie">
       <NavBar />
-      <h2>messages</h2>
+      <div className="button_accueil">
+        <button type="submit">Bonjour Luc</button>
+      </div>
     </div>
   );
 };
