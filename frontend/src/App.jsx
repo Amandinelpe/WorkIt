@@ -5,6 +5,7 @@ import Messagerie from "./pages/Messagerie";
 import CreateProfile from "./pages/CreateProfile";
 import MonProfil from "./pages/MonProfil";
 import ConnexionCandidat from "./pages/ConnexionCandidat";
+import DashboardCandidate from "./pages/DashboardCandidate";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
 import "./App.css";
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/Messagerie" element={<Messagerie />} />
           <Route path="/MonProfil" element={<MonProfil />} />
           <Route path="/CreateProfile" element={<CreateProfile />} />
+          <Route path="/DashboardCandidate" element={<DashboardCandidate />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Link to="/Main">
