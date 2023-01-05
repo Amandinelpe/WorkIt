@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   gap: 2.5vh;
+  margin-top: 20vh;
 }
 
 .connexion-form {
@@ -22,6 +23,7 @@
   height: 45vh;
   border-radius: 25px;
   gap: 4vh;
+  margin-bottom: 5vh;
   margin-top: 3vw;
 }
 
@@ -54,18 +56,6 @@
   background-color: #7bc5c6;
   color: #ffffff;
   width: 14vw;
-}
-
-.login-logo {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.login-logo img {
-  width: 10vw;
-  padding-left: 3vh;
-  padding-top: 2vh;
 }
 
 .connexion-candidat .title {
