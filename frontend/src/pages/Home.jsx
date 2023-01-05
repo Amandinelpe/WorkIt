@@ -24,10 +24,12 @@ const Home = () => {
               Rejoins notre communauté de workers et trouve une entreprise qui
               te correspond
             </p>
-            <button type="button" className="button_mainpage_candidat">
-              {" "}
-              ACCES CANDIDAT
-            </button>
+            <Link to="/ConnexionCandidat">
+              <button type="button" className="button_mainpage_candidat">
+                {" "}
+                ACCES CANDIDAT
+              </button>
+            </Link>
             <p className="p_small">
               Vous n’avez pas de compte ?{" "}
               <Link to="/CreateProfile" className="link_p">

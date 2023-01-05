@@ -1,14 +1,10 @@
 import React from "react";
 import "../styles/ConnexionCandidat.css";
-import workit from "../assets/img/logo.png";
 import BannierePartenaire from "./BannierePartenaire";
 
 const ConnexionCandidat = () => {
   return (
     <div>
-      <div className="login-logo">
-        <img src={workit} alt="logo" />
-      </div>
       <div className="connexion-candidat">
         <div className="title">
           <h1>Connecte toi</h1>
