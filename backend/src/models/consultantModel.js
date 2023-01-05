@@ -31,7 +31,7 @@ const create = ({
       "INSERT INTO consultant (role_id, firstname, lastname, phone, city, email, password, linkedin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       [role_id, firstname, lastname, phone, city, email, password, linkedin]
     )
-    .then(([consultant]) => consultant);
+    .then((consultant) => consultant);
 };
 
 module.exports = { findAll, findOne, create };
