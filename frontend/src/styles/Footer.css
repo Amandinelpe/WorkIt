@@ -44,6 +44,7 @@
 .footer h3,
 .footer a {
   color: #ffffff;
+  padding-top: 5vh;
 }
 
 .footer ul {
@@ -65,22 +66,24 @@
 }
 
 .copyright-icon {
-  font-size: 0.7em;
+  height: 3vh;
+  color: #ffffff;
 }
 
 .footer-content p {
   line-height: 1.6;
 }
 
-.footer-content .social-network-logo {
-  font-size: 2.4em;
+.footer-content .social-network-logo img {
+  font-size: 1.4em;
 }
 
-.footer .social-network {
+.footer .social-network img {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 6vh;
 }
 
 .footer .social-network-content {
