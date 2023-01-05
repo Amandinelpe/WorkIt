@@ -8,6 +8,7 @@ import Offer from "../components/Offer";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
+
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
   };
@@ -28,9 +29,8 @@ const MainPage = () => {
         {offers.map((offer) => (
           <Offer date={offer.date} />
         ))}
-
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

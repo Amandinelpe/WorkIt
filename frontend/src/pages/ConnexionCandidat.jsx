@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/ConnexionCandidat.css";
 import workit from "../assets/img/logo.png";
-import BannierePartenaire from "./BannierePartenaire";
+import BannierePartenaire from "../components/BannierePartenaire";
 
 const ConnexionCandidat = () => {
   return (
