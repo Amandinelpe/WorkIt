@@ -23,7 +23,7 @@ const MainPage = () => {
       <div className="mainPage_body">
         <h2>
           Comprendre ton histoire, ton parcours, ton projet, c'est ce qui nous
-          motive.hello
+          motive.
         </h2>
         <SearchBar />
         {offers.map((offer) => (
