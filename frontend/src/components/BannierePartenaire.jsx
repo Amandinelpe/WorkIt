@@ -1,5 +1,5 @@
 import React from "react";
-import "./BannierePartenaire.css";
+import "../styles/BannierePartenaire.css";
 import logosBannière from "../utils/logosBanniere";
 
 const BannierePartenaire = () => {
