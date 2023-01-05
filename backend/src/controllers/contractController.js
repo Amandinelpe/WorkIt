@@ -1,18 +1,18 @@
 const contractModel = require("../models/contractModel");
 
 const contractController = {
-  getAllContracts: (_, res) => {
+  getAllContracts: (req, res, next) => {
     contractModel
       .findAll()
       .then((contracts) => res.status(200).send(contracts))
-      .catch((err) => console.error(err));
+      .catch((err) => next(err));
   },
-  getContractById: (req, res) => {
+  getContractById: (req, res, next) => {
     const { id } = req.params;
     contractModel
       .findOne(id)
       .then(([contract]) => res.status(200).send(contract))
-      .catch((err) => console.error(err));
+      .catch((err) => next(err));
   },
 };
 
