@@ -15,22 +15,10 @@ const findOne = (id) => {
     .then(([consultant]) => consultant);
 };
 
-const create = ({
-  role_id,
-  firstname,
-  lastname,
-  phone,
-  city,
-  email,
-  password,
-  linkedin,
-}) => {
+const create = (payload) => {
   return db
     .promise()
-    .query(
-      "INSERT INTO consultant (role_id, firstname, lastname, phone, city, email, password, linkedin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-      [role_id, firstname, lastname, phone, city, email, password, linkedin]
-    )
+    .query("INSERT INTO consultant SET ?", [payload])
     .then((consultant) => consultant);
 };
 

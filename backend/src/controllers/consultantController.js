@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+const argon2 = require("argon2");
 const consultantModel = require("../models/consultantModel");
 
 const consultantController = {
@@ -15,16 +16,37 @@ const consultantController = {
       .then(([consultant]) => res.status(200).send(consultant))
       .catch((err) => next(err));
   },
-  createConsultant: (req, res, next) => {
+  createConsultant: async (req, res, next) => {
+    /*     console.log(req.body); */
+    const {
+      role_id,
+      firstname,
+      lastname,
+      phone,
+      city,
+      email,
+      password,
+      linkedin,
+    } = req.body;
+    const hashedPassword = await argon2.hash(password);
     consultantModel
-      .create(req.body)
+      .create({
+        role_id,
+        firstname,
+        lastname,
+        phone,
+        city,
+        email,
+        password: hashedPassword,
+        linkedin,
+      })
       .then(([consultant]) => {
         if (consultant.insertId) {
           consultantModel
             .findOne(consultant.insertId)
             .then(([response]) => res.status(201).send(response));
         } else {
-          res.status(400).send({ message: "Bad request" });
+          res.status(400).send("consultant not created");
         }
       })
       .catch((err) => next(err));
