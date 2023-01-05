@@ -39,7 +39,7 @@ const MainPage = () => {
             </div>
             <div className="offers_body">
               {offers.map((offer) => (
-                <Offer date={offer.date} />
+                <Offer firm={offer.firm} date={offer.date} />
               ))}
               <button type="button" className="all_offres_button">
                 {" "}
