@@ -14,14 +14,14 @@
   font-size: 0.9rem;
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
-  color: white;
+  color: var(--white);
   background: var(--purple-light);
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
 .box_candidate_body ul {
   font-family: var(--text-font-family-jost);
-  color: #93a9eb;
+  color: var(--purple-light);
   align-items: left;
   font-size: 0.8rem;
   width: 20vw;
@@ -32,7 +32,7 @@
   align-items: left;
   margin-top: 0.1vh;
   border-radius: 0 0 50px 50px;
-  background: white;
+  background: var(--white);
   justify-content: flex-start;
   box-sizing: border-box;
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
