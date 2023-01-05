@@ -1,10 +1,11 @@
+/* eslint-disable camelcase */
 const db = require("../../config");
 
 const findAll = () => {
   return db
     .promise()
     .query("SELECT * FROM user")
-    .then(([users]) => users);
+    .then((users) => users);
 };
 
 const findOne = (id) => {
@@ -14,12 +15,20 @@ const findOne = (id) => {
     .then(([user]) => user);
 };
 
-const createOne = (newUser) => {
+const createOne = ({
+  role_id,
+  firstname,
+  lastname,
+  job_id,
+  city,
+  email,
+  password,
+}) => {
   return db
     .promise()
     .query(
-      "INSERT INTO user (firstname, lastname, job, city, password) VALUES ?",
-      [newUser]
+      "INSERT INTO user (role_id, firstname, lastname, job_id, city, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      [role_id, firstname, lastname, job_id, city, email, password]
     )
     .then((user) => user);
 };

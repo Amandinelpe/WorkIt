@@ -5,21 +5,21 @@ USE externatic;
 CREATE TABLE `user` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
-    `gender` VARCHAR(50)  NOT NULL ,
+    `gender` VARCHAR(50)  NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(50)  NOT NULL ,
     `city` VARCHAR(100)  NOT NULL ,
-    `postal_code` int  NOT NULL ,
-    `country` VARCHAR(100)  NOT NULL ,
-    `adress` VARCHAR(100)  NOT NULL ,
+    `postal_code` int  NULL ,
+    `country` VARCHAR(100)  NULL ,
+    `adress` VARCHAR(100)  NULL ,
     `phone` VARCHAR(100)  NULL ,
     `isActive` BOOLEAN  NOT NULL DEFAULT FALSE,
     `linkedin` VARCHAR(100)  NULL ,
     `website` VARCHAR(100)  NULL ,
     `github` VARCHAR(100)  NULL ,
-    `actual_job` VARCHAR(100)  NOT NULL ,
-    `job_id` int  NULL ,
+    `actual_job` VARCHAR(100)  NULL ,
+    `job_id` int  NOT NULL ,
     `salary` int  NULL ,
     `diploma` VARCHAR(200)  NULL ,
     `handicap` BOOLEAN  NOT NULL DEFAULT FALSE,
@@ -27,7 +27,7 @@ CREATE TABLE `user` (
     `hard_skills` VARCHAR(500)  NULL ,
     `experience_id` int  NULL ,
     `contract_id` int  NULL ,
-    `consultant_id` int  NOT NULL ,
+    `consultant_id` int  NULL ,
     `userNote` VARCHAR(1000)  NULL ,
     PRIMARY KEY (
         `id`
@@ -199,7 +199,6 @@ INSERT INTO role (status) VALUES('consultant');
 INSERT INTO role (status) VALUES('admin');
 
 
-
 INSERT INTO job (category, job_title) VALUES ('Technologies','Développeur Back End'), ('Technologies','Développeur Front End'), ('Technologies','Développeur Full Stack'), ('Technologies','DevOps'), ('Technologies','Lead technique'), ('Technologies','Architecte Infrastructure'), ('Technologies','Scrum master'), ('Technologies','Product owner'), ('Technologies','Product Manager'), ('Technologies','Ingénieur Test'), ('Technologies','UX / UI designer'),  ('Technologies','Administrateur Système  Réseaux'), ('Technologies','Ingénieur Système Cloud'),('Technologies','Architecte Logiciel'),('Technologies','Ingénieur Hardware'), ('Technologies','Analyste fonctionnel / AMOA'), ('Technologies','Intégrateur Web'), ('Technologies','Ingénieur Logiciel Embarqué'), ('Technologies','Technicien support'), ('Management / Marketing','Directeur du Système d Informations'), ('Management / Marketing','Directeur / chef de projet'), ('Management / Marketing','Directeur technique / CTO'), ('Management / Marketing','Responsable de la Sécurité du Système Informatique'), ('Management / Marketing','Directeur Marketing'),('Management / Marketing','Service Delivery Manager'),('Management / Marketing','Customer Success Manager'), ('Management / Marketing','Chief Operating Officer'), ('Management / Marketing','Business Developper'), ('Management / Marketing','Growth Hacker'), ('Management / Marketing','Expert SEO Trafic content Manager'), ('Management / Marketing','Chef de projet Web'), ('DATA','Data Architect'), ('DATA','Data Engineer'), ('DATA','Data Analyst'), ('DATA','Data Scientist'), ('Ressources humaines','Consultant en recrutement IT'), ('Ressources humaines','Recruteur tech');
 
 INSERT INTO experience (experience) VALUES
@@ -270,4 +269,4 @@ INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,post
 	 (1,'homme','luc','thebest','lucthebest@gmail.com','Bordeaux',33000,'FRANCE','43 rue du loup','0640899345',1,'lebgdu33',NULL,NULL,'Developpeur',2,NULL,NULL,0,'test',NULL,NULL,NULL,1,NULL),
 	 (1,'femme','josette','colin','josettecol@gmail.com','Nantes',44000,'FRANCE','5 rue du temple','0640899678',1,NULL,NULL,NULL,'chomage',3,NULL,NULL,0,'test',NULL,NULL,NULL,7,NULL),
 	 (1,'homme','bertrand','molina','btr@gmail.com','soustons',40140,'FRANCE','8 rue des pins','0558411032',1,NULL,NULL,NULL,'boulanger',7,NULL,NULL,1,'test',NULL,NULL,NULL,8,NULL),
-     (1,'1','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'test',NULL,1,NULL,1,NULL);
+     (1,'homme','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'test',NULL,1,NULL,1,NULL);
