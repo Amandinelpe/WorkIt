@@ -5,9 +5,11 @@
   align-items: center;
   width: 100vw;
   height: 40vh;
-  background-color: #7bc5c6;
+  background-color: var(--bleu);
   bottom: 0;
-  color: #ffffff;
+  color: var(--white);
+  margin-top: 3vh;
+  padding-bottom: 5vh;
 }
 
 .footer-content {
@@ -42,7 +44,7 @@
 
 .footer h3,
 .footer a {
-  color: #ffffff;
+  color: var(--white);
   padding-top: 5vh;
 }
 
@@ -66,7 +68,7 @@
 
 .copyright-icon {
   height: 3vh;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .footer-content p {
