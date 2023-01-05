@@ -18,7 +18,15 @@ const consultantController = {
   createConsultant: (req, res, next) => {
     consultantModel
       .create(req.body)
-      .then(([consultant]) => res.status(201).send(consultant))
+      .then(([consultant]) => {
+        if (consultant.insertId) {
+          consultantModel
+            .findOne(consultant.insertId)
+            .then(([response]) => res.status(201).send(response));
+        } else {
+          res.status(400).send({ message: "Bad request" });
+        }
+      })
       .catch((err) => next(err));
   },
 };
