@@ -7,5 +7,16 @@
 
 .mainPage_body h2 {
   margin-bottom: 10vh;
-  color: #4e55ad;
+  color: var(--purple-dark);
+}
+
+.mainPage_offers {
+  background-color: var(--white);
+}
+
+h2.all_offres_title {
+  color: var(--white);
+  background-color: var(--purple-light);
+  height: 10vh;
+  border-radius: 50px 50px 0 0;
 }

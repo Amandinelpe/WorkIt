@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/ConnexionCandidat.css";
-import BannierePartenaire from "./BannierePartenaire";
+import BannierePartenaire from "../components/BannierePartenaire";
 
 const ConnexionCandidat = () => {
   return (

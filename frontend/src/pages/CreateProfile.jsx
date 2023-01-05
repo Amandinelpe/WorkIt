@@ -1,6 +1,6 @@
 import React from "react";
 import Inscription from "../components/Inscription";
-import BannierePartenaire from "./BannierePartenaire";
+import BannierePartenaire from "../components/BannierePartenaire";
 import "../styles/CreateProfile.css";
 
 const CreateProfile = () => {
