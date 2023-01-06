@@ -59,7 +59,7 @@ const consultantController = {
       .findByEmail(email)
       .then(async ([consultant]) => {
         if (!consultant) {
-          return res.status(401).send({ message: "Invalid email or password" });
+          return res.status(401).send({ message: "Invalid email" });
         }
         const {
           id,
@@ -78,7 +78,7 @@ const consultantController = {
             lastname,
           });
         } else {
-          res.status(401).send({ message: "Invalid email or password" });
+          res.status(401).send({ message: "Invalid password" });
         }
       })
 
