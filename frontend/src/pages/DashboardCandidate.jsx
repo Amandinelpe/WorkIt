@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
 import BoxCandidate from "../components/BoxCandidate";
-import { GetFavoritesOffers } from "../utils/GetFavoritesOffers";
+import { GetFavoritesOffers } from "../utils/getFavoritesOffers";
 import Offer from "../components/Offer";
 import "../styles/DashboardCandidate.css";
 
