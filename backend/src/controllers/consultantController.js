@@ -1,3 +1,6 @@
+/* eslint-disable consistent-return */
+/* eslint-disable camelcase */
+const argon2 = require("argon2");
 const consultantModel = require("../models/consultantModel");
 
 const consultantController = {
@@ -12,6 +15,73 @@ const consultantController = {
     consultantModel
       .findOne(id)
       .then(([consultant]) => res.status(200).send(consultant))
+      .catch((err) => next(err));
+  },
+  createConsultant: async (req, res, next) => {
+    /*     console.log(req.body); */
+    const {
+      role_id,
+      firstname,
+      lastname,
+      phone,
+      city,
+      email,
+      password,
+      linkedin,
+    } = req.body;
+    const hashedPassword = await argon2.hash(password);
+    consultantModel
+      .create({
+        role_id,
+        firstname,
+        lastname,
+        phone,
+        city,
+        email,
+        password: hashedPassword,
+        linkedin,
+      })
+      .then(([consultant]) =>
+        res.status(201).send({
+          mesage: "consultant created",
+          id: consultant.insertId,
+          email,
+          firstname,
+          lastname,
+          hashedPassword,
+        })
+      )
+      .catch((err) => next(err));
+  },
+  login: (req, res, next) => {
+    const { email, password } = req.body;
+    consultantModel
+      .findByEmail(email)
+      .then(async ([consultant]) => {
+        if (!consultant) {
+          return res.status(401).send({ message: "Invalid email" });
+        }
+        const {
+          id,
+          firstname,
+          lastname,
+          password: hashedPassword,
+        } = consultant;
+        /*      console.log(password, hashedPassword); */
+
+        if (await argon2.verify(hashedPassword, password)) {
+          res.status(200).send({
+            message: "Login successful",
+            id,
+            email,
+            firstname,
+            lastname,
+          });
+        } else {
+          res.status(401).send({ message: "Invalid password" });
+        }
+      })
+
       .catch((err) => next(err));
   },
 };

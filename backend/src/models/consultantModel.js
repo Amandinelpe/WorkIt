@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const db = require("../../config");
 
 const findAll = () => {
@@ -14,4 +15,17 @@ const findOne = (id) => {
     .then(([consultant]) => consultant);
 };
 
-module.exports = { findAll, findOne };
+const create = (payload) => {
+  return db
+    .promise()
+    .query("INSERT INTO consultant SET ?", [payload])
+    .then((consultant) => consultant);
+};
+const findByEmail = (email) => {
+  return db
+    .promise()
+    .query("SELECT * FROM consultant WHERE email = ?", [email])
+    .then(([res]) => res);
+};
+
+module.exports = { findAll, findOne, create, findByEmail };
