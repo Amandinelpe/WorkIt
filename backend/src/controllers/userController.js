@@ -66,6 +66,19 @@ const userController = {
       }
     });
   },
+
+  deleteUser: (req, res, next) => {
+    const { id } = req.params;
+    userModel
+      .deleteOne(id)
+      .then((response) => {
+        if (response.affectedRows !== 1) {
+          return res.status(404).send(`user ${id} not found`);
+        }
+        return res.status(200).send(`user ${id} deleted`);
+      })
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = userController;
