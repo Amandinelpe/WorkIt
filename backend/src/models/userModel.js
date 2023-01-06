@@ -14,6 +14,12 @@ const findOne = (id) => {
     .query("SELECT * FROM user where id = ?", [id])
     .then(([user]) => user);
 };
+const findByEmail = (email) => {
+  return db
+    .promise()
+    .query("SELECT * FROM user where email = ?", [email])
+    .then(([user]) => user);
+};
 
 const createOne = ({
   role_id,
@@ -33,4 +39,4 @@ const createOne = ({
     .then((user) => user);
 };
 
-module.exports = { findAll, findOne, createOne };
+module.exports = { findAll, findOne, findByEmail, createOne };
