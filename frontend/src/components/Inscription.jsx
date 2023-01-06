@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import api from "../services/api";
+import { React, useEffect, useState } from "react";
+import { getAllJobs } from "../utils/getAllJobs";
+import { postUser } from "../utils/postUser";
 import "../styles/Inscription.css";
 
 const Inscription = () => {
@@ -10,11 +11,16 @@ const Inscription = () => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
-  const getJob = () => {
-    api.get("job").then((response) => setJobs(response.data));
+  const getJobs = async () => {
+    setJobs(await getAllJobs());
   };
+  useEffect(() => {
+    getJobs();
+  }, []);
 
-  useEffect(() => getJob, []);
+  const postOneUser = async () => {
+    setProfile(await postUser());
+  };
 
   console.warn(jobs, "jobs");
   console.warn(profile, "profile");
@@ -26,7 +32,7 @@ const Inscription = () => {
         connaissance et trouvons ensemble l'entreprise qui te correspond le
         mieux.{" "}
       </p>
-      <form>
+      <form onSubmit={postOneUser}>
         Je m'appelle{" "}
         <input
           className="form_input"
@@ -48,7 +54,7 @@ const Inscription = () => {
         <input
           className="form_input"
           type="text"
-          name="job"
+          name="job_id"
           placeholder="Développeur"
           value={profile.job}
           onChange={updateProfile}

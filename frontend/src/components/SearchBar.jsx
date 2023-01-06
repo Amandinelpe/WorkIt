@@ -5,12 +5,16 @@ import "../styles/SearchBar.css";
 const SearchBar = () => {
   return (
     <div className="searchBar">
-      <div className="inputBox">
-        <input type="text" required="required" placeholder="Quoi ?" />
+      <div className="inputBox2">
+        <div className="inputBox">
+          <input type="text" required="required" placeholder="Quoi ?" />
+        </div>
+        <div className="inputBox">
+          <input type="text" required="required" placeholder="Ou ?" />
+        </div>
       </div>
-      <div className="inputBox">
-        <input type="text" required="required" placeholder="Ou ?" />
-      </div>
+      <p>Recherche avancée</p>
+
       {/* <BiSearchAlt className="searchButton" /> */}
     </div>
   );
