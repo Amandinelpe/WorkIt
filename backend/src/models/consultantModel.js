@@ -21,5 +21,11 @@ const create = (payload) => {
     .query("INSERT INTO consultant SET ?", [payload])
     .then((consultant) => consultant);
 };
+const findByEmail = (email) => {
+  return db
+    .promise()
+    .query("SELECT * FROM consultant WHERE email = ?", [email])
+    .then(([res]) => res);
+};
 
-module.exports = { findAll, findOne, create };
+module.exports = { findAll, findOne, create, findByEmail };
