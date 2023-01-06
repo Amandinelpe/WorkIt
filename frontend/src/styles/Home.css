@@ -103,6 +103,7 @@
   background-color: var(--bleu);
   color: white;
   margin-top: 5vh;
+  cursor: pointer;
 }
 
 .button_mainpage_consultant {

@@ -9,16 +9,13 @@ const userRouter = require("./userRouter");
 const roleRouter = require("./roleRouter");
 const firmRouter = require("./firmRouter");
 const contractRouter = require("./contractRouter");
-
-router.use("/user", userRouter);
-router.use("/role", roleRouter);
-router.use("/firm", firmRouter);
-router.use("/contract", contractRouter);
 const jobRouter = require("./jobRouter");
 const offerRouter = require("./offerRouter");
 const consultantRouter = require("./consultantRouter");
 const experienceRouter = require("./experienceRouter");
 
+router.use("/firm", firmRouter);
+router.use("/contract", contractRouter);
 router.use("/user", userRouter);
 router.use("/role", roleRouter);
 router.use("/consultant", consultantRouter);

@@ -1,20 +1,27 @@
 .searchBar {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   top: 20px;
   justify-content: space-around;
   border: solid 2px #7bc5c6;
   background-color: #7bc5c6;
   border-radius: 30vw;
   padding: 16px;
-  padding-left: 0;
   width: 55vw;
   margin-bottom: 5vh;
+}
+
+.inputBox2 {
+  display: flex;
+  flex-direction: row;
 }
 
 .inputBox input {
   width: 23vw;
   height: 5vh;
-  padding: 2%;
+  margin: 1vh 1vw;
   background: white;
   border-radius: 30vw;
   color: black;
@@ -27,4 +34,10 @@
   padding-top: 1vh;
   padding-left: 1vh;
   color: white;
+}
+
+.searchBar p {
+  margin-top: 2vh;
+  color: var(--white);
+  font-size: 0.7rem;
 }

@@ -14,12 +14,30 @@ const userController = {
       .then(([user]) => res.status(200).send(user))
       .catch((err) => next(err));
   },
+
   createUser: (req, res, next) => {
     userModel
       .createOne(req.body)
-      .then(
-        ([user]) => console.warn(user, "user") || res.status(201).send(user)
-      )
+      .then(([response]) => {
+        if (response.affectedRows !== 0) {
+          userModel.findOne(response.insertId).then(([user]) => res.send(user));
+        } else {
+          res.send("User is not created");
+        }
+      })
+      .catch((err) => next(err));
+  },
+
+  deleteUser: (req, res, next) => {
+    const { id } = req.params;
+    userModel
+      .deleteOne(id)
+      .then((response) => {
+        if (response.affectedRows !== 1) {
+          return res.status(404).send(`user ${id} not found`);
+        }
+        return res.status(200).send(`user ${id} deleted`);
+      })
       .catch((err) => next(err));
   },
 };
