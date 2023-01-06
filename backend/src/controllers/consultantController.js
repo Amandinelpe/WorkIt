@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable camelcase */
 const argon2 = require("argon2");
+const jwt = require("jsonwebtoken");
 const consultantModel = require("../models/consultantModel");
 
 const consultantController = {
@@ -18,7 +19,6 @@ const consultantController = {
       .catch((err) => next(err));
   },
   createConsultant: async (req, res, next) => {
-    /*     console.log(req.body); */
     const {
       role_id,
       firstname,
@@ -67,16 +67,22 @@ const consultantController = {
           lastname,
           password: hashedPassword,
         } = consultant;
-        /*      console.log(password, hashedPassword); */
-
         if (await argon2.verify(hashedPassword, password)) {
-          res.status(200).send({
-            message: "Login successful",
-            id,
-            email,
-            firstname,
-            lastname,
-          });
+          const token = jwt.sign(
+            { id, email, firstname, lastname },
+            process.env.JWT_AUTH_SECRET,
+            { expiresIn: "1h" }
+          );
+          res
+            .cookie("consultantToken", token, { httpOnly: true, secure: true })
+            .status(200)
+            .send({
+              message: "Login successful",
+              id,
+              email,
+              firstname,
+              lastname,
+            });
         } else {
           res.status(401).send({ message: "Invalid password" });
         }
