@@ -1,8 +1,12 @@
 import React from "react";
 import "../styles/ConnexionCandidat.css";
+import { useParams } from "react-router-dom";
 import BannierePartenaire from "../components/BannierePartenaire";
 
-const ConnexionCandidat = () => {
+const Connexion = () => {
+  // eslint-disable-next-line no-unused-vars
+  const params = useParams();
+  /*  Va bientôt servir !! */
   return (
     <div>
       <div className="connexion-candidat">
@@ -36,4 +40,4 @@ const ConnexionCandidat = () => {
   );
 };
 
-export default ConnexionCandidat;
+export default Connexion;
