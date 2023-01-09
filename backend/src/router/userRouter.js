@@ -1,11 +1,20 @@
 const express = require("express");
 
 const userRouter = express.Router();
+const authenticationUser = require("../middlewares/authenticationUser");
 
 const userController = require("../controllers/userController");
+const checkEmail = require("../middlewares/checkEmail");
+const emailValidator = require("../middlewares/Validator");
 
-userRouter.get("/", userController.getAllUsers);
+userRouter.post("/login", userController.login);
+userRouter.get("/", authenticationUser, userController.getAllUsers);
 userRouter.get("/:id", userController.getUserById);
-userRouter.post("/createprofile", userController.createUser);
+userRouter.post(
+  "/createprofile",
+  checkEmail,
+  emailValidator,
+  userController.createUser
+);
 
 module.exports = userRouter;

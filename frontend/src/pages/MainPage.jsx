@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import { GetFiveOffers } from "../utils/GetOffers";
+import { GetFiveOffers } from "../utils/getOffers";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
@@ -39,7 +39,7 @@ const MainPage = () => {
             </div>
             <div className="offers_body">
               {offers.map((offer) => (
-                <Offer date={offer.date} />
+                <Offer firm={offer.firm} date={offer.date} />
               ))}
               <button type="button" className="all_offres_button">
                 {" "}
