@@ -70,11 +70,11 @@ const consultantController = {
         if (await argon2.verify(hashedPassword, password)) {
           const token = jwt.sign(
             { id, email, firstname, lastname },
-            process.env.JWT_AUTH_SECRET,
+            process.env.JWT_AUTH_SECRET_CONS,
             { expiresIn: "1h" }
           );
           res
-            .cookie("consultantToken", token, { httpOnly: true, secure: true })
+            .cookie("access_token", token, { httpOnly: true, secure: true })
             .status(200)
             .send({
               message: "Login successful",
