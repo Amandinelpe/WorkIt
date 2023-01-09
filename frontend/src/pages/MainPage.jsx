@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import { GetFiveOffers } from "../utils/getOffers";
+import { GetFiveOffers } from "../utils/GetOffers";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";

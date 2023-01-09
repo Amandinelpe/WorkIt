@@ -1,0 +1,176 @@
+.myProfile .box {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.myProfile .box .box_candidate {
+  padding: 4vh 6vw;
+}
+
+.myProfile .box .box_candidate_body {
+  font-family: var(--text-font-family-jost);
+  color: var(--purple-light);
+  align-items: left;
+  font-size: 0.8rem;
+  width: auto;
+  height: auto;
+  padding: 4vh 6vw;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-top: 0.1vh;
+  border-radius: 0 0 50px 50px;
+  background-color: #fffdfe;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  gap: 3vh;
+}
+
+.myProfile .box .box_candidate_body h3 {
+  color: #4e55ad;
+  padding-bottom: 4vh;
+  font-size: 1.4em;
+}
+
+.myProfile .radio-button-container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.myProfile .radio-button-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.myProfile .radio-button-container .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.myProfile .radio-button-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.myProfile .radio-button-container input:checked ~ .checkmark {
+  background-color: var(--purple-light);
+}
+
+.myProfile .radio-button-container .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.myProfile .radio-button-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.myProfile .radio-button-container p {
+  margin-top: 3px;
+}
+
+.myProfile .field {
+  gap: 3vw;
+  padding: 3vh 0 3vh 0;
+}
+
+.myProfile .informations-personnelles {
+  width: 100%;
+  gap: 2vw;
+}
+
+.myProfile .informations-personnelles div:nth-child(1) {
+  width: 40vw;
+}
+
+.myProfile .picture_profil img {
+  width: 13vw;
+  height: auto;
+  border-radius: 50%;
+}
+
+.myProfile .picture_profil {
+  gap: 2vh;
+  color: grey;
+}
+
+.myProfile .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.myProfile .inputfile + label {
+  width: 14vw;
+  height: 5vh;
+  cursor: pointer;
+  -webkit-box-shadow: 2px 2px 0px 2px #ff5400;
+  box-shadow: 2px 2px 0px 2px #ff5400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.myProfile .small-input {
+  width: 18vw;
+}
+
+.myProfile .large-input {
+  width: 30vw;
+}
+
+.myProfile .small-input,
+.myProfile .large-input {
+  height: 4.5vh;
+  border: #d9d9d9 solid 1px;
+}
+
+.myProfile label {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.myProfile label,
+.myProfile .label {
+  font-size: 1.2em;
+}
+
+.myProfile p {
+  font-size: 0.9em;
+}
+
+.flex-gap-3vh {
+  gap: 3vh;
+}
+
+.flex-gap-2vh {
+  gap: 2vh;
+}
+
+.flex-gap-7vh {
+  gap: 7vh;
+}
