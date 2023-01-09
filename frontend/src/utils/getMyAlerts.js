@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_BACKEND_URL;
@@ -8,6 +7,6 @@ const requestApi = (finalUrl) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const getFavoritesOffers = () => {
+export const getMyAlerts = () => {
   return requestApi("offer/");
 };

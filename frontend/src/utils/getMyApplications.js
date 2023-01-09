@@ -8,6 +8,6 @@ const requestApi = (finalUrl) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const getFavoritesOffers = () => {
+export const getMyApplications = () => {
   return requestApi("offer/");
 };
