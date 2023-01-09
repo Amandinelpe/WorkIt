@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/ConnexionCandidat.css";
 import { useParams } from "react-router-dom";
 import BannierePartenaire from "../components/BannierePartenaire";
@@ -6,6 +6,12 @@ import BannierePartenaire from "../components/BannierePartenaire";
 const Connexion = () => {
   // eslint-disable-next-line no-unused-vars
   const params = useParams();
+  const [login, setLogin] = useState({});
+
+  const updateLogin = (event) => {
+    setLogin({ ...login, [event.target.name]: event.target.value });
+  };
+
   /*  Va bientôt servir !! */
   return (
     <div>
@@ -17,11 +23,21 @@ const Connexion = () => {
         <form name="connexion" method="post" className="connexion-form">
           <div className="connexion-input">
             <label htmlFor="Email">Adresse email</label>
-            <input type="email" name="email" />
+            <input
+              type="email"
+              name="email"
+              value={login.email}
+              onChange={updateLogin}
+            />
           </div>
           <div className="connexion-input">
             <label htmlFor="Mot de passe">Mot de passe</label>
-            <input type="text" name="Mot de passe" />
+            <input
+              type="text"
+              name="password"
+              value={login.password}
+              onChange={updateLogin}
+            />
             <div className="forget-password">
               <a href="/connexionCandidat">Mot de passe oublié ?</a>
             </div>
