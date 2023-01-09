@@ -3,14 +3,19 @@
 
 const { validationResult } = require("express-validator");
 const argon2 = require("argon2");
+const jwt = require("jsonwebtoken");
 const userModel = require("../models/userModel");
 
 const userController = {
   getAllUsers: (req, res, next) => {
-    userModel
-      .findAll()
-      .then((users) => res.status(200).send(users))
-      .catch((err) => next(err));
+    if (req.roleId === 1) {
+      userModel
+        .findAll()
+        .then((users) => res.status(200).send(users))
+        .catch((err) => next(err));
+    } else {
+      return res.status(401).send({ message: "Unauthorized" });
+    }
   },
   getUserById: (req, res, next) => {
     const { id } = req.params;
@@ -54,17 +59,39 @@ const userController = {
     }
   },
 
-  login: (req, res) => {
+  login: (req, res, next) => {
     const { email, password } = req.body;
-    userModel.findByEmail(email).then(async ([user]) => {
-      if (!user) {
-        res.status(401).send({ message: "User doesn't exist" });
-      } else if (await argon2.verify(user.password, password)) {
-        res.status(200).send({ message: "User logged in successfully", email });
-      } else {
-        res.status(401).send({ message: "Wrong password" });
-      }
-    });
+    userModel
+      .findByEmail(email)
+      .then(async ([user]) => {
+        if (!user) {
+          res.status(401).send({ message: "User doesn't exist" });
+        } else {
+          const {
+            id,
+            role_id,
+            email: userEmail,
+            firstname,
+            lastname,
+            password: hashedPassword,
+          } = user;
+
+          if (await argon2.verify(hashedPassword, password)) {
+            const token = jwt.sign(
+              { id, userEmail, firstname, lastname, role_id },
+              process.env.JWT_AUTH_SECRET,
+              { expiresIn: "1h" }
+            );
+            res
+              .cookie("acces_token", token, { httpOnly: true, secure: true })
+              .status(200)
+              .send({ message: "User logged in successfully", email });
+          } else {
+            res.status(404).send({ message: "Wrong password" });
+          }
+        }
+      })
+      .catch((err) => next(err));
   },
 
   deleteUser: (req, res, next) => {
