@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import "../styles/JobAlert.css";
-import { getMyAlerts } from "../utils/getMyAlerts";
-// eslint-disable-next-line import/no-unresolved
+import { GetMyAlerts } from "../utils/getMyAlerts";
 import notificationAlert from "../assets/img/notification-alert.png";
 import modifyButton from "../assets/img/modify-button.png";
 import deleteButton from "../assets/img/delete-button.png";
@@ -12,7 +11,7 @@ const JobAlert = () => {
   const [alerts, setAlerts] = useState([]);
 
   const getAllMyAlerts = async () => {
-    setAlerts(await getMyAlerts());
+    setAlerts(await GetMyAlerts());
   };
 
   useEffect(() => {

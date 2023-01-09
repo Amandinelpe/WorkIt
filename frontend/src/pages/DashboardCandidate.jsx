@@ -3,6 +3,8 @@ import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
 import BoxCandidate from "../components/BoxCandidate";
 import { GetFavoritesOffers } from "../utils/getFavoritesOffers";
+import { GetMyApplications } from "../utils/getMyApplications";
+import JobAlert from "../components/JobAlert";
 import Offer from "../components/Offer";
 import Footer from "../components/Footer";
 import "../styles/DashboardCandidate.css";
@@ -12,11 +14,11 @@ const DashboardCandidate = () => {
   const [myApplications, setMyApplications] = useState([]);
 
   const getAllFavoritesOffers = async () => {
-    setFavoritesOffers(await getFavoritesOffers());
+    setFavoritesOffers(await GetFavoritesOffers());
   };
 
   const getAllApplications = async () => {
-    setMyApplications(await getMyApplications());
+    setMyApplications(await GetMyApplications());
   };
 
   useEffect(() => {
