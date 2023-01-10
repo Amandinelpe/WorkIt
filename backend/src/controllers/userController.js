@@ -65,7 +65,7 @@ const userController = {
       .findByEmail(email)
       .then(async ([user]) => {
         if (!user) {
-          res.status(401).send({ message: "User doesn't exist" });
+          res.status(401).send({ message: "Invalid email or password" });
         } else {
           const {
             id,
@@ -85,9 +85,15 @@ const userController = {
             res
               .cookie("acces_token", token, { httpOnly: true, secure: true })
               .status(200)
-              .send({ message: "User logged in successfully", email });
+              .send({
+                message: "User logged in successfully",
+                email,
+                firstname,
+                lastname,
+                role_id,
+              });
           } else {
-            res.status(404).send({ message: "Wrong password" });
+            res.status(404).send({ message: "Invalid email or password" });
           }
         }
       })
