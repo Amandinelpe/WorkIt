@@ -1,6 +1,6 @@
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 import "../styles/ConnexionCandidat.css";
-import { useParams } from "react-router-dom";
 import BannierePartenaire from "../components/BannierePartenaire";
 
 const Connexion = () => {
@@ -22,8 +22,14 @@ const Connexion = () => {
           <div className="connexion-input">
             <label htmlFor="Mot de passe">Mot de passe</label>
             <input type="text" name="Mot de passe" />
-            <div className="forget-password">
-              <a href="/connexionCandidat">Mot de passe oublié ?</a>
+            <div className="small_link">
+              <h4>
+                <Link to="/connexionCandidat">Mot de passe oublié ?</Link>
+              </h4>
+
+              <h4>
+                <Link to="/forgottenPassword">Créer un profil ici </Link>
+              </h4>
             </div>
           </div>
           <div className="connexion-button">
