@@ -10,10 +10,7 @@ const Connexion = (user) => {
   const updateLogin = (event) => {
     setCredentials({ ...credentials, [event.target.name]: event.target.value });
   };
-
-  console.log(credentials, "credentials")
-  console.log(user.user, "user")
-  
+  console.warn(user, "user");
   /*  Va bientôt servir !! */
   return (
     <div>

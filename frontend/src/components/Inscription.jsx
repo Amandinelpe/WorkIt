@@ -1,15 +1,22 @@
 import { React, useEffect, useState } from "react";
 import { getAllJobs } from "../utils/getAllJobs";
-import { postUser } from "../utils/postUser";
+import { postUser } from "../apis/user";
 import "../styles/Inscription.css";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({});
   const [jobs, setJobs] = useState([]);
+  const [confirmPassword, setConfirmPassword] = useState();
+  
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
+
+  const comparePasswords = (event) => {
+    setConfirmPassword( event.target.value );
+  };
+
 
   const getJobs = async () => {
     setJobs(await getAllJobs());
@@ -19,11 +26,16 @@ const Inscription = () => {
   }, []);
 
   const postOneUser = async () => {
+    if (profile.password !== confirmPassword) {
+      alert("Les mots de passe ne correspondent pas");
+    }
     setProfile(await postUser());
   };
 
   console.warn(jobs, "jobs");
   console.warn(profile, "profile");
+
+
 
   return (
     <div className="inscription_bloc">
@@ -86,11 +98,21 @@ const Inscription = () => {
         Je choisis mon mot de passe :{" "}
         <input
           className="form_input"
-          type="text"
+          type="password"
           name="password"
           placeholder="Mot de passe"
           value={profile.password}
           onChange={updateProfile}
+        />
+        <br />
+        Je confirme mon mot de passe:{" "}
+        <input
+          className="form_input"
+          type="password"
+          name="password"
+          placeholder="Confirmation mot de passe"
+          value={confirmPassword}
+          onChange={comparePasswords}
         />
         <div className="button_section">
           <button className="inscription_button" type="submit">
