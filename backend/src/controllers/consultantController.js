@@ -59,18 +59,20 @@ const consultantController = {
       .findByEmail(email)
       .then(async ([consultant]) => {
         if (!consultant) {
-          return res.status(401).send({ message: "Invalid email" });
+          return res.status(401).send({ message: "Invalid email or password" });
         }
         const {
           id,
+          role_id,
+          email: userEmail,
           firstname,
           lastname,
           password: hashedPassword,
         } = consultant;
         if (await argon2.verify(hashedPassword, password)) {
           const token = jwt.sign(
-            { id, email, firstname, lastname },
-            process.env.JWT_AUTH_SECRET_CONS,
+            { id, userEmail, firstname, lastname, role_id },
+            process.env.JWT_AUTH_SECRET,
             { expiresIn: "1h" }
           );
           res
@@ -82,9 +84,10 @@ const consultantController = {
               email,
               firstname,
               lastname,
+              role_id,
             });
         } else {
-          res.status(401).send({ message: "Invalid password" });
+          res.status(401).send({ message: "Invalid email or password" });
         }
       })
 

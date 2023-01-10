@@ -24,7 +24,7 @@ const Home = () => {
               Rejoins notre communauté de workers et trouve une entreprise qui
               te correspond
             </p>
-            <Link to="/:ConnexionCandidat">
+            <Link to="/ConnexionCandidat">
               <button type="button" className="button_mainpage_candidat">
                 {" "}
                 ACCES CANDIDAT
@@ -46,7 +46,7 @@ const Home = () => {
           <div className="container_consultant">
             <h2>Espace consultant</h2>
             <p>Trouve un candidat idéal pour tes clients</p>
-            <Link to="/:ConnexionCandidat">
+            <Link to="/ConnexionConsultant">
               <button type="button" className="button_mainpage_consultant">
                 {" "}
                 ACCES CONSULTANT
