@@ -20,8 +20,14 @@ const App = () => {
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:ConnexionCandidat" element={<Connexion />} />
-            <Route path="/:ConnexionConsultant" element={<Connexion />} />
+            <Route
+              path="/ConnexionCandidat"
+              element={<Connexion user="user" />}
+            />
+            <Route
+              path="/ConnexionConsultant"
+              element={<Connexion user="consultant" />}
+            />
             <Route path="/Main" element={<MainPage />} />
             <Route
               path="/Messagerie"

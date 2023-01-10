@@ -26,7 +26,7 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     setAuth({});
     window.localStorage.removeItem("user");
-    navigate(":ConnexionCandidat", { replace: true, state: "Disconnected" });
+    navigate("/ConnexionCandidat", { replace: true, state: "Disconnected" });
   };
 
   useEffect(() => {

@@ -87,6 +87,7 @@ const userController = {
               .status(200)
               .send({
                 message: "User logged in successfully",
+                id,
                 email,
                 firstname,
                 lastname,

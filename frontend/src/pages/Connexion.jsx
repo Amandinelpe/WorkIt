@@ -1,12 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import "../styles/ConnexionCandidat.css";
 import React, { useState, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
 
-const Connexion = () => {
+const Connexion = ({ user }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +24,7 @@ const Connexion = () => {
     if (email && password) {
       axios
         .post(
-          "http://localhost:5002/api/user/login",
+          `http://localhost:5002/api/${user}/login`,
           { email, password },
           { withCredentials: true }
         )
@@ -65,7 +66,7 @@ const Connexion = () => {
           <div className="connexion-input">
             <label htmlFor="Mot de passe">Mot de passe</label>
             <input
-              type="text"
+              type="password"
               name="Mot de passe"
               placeholder="***********"
               value={password}
@@ -90,3 +91,7 @@ const Connexion = () => {
 };
 
 export default Connexion;
+
+Connexion.propTypes = {
+  user: PropTypes.string.isRequired,
+};
