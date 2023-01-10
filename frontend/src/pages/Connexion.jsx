@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import "../styles/ConnexionCandidat.css";
-import { useParams } from "react-router-dom";
 import BannierePartenaire from "../components/BannierePartenaire";
 
-const Connexion = () => {
+const Connexion = (user) => {
   // eslint-disable-next-line no-unused-vars
-  const params = useParams();
-  const [login, setLogin] = useState({});
+
+  const [credentials, setCredentials] = useState({});
 
   const updateLogin = (event) => {
-    setLogin({ ...login, [event.target.name]: event.target.value });
+    setCredentials({ ...credentials, [event.target.name]: event.target.value });
   };
 
+  console.log(credentials, "credentials")
+  console.log(user.user, "user")
+  
   /*  Va bientôt servir !! */
   return (
     <div>
@@ -26,16 +28,16 @@ const Connexion = () => {
             <input
               type="email"
               name="email"
-              value={login.email}
+              value={credentials.email}
               onChange={updateLogin}
             />
           </div>
           <div className="connexion-input">
             <label htmlFor="Mot de passe">Mot de passe</label>
             <input
-              type="text"
+              type="password"
               name="password"
-              value={login.password}
+              value={credentials.password}
               onChange={updateLogin}
             />
             <div className="forget-password">

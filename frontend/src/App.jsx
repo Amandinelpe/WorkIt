@@ -16,8 +16,8 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:ConnexionCandidat" element={<Connexion />} />
-          <Route path="/:ConnexionConsultant" element={<Connexion />} />
+          <Route path="/ConnexionCandidat" element={<Connexion user={"candidat"}/>} />
+          <Route path="/ConnexionConsultant" element={<Connexion user={"consultant"}/>} />
           <Route path="/Main" element={<MainPage />} />
           <Route path="/Messagerie" element={<Messagerie />} />
           <Route path="/MonProfil" element={<MonProfil />} />
