@@ -1,17 +1,44 @@
-import React, { useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import "../styles/ConnexionCandidat.css";
+import React, { useState, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
 
-const Connexion = (user) => {
-  // eslint-disable-next-line no-unused-vars
+const Connexion = ({ user }) => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, auth } = useContext(authContext);
 
-  const [credentials, setCredentials] = useState({});
+  useEffect(() => {
+    if (auth) {
+      navigate("/Main");
+    }
+  }, []);
 
-  const updateLogin = (event) => {
-    setCredentials({ ...credentials, [event.target.name]: event.target.value });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email && password) {
+      axios
+        .post(
+          `http://localhost:5002/api/${user}/login`,
+          { email, password },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            login(res.data);
+          }
+        })
+        .catch((err) => alert(err.resonse));
+    } else {
+      // alert("Veuillez remplir tous les champs");
+    }
   };
-  console.warn(user, "user");
-  /*  Va bientôt servir !! */
+
   return (
     <div>
       <div className="connexion-candidat">
@@ -19,23 +46,31 @@ const Connexion = (user) => {
           <h1>Connecte toi</h1>
           <h3>à ton espace personnel</h3>
         </div>
-        <form name="connexion" method="post" className="connexion-form">
+        <form
+          name="connexion"
+          method="post"
+          className="connexion-form"
+          onSubmit={handleSubmit}
+        >
           <div className="connexion-input">
             <label htmlFor="Email">Adresse email</label>
             <input
               type="email"
               name="email"
-              value={credentials.email}
-              onChange={updateLogin}
+              id="email"
+              placeholder="test@blabla.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="connexion-input">
             <label htmlFor="Mot de passe">Mot de passe</label>
             <input
               type="password"
-              name="password"
-              value={credentials.password}
-              onChange={updateLogin}
+              name="Mot de passe"
+              placeholder="***********"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div className="forget-password">
               <a href="/connexionCandidat">Mot de passe oublié ?</a>
@@ -56,3 +91,7 @@ const Connexion = (user) => {
 };
 
 export default Connexion;
+
+Connexion.propTypes = {
+  user: PropTypes.string.isRequired,
+};

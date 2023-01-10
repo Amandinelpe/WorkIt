@@ -17,7 +17,7 @@ const Inscription = () => {
   };
 
   const getJobs = async () => {
-    setJobs(await getAllJobs());
+    setJobs(await GetAllJobs());
   };
   useEffect(() => {
     getJobs();

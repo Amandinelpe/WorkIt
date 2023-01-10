@@ -21,21 +21,10 @@ const findByEmail = (email) => {
     .then(([user]) => user);
 };
 
-const createOne = ({
-  role_id,
-  firstname,
-  lastname,
-  job_id,
-  city,
-  email,
-  password,
-}) => {
+const createOne = (payload) => {
   return db
     .promise()
-    .query(
-      "INSERT INTO user (role_id, firstname, lastname, job_id, city, email, password) VALUES (?, ?, ?, ?, ?, ?, ?)",
-      [role_id, firstname, lastname, job_id, city, email, password]
-    )
+    .query("INSERT INTO user SET ?", [payload])
     .then((user) => user);
 };
 
