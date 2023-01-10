@@ -42,3 +42,7 @@
   margin-top: 1vh;
   margin-left: 1.5vw;
 }
+
+.box_candidate_body ul:hover {
+  box-shadow: 4px 4px 2px 1px #ff8150;
+}

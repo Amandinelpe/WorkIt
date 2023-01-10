@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { getAllJobs } from "../utils/getAllJobs";
+import { GetAllJobs } from "../utils/getAllJobs";
 import { postUser } from "../utils/postUser";
 import "../styles/Inscription.css";
 
@@ -12,7 +12,7 @@ const Inscription = () => {
   };
 
   const getJobs = async () => {
-    setJobs(await getAllJobs());
+    setJobs(await GetAllJobs());
   };
   useEffect(() => {
     getJobs();

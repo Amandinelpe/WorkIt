@@ -7,6 +7,6 @@ const requestApi = (finalUrl) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const getAllJobs = () => {
+export const GetAllJobs = () => {
   return requestApi("job/");
 };
