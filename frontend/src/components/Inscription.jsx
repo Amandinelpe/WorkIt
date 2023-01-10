@@ -7,16 +7,14 @@ const Inscription = () => {
   const [profile, setProfile] = useState({});
   const [jobs, setJobs] = useState([]);
   const [confirmPassword, setConfirmPassword] = useState();
-  
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
   };
 
   const comparePasswords = (event) => {
-    setConfirmPassword( event.target.value );
+    setConfirmPassword(event.target.value);
   };
-
 
   const getJobs = async () => {
     setJobs(await getAllJobs());
@@ -34,8 +32,6 @@ const Inscription = () => {
 
   console.warn(jobs, "jobs");
   console.warn(profile, "profile");
-
-
 
   return (
     <div className="inscription_bloc">
