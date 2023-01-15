@@ -46,10 +46,12 @@ const Home = () => {
           <div className="container_consultant">
             <h2>Espace consultant</h2>
             <p>Trouve un candidat idéal pour tes clients</p>
-            <button type="button" className="button_mainpage_consultant">
-              {" "}
-              ACCES CONSULTANT
-            </button>
+            <Link to="/ConnexionConsultant">
+              <button type="button" className="button_mainpage_consultant">
+                {" "}
+                ACCES CONSULTANT
+              </button>
+            </Link>
           </div>
         </div>
       </div>
