@@ -11,21 +11,25 @@ import {
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const { user } = useContext(authContext);
+  const { auth } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
 
   useEffect(() => {
-    switch (user) {
-      case "consultant":
-        return setNavBar(navBarConsultants);
-      case "user":
-        return setNavBar(navBarUser);
-      case "admin":
-        return setNavBar(navBarAdmin);
-      default:
-        return setNavBar(navBarSignIn);
+    if (auth.data) {
+      switch (auth.data.role_id) {
+        case 2:
+          return setNavBar(navBarConsultants);
+        case 1:
+          return setNavBar(navBarUser);
+        case 3:
+          return setNavBar(navBarAdmin);
+        default:
+          return setNavBar(navBarSignIn);
+      }
+    } else {
+      return setNavBar(navBarSignIn);
     }
-  }, [user]);
+  }, [auth]);
 
   return (
     <div className="navbar">

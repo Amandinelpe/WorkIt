@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
     const data = window.localStorage.getItem("user");
 
     if (data) {
-      setAuth({ data: JSON.parse(data) });
+      setAuth(JSON.parse(data));
     }
   }, []);
 

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
-import "../styles/ConnexionCandidat.css";
+import "../styles/Connexion.css";
 
 const Connexion = ({ user }) => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Connexion = ({ user }) => {
           login(res.data);
         }
       })
-      .catch((err) => setError(err.response));
+      .catch((err) => setError(err.response.data.message));
     event.preventDefault();
   };
 
@@ -74,11 +74,11 @@ const Connexion = ({ user }) => {
             />
           </div>
           <div className="connexion-input">
-            <label htmlFor="Mot de passe">Mot de passe</label>
+            <label htmlFor="password">Mot de passe</label>
             <input
               type="password"
-              name="Mot de passe"
-              placeholder="***********"
+              name="password"
+              placeholder=""
               value={formData.password}
               onChange={handleChange}
             />
