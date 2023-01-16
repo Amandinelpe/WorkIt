@@ -8,6 +8,7 @@ import Connexion from "./pages/Connexion";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
+import ForgottenPassword from "./pages/ForgottenPassword";
 import "./App.css";
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/MonProfil" element={<MonProfil />} />
           <Route path="/CreateProfile" element={<CreateProfile />} />
           <Route path="/DashboardCandidate" element={<DashboardCandidate />} />
+          <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
           <Route path="*" element={<Error />} />
         </Routes>
         <Link to="/Main">

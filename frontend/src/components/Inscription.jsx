@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getAllJobs } from "../utils/getAllJobs";
 import { postUser } from "../utils/postUser";
 import "../styles/Inscription.css";
@@ -97,6 +98,10 @@ const Inscription = () => {
             {" "}
             JE M'INSCRIS
           </button>
+          <p>
+            {" "}
+            <Link to="/:ConnexionCandidat">Déjà un compte ? Log in ici </Link>
+          </p>{" "}
         </div>
       </form>
     </div>

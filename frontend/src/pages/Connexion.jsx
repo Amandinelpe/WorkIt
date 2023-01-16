@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import "../styles/ConnexionCandidat.css";
 import BannierePartenaire from "../components/BannierePartenaire";
+import "../styles/ConnexionCandidat.css";
 
 const Connexion = () => {
   // eslint-disable-next-line no-unused-vars
@@ -24,11 +24,11 @@ const Connexion = () => {
             <input type="text" name="Mot de passe" />
             <div className="small_link">
               <h4>
-                <Link to="/connexionCandidat">Mot de passe oublié ?</Link>
+                <Link to="/ForgottenPassword">Mot de passe oublié ?</Link>
               </h4>
 
               <h4>
-                <Link to="/forgottenPassword">Créer un profil ici </Link>
+                <Link to="/CreateProfile">Créer un profil ici </Link>
               </h4>
             </div>
           </div>

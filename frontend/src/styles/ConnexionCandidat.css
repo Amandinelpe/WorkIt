@@ -79,8 +79,10 @@ h3 {
 
 .small_link {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 .connexion-form .small_link a {
