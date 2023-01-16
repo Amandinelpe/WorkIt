@@ -44,6 +44,11 @@
   z-index: 5;
   position: absolute;
   width: 11vw;
+  transition: transform 0.8s;
+}
+
+.wlogo:hover {
+  transform: rotate(450deg);
 }
 
 .container_text {

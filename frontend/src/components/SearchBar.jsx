@@ -13,8 +13,6 @@ const SearchBar = () => {
           <input type="text" required="required" placeholder="Ou ?" />
         </div>
       </div>
-      <p>Recherche avancée</p>
-
       {/* <BiSearchAlt className="searchButton" /> */}
     </div>
   );

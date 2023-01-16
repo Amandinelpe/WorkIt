@@ -10,8 +10,9 @@ import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
 import AdminConsultantPage from "./pages/AdminConsultantPage";
 import AuthProvider from "./context/AuthContext";
-import "./App.css";
+import ForgottenPassword from "./pages/ForgottenPassword";
 import ProtectedRoute from "./context/ProtectedRoute";
+import "./App.css";
 
 const App = () => {
   return (
@@ -55,6 +56,7 @@ const App = () => {
             />
             <Route path="/CreateProfile" element={<CreateProfile />} />
             <Route path="/AdminConsultant" element={<AdminConsultantPage />} />
+            <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
             <Route path="*" element={<Error />} />
           </Routes>
           <Link to="/Main">
