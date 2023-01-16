@@ -3,8 +3,10 @@ import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
 import BoxCandidate from "../components/BoxCandidate";
 import Conversation from "../components/Conversation";
+import ChatOnline from "../components/ChatOnline";
+import Message from "../components/Message";
 import Footer from "../components/Footer";
-import "../styles/Inbox.css";
+import "../styles/Messenger.css";
 
 const Inbox = () => {
   return (
@@ -19,7 +21,7 @@ const Inbox = () => {
           <div className="my_inbox_titleblock">
             <h2 className="my_inbox_title">Ma messagerie</h2>
           </div>
-          <div className="my_inbox">
+          <div className="messenger">
             <div className="chatMenu">
               <div className="chatMenuWrapper">
                 <input
@@ -27,19 +29,38 @@ const Inbox = () => {
                   className="chatMenuInput"
                 />
                 <Conversation />
+                <Conversation />
+                <Conversation />
+                <Conversation />
               </div>
             </div>
             <div className="chatBox">
-              <div className="chatBoxWrapper">Box</div>
+              <div className="chatBoxWrapper">
+                <div className="chatBoxTop" />
+                <Message />
+                <Message own />
+                <Message />
+                <div className="chatBoxBottom">
+                  <textarea
+                    className="chatMessageInput"
+                    placeholder="Envoyer un message"
+                  />
+                  <button type="submit" className="chatSubmitButton">
+                    Envoyer
+                  </button>
+                </div>
+              </div>
             </div>
             <div className="chatOnline">
-              <div className="chatOnlineWrapper">Online</div>
+              <div className="chatOnlineWrapper">
+                <ChatOnline />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <Footer />
+        <div>
+          <Footer />
+        </div>
       </div>
     </div>
   );

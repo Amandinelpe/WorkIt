@@ -1,0 +1,93 @@
+.my_inbox_box_body {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 0 0 20px 20px;
+}
+
+.my_inbox_titleblock {
+  color: var(--white);
+  background-color: var(--purple-light);
+  height: 12vh;
+  border-radius: 50px 50px 0 0;
+}
+
+.my_inbox_titleblock h2 {
+  color: var(--white);
+  padding: 5vh 6vh;
+}
+
+.my_inbox p {
+  color: var(--purple-dark);
+  padding: 5vh 2vh;
+}
+
+.messenger {
+  display: flex;
+  height: calc(100vh - 70px);
+  background-color: var(--white);
+}
+
+.chatMenu {
+  flex: 4.5;
+  width: 15vw;
+}
+
+.chatMenuInput {
+  width: 90%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid rgb(128, 128, 128);
+}
+
+.chatBox {
+  flex: 5.5;
+}
+
+.chatBoxWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.chatBoxTop {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.chatBoxBottom {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatMessageInput {
+  width: 90%;
+  height: 90px;
+  padding: 10px;
+}
+
+.chatSubmitButton {
+  width: 70px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--purple-light);
+  color: white;
+}
+
+.chatOnline {
+  flex: 5;
+  width: 20vw;
+}
+
+.chatMenuWrapper,
+.chatBoxWrapper,
+.chatOnlineWrapper {
+  padding: 25px;
+}

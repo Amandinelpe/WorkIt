@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
-import Inbox from "./pages/Inbox";
+import Inbox from "./pages/Messenger";
 import CreateProfile from "./pages/CreateProfile";
 import MonProfil from "./pages/MonProfil";
 import Connexion from "./pages/Connexion";
@@ -32,9 +32,9 @@ const App = () => {
             <Route
               path="/Messagerie"
               element={
-                <ProtectedRoute>
-                  <Inbox />
-                </ProtectedRoute>
+                // <ProtectedRoute>
+                <Inbox />
+                // </ProtectedRoute>
               }
             />
             <Route

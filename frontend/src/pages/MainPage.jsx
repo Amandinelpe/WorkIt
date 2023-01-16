@@ -34,8 +34,8 @@ const MainPage = () => {
             <PublicationDateBox />
           </div>
           <div className="mainPage_offers">
-            <div className="all_offres_titleblock">
-              <h2 className="all_offres_title"> Les offres du moment</h2>
+            <div className="all_offers_titleblock">
+              <h2 className="all_offers_title">Les offres du moment</h2>
             </div>
             <div className="offers_body">
               {offers.map((offer) => (
