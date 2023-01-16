@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
@@ -72,14 +72,20 @@ const Connexion = ({ user }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="forget-password">
-              <a href="/connexionCandidat">Mot de passe oublié ?</a>
-            </div>
           </div>
           <div className="connexion-button">
             <button className="uppercase" type="submit">
               Je me connecte
             </button>
+          </div>
+          <div className="small_link">
+            <h4>
+              <Link to="/ForgottenPassword">Mot de passe oublié ?</Link>
+            </h4>
+
+            <h4>
+              <Link to="/CreateProfile">Créer un profil ici </Link>
+            </h4>
           </div>
         </form>
         <div>

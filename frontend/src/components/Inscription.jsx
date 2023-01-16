@@ -1,10 +1,10 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/Inscription.css";
-import dislike from "../assets/img/dislike.png";
-import like from "../assets/img/like.png";
 import { GetAllJobs } from "../apis/jobApi";
 import { CreateUser } from "../apis/user";
+import dislike from "../assets/img/dislike.png";
+import like from "../assets/img/like.png";
+import "../styles/Inscription.css";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({ role_id: 1 });
@@ -129,7 +129,7 @@ const Inscription = () => {
           </button>
           <p>
             {" "}
-            <Link to="/:ConnexionCandidat">Déjà un compte ? Log in ici </Link>
+            <Link to="/ConnexionCandidat">Déjà un compte ? Log in ici </Link>
           </p>{" "}
         </div>
       </form>
