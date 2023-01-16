@@ -13,6 +13,7 @@ import AuthProvider from "./context/AuthContext";
 import "./App.css";
 import "./styles/Flex.css";
 import ProtectedRoute from "./context/ProtectedRoute";
+import Candidature from "./pages/Candidature";
 
 const App = () => {
   return (
@@ -39,11 +40,11 @@ const App = () => {
               }
             />
             <Route
-              path="/MyProfile"
+              path="/MonProfil"
               element={
-                <ProtectedRoute>
-                  <MyProfile />
-                </ProtectedRoute>
+                // <ProtectedRoute>
+                <MyProfile />
+                // </ProtectedRoute>
               }
             />
             <Route
@@ -56,13 +57,14 @@ const App = () => {
             />
             <Route path="/CreateProfile" element={<CreateProfile />} />
             <Route path="/AdminConsultant" element={<AdminConsultantPage />} />
+            <Route path="/Candidature" element={<Candidature />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </AuthProvider>
+        <Link to="/Main">
+          <img className="logo_workit" src={LOGO} alt="logo" />
+        </Link>
       </Router>
-      <Link to="/Main">
-        <img className="logo_workit" src={LOGO} alt="logo" />
-      </Link>
     </div>
   );
 };

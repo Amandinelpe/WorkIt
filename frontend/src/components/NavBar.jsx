@@ -9,7 +9,12 @@ const NavBar = () => {
     <div className="navbar">
       <ul>
         {navBarUser.map((section) => (
-          <Link to={section.link} className="items" id={section.id}>
+          <Link
+            key={section.id}
+            to={section.link}
+            className="items"
+            id={section.id}
+          >
             {section.name}
           </Link>
         ))}
