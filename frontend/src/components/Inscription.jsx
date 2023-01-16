@@ -2,14 +2,12 @@ import { React, useEffect, useState } from "react";
 import "../styles/Inscription.css";
 import dislike from "../assets/img/dislike.png";
 import like from "../assets/img/like.png";
-import { GetAllJobs } from "../apis/jobApi";
 import { CreateUser } from "../apis/user";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({ role_id: 1 });
   const [confirmPassword, setConfirmPassword] = useState();
   const [match, setMatch] = useState(false);
-  const [jobs, setJobs] = useState([]);
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
@@ -24,9 +22,6 @@ const Inscription = () => {
     CreateUser(profile).then((res) => console.warn(res.data));
   };
 
-  useEffect(() => setJobs(GetAllJobs()), []);
-  console.warn(jobs, "jobs");
-
   useEffect(() => {
     if (profile.password === confirmPassword) {
       setMatch(true);
@@ -34,6 +29,11 @@ const Inscription = () => {
       setMatch(false);
     }
   }, [confirmPassword]);
+
+  /*   const jobtest = [
+    { label: "Développeur Front-end" },
+    { label: "Développeur Back-end" },
+  ]; */
 
   return (
     <div className="inscription_bloc">
