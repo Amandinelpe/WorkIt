@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import { HiOutlineUserCircle } from "react-icons/Hi";
-import { navBarUser  } from "../utils/navBarLinks";
+import { navBarUser } from "../utils/navBarLinks";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
