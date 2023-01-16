@@ -6,7 +6,7 @@
   color: #7bc5c6;
   margin-bottom: 2vh;
   width: 50vw;
-  height: 60vh;
+  height: 65vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -36,8 +36,17 @@
 
 .button_section {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-top: 3vh;
+}
+
+.button_section a {
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 0.7rem;
+  margin: 0.5vh 2vw 2vh 2vw;
 }
 
 .form_input {
