@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import "../styles/ConnexionCandidat.css";
 import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
+import "../styles/ConnexionCandidat.css";
 
 const Connexion = ({ user }) => {
   const navigate = useNavigate();

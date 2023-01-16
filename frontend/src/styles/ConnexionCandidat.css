@@ -10,8 +10,10 @@
 .connexion-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  width: 30vw;
   text-align: left;
   padding: 20px;
   background: #ffffff;
@@ -19,7 +21,6 @@
   -webkit-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
   -moz-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
   color: #7bc5c6;
-  width: 30vw;
   height: 45vh;
   border-radius: 25px;
   gap: 4vh;
@@ -76,17 +77,16 @@ h3 {
   font-size: 2em;
 }
 
-.connexion-form .forget-password {
+.small_link {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-end;
-  margin-top: 0;
+  align-items: center;
   width: 100%;
 }
 
-.connexion-form .forget-password a {
-  color: #7bc5c6;
+.connexion-form .small_link a {
+  color: var(--blue);
   font-size: 0.7em;
 }
 
