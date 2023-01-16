@@ -1,12 +1,15 @@
 import { React, useEffect, useState } from "react";
-import { getAllJobs } from "../utils/getAllJobs";
-import { postUser } from "../apis/user";
 import "../styles/Inscription.css";
+import dislike from "../assets/img/dislike.png";
+import like from "../assets/img/like.png";
+import { GetAllJobs } from "../apis/jobApi";
+import { CreateUser } from "../apis/user";
 
 const Inscription = () => {
-  const [profile, setProfile] = useState({});
-  const [jobs, setJobs] = useState([]);
+  const [profile, setProfile] = useState({ role_id: 1 });
   const [confirmPassword, setConfirmPassword] = useState();
+  const [match, setMatch] = useState(false);
+  const [jobs, setJobs] = useState([]);
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
@@ -16,22 +19,21 @@ const Inscription = () => {
     setConfirmPassword(event.target.value);
   };
 
-  const getJobs = async () => {
-    setJobs(await GetAllJobs());
-  };
-  useEffect(() => {
-    getJobs();
-  }, []);
-
-  const postOneUser = async () => {
-    if (profile.password !== confirmPassword) {
-      alert("Les mots de passe ne correspondent pas");
-    }
-    setProfile(await postUser());
+  const postProfile = (event) => {
+    event.preventDefault();
+    CreateUser(profile).then((res) => console.warn(res.data));
   };
 
+  useEffect(() => setJobs(GetAllJobs()), []);
   console.warn(jobs, "jobs");
-  console.warn(profile, "profile");
+
+  useEffect(() => {
+    if (profile.password === confirmPassword) {
+      setMatch(true);
+    } else {
+      setMatch(false);
+    }
+  }, [confirmPassword]);
 
   return (
     <div className="inscription_bloc">
@@ -40,7 +42,7 @@ const Inscription = () => {
         connaissance et trouvons ensemble l'entreprise qui te correspond le
         mieux.{" "}
       </p>
-      <form onSubmit={postOneUser}>
+      <form onSubmit={postProfile}>
         Je m'appelle{" "}
         <input
           className="form_input"
@@ -61,7 +63,7 @@ const Inscription = () => {
         et je cherche un poste de{" "}
         <input
           className="form_input"
-          type="text"
+          type="number"
           name="job_id"
           placeholder="Développeur"
           value={profile.job}
@@ -90,26 +92,35 @@ const Inscription = () => {
             value={profile.email}
             onChange={updateProfile}
           />
+          <div>
+            Je choisis mon mot de passe :{" "}
+            <input
+              className="form_input"
+              type="password"
+              name="password"
+              placeholder="Mot de passe"
+              value={profile.password}
+              onChange={updateProfile}
+            />
+            <br />
+          </div>
+          Je confirme mon mot de passe:{" "}
+          <input
+            className="form_input"
+            type="password"
+            name="password"
+            placeholder="Confirmation mot de passe"
+            value={confirmPassword}
+            onChange={comparePasswords}
+          />
+          {confirmPassword && (
+            <img
+              alt="dislike"
+              src={match === false ? dislike : like}
+              width="15vw"
+            />
+          )}
         </div>
-        Je choisis mon mot de passe :{" "}
-        <input
-          className="form_input"
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          value={profile.password}
-          onChange={updateProfile}
-        />
-        <br />
-        Je confirme mon mot de passe:{" "}
-        <input
-          className="form_input"
-          type="password"
-          name="password"
-          placeholder="Confirmation mot de passe"
-          value={confirmPassword}
-          onChange={comparePasswords}
-        />
         <div className="button_section">
           <button className="inscription_button" type="submit">
             {" "}
