@@ -6,15 +6,15 @@ export const authContext = createContext({});
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState();
+  const [auth, setAuth] = useState({ data: null });
   const [user, setUser] = useState();
 
-  const login = (authData) => {
-    setAuth(authData);
-    if (authData.role_id === 2) {
+  const login = (data) => {
+    setAuth({ data });
+    if (data.role_id === 2) {
       setUser("consultant");
       navigate("/AdminConsultant");
-    } else if (authData.role_id === 3) {
+    } else if (data.role_id === 3) {
       setUser("admin");
       navigate("/AdminConsultant");
     } else {
@@ -26,11 +26,21 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     setAuth({});
     window.localStorage.removeItem("user");
-    navigate("/ConnexionCandidat", { replace: true, state: "Disconnected" });
+    navigate("/", { replace: true, state: "Disconnected" });
   };
 
   useEffect(() => {
-    window.localStorage.setItem("user", JSON.stringify(auth));
+    const data = window.localStorage.getItem("user");
+
+    if (data) {
+      setAuth({ data: JSON.parse(data) });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (auth.data) {
+      window.localStorage.setItem("user", JSON.stringify(auth));
+    }
   }, [auth]);
 
   const value = useMemo(() => ({ auth, login, logout, user }), [auth]);

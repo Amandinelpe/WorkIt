@@ -9,34 +9,44 @@ import BannierePartenaire from "../components/BannierePartenaire";
 
 const Connexion = ({ user }) => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
   const { login, auth } = useContext(authContext);
 
   useEffect(() => {
-    if (auth) {
+    if (auth.data) {
       navigate("/Main");
     }
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email && password) {
-      axios
-        .post(
-          `http://localhost:5002/api/${user}/login`,
-          { email, password },
-          { withCredentials: true }
-        )
-        .then((res) => {
-          if (res.status === 200) {
-            login(res.data);
-          }
-        })
-        .catch((err) => alert(err.resonse));
-    } else {
-      // alert("Veuillez remplir tous les champs");
-    }
+  const handleChange = (event) => {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [event.target.name]: event.target.value,
+      };
+    });
+  };
+
+  const handleSubmit = (event) => {
+    const apiUrl = import.meta.env.VITE_BACKEND_URL;
+    axios
+      .post(
+        `${apiUrl}${user}/login`,
+        {
+          email: formData.email,
+          password: formData.password,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          // eslint-disable-next-line no-undef
+          login(res.data);
+        }
+      })
+      .catch((err) => setError(err.response));
+    event.preventDefault();
   };
 
   return (
@@ -59,8 +69,8 @@ const Connexion = ({ user }) => {
               name="email"
               id="email"
               placeholder="test@blabla.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
             />
           </div>
           <div className="connexion-input">
@@ -69,14 +79,15 @@ const Connexion = ({ user }) => {
               type="password"
               name="Mot de passe"
               placeholder="***********"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleChange}
             />
             <div className="forget-password">
               <a href="/connexionCandidat">Mot de passe oublié ?</a>
             </div>
           </div>
           <div className="connexion-button">
+            <p className="error-message">{error}</p>
             <button className="uppercase" type="submit">
               Je me connecte
             </button>
