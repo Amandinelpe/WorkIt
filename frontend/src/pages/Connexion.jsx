@@ -35,7 +35,7 @@ const Connexion = ({ user }) => {
         })
         .catch((err) => alert(err.resonse));
     } else {
-      // alert("Veuillez remplir tous les champs");
+      alert("Veuillez remplir tous les champs");
     }
   };
 
