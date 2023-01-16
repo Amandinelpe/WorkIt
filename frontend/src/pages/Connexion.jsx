@@ -33,9 +33,9 @@ const Connexion = ({ user }) => {
             login(res.data);
           }
         })
-        .catch((err) => alert(err.resonse));
+        .catch((err) => console.warn(err.resonse));
     } else {
-      alert("Veuillez remplir tous les champs");
+      // alert("Veuillez remplir tous les champs");
     }
   };
 

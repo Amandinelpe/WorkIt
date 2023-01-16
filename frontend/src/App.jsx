@@ -17,8 +17,8 @@ import ProtectedRoute from "./context/ProtectedRoute";
 const App = () => {
   return (
     <div>
-      <AuthProvider>
-        <Router>
+      <Router>
+        <AuthProvider>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
@@ -39,7 +39,7 @@ const App = () => {
               }
             />
             <Route
-              path="/MonProfil"
+              path="/MyProfile"
               element={
                 <ProtectedRoute>
                   <MyProfile />
@@ -58,11 +58,11 @@ const App = () => {
             <Route path="/AdminConsultant" element={<AdminConsultantPage />} />
             <Route path="*" element={<Error />} />
           </Routes>
-        </Router>
-        <Link to="/Main">
-          <img className="logo_workit" src={LOGO} alt="logo" />
-        </Link>
-      </AuthProvider>
+        </AuthProvider>
+      </Router>
+      <Link to="/Main">
+        <img className="logo_workit" src={LOGO} alt="logo" />
+      </Link>
     </div>
   );
 };
