@@ -1,12 +1,44 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
 import "../styles/ConnexionCandidat.css";
 
-const Connexion = () => {
-  // eslint-disable-next-line no-unused-vars
-  const params = useParams();
-  /*  Va bientôt servir !! */
+const Connexion = ({ user }) => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, auth } = useContext(authContext);
+
+  useEffect(() => {
+    if (auth) {
+      navigate("/Main");
+    }
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email && password) {
+      axios
+        .post(
+          `http://localhost:5002/api/${user}/login`,
+          { email, password },
+          { withCredentials: true }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            login(res.data);
+          }
+        })
+        .catch((err) => console.warn(err.response));
+    } else {
+      // alert("Veuillez remplir tous les champs");
+    }
+  };
+
   return (
     <div>
       <div className="connexion-candidat">
@@ -14,22 +46,34 @@ const Connexion = () => {
           <h1>Connecte toi</h1>
           <h3>à ton espace personnel</h3>
         </div>
-        <form name="connexion" method="post" className="connexion-form">
+        <form
+          name="connexion"
+          method="post"
+          className="connexion-form"
+          onSubmit={handleSubmit}
+        >
           <div className="connexion-input">
             <label htmlFor="Email">Adresse email</label>
-            <input type="email" name="email" />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="test@blabla.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
           <div className="connexion-input">
             <label htmlFor="Mot de passe">Mot de passe</label>
-            <input type="text" name="Mot de passe" />
-            <div className="small_link">
-              <h4>
-                <Link to="/ForgottenPassword">Mot de passe oublié ?</Link>
-              </h4>
-
-              <h4>
-                <Link to="/CreateProfile">Créer un profil ici </Link>
-              </h4>
+            <input
+              type="password"
+              name="Mot de passe"
+              placeholder="***********"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className="forget-password">
+              <a href="/connexionCandidat">Mot de passe oublié ?</a>
             </div>
           </div>
           <div className="connexion-button">
@@ -47,3 +91,7 @@ const Connexion = () => {
 };
 
 export default Connexion;
+
+Connexion.propTypes = {
+  user: PropTypes.string.isRequired,
+};
