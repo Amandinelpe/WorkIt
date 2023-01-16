@@ -8,11 +8,11 @@ import Connexion from "./pages/Connexion";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
-import ForgottenPassword from "./pages/ForgottenPassword";
 import AdminConsultantPage from "./pages/AdminConsultantPage";
 import AuthProvider from "./context/AuthContext";
-import "./App.css";
+import ForgottenPassword from "./pages/ForgottenPassword";
 import ProtectedRoute from "./context/ProtectedRoute";
+import "./App.css";
 
 const App = () => {
   return (
