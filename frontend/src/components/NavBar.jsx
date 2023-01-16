@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import { HiOutlineUserCircle } from "react-icons/Hi";
-import { navBarUser } from "../utils/navBarLinks";
+import { navBarUser  } from "../utils/navBarLinks";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
@@ -9,7 +9,12 @@ const NavBar = () => {
     <div className="navbar">
       <ul>
         {navBarUser.map((section) => (
-          <Link to={section.link} className="items" id={section.id}>
+          <Link
+            key={section.id}
+            to={section.link}
+            className="items"
+            id={section.id}
+          >
             {section.name}
           </Link>
         ))}

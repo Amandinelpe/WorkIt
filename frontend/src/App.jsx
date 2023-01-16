@@ -39,11 +39,11 @@ const App = () => {
               }
             />
             <Route
-              path="/MyProfile"
+              path="/MonProfil"
               element={
-                <ProtectedRoute>
+                // <ProtectedRoute>
                   <MyProfile />
-                </ProtectedRoute>
+                // </ProtectedRoute>
               }
             />
             <Route
@@ -59,10 +59,10 @@ const App = () => {
             <Route path="*" element={<Error />} />
           </Routes>
         </AuthProvider>
+        <Link to="/Main">
+          <img className="logo_workit" src={LOGO} alt="logo" />
+        </Link>
       </Router>
-      <Link to="/Main">
-        <img className="logo_workit" src={LOGO} alt="logo" />
-      </Link>
     </div>
   );
 };

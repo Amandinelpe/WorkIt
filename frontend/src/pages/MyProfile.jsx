@@ -1,9 +1,11 @@
 import React from "react";
+import RadioButton from "../components/RadioButton";
 import NavBar from "../components/NavBar";
 import BoxCandidate from "../components/BoxCandidate";
 import Footer from "../components/Footer";
 import HelloButton from "../components/HelloButton";
 import "../styles/MyProfile.css";
+import dataMyProfile from "../utils/dataMyProfile";
 
 const MyProfile = () => {
   return (
@@ -24,21 +26,14 @@ const MyProfile = () => {
                   <div className="gender">
                     <p className="label">Genre</p>
                     <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
-                      <label className="radio-button-container">
-                        <p>Je suis une femme</p>
-                        <input type="radio" name="genre" />
-                        <span className="checkmark" />
-                      </label>
-                      <label className="radio-button-container">
-                        <p>Je suis un homme</p>
-                        <input type="radio" name="genre" />
-                        <span className="checkmark" />
-                      </label>
-                      <label className="radio-button-container">
-                        <p>Je suis non-binaire</p>
-                        <input type="radio" name="genre" />
-                        <span className="checkmark" />
-                      </label>
+                      {dataMyProfile.radioButtons.gender.map((item) => (
+                        <RadioButton
+                          key={item.id}
+                          labelName={item.labelName}
+                          inputName="gender"
+                          inputValue={item.inputValue}
+                        />
+                      ))}
                     </div>
                   </div>
                   <div className="flex flex-fd-row flex-jc-space-between">
@@ -109,24 +104,14 @@ const MyProfile = () => {
                   <div>
                     <p className="label">Disponibilité</p>
                     <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
-                      <label className="radio-button-container">
-                        <p>Immediate</p>
-                        <input
-                          type="radio"
-                          name="disponibilite"
-                          value="immediate"
+                      {dataMyProfile.radioButtons.disponibility.map((item) => (
+                        <RadioButton
+                          key={item.id}
+                          labelName={item.labelName}
+                          inputName="disponibilite"
+                          inputValue={item.inputValue}
                         />
-                        <span className="checkmark" />
-                      </label>
-                      <label className="radio-button-container">
-                        <p>A convenir</p>
-                        <input
-                          type="radio"
-                          name="disponibilite"
-                          value="a-convenir"
-                        />
-                        <span className="checkmark" />
-                      </label>
+                      ))}
                     </div>
                   </div>
                   <label>
@@ -148,24 +133,16 @@ const MyProfile = () => {
                   <div>
                     <p className="label">Reconnu travailleur handicapé</p>
                     <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
-                      <label className="radio-button-container">
-                        <p>Oui</p>
-                        <input
-                          type="radio"
-                          name="travailleur-handicape"
-                          value="oui"
-                        />
-                        <span className="checkmark" />
-                      </label>
-                      <label className="radio-button-container">
-                        <p>Non</p>
-                        <input
-                          type="radio"
-                          name="travailleur-handicape"
-                          value="non"
-                        />
-                        <span className="checkmark" />
-                      </label>
+                      {dataMyProfile.radioButtons.recognizedDisabledWorker.map(
+                        (item) => (
+                          <RadioButton
+                            key={item.id}
+                            labelName={item.labelName}
+                            inputName="travailleur-handicape"
+                            inputValue={item.inputValue}
+                          />
+                        )
+                      )}
                     </div>
                   </div>
                 </div>
@@ -181,42 +158,16 @@ const MyProfile = () => {
                   <div>
                     <p className="label">Niveau d'expérience</p>
                     <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
-                      <label className="radio-button-container">
-                        <p>Débutant</p>
-                        <input
-                          type="radio"
-                          name="niveau-experience"
-                          value="debutant"
-                        />
-                        <span className="checkmark" />
-                      </label>
-                      <label className="radio-button-container">
-                        <p>2-3 ans</p>
-                        <input
-                          type="radio"
-                          name="niveau-experience"
-                          value="2-3-ans"
-                        />
-                        <span className="checkmark" />
-                      </label>
-                      <label className="radio-button-container">
-                        <p>4-10 ans</p>
-                        <input
-                          type="radio"
-                          name="niveau-experience"
-                          value="4-10-ans"
-                        />
-                        <span className="checkmark" />
-                      </label>
-                      <label className="radio-button-container">
-                        <p>10 ans et +</p>
-                        <input
-                          type="radio"
-                          name="niveau-experience"
-                          value="10-ans-et-plus"
-                        />
-                        <span className="checkmark" />
-                      </label>
+                      {dataMyProfile.radioButtons.experienceLevel.map(
+                        (item) => (
+                          <RadioButton
+                            key={item.id}
+                            labelName={item.labelName}
+                            inputName="niveau-experience"
+                            inputValue={item.inputValue}
+                          />
+                        )
+                      )}
                     </div>
                   </div>
                   <label>
