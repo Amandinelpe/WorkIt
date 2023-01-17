@@ -21,4 +21,11 @@ const findAllTitles = () => {
     .then((jobs) => jobs);
 };
 
-module.exports = { findAll, findOne, findAllTitles };
+const findByTitle = (title) => {
+  return db
+    .promise()
+    .query("SELECT id FROM job where job_title = ?", [title])
+    .then(([jobs]) => jobs);
+};
+
+module.exports = { findAll, findOne, findAllTitles, findByTitle };

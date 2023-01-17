@@ -4,11 +4,13 @@ import "../styles/Inscription.css";
 import dislike from "../assets/img/dislike.png";
 import like from "../assets/img/like.png";
 import { CreateUser } from "../apis/user";
+import { GetAllJobs } from "../apis/jobApi";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({ role_id: 1 });
   const [confirmPassword, setConfirmPassword] = useState();
   const [match, setMatch] = useState(false);
+  const [jobs, setJobs] = useState([]);
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
@@ -23,6 +25,14 @@ const Inscription = () => {
     CreateUser(profile).then((res) => console.warn(res.data));
   };
 
+  const loadJobs = () => {
+    GetAllJobs().then((res) => {
+      setJobs(res.data);
+    });
+  };
+
+  useEffect(() => loadJobs(), []);
+
   useEffect(() => {
     if (profile.password === confirmPassword) {
       setMatch(true);
@@ -30,11 +40,6 @@ const Inscription = () => {
       setMatch(false);
     }
   }, [confirmPassword]);
-
-  /*   const jobtest = [
-    { label: "Développeur Front-end" },
-    { label: "Développeur Back-end" },
-  ]; */
 
   return (
     <div className="inscription_bloc">
@@ -61,15 +66,20 @@ const Inscription = () => {
           value={profile.lastName}
           onChange={updateProfile}
         />{" "}
-        et je cherche un poste de{" "}
-        <input
-          className="form_input"
-          type="number"
-          name="job_id"
-          placeholder="Développeur"
-          value={profile.job}
-          onChange={updateProfile}
-        />{" "}
+        <label htmlFor="job-select">
+          et je cherche un poste de{" "}
+          <select
+            className="form_input"
+            id="job-select"
+            name="job_id"
+            onChange={updateProfile}
+          >
+            {jobs.map((job) => (
+              <option value={job.id}>{job.job_title}</option>
+            ))}
+            <option value="">Développeur Web</option>
+          </select>
+        </label>
         à{" "}
         <input
           className="form_input"
