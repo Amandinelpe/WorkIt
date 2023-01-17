@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Inscription.css";
 import dislike from "../assets/img/dislike.png";
 import like from "../assets/img/like.png";
@@ -126,6 +127,10 @@ const Inscription = () => {
             {" "}
             JE M'INSCRIS
           </button>
+          <p>
+            {" "}
+            <Link to="/:ConnexionCandidat">Déjà un compte ? Log in ici </Link>
+          </p>{" "}
         </div>
       </form>
     </div>
