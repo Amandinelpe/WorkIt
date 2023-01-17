@@ -98,3 +98,6 @@ h3 {
   gap: 1vh;
   width: 20vw;
 }
+.error-message {
+  color: red;
+}
