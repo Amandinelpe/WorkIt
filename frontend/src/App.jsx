@@ -3,15 +3,16 @@ import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
 import Messagerie from "./pages/Messagerie";
 import CreateProfile from "./pages/CreateProfile";
-import MonProfil from "./pages/MonProfil";
 import Connexion from "./pages/Connexion";
 import DashboardCandidate from "./pages/DashboardCandidate";
+import DashboardConsultant from "./pages/DashboardConsultant";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
 import AdminConsultantPage from "./pages/AdminConsultantPage";
 import AuthProvider from "./context/AuthContext";
 import ForgottenPassword from "./pages/ForgottenPassword";
-import ProtectedRoute from "./context/ProtectedRoute";
+import ProtectedRouteUser from "./context/ProtectedRouteUser";
+import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
 import "./App.css";
 
 const App = () => {
@@ -33,25 +34,25 @@ const App = () => {
             <Route
               path="/Messagerie"
               element={
-                <ProtectedRoute>
+                <ProtectedRouteUser>
                   <Messagerie />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/MonProfil"
-              element={
-                <ProtectedRoute>
-                  <MonProfil />
-                </ProtectedRoute>
+                </ProtectedRouteUser>
               }
             />
             <Route
               path="/DashboardCandidate"
               element={
-                <ProtectedRoute>
+                <ProtectedRouteUser>
                   <DashboardCandidate />
-                </ProtectedRoute>
+                </ProtectedRouteUser>
+              }
+            />
+            <Route
+              path="/DashboardConsultant"
+              element={
+                <ProtectedRouteConsultant>
+                  <DashboardConsultant />
+                </ProtectedRouteConsultant>
               }
             />
             <Route path="/CreateProfile" element={<CreateProfile />} />
