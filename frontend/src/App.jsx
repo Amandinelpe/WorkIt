@@ -14,7 +14,6 @@ import "./App.css";
 import "./styles/Flex.css";
 import ForgottenPassword from "./pages/ForgottenPassword";
 import ProtectedRoute from "./context/ProtectedRoute";
-import "./App.css";
 
 const App = () => {
   return (
