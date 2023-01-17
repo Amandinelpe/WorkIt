@@ -208,7 +208,7 @@ INSERT INTO experience (experience) VALUES
      ('10 ans et +');
 
 INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,linkedin) VALUES
-     (2,'Paul','Delos','0625456289','Bordeaux','pauldelos@gmail.com','avrtuyiop','https://www.linkedin.com/in/paul-delos/%27'),
+     (2,'Paul','Delos','0625456289','Bordeaux','pauldelos@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM','https://www.linkedin.com/in/paul-delos/%27'),
      (2,'Jeremie','Cavanier','0625458978','Bordeaux','jeremiecavanier@gmail.com','256poulpom','https://www.linkedin.com/in/jeremie-cavanier/%27'),
      (2,'Claire ','Jacquier','0625694563','Pessac','clairejacquier@gmail.com','25mpelodpmpe','https://www.linkedin.com/in/claire-jacquier/%27'),
      (2,'Charlotte','Calier','0647852697','Cadillac','cha.calier@gmail.com','54789oopzmlpdo','https://www.linkedin.com/in/charlotte-calier/%27'),
@@ -270,7 +270,7 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 	
 
 INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNote) VALUES
-	 (1,'homme','luc','thebest','lucthebest@gmail.com','Bordeaux',33000,'FRANCE','43 rue du loup','0640899345',1,'lebgdu33',NULL,NULL,'Developpeur',2,NULL,NULL,0,'test',NULL,NULL,NULL,1,NULL),
-	 (1,'femme','josette','colin','josettecol@gmail.com','Nantes',44000,'FRANCE','5 rue du temple','0640899678',1,NULL,NULL,NULL,'chomage',3,NULL,NULL,0,'test',NULL,NULL,NULL,7,NULL),
-	 (1,'homme','bertrand','molina','btr@gmail.com','soustons',40140,'FRANCE','8 rue des pins','0558411032',1,NULL,NULL,NULL,'boulanger',7,NULL,NULL,1,'test',NULL,NULL,NULL,8,NULL),
-     (1,'homme','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'test',NULL,1,NULL,1,NULL);
+	 (1,'homme','luc','thebest','lucthebest@gmail.com','Bordeaux',33000,'FRANCE','43 rue du loup','0640899345',1,'lebgdu33',NULL,NULL,'Developpeur',2,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,1,NULL),
+	 (1,'femme','josette','colin','josettecol@gmail.com','Nantes',44000,'FRANCE','5 rue du temple','0640899678',1,NULL,NULL,NULL,'chomage',3,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,7,NULL),
+	 (1,'homme','bertrand','molina','btr@gmail.com','soustons',40140,'FRANCE','8 rue des pins','0558411032',1,NULL,NULL,NULL,'boulanger',7,NULL,NULL,1,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,8,NULL),
+     (1,'homme','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,1,NULL,1,NULL);

@@ -12,8 +12,9 @@ import AdminConsultantPage from "./pages/AdminConsultantPage";
 import AuthProvider from "./context/AuthContext";
 import "./App.css";
 import "./styles/Flex.css";
-import ProtectedRoute from "./context/ProtectedRoute";
 import Candidature from "./pages/Candidature";
+import ForgottenPassword from "./pages/ForgottenPassword";
+import ProtectedRoute from "./context/ProtectedRoute";
 
 const App = () => {
   return (
@@ -58,6 +59,7 @@ const App = () => {
             <Route path="/CreateProfile" element={<CreateProfile />} />
             <Route path="/AdminConsultant" element={<AdminConsultantPage />} />
             <Route path="/Candidature" element={<Candidature />} />
+            <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </AuthProvider>
