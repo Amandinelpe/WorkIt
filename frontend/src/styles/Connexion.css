@@ -23,12 +23,9 @@
   color: #7bc5c6;
   height: 45vh;
   border-radius: 25px;
+  gap: 4vh;
   margin-bottom: 5vh;
   margin-top: 3vw;
-}
-
-.connexion-form div {
-  margin-top: 3vh;
 }
 
 .connexion-input {
@@ -101,17 +98,6 @@ h3 {
   gap: 1vh;
   width: 20vw;
 }
-
-.small_link {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  align-items: center;
-  width: 60%;
-  margin-top: 0;
-}
-
-.connexion-form .small_link a {
-  color: var(--blue);
-  font-size: 0.7em;
+.error-message {
+  color: red;
 }
