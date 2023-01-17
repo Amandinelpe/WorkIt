@@ -3,16 +3,17 @@ import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
 import Messagerie from "./pages/Messagerie";
 import CreateProfile from "./pages/CreateProfile";
-import MonProfil from "./pages/MonProfil";
+import MyProfile from "./pages/MyProfile";
 import Connexion from "./pages/Connexion";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
 import AdminConsultantPage from "./pages/AdminConsultantPage";
 import AuthProvider from "./context/AuthContext";
+import "./App.css";
+import "./styles/Flex.css";
 import ForgottenPassword from "./pages/ForgottenPassword";
 import ProtectedRoute from "./context/ProtectedRoute";
-import "./App.css";
 
 const App = () => {
   return (
@@ -41,9 +42,9 @@ const App = () => {
             <Route
               path="/MonProfil"
               element={
-                <ProtectedRoute>
-                  <MonProfil />
-                </ProtectedRoute>
+                // <ProtectedRoute>
+                <MyProfile />
+                // </ProtectedRoute>
               }
             />
             <Route
@@ -59,10 +60,10 @@ const App = () => {
             <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
             <Route path="*" element={<Error />} />
           </Routes>
-          <Link to="/Main">
-            <img className="logo_workit" src={LOGO} alt="logo" />
-          </Link>
         </AuthProvider>
+        <Link to="/Main">
+          <img className="logo_workit" src={LOGO} alt="logo" />
+        </Link>
       </Router>
     </div>
   );
