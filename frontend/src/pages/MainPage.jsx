@@ -6,18 +6,29 @@ import { GetFiveOffers } from "../utils/getOffers";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
+import { GetAllJobs } from "../apis/jobApi";
 import "../styles/MainPage.css";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
+  const [job, setJob] = useState([]);
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
   };
 
+  const loadJobs = () => {
+    GetAllJobs().then((res) => {
+      setJob(res.data);
+    });
+  };
+
   useEffect(() => {
     getFiveOffers();
+    loadJobs();
   }, []);
+
+  console.warn(job, "job");
 
   return (
     <div className="mainPage">
