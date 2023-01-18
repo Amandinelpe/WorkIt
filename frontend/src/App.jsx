@@ -3,16 +3,18 @@ import socketIO from "socket.io-client";
 import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
 import CreateProfile from "./pages/CreateProfile";
-import MonProfil from "./pages/MonProfil";
 import Connexion from "./pages/Connexion";
 import DashboardCandidate from "./pages/DashboardCandidate";
 import ChatPageCandidate from "./pages/ChatPageCandidate";
+import DashboardConsultant from "./pages/DashboardConsultant";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
 import AdminConsultantPage from "./pages/AdminConsultantPage";
 import AuthProvider from "./context/AuthContext";
+import "./styles/Flex.css";
 import ForgottenPassword from "./pages/ForgottenPassword";
-import ProtectedRoute from "./context/ProtectedRoute";
+import ProtectedRouteUser from "./context/ProtectedRouteUser";
+import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
 import "./App.css";
 
 const App = () => {
@@ -42,19 +44,19 @@ const App = () => {
               }
             />
             <Route
-              path="/MonProfil"
+              path="/DashboardCandidate"
               element={
-                <ProtectedRoute>
-                  <MonProfil />
-                </ProtectedRoute>
+                <ProtectedRouteUser>
+                  <DashboardCandidate />
+                </ProtectedRouteUser>
               }
             />
             <Route
-              path="/DashboardCandidate"
+              path="/DashboardConsultant"
               element={
-                <ProtectedRoute>
-                  <DashboardCandidate />
-                </ProtectedRoute>
+                <ProtectedRouteConsultant>
+                  <DashboardConsultant />
+                </ProtectedRouteConsultant>
               }
             />
             <Route path="/CreateProfile" element={<CreateProfile />} />
@@ -62,10 +64,10 @@ const App = () => {
             <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
             <Route path="*" element={<Error />} />
           </Routes>
-          <Link to="/Main">
-            <img className="logo_workit" src={LOGO} alt="logo" />
-          </Link>
         </AuthProvider>
+        <Link to="/Main">
+          <img className="logo_workit" src={LOGO} alt="logo" />
+        </Link>
       </Router>
     </div>
   );

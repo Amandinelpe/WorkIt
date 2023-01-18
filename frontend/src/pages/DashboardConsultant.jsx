@@ -1,13 +1,13 @@
 import { React, useState } from "react";
 import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
-import BoxCandidate from "../components/BoxCandidate";
+import BoxConsultants from "../components/BoxConsultants";
 import Footer from "../components/Footer";
-import "../styles/DashboardCandidate.css";
 import Dashboard from "../components/Dashboard";
-import MyProfile from "../components/MyProfile";
+import AnnoncesConsultant from "../components/AnnoncesConsultant";
+import "../styles/DashboardConsultants.css";
 
-const DashboardCandidate = () => {
+const DashboardConsultant = () => {
   const [content, setContent] = useState("dashboard");
 
   const handleContent = (ctn) => {
@@ -16,8 +16,8 @@ const DashboardCandidate = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      case "my-profile":
-        return <MyProfile />;
+      case "Annonces":
+        return <AnnoncesConsultant />;
       case "dashboard":
         return <Dashboard />;
       default:
@@ -30,9 +30,9 @@ const DashboardCandidate = () => {
       <NavBar />
       <HelloButton />
       <div className="mydashboard_body">
-        <BoxCandidate handleContent={handleContent} />
+        <BoxConsultants handleContent={handleContent} />
       </div>
-      {renderSwitch()}
+      <div className="mydashboard_render">{renderSwitch()}</div>
       <div>
         <Footer />
       </div>
@@ -40,4 +40,4 @@ const DashboardCandidate = () => {
   );
 };
 
-export default DashboardCandidate;
+export default DashboardConsultant;

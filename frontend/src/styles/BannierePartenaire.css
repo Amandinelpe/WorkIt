@@ -2,7 +2,7 @@
   background: #ffffff;
   box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
   -webkit-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
-  -moz-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
+  /* -moz-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78); */
   color: #7bc5c6;
   margin-bottom: 20px;
   height: 14vh;
@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: flex-start;
   border-radius: 25px;
-  margin-top: 20px;
+  margin-top: 2vh;
 }
 
 .banniere p {
@@ -30,5 +30,5 @@
 }
 
 .banniere-logo img {
-  height: 5vh;
+  height: 4vh;
 }

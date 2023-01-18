@@ -1,4 +1,4 @@
-.dashboard {
+.candidature {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9,11 +9,7 @@
   border-radius: 1vh;
 }
 
-.dashboard .box_candidate {
-  cursor: pointer;
-}
-
-.box_candidate_title {
+.box_candidature {
   font-family: var(--text-font-family-jost);
   font-size: 0.9rem;
   padding: 4vh 7vh;
@@ -23,11 +19,12 @@
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
-.box_candidate_body ul {
+.candidature_body ul {
   font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
   font-size: 0.8rem;
+  width: 20vw;
   height: 15vh;
   padding: 3vh;
   display: flex;
@@ -41,12 +38,11 @@
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
-.box_candidate_body ul li {
+.candidature_body ul li {
   margin-top: 1vh;
   margin-left: 1.5vw;
 }
 
-.box_candidate_body ul:hover,
-.box_candidate:hover .box_candidate_body ul {
+.candidature_body ul:hover {
   box-shadow: 4px 4px 2px 1px #ff8150;
 }

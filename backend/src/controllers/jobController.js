@@ -20,6 +20,13 @@ const jobController = {
       .then(([jobs]) => res.status(200).send(jobs))
       .catch((err) => next(err));
   },
+  getJobByTitle: (req, res, next) => {
+    const { title } = req.params;
+    jobModel
+      .findByTitle(title)
+      .then(([job]) => res.status(200).send(job))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = jobController;

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import dataBox from "../utils/dataBox";
+import dataBoxConsultants from "../utils/dataBoxConsultants";
 import "../styles/BoxCandidate.css";
 
 const BoxCandidate = ({ handleContent }) => {
@@ -11,7 +11,7 @@ const BoxCandidate = ({ handleContent }) => {
 
   return (
     <div className="dashboard">
-      {dataBox.map((box) => (
+      {dataBoxConsultants.map((box) => (
         <div
           key={box.id}
           className="box_candidate"
