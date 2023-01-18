@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
 import { authContext } from "./AuthContext";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRouteConsultant = ({ children }) => {
   const { auth } = useContext(authContext);
 
-  if (!auth) {
+  if (auth.data.role_id !== 2) {
     return <Navigate to="/" />;
   }
   return children;
 };
 
-export default ProtectedRoute;
+export default ProtectedRouteConsultant;
 
-ProtectedRoute.propTypes = {
+ProtectedRouteConsultant.propTypes = {
   children: PropTypes.element.isRequired,
 };

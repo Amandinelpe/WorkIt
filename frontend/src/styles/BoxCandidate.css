@@ -9,7 +9,11 @@
   border-radius: 1vh;
 }
 
-.box_candidate {
+.dashboard .box_candidate {
+  cursor: pointer;
+}
+
+.box_candidate_title {
   font-family: var(--text-font-family-jost);
   font-size: 0.9rem;
   padding: 4vh 7vh;
@@ -24,7 +28,6 @@
   color: var(--purple-light);
   align-items: left;
   font-size: 0.8rem;
-  width: 20vw;
   height: 15vh;
   padding: 3vh;
   display: flex;
@@ -43,6 +46,7 @@
   margin-left: 1.5vw;
 }
 
-.box_candidate_body ul:hover {
+.box_candidate_body ul:hover,
+.box_candidate:hover .box_candidate_body ul {
   box-shadow: 4px 4px 2px 1px #ff8150;
 }
