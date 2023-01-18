@@ -13,5 +13,11 @@ const findOne = (id) => {
     .query("SELECT * FROM offer where id = ?", [id])
     .then(([offer]) => offer);
 };
+const findAllCities = () => {
+  return db
+    .promise()
+    .query("SELECT firm_city FROM offer")
+    .then((cities) => cities);
+};
 
-module.exports = { findAll, findOne };
+module.exports = { findAll, findOne, findAllCities };

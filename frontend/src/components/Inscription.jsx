@@ -1,16 +1,17 @@
 import { React, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { GetAllJobs } from "../apis/jobApi";
-import { CreateUser } from "../apis/user";
+import { useNavigate, Link } from "react-router-dom";
+import "../styles/Inscription.css";
 import dislike from "../assets/img/dislike.png";
 import like from "../assets/img/like.png";
-import "../styles/Inscription.css";
+import { CreateUser } from "../apis/user";
+import { GetAllJobs } from "../apis/jobApi";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({ role_id: 1 });
   const [confirmPassword, setConfirmPassword] = useState();
   const [match, setMatch] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const navigate = useNavigate();
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
@@ -23,10 +24,16 @@ const Inscription = () => {
   const postProfile = (event) => {
     event.preventDefault();
     CreateUser(profile).then((res) => console.warn(res.data));
+    navigate("/ConnexionCandidat");
   };
 
-  useEffect(() => setJobs(GetAllJobs()), []);
-  console.warn(jobs, "jobs");
+  const loadJobs = () => {
+    GetAllJobs().then((res) => {
+      setJobs(res.data);
+    });
+  };
+
+  useEffect(() => loadJobs(), []);
 
   useEffect(() => {
     if (profile.password === confirmPassword) {
@@ -61,15 +68,20 @@ const Inscription = () => {
           value={profile.lastName}
           onChange={updateProfile}
         />{" "}
-        et je cherche un poste de{" "}
-        <input
-          className="form_input"
-          type="number"
-          name="job_id"
-          placeholder="Développeur"
-          value={profile.job}
-          onChange={updateProfile}
-        />{" "}
+        <label htmlFor="job-select">
+          et je cherche un poste de{" "}
+          <select
+            required
+            id="job-select"
+            name="job_id"
+            onChange={updateProfile}
+          >
+            <option value="">Mon métier rercherché</option>
+            {jobs.map((job) => (
+              <option value={job.id}>{job.job_title}</option>
+            ))}
+          </select>
+        </label>
         à{" "}
         <input
           className="form_input"
