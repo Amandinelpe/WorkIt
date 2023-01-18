@@ -14,6 +14,12 @@ const offerController = {
       .then(([offer]) => res.status(200).send(offer))
       .catch((err) => next(err));
   },
+  getAllCities: (req, res, next) => {
+    offerModel
+      .findAllCities()
+      .then(([cities]) => res.status(200).send(cities))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = offerController;
