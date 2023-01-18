@@ -9,7 +9,7 @@
   background-color: var(--bleu);
   border-radius: 30vw;
   padding: 16px;
-  width: 55vw;
+  width: auto;
   margin-bottom: 5vh;
 }
 
@@ -33,6 +33,19 @@
   border: none;
   height: 5vh;
 }
+
+.inputBox select {
+  width: 23vw;
+  height: 5vh;
+  margin: 1vh 1vw;
+  background: var(--white);
+  border-radius: 30vw;
+  color: var(--black);
+  font-size: 1.2em;
+  border: none;
+  height: 5vh;
+}
+
 .searchButton {
   font-size: 5vh;
   padding-top: 1vh;

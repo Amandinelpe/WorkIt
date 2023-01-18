@@ -6,38 +6,24 @@ import { GetFiveOffers } from "../utils/getOffers";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
-import { GetAllJobs } from "../apis/jobApi";
+
 import "../styles/MainPage.css";
-import { GetAllCities } from "../apis/offerApi";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
-  const [job, setJob] = useState([]);
-  const [cities, setCities] = useState([]);
+
+  /*   Will serve soon */
+  /*  const [job, setJob] = useState([]);
+  const [cities, setCities] = useState([]); */
+  /*  const [selectedJob, setSelectedJob] = useState(""); */
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
   };
 
-  const getCities = () => {
-    GetAllCities().then((res) => {
-      setCities(res.data);
-    });
-  };
-
-  const loadJobs = () => {
-    GetAllJobs().then((res) => {
-      setJob(res.data);
-    });
-  };
-
   useEffect(() => {
     getFiveOffers();
-    loadJobs();
-    getCities();
   }, []);
-
-  console.warn(job, cities, "job", "cities");
 
   return (
     <div className="mainPage">
