@@ -21,8 +21,8 @@ const DashboardConsultant = () => {
         return <MyProfile />;
       case "dashboard":
         return <Dashboard />;
-        case "candidatures":
-          return <Candidature />;
+      case "candidatures":
+        return <Candidature />;
       default:
         return <Dashboard />;
     }
