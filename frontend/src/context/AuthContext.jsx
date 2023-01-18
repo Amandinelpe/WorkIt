@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const data = window.localStorage.getItem("user");
 
-    if (data && data !== "undefined") {
+    if (data) {
       setAuth(JSON.parse(data));
     }
   }, []);
