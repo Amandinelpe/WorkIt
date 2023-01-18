@@ -3,7 +3,7 @@
 
 const { validationResult } = require("express-validator");
 const argon2 = require("argon2");
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 const userModel = require("../models/userModel");
 const { jwtSign } = require("../middlewares/jwt");
 
@@ -113,57 +113,65 @@ const userController = {
       })
       .catch((err) => next(err));
   },
+  /* eslint-disable no-unused-vars */
+  resetPassword: (req, res, next) => {
+    const { email } = req.body;
+    userModel.findByEmail(email).then(([user]) => {
+      if (!user) {
+        res.status(404).send("User not found");
+      }
+      const token = jwtSign({ id: user.id, email }, { expiresIn: "15m" });
 
-  // resetPassword: (req, res, next) => {
-  //   const { email } = req.body;
-  //   userModel.findByEmail(email).then((user) => {
-  //     if (!user) {
-  //       return res.status(404).send("User not found");
-  //     }
-  //     const token = jwtSign({ id: user.id, email }, { expiresIn: "15m" });
+      const newData = {
+        reset_token: token,
+      };
 
-  //     nodemailer.createTestAccount((err, account) => {
-  //       if (err) {
-  //         console.error(`Failed to create a testing account. ${err.message}`);
-  //         return process.exit(1);
-  //       }
+      nodemailer.createTestAccount((err, account) => {
+        if (err) {
+          console.error(`Failed to create a testing account. ${err.message}`);
+          return process.exit(1);
+        }
 
-  //       console.log("Credentials obtained, sending message...");
-  //       console.log(account, "COUCOU");
+        const transporter = nodemailer.createTransport({
+          host: account.smtp.host,
+          port: account.smtp.port,
+          secure: account.smtp.secure,
+          auth: {
+            user: account.user,
+            pass: account.pass,
+          },
+        });
 
-  //       // // Create a SMTP transporter object
-  //       // const transporter = nodemailer.createTransport({
-  //       //   host: account.smtp.host,
-  //       //   port: account.smtp.port,
-  //       //   secure: account.smtp.secure,
-  //       //   auth: {
-  //       //     user: account.user,
-  //       //     pass: account.pass,
-  //       //   },
-  //       // });
+        const message = {
+          from: "olga_yasn@hotmail.com",
+          to: email,
+          subject: "Your password reset link",
+          text: "Hello to myself!",
+          html: `<p>Hello! Did you forget your password ? Please follow the link below to reset your password</p> <a href="${process.env.FRONTEND_URL}/resetPassword/${token}" target="_blank">Reset password</a>`,
+        };
 
-  //       // Message object
-  //       // const message = {
-  //       //   from: "Sender Name <sender@example.com>",
-  //       //   to: "Recipient <recipient@example.com>",
-  //       //   subject: "Nodemailer is unicode friendly ✔",
-  //       //   text: "Hello to myself!",
-  //       //   html: "<p><b>Hello</b> to myself!</p>",
-  //       // };
+        userModel.updateOne(newData, user.id).then((result) => {
+          if (result.affectedRows === 0) {
+            return res.status(404).send("Error uploading reset link");
+          }
 
-  //       // transporter.sendMail(message, (err, info) => {
-  //       //   if (err) {
-  //       //     console.log(`Error occurred. ${err.message}`);
-  //       //     return process.exit(1);
-  //       //   }
+          transporter.sendMail(message, (error, info) => {
+            if (error) {
+              console.warn(`Error occurred. ${err.message}`);
+              return process.exit(1);
+            }
 
-  //       //   console.log("Message sent: %s", info.messageId);
-  //       //   // Preview only available when sending through an Ethereal account
-  //       //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  //       // });
-  //     });
-  //   });
-  // },
+            console.warn("Message sent: %s", info.messageId);
+            console.warn("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+            return res.status(200).send({
+              message: "email sent successfully please follow instructions",
+              preview: nodemailer.getTestMessageUrl(info),
+            });
+          });
+        });
+      });
+    });
+  },
 };
 
 module.exports = userController;
