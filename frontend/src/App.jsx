@@ -65,9 +65,6 @@ const App = () => {
         <Link to="/Main">
           <img className="logo_workit" src={LOGO} alt="logo" />
         </Link>
-        <Link to="/Main">
-          <img className="logo_workit" src={LOGO} alt="logo" />
-        </Link>
       </Router>
     </div>
   );
