@@ -3,6 +3,7 @@ import "../styles/SalaryBox.css";
 
 const SalaryBox = () => {
   const [salary, setSalary] = useState(0);
+
   return (
     <div className="salary_box">
       <div className="salary_titleblock">

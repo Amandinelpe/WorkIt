@@ -22,18 +22,6 @@
   flex-direction: row;
 }
 
-.inputBox input {
-  width: 23vw;
-  height: 5vh;
-  margin: 1vh 1vw;
-  background: var(--white);
-  border-radius: 30vw;
-  color: var(--black);
-  font-size: 1.2em;
-  border: none;
-  height: 5vh;
-}
-
 .inputBox select {
   width: 23vw;
   height: 5vh;
