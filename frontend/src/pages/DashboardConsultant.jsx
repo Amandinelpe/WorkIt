@@ -4,7 +4,7 @@ import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
 import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
-import MyProfile from "../components/MyProfile";
+import AnnoncesConsultant from "../components/AnnoncesConsultant";
 import "../styles/DashboardConsultants.css";
 import Candidature from "../components/Candidature";
 
@@ -17,8 +17,8 @@ const DashboardConsultant = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      case "my-profile":
-        return <MyProfile />;
+      case "Annonces":
+        return <AnnoncesConsultant />;
       case "dashboard":
         return <Dashboard />;
       case "candidatures":
@@ -35,7 +35,7 @@ const DashboardConsultant = () => {
       <div className="mydashboard_body">
         <BoxConsultants handleContent={handleContent} />
       </div>
-      <div>{renderSwitch()}</div>
+      <div className="mydashboard_render">{renderSwitch()}</div>
       <div>
         <Footer />
       </div>

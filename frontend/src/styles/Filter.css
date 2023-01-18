@@ -1,8 +1,9 @@
-.publication_date_box {
-  margin: 3vh 4vw;
+.Filter_box {
+  margin: 0vh 4vw 0vh 4vw;
+  width: 20vw;
 }
 
-.date_titleblock {
+.titleblock_box {
   background-color: var(--purple-light);
   height: 8vh;
   border-radius: 50px 50px 0 0;
@@ -10,16 +11,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
-.date_title {
+.title_box {
   color: var(--white);
   font-family: var(--text-font-family-jost);
   font-size: 1rem;
   font-weight: lighter;
+  text-transform: uppercase;
 }
 
-.date_body {
+.body_box {
   background-color: var(--white);
   height: 25vh;
   width: 20vw;
@@ -30,6 +33,6 @@
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
-.input_date {
+.input_box {
   margin-top: 1.5vh;
 }
