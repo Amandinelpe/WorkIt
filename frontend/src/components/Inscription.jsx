@@ -69,15 +69,15 @@ const Inscription = () => {
         <label htmlFor="job-select">
           et je cherche un poste de{" "}
           <select
-            className="form_input"
+            required
             id="job-select"
             name="job_id"
             onChange={updateProfile}
           >
+            <option value="">Mon métier rercherché</option>
             {jobs.map((job) => (
               <option value={job.id}>{job.job_title}</option>
             ))}
-            <option value="">Développeur Web</option>
           </select>
         </label>
         à{" "}

@@ -3,7 +3,7 @@ const db = require("../../config");
 const findAll = () => {
   return db
     .promise()
-    .query("SELECT * FROM job")
+    .query("SELECT * FROM job ORDER BY job_title")
     .then((jobs) => jobs);
 };
 
