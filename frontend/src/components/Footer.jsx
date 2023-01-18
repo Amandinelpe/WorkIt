@@ -13,7 +13,7 @@ const Footer = () => {
         <div>
           <h3>WorkIT, cabinet de recrutement informatique</h3>
           <p>
-            WorkIT c’est un cabinet de recrutement informatique et de conseil RH
+            WorkIT c'est un cabinet de recrutement informatique et de conseil RH
             qui répond aux vrais besoins de vraies personnes.
           </p>
         </div>

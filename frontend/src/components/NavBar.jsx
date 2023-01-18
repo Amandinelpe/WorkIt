@@ -35,7 +35,7 @@ const NavBar = () => {
     <div className="navbar">
       <ul>
         {navBar.map((section) => (
-          <Link to={section.link} className="items" id={section.id}>
+          <Link to={section.link} className="items" key={section.id}>
             {section.name}
           </Link>
         ))}
