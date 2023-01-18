@@ -1,20 +1,16 @@
 const dataBoxConsultants = [
   {
     id: 1,
-    title: "Mon tableau de bord",
-    sections: [
-      "Liste de mes profils en ligne",
-      "Liste postes par degré d'urgence",
-      "liste derniers postes en ligne",
-    ],
-    links: [],
+    title: "Mes annonces",
+    sections: ["Liste de mes postes en ligne"],
+    link: "my-profile",
   },
 
   {
     id: 2,
     title: "Mes candidats",
     sections: ["Nouveaux", "En cours", "Embauchés", "Vivier", "Archivés"],
-    links: [],
+    link: "dashboard",
   },
 
   {
@@ -25,7 +21,7 @@ const dataBoxConsultants = [
       "Candidatures en cours",
       "Candidatures archivées",
     ],
-    links: [],
+    link: "my-profile",
   },
   {
     id: 4,
@@ -34,7 +30,7 @@ const dataBoxConsultants = [
       "Je consulte mes messages",
       "Je rentre en relation avec un candidat",
     ],
-    links: [],
+    link: "dashboard",
   },
 ];
 
