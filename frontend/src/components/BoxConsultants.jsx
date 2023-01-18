@@ -1,13 +1,26 @@
 import React from "react";
+import PropTypes from "prop-types";
 import dataBoxConsultants from "../utils/dataBoxConsultants";
 import "../styles/BoxCandidate.css";
 
-const BoxConsultants = () => {
+const BoxCandidate = ({ handleContent }) => {
+  const onClick = (e, link) => {
+    e.preventDefault();
+    handleContent(link);
+  };
+
   return (
     <div className="dashboard">
       {dataBoxConsultants.map((box) => (
-        <div>
-          <div key={box.id} className="box_candidate">
+        <div
+          key={box.id}
+          className="box_candidate"
+          onClick={(e) => onClick(e, box.link)}
+          onKeyDown={(e) => onClick(e, box.link)}
+          role="button"
+          tabIndex={0}
+        >
+          <div key={box.id} className="box_candidate_title">
             <h1>{box.title}</h1>
           </div>
           <div className="box_candidate_body">
@@ -23,4 +36,8 @@ const BoxConsultants = () => {
   );
 };
 
-export default BoxConsultants;
+export default BoxCandidate;
+
+BoxCandidate.propTypes = {
+  handleContent: PropTypes.func.isRequired,
+};
