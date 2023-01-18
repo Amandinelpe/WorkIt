@@ -13,7 +13,7 @@ import AuthProvider from "./context/AuthContext";
 import "./styles/Flex.css";
 import ForgottenPassword from "./pages/ForgottenPassword";
 import ProtectedRouteUser from "./context/ProtectedRouteUser";
-// import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
+import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
 import "./App.css";
 
 const App = () => {
@@ -43,17 +43,17 @@ const App = () => {
             <Route
               path="/DashboardCandidate"
               element={
-                // <ProtectedRouteUser>
-                <DashboardCandidate />
-                // </ProtectedRouteUser>
+                <ProtectedRouteUser>
+                  <DashboardCandidate />
+                </ProtectedRouteUser>
               }
             />
             <Route
               path="/DashboardConsultant"
               element={
-                // <ProtectedRouteConsultant>
-                <DashboardConsultant />
-                // </ProtectedRouteConsultant>
+                <ProtectedRouteConsultant>
+                  <DashboardConsultant />
+                </ProtectedRouteConsultant>
               }
             />
             <Route path="/CreateProfile" element={<CreateProfile />} />
