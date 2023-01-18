@@ -1,15 +1,11 @@
-.candidature {
+.container_body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  padding-top: 7vh;
-  margin-left: 10vh;
-  margin-right: 10vh;
-  border-radius: 1vh;
+  padding-top: 2vw;
 }
 
-.box_candidature {
+.nouvelles_candidatures h2 {
   font-family: var(--text-font-family-jost);
   font-size: 0.9rem;
   padding: 4vh 7vh;
@@ -19,30 +15,32 @@
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
-.candidature_body ul {
-  font-family: var(--text-font-family-jost);
-  color: var(--purple-light);
-  align-items: left;
+.dashboard_candidature .btn-container {
   font-size: 0.8rem;
-  width: 20vw;
-  height: 15vh;
-  padding: 3vh;
+  color: white;
+  background: #ff5400;
+  border-radius: 60px;
   display: flex;
-  flex-direction: column;
-  align-items: left;
-  margin-top: 0.1vh;
-  border-radius: 0 0 50px 50px;
-  background: var(--white);
-  justify-content: flex-start;
-  box-sizing: border-box;
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
-.candidature_body ul li {
-  margin-top: 1vh;
-  margin-left: 1.5vw;
+.dashboard_candidature {
+  padding: 4vh 2vw 2vh 2vw;
+  background-color: var(--white);
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3px 3px rgb(184 197 235 / 50%);
 }
 
-.candidature_body ul:hover {
-  box-shadow: 4px 4px 2px 1px #ff8150;
+.dashboard_candidature .text_cross {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5vw;
+  margin-left: 4vw;
+  align-items: center;
+  color: #93a9eb;
 }

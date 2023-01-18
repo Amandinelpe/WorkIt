@@ -21,7 +21,7 @@ const dataBoxConsultants = [
       "Candidatures en cours",
       "Candidatures archivées",
     ],
-    link: "my-profile",
+    link: "candidatures",
   },
   {
     id: 4,
