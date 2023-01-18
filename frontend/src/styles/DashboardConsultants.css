@@ -169,3 +169,7 @@
   box-shadow: 4px 4px 2px 1px #ff8150;
   transform: scale(1.1);
 }
+
+.mydashboard_render{
+  margin-top: 7vh;
+}
