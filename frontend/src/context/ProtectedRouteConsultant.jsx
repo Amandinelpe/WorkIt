@@ -18,5 +18,5 @@ const ProtectedRouteConsultant = ({ children }) => {
 export default ProtectedRouteConsultant;
 
 ProtectedRouteConsultant.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
 };

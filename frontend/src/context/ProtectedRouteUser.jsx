@@ -15,5 +15,5 @@ const ProtectedRouteUser = ({ children }) => {
 export default ProtectedRouteUser;
 
 ProtectedRouteUser.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
 };

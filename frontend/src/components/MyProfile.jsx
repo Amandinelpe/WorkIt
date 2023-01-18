@@ -1,21 +1,14 @@
 import React from "react";
-import RadioButton from "../components/RadioButton";
-import NavBar from "../components/NavBar";
-import BoxCandidate from "../components/BoxCandidate";
-import Footer from "../components/Footer";
-import HelloButton from "../components/HelloButton";
+import RadioButton from "./RadioButton";
 import "../styles/MyProfile.css";
 import dataMyProfile from "../utils/dataMyProfile";
 
 const MyProfile = () => {
   return (
     <div className="myProfile">
-      <NavBar />
-      <HelloButton />
-      <BoxCandidate />
       <div className="flex flex-fd-column flex-ai-center flex-jc-center">
-        <div className="box">
-          <div className="box_candidate">
+        <div className="box box_candidate">
+          <div className="box_candidate_title">
             <h1>Mon Profil</h1>
           </div>
           <div className="box_candidate_body">
@@ -188,7 +181,6 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
