@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../styles/Inscription.css";
 import dislike from "../assets/img/dislike.png";
 import like from "../assets/img/like.png";
@@ -11,6 +11,7 @@ const Inscription = () => {
   const [confirmPassword, setConfirmPassword] = useState();
   const [match, setMatch] = useState(false);
   const [jobs, setJobs] = useState([]);
+  const navigate = useNavigate();
 
   const updateProfile = (event) => {
     setProfile({ ...profile, [event.target.name]: event.target.value });
@@ -23,6 +24,7 @@ const Inscription = () => {
   const postProfile = (event) => {
     event.preventDefault();
     CreateUser(profile).then((res) => console.warn(res.data));
+    navigate("/ConnexionCandidat");
   };
 
   const loadJobs = () => {

@@ -12,6 +12,7 @@
   justify-content: flex-start;
   border-radius: 25px;
   padding: 4vh 2vw;
+  padding-bottom: 1vh;
   line-height: 1.8em;
   text-justify: center;
 }
