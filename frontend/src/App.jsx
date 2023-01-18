@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import socketIO from "socket.io-client";
 import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
-import Inbox from "./pages/Messenger";
 import CreateProfile from "./pages/CreateProfile";
 import MonProfil from "./pages/MonProfil";
 import Connexion from "./pages/Connexion";
 import DashboardCandidate from "./pages/DashboardCandidate";
+import ChatPageCandidate from "./pages/ChatPageCandidate";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
 import AdminConsultantPage from "./pages/AdminConsultantPage";
@@ -15,6 +16,8 @@ import ProtectedRoute from "./context/ProtectedRoute";
 import "./App.css";
 
 const App = () => {
+  const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
+
   return (
     <div>
       <Router>
@@ -34,7 +37,7 @@ const App = () => {
               path="/Messagerie"
               element={
                 // <ProtectedRoute>
-                <Inbox />
+                <ChatPageCandidate socket={socket} />
                 // </ProtectedRoute>
               }
             />

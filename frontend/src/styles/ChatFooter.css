@@ -1,0 +1,33 @@
+.chat__footer {
+  padding: 10px;
+  height: 50vh;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.message {
+  width: 80%;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  outline: none;
+  padding: 15px;
+  box-shadow: 0 16px 48px 0 rgb(0 55 83 / 13%);
+}
+
+.sendBtn {
+  width: 150px;
+  background-color: #3c5cc7;
+  border-radius: 16px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+}

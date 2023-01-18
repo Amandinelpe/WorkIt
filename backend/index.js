@@ -1,10 +1,28 @@
 require("dotenv").config();
 
+const http = require("http");
+
+const socketIo = require("socket.io");
+
 const app = require("./src/app");
 
-const port = parseInt(process.env.APP_PORT ?? "5001", 10);
+const server = http.createServer(app);
 
-app.listen(port, (err) => {
+const port = parseInt(process.env.APP_PORT ?? "5000", 10);
+
+const io = socketIo(server, {
+  cors: {
+    origin: process.env.FRONTEND_URL,
+  },
+});
+
+io.on("connection", (socket) => {
+  socket.on("sendMessage", (payload) => {
+    io.emit("newMessage", payload);
+  });
+});
+
+server.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");
   } else {

@@ -1,0 +1,58 @@
+.chat__mainHeader {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.leaveChat__btn {
+  padding: 10px;
+  width: 150px;
+  border: none;
+  outline: none;
+  background-color: #eb5757;
+  border-radius: 16px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.message__container {
+  width: 50vw;
+  height: 80vh;
+  background-color: #fff;
+  overflow-y: scroll;
+  border: 1px solid black;
+}
+
+.message__chats > p {
+  font-size: 13px;
+}
+.sender__name {
+  text-align: right;
+}
+
+.message__sender {
+  background-color: rgb(194, 243, 194);
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: auto;
+  font-size: 15px;
+}
+
+.message__recipient {
+  background-color: #f5ccc2;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.message__status {
+  position: fixed;
+  bottom: 10%;
+  font-size: 13px;
+  font-style: italic;
+}
