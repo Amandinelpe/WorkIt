@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import "../styles/SalaryBox.css";
 
-const SalaryBox = () => {
-  const [salary, setSalary] = useState(0);
+const SalaryBox = ({ salary, setSalary }) => {
   return (
     <div className="salary_box">
       <div className="salary_titleblock">
@@ -15,7 +15,7 @@ const SalaryBox = () => {
           min="0"
           max="100000"
           value={salary}
-          onChange={(e) => setSalary(e.target.value)}
+          onChange={(e) => setSalary(Number(e.target.value))}
         />{" "}
         <h3>
           {" "}
@@ -28,3 +28,8 @@ const SalaryBox = () => {
 };
 
 export default SalaryBox;
+
+SalaryBox.propTypes = {
+  salary: PropTypes.number.isRequired,
+  setSalary: PropTypes.func.isRequired,
+};
