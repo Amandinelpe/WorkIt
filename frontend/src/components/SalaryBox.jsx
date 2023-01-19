@@ -6,7 +6,7 @@ const SalaryBox = ({ salary, setSalary }) => {
   return (
     <div className="salary_box">
       <div className="salary_titleblock">
-        <h2 className="salary_title"> Salaire minimum</h2>
+        <h2 className="salary_title"> Salaire brut annuel</h2>
       </div>
       <div className="salary_body">
         <label htmlFor="salary"> </label>
