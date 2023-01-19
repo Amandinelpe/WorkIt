@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BannierePartenaire from "../components/BannierePartenaire";
 import "../styles/ResetPassword.css";
 
@@ -10,6 +10,7 @@ const ResetPassword = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState();
   const { token, id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -28,6 +29,9 @@ const ResetPassword = () => {
       })
       .then((response) => {
         setMessage(response.data);
+        setTimeout(() => {
+          navigate("/ConnexionCandidat");
+        }, 2000);
       })
       .catch((err) => console.warn(err));
   };
