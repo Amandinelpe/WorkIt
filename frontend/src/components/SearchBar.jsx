@@ -1,10 +1,11 @@
 import { React, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { GetAllJobs } from "../apis/jobApi";
 import { GetAllCities } from "../apis/offerApi";
 import "../styles/SearchBar.css";
 import search from "../assets/img/search.png";
 
-const SearchBar = () => {
+const SearchBar = ({ setSelectedJob, setCity }) => {
   const [job, setJob] = useState([]);
   const [cities, setCities] = useState([]);
 
@@ -19,7 +20,6 @@ const SearchBar = () => {
       setJob(res.data);
     });
   };
-  console.warn(job, cities, "job", "cities");
 
   useEffect(() => {
     loadJobs();
@@ -30,8 +30,11 @@ const SearchBar = () => {
     <div className="searchBar">
       <div className="inputBox2">
         <div className="inputBox">
-          <label htmlFor="">
-            <select name="job_select" id="">
+          <label htmlFor="job_select">
+            <select
+              id="job_select"
+              onChange={(e) => setSelectedJob(e.target.value)}
+            >
               <option disabled selected value>
                 Quoi?{" "}
               </option>
@@ -42,8 +45,8 @@ const SearchBar = () => {
           </label>
         </div>
         <div className="inputBox">
-          <label htmlFor="">
-            <select name="city_select" id="">
+          <label htmlFor="city_select">
+            <select id="city_select" onChange={(e) => setCity(e.target.value)}>
               <option disabled selected value>
                 {" "}
                 Ou?{" "}
@@ -61,3 +64,8 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
+SearchBar.propTypes = {
+  setSelectedJob: PropTypes.func.isRequired,
+  setCity: PropTypes.func.isRequired,
+};

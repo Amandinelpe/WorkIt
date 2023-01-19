@@ -12,10 +12,16 @@ import "../styles/MainPage.css";
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
 
+  const [city, setCity] = useState("");
+  const [selectedJob, setSelectedJob] = useState("");
+  const [choosenDate, setChoosenDate] = useState("");
+  const [salary, setSalary] = useState(0);
+
   /*   Will serve soon */
-  /*  const [job, setJob] = useState([]);
-  const [cities, setCities] = useState([]); */
-  /*  const [selectedJob, setSelectedJob] = useState(""); */
+  console.warn(choosenDate, "choosenDate");
+  console.warn(selectedJob, "selectedJob");
+  console.warn(city, "city");
+  console.warn(salary, "salary");
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
@@ -33,11 +39,11 @@ const MainPage = () => {
           Comprendre ton histoire, ton parcours, ton projet, c'est ce qui nous
           motive
         </h2>
-        <SearchBar />
+        <SearchBar setSelectedJob={setSelectedJob} setCity={setCity} />
         <div className="filters_offers">
           <div className="mainPage_filters">
-            <SalaryBox />
-            <PublicationDateBox />
+            <SalaryBox salary={salary} setSalary={setSalary} />
+            <PublicationDateBox setDate={setChoosenDate} />
           </div>
           <div className="mainPage_offers">
             <div className="all_offres_titleblock">
