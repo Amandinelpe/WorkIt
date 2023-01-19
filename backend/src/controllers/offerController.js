@@ -2,11 +2,21 @@ const offerModel = require("../models/offerModel");
 
 const offerController = {
   getAllOffers: (req, res, next) => {
+    const where = [];
+
+    if (req.query.city != null) {
+      where.push(`firm_city = '${req.query.city}'`);
+    }
+    if (req.query.state != null) {
+      where.push(`state_offer_id = '${req.query.state}'`);
+    }
+
     offerModel
-      .findAll()
+      .findAll(where)
       .then(([offers]) => res.status(200).send(offers))
       .catch((err) => next(err));
   },
+
   getOfferById: (req, res, next) => {
     const { id } = req.params;
     offerModel
