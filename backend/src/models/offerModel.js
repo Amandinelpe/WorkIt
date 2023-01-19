@@ -1,6 +1,13 @@
 const db = require("../../config");
 
-const findAll = () => {
+const findAll = (where) => {
+  const initSql = "SELECT * FROM offer";
+  if (where.length > 0) {
+    return db
+      .promise()
+      .query(`${initSql} WHERE ${where.join(" AND ")}`)
+      .then((offers) => offers);
+  }
   return db
     .promise()
     .query("SELECT * FROM offer")

@@ -11,8 +11,14 @@ import {
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const { auth } = useContext(authContext);
+  const { auth, logout } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
+
+  const handleLogout = (id) => {
+    if (id === 4) {
+      logout();
+    }
+  };
 
   useEffect(() => {
     if (auth.data) {
@@ -35,7 +41,12 @@ const NavBar = () => {
     <div className="navbar">
       <ul>
         {navBar.map((section) => (
-          <Link to={section.link} className="items" key={section.id}>
+          <Link
+            to={section.link}
+            className="items"
+            key={section.id}
+            onClick={() => handleLogout(section.id)}
+          >
             {section.name}
           </Link>
         ))}
