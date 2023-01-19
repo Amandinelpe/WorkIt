@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
 import AnnoncesConsultant from "../components/AnnoncesConsultant";
 import "../styles/DashboardConsultants.css";
+import Candidature from "../components/Candidature";
 
 const DashboardConsultant = () => {
   const [content, setContent] = useState("dashboard");
@@ -20,6 +21,8 @@ const DashboardConsultant = () => {
         return <AnnoncesConsultant />;
       case "dashboard":
         return <Dashboard />;
+      case "candidatures":
+        return <Candidature />;
       default:
         return <Dashboard />;
     }
