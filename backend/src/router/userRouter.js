@@ -16,5 +16,6 @@ userRouter.post(
   emailValidator,
   userController.createUser
 );
+userRouter.put("/resetPassword", userController.resetPassword);
 
 module.exports = userRouter;
