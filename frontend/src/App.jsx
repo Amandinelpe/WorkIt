@@ -15,6 +15,7 @@ import ForgottenPassword from "./pages/ForgottenPassword";
 import ResetPassword from "./pages/ResetPassword";
 import ProtectedRouteUser from "./context/ProtectedRouteUser";
 import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
+import "@progress/kendo-theme-default/dist/all.css";
 import "./App.css";
 
 const App = () => {
