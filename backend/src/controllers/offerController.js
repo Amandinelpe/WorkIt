@@ -20,6 +20,13 @@ const offerController = {
       .then(([cities]) => res.status(200).send(cities))
       .catch((err) => next(err));
   },
+  getOffersByCity: (req, res, next) => {
+    const { city } = req.params;
+    offerModel
+      .findOffersByCity(city)
+      .then(([offers]) => res.status(200).send(offers))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = offerController;

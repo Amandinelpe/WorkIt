@@ -20,4 +20,11 @@ const findAllCities = () => {
     .then((cities) => cities);
 };
 
-module.exports = { findAll, findOne, findAllCities };
+const findOffersByCity = (city) => {
+  return db
+    .promise()
+    .query("SELECT * FROM offer where firm_city = ?", [city])
+    .then(([offers]) => offers);
+};
+
+module.exports = { findAll, findOne, findAllCities, findOffersByCity };
