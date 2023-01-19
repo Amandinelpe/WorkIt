@@ -5,7 +5,7 @@ const { validationResult } = require("express-validator");
 const argon2 = require("argon2");
 const nodemailer = require("nodemailer");
 const userModel = require("../models/userModel");
-const { jwtSign } = require("../middlewares/jwt");
+const { jwtSign, jwtVerify } = require("../helpers/jwt");
 
 const userController = {
   getAllUsers: (req, res, next) => {
@@ -146,8 +146,7 @@ const userController = {
           from: "olga_yasn@hotmail.com",
           to: email,
           subject: "Your password reset link",
-          text: "Hello to myself!",
-          html: `<p>Hello! Did you forget your password ? Please follow the link below to reset your password</p> <a href="${process.env.FRONTEND_URL}/resetPassword/${token}" target="_blank">Reset password</a>`,
+          html: `<p>Hello! Did you forget your password ? Please follow the link below to reset your password</p> <a href="${process.env.FRONTEND_URL}/ResetPassword/${token}/${user.id}" target="_blank">Reset password</a>`,
         };
 
         userModel.updateOne(newData, user.id).then((result) => {
@@ -171,6 +170,39 @@ const userController = {
         });
       });
     });
+  },
+  verifyToken: (req, res) => {
+    const { token } = req.body;
+
+    if (!token) {
+      return res.status(401).send("couldn't find temporary token");
+    }
+    const userInfo = jwtVerify(token);
+    if (!userInfo) {
+      return res.status(401).send("token expired or invalid please try again");
+    }
+    res.status(200).send({ message: "valid token", user: userInfo.email });
+  },
+
+  updatePassword: async (req, res, next) => {
+    const { id } = req.params;
+    const { password } = req.body;
+
+    try {
+      const hashedPassword = await argon2.hash(password);
+      const data = {
+        password: hashedPassword,
+        reset_token: null,
+      };
+      userModel.updateOne(data, id).then((result) => {
+        if (result.affectedRows === 0) {
+          return res.status(400).send("error updating password");
+        }
+        return res.status(200).send("password changed successfully");
+      });
+    } catch (err) {
+      return next(err);
+    }
   },
 };
 
