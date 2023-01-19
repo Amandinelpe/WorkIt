@@ -7,7 +7,7 @@
   gap: 8px;
 }
 
-.container_body .container .filter-box{
+.container_body .container .filter-box {
   display: flex;
   width: 20vw;
 }
@@ -75,7 +75,9 @@
 /* KENDO GRID */
 
 .grid_candidature,
-.grid_candidature .k-table-thead, .k-table-header, .k-table-group-sticky-header,
+.grid_candidature .k-table-thead,
+.k-table-header,
+.k-table-group-sticky-header,
 .grid_candidature .k-button-flat-primary {
   color: var(--purple-light) !important;
 }
@@ -85,10 +87,25 @@
   height: 36px;
 }
 
-.grid_candidature .k-table-thead, .k-table-header, .k-table-group-sticky-header {
+.grid_candidature .k-table-thead,
+.k-table-header,
+.k-table-group-sticky-header {
   background-color: var(--white);
 }
 
-.grid_candidature .k-grid-header, .k-grid-header-wrap, .k-grouping-header, .k-grid .k-table-th, .k-grid td, .k-grid .k-table-td, .k-grid-footer, .k-grid-footer-wrap, .k-grid-content-locked, .k-grid-footer-locked, .k-grid-header-locked, .k-filter-row > .k-table-th, .k-filter-row > td, .k-filter-row > .k-table-td {
+.grid_candidature .k-grid-header,
+.k-grid-header-wrap,
+.k-grouping-header,
+.k-grid .k-table-th,
+.k-grid td,
+.k-grid .k-table-td,
+.k-grid-footer,
+.k-grid-footer-wrap,
+.k-grid-content-locked,
+.k-grid-footer-locked,
+.k-grid-header-locked,
+.k-filter-row > .k-table-th,
+.k-filter-row > td,
+.k-filter-row > .k-table-td {
   border: unset;
 }
