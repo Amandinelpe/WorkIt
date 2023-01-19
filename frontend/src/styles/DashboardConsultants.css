@@ -173,3 +173,7 @@
 .mydashboard_render{
   margin-top: 7vh;
 }
+
+.mydashboard_body .box_candidate_body ul {
+  height: 20vh;
+}

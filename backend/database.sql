@@ -219,7 +219,8 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
      (2,'Carole','Artelis','0658963250','Cauderan','carole.artelis@gmail.com','7856aldopme','https://www.linkedin.com/in/carole-artelis/%27'),
           (2,'Michael','Birepinte','062356637','Bordeaux','mickael.birepinte@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$yYVpZ3U+F/ee1AZlNTaZYQ$Zua2dOcNVSU5He6hV8h5z9uRwyXRQrq6gc0lSA6IjQU','https://www.linkedin.com/in/michael-birepinte/'),
      (2,'Luc','Jaubert','0625458978','Bordeaux','lucjaubert@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$K2QB56XZobdyCRWiiUuhIg$gYT2ev6y4g/K28Y96kjzaIqk4BBj/k+o6wE3U3CMG78','https://www.linkedin.com/in/luc-jaubert/'),
-     (2,'Olga','Yasnopolskaya','06963969620','Bordeaux','olga_yasn@hotmail.com','$argon2id$v=19$m=65536,t=3,p=4$QxHxZ2KRGgnpOzs5AL0YBQ$ZM6Altf4QNGDMFTdpZ7baT6lunYEplqDawawGpoC5Iw','https://www.linkedin.com/in/olga-yasnopolskaya-349b04aa/');
+     (2,'Olga','Yasnopolskaya','06963969620','Bordeaux','olga_yasn@hotmail.com','$argon2id$v=19$m=65536,t=3,p=4$QxHxZ2KRGgnpOzs5AL0YBQ$ZM6Altf4QNGDMFTdpZ7baT6lunYEplqDawawGpoC5Iw','https://www.linkedin.com/in/olga-yasnopolskaya-349b04aa/'),
+     (2,'Amandine','Leporace','0768076995','Bordeaux','leporace.amandine@gmail.com','$argon2id$v=19$m=16,t=2,p=1$ZWd3QjVPSmpUWFdyWDV1Vg$69CKCWqeR7Jo6OZxzVbGWA','https://www.linkedin.com/in/amandine-leporace-aa023222a/');
 
 
      INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
