@@ -1,0 +1,35 @@
+.my_inbox_box_body {
+  margin-top: 10vh;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.my_inbox_titleblock {
+  color: var(--white);
+  background-color: var(--purple-light);
+  height: 12vh;
+  border-radius: 50px 50px 0 0;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+}
+
+.my_inbox_titleblock h2 {
+  color: var(--white);
+  padding: 5vh 6vh;
+}
+
+.my_inbox p {
+  color: var(--purple-dark);
+  padding: 5vh 2vh;
+}
+
+.chatBox {
+  width: 55vw;
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 50px 50px 50px 50px;
+}
