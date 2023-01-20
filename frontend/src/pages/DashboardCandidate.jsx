@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import "../styles/DashboardCandidate.css";
 import Dashboard from "../components/Dashboard";
 import MyProfile from "../components/MyProfile";
+import ChatBody from "../components/ChatBody";
 
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
@@ -20,6 +21,8 @@ const DashboardCandidate = () => {
         return <MyProfile />;
       case "dashboard":
         return <Dashboard />;
+      case "messagerie":
+        return <ChatBody />;
       default:
         return <Dashboard />;
     }

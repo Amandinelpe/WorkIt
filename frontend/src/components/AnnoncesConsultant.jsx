@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Filter from "./Filter";
 import { GetFiveOffers } from "../utils/getOffers";
 import Offer from "./Offer";
+import "../styles/AnnoncesConsultant.css";
 
 const AnnoncesConsultant = () => {
   const [offers, setOffers] = useState([]);
