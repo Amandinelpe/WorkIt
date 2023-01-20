@@ -17,5 +17,7 @@ userRouter.post(
   userController.createUser
 );
 userRouter.put("/resetPassword", userController.resetPassword);
+userRouter.put("/changePassword/:id", userController.updatePassword);
+userRouter.post("/checkToken", userController.verifyToken);
 
 module.exports = userRouter;
