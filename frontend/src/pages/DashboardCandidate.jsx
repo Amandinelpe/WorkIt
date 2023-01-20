@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import NavBar from "../components/NavBar";
-import HelloButton from "../components/HelloButton";
 import BoxCandidate from "../components/BoxCandidate";
+import HelloButton from "../components/HelloButton";
 import Footer from "../components/Footer";
 import "../styles/DashboardCandidate.css";
 import Dashboard from "../components/Dashboard";
