@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import socketIO from "socket.io-client";
 import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
-import Messagerie from "./pages/Messagerie";
 import CreateProfile from "./pages/CreateProfile";
 import Connexion from "./pages/Connexion";
 import DashboardCandidate from "./pages/DashboardCandidate";
+import ChatPageCandidate from "./pages/ChatPageCandidate";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
@@ -19,6 +20,8 @@ import "@progress/kendo-theme-default/dist/all.css";
 import "./App.css";
 
 const App = () => {
+  const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
+
   return (
     <div>
       <Router>
@@ -36,11 +39,7 @@ const App = () => {
             <Route path="/Main" element={<MainPage />} />
             <Route
               path="/Messagerie"
-              element={
-                <ProtectedRouteUser>
-                  <Messagerie />
-                </ProtectedRouteUser>
-              }
+              element={<ChatPageCandidate socket={socket} />}
             />
             <Route
               path="/DashboardCandidate"

@@ -1,0 +1,41 @@
+.chat__footer {
+  width: 50vw;
+  height: 12vh;
+  margin-left: 2vw;
+  margin-top: 0.8vw;
+  position: auto;
+}
+
+.message__status {
+  margin-left: 0.5vw;
+  margin-bottom: 0.5vw;
+  font-family: var(--text-font-family-jost);
+  font-size: 13px;
+  font-style: italic;
+}
+
+.message {
+  width: 35vw;
+  height: 5vh;
+  margin-right: 2vh;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  outline: none;
+  padding: 15px;
+  box-shadow: 0 16px 48px 0 rgb(0 55 83 / 13%);
+  font-family: var(--text-font-family-jost);
+}
+.sendBtn {
+  width: 150px;
+  background-color: var(--purple-dark);
+  border-radius: 16px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sendBtn:hover {
+  background-color: var(--orange);
+}
