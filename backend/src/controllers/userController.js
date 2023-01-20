@@ -145,8 +145,8 @@ const userController = {
         const message = {
           from: "olga_yasn@hotmail.com",
           to: email,
-          subject: "Your password reset link",
-          html: `<p>Hello! Did you forget your password ? Please follow the link below to reset your password</p> <a href="${process.env.FRONTEND_URL}/ResetPassword/${token}/${user.id}" target="_blank">Reset password</a>`,
+          subject: "Changement mot de passe",
+          html: `<p>Salut! Tu as oublié ton mot de passe? Suis le lien ci-dessous</p> <a href="${process.env.FRONTEND_URL}/ResetPassword/${token}/${user.id}" target="_blank">Modifier le mot de passe</a>`,
         };
 
         userModel.updateOne(newData, user.id).then((result) => {
@@ -163,7 +163,7 @@ const userController = {
             console.warn("Message sent: %s", info.messageId);
             console.warn("Preview URL: %s", nodemailer.getTestMessageUrl(info));
             return res.status(200).send({
-              message: "email sent successfully please follow instructions",
+              message: "Email envoyé. Suis les instructions",
               preview: nodemailer.getTestMessageUrl(info),
             });
           });
@@ -196,9 +196,9 @@ const userController = {
       };
       userModel.updateOne(data, id).then((result) => {
         if (result.affectedRows === 0) {
-          return res.status(400).send("error updating password");
+          return res.status(400).send("Erreur de changement de mot de passe");
         }
-        return res.status(200).send("password changed successfully");
+        return res.status(200).send("Mot de passe modifié");
       });
     } catch (err) {
       return next(err);
