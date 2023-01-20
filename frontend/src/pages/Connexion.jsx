@@ -11,7 +11,7 @@ const Connexion = ({ user }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const { login, auth } = useContext(authContext);
-
+  console.log(user,)
   useEffect(() => {
     if (auth.data) {
       navigate("/Main");
@@ -58,7 +58,7 @@ const Connexion = ({ user }) => {
         <form
           name="connexion"
           method="post"
-          className="connexion-form"
+          className={`connexion-form ${user}`}
           onSubmit={handleSubmit}
         >
           <div className="connexion-input">

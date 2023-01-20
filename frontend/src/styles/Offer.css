@@ -20,6 +20,7 @@
 #text_entreprise {
   font-size: 1vw;
   color: var(--purple-dark);
+  text-decoration: underline;
 }
 #text_job {
   font-size: 1.2vw;
@@ -63,6 +64,6 @@
   font-size: 2vw;
 }
 .offer_logo {
-  height: 50%;
+  width :8vw;
   margin-right: 5%;
 }
