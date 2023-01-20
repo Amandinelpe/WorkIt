@@ -1,19 +1,18 @@
 import { React, useState } from "react";
 import "../styles/Offer.css";
 import PropTypes from "prop-types";
-import logo from "../assets/img/logo.png";
 
-const Offer = ({ date }) => {
+const Offer = ({ firm, date, title, logo, city, experience }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
     <div className="bloc_offer">
       <div className="offer_block_job">
-        <p id="text_entreprise">Apple</p>
-        <p id="text_job">Développeur web - Bordeaux</p>
+        <p id="text_entreprise">{firm}</p>
+        <p id="text_job">{title}</p>
         <div className="offer_filter">
-          <p className="border_button">Contrat</p>
-          <p className="border_button">City</p>
+          <p className="border_button">{experience}</p>
+          <p className="border_button">{city}</p>
         </div>
         <p id="text_date">{date}</p>
       </div>
@@ -32,6 +31,11 @@ const Offer = ({ date }) => {
 
 Offer.propTypes = {
   date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  logo: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  experience: PropTypes.string.isRequired,
+  firm: PropTypes.string.isRequired,
 };
 
 export default Offer;

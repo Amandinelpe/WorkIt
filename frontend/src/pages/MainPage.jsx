@@ -23,6 +23,7 @@ const MainPage = () => {
   console.warn(selectedJob, "selectedJob");
   console.warn(city, "city");
   console.warn(salary, "salary");
+  console.warn(offers, "offers");
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
@@ -62,7 +63,15 @@ const MainPage = () => {
             </div>
             <div className="offers_body">
               {offers.map((offer) => (
-                <Offer firm={offer.firm} date={offer.date} />
+                <Offer
+                  firm={offer.name}
+                  date={offer.date}
+                  title={offer.title}
+                  logo={offer.logo_url}
+                  city={offer.city}
+                  experience={offer.experience}
+                  id={offer.id}
+                />
               ))}
               <button type="button" className="all_offres_button">
                 {" "}
