@@ -6,7 +6,11 @@ export const authContext = createContext({});
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [auth, setAuth] = useState({ data: null });
+  const [auth, setAuth] = useState(() => {
+    const data = window.localStorage.getItem("user");
+    return data ? { data: JSON.parse(data) } : {};
+  });
+
   const [user, setUser] = useState();
 
   const login = (data) => {
@@ -33,13 +37,13 @@ const AuthProvider = ({ children }) => {
     const data = window.localStorage.getItem("user");
 
     if (data) {
-      setAuth(JSON.parse(data));
+      setAuth({ data: JSON.parse(data) });
     }
   }, []);
 
   useEffect(() => {
     if (auth.data) {
-      window.localStorage.setItem("user", JSON.stringify(auth));
+      window.localStorage.setItem("user", JSON.stringify(auth.data));
     }
   }, [auth]);
 

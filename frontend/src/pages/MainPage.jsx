@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import { GetFiveOffers } from "../utils/getOffers";
+import { FilterOffer } from "../apis/offerApi";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
@@ -22,14 +23,25 @@ const MainPage = () => {
   console.warn(selectedJob, "selectedJob");
   console.warn(city, "city");
   console.warn(salary, "salary");
+  console.warn(offers, "offers");
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
   };
 
+  const filterOffers = async () => {
+    await FilterOffer(city).then((res) => {
+      setOffers([res.data]);
+    });
+  };
+
   useEffect(() => {
     getFiveOffers();
   }, []);
+
+  useEffect(() => {
+    filterOffers();
+  }, [city]);
 
   return (
     <div className="mainPage">
@@ -51,7 +63,15 @@ const MainPage = () => {
             </div>
             <div className="offers_body">
               {offers.map((offer) => (
-                <Offer firm={offer.firm} date={offer.date} />
+                <Offer
+                  firm={offer.name}
+                  date={offer.date}
+                  title={offer.title}
+                  logo={offer.logo_url}
+                  city={offer.city}
+                  experience={offer.experience}
+                  id={offer.id}
+                />
               ))}
               <button type="button" className="all_offres_button">
                 {" "}
