@@ -4,6 +4,7 @@ import BoxAdmin from "../components/BoxAdmin";
 import Footer from "../components/Footer";
 import "../styles/BoxAdmin.css";
 import MyProfile from "../components/MyProfile";
+import Dashboard from "../components/Dashboard";
 
 const DashboardAdmin = () => {
   const [content, setContent] = useState("dashboard");
@@ -17,7 +18,7 @@ const DashboardAdmin = () => {
       case "my-profile":
         return <MyProfile />;
       default:
-        return <DashboardAdmin />;
+        return <Dashboard />;
     }
   };
 
