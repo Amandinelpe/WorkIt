@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import "../styles/Offer.css";
 import PropTypes from "prop-types";
-// import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/Md";
 import logo from "../assets/img/logo.png";
 
 const Offer = ({ date }) => {
@@ -24,13 +23,7 @@ const Offer = ({ date }) => {
           onClick={() => setIsFavorite(!isFavorite)}
           onKeyDown=""
           role="presentation"
-        >
-          {/* {isFavorite ? (
-            <MdOutlineFavorite id="full_earth" />
-          ) : (
-            <MdOutlineFavoriteBorder id="empty_earth" />
-          )} */}
-        </div>
+        />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
     </div>

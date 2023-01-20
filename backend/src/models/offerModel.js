@@ -16,7 +16,7 @@ const findOne = (id) => {
 const findAllCities = () => {
   return db
     .promise()
-    .query("SELECT firm_city FROM offer")
+    .query("SELECT DISTINCT firm_city FROM offer")
     .then((cities) => cities);
 };
 

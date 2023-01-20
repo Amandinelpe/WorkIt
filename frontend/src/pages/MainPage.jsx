@@ -28,20 +28,22 @@ const MainPage = () => {
     setOffers(await GetFiveOffers());
   };
 
-  const filter_offers = async () => {
-    await FilterOffer(city).then((res) => {setOffers([res.data])});
-  }
+  const filterOffers = async () => {
+    await FilterOffer(city).then((res) => {
+      setOffers([res.data]);
+    });
+  };
 
-  console.log (offers, "offers");
   useEffect(() => {
     getFiveOffers();
   }, []);
 
-  useEffect(() => {city!="" ? filter_offers():null}, [city]);
+  useEffect(() => {
+    filterOffers();
+  }, [city]);
 
   return (
     <div className="mainPage">
-      <button onClick={filter_offers}> Test </button>
       <NavBar />
       <div className="mainPage_body">
         <h2 className="mainpage_introduction">
