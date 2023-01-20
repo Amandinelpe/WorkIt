@@ -5,6 +5,7 @@ import Offer from "./Offer";
 
 const AnnoncesConsultant = () => {
   const [offers, setOffers] = useState([]);
+  const [stateOffer, setStateOffer] = useState("");
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
@@ -13,11 +14,17 @@ const AnnoncesConsultant = () => {
   useEffect(() => {
     getFiveOffers();
   }, []);
+
+  console.warn(stateOffer, "stateOffer");
   return (
     <div>
       <div className="filters_offers">
         <div className="mainPage_filters">
-          <Filter table="state_offer" name="Etat de l'offre" />
+          <Filter
+            table="state_offer"
+            name="Etat de l'offre"
+            setState={setStateOffer}
+          />
         </div>
         <div className="mainPage_offers">
           <div className="all_offres_titleblock">
