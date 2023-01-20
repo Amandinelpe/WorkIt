@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useNavigate, Link } from "react-router-dom";
@@ -19,24 +18,6 @@ const Connexion = ({ user }) => {
     }
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email && password) {
-      axios
-        .post(
-          `http://localhost:5002/api/${user}/login`,
-          { email, password },
-          { withCredentials: true }
-        )
-        .then((res) => {
-          if (res.status === 200) {
-            login(res.data);
-          }
-        })
-        .catch((err) => console.warn(err.resonse));
-    } else {
-      // alert("Veuillez remplir tous les champs");
-    }
   const handleChange = (event) => {
     setFormData((prevFormData) => {
       return {
@@ -125,7 +106,8 @@ const Connexion = ({ user }) => {
   );
 };
 
+export default Connexion;
+
 Connexion.propTypes = {
   user: PropTypes.string.isRequired,
 };
-

@@ -37,11 +37,7 @@ const App = () => {
             <Route path="/Main" element={<MainPage />} />
             <Route
               path="/Messagerie"
-              element={
-                // <ProtectedRoute>
-                <ChatPageCandidate socket={socket} />
-                // </ProtectedRoute>
-              }
+              element={<ChatPageCandidate socket={socket} />}
             />
             <Route
               path="/DashboardCandidate"

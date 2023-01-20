@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
-import React, { useContext, useState } from "react";
-import { userContext } from "../hooks/userContext";
+import React, { useState } from "react";
+import "../styles/ChatFooter.css";
 
 const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState("");
-  const { userName } = useContext(userContext);
+  // const { userName } = useContext(userContext);
 
   const handleSendMessage = (e) => {
     e.preventDefault();
     socket.emit("sendMessage", {
-      userName,
+      // userName,
       socketID: socket.id,
       message,
     });
@@ -18,18 +18,19 @@ const ChatFooter = ({ socket }) => {
 
   return (
     <div className="chat__footer">
-      <div className="form">
-        <input
-          type="text"
-          placeholder="Ecrire un message"
-          className="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button type="button" className="sendBtn" onClick={handleSendMessage}>
-          Envoyer
-        </button>
+      <div className="message__status">
+        <p>Votre interlocuteur est en train d'écrire...</p>
       </div>
+      <input
+        type="text"
+        placeholder="Ecrire un message"
+        className="message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button type="button" className="sendBtn" onClick={handleSendMessage}>
+        Envoyer
+      </button>
     </div>
   );
 };

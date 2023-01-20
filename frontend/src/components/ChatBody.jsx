@@ -1,49 +1,57 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+import ChatFooter from "./ChatFooter";
+import "../styles/ChatBody.css";
 
-const ChatBody = () => {
-  const navigate = useNavigate();
+const ChatBody = ({ socket }) => {
+  // const navigate = useNavigate();
+  const [chatMessages, setChatMessages] = useState([]);
 
-  const handleLeaveChat = () => {
-    navigate("/");
-    window.location.reload();
-  };
+  // const handleOpenChat = () => {
+  //   navigate("/Messagerie");
+  //   window.location.reload();
+  // };
+
+  useEffect(() => {
+    socket.on("newMessage", (messages) => {
+      setChatMessages([...chatMessages, messages]);
+    });
+  }, [chatMessages]);
 
   return (
-    <>
-      <header className="chat__mainHeader">
-        <p>Bienvenue sur notre chat WorkIT</p>
-        <button
-          type="button"
-          className="leaveChat__btn"
-          onClick={handleLeaveChat}
-        >
-          LEAVE CHAT
-        </button>
-      </header>
-
-      {/* message envoyé par vous */}
+    <div className="chat_box_container">
       <div className="message__container">
-        <div className="message__chats">
-          {/* <p className="sender__name">You</p> */}
-          <div className="message__sender">{/* <p>Hello there</p> */}</div>
-        </div>
-
-        {/* message reçu par vous */}
-        <div className="message__chats">
-          {/* <p>Other</p> */}
-          <div className="message__recipient">
-            {/* <p>Hey, I'm good, you?</p> */}
-          </div>
-        </div>
-
-        {/* Quand je tape un message */}
-        <div className="message__status">
-          <p>Someone is typing...</p>
-        </div>
+        {chatMessages.map((message) =>
+          message.socketID === socket.id ? (
+            <div className="message__chats" key={message.id}>
+              <p className="sender__name">Vous</p>
+              <div className="message__sender">
+                <p>{message.message}</p>
+              </div>
+            </div>
+          ) : (
+            <div className="message__chats">
+              <p>{message.userName}Votre interlocuteur</p>
+              <div className="message__recipient">
+                <p>{message.message}</p>
+              </div>
+            </div>
+          )
+        )}
       </div>
-    </>
+      <div className="chat_footer_body">
+        <ChatFooter socket={socket} />
+      </div>
+    </div>
   );
+};
+
+ChatBody.propTypes = {
+  socket: PropTypes.shape({
+    id: PropTypes.string,
+    on: PropTypes.func,
+  }).isRequired,
 };
 
 export default ChatBody;
