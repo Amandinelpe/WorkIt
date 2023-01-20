@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
 import { GetFiveOffers } from "../utils/getOffers";
+import { FilterOffer } from "../apis/offerApi";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
@@ -27,12 +28,20 @@ const MainPage = () => {
     setOffers(await GetFiveOffers());
   };
 
+  const filter_offers = async () => {
+    await FilterOffer(city).then((res) => {setOffers([res.data])});
+  }
+
+  console.log (offers, "offers");
   useEffect(() => {
     getFiveOffers();
   }, []);
 
+  useEffect(() => {city!="" ? filter_offers():null}, [city]);
+
   return (
     <div className="mainPage">
+      <button onClick={filter_offers}> Test </button>
       <NavBar />
       <div className="mainPage_body">
         <h2 className="mainpage_introduction">
