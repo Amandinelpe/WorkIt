@@ -6,29 +6,30 @@ import { GetFiveOffers } from "../utils/getOffers";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
-import { GetAllJobs } from "../apis/jobApi";
+
 import "../styles/MainPage.css";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
-  const [job, setJob] = useState([]);
+
+  const [city, setCity] = useState("");
+  const [selectedJob, setSelectedJob] = useState("");
+  const [choosenDate, setChoosenDate] = useState("");
+  const [salary, setSalary] = useState(0);
+
+  /*   Will serve soon */
+  console.warn(choosenDate, "choosenDate");
+  console.warn(selectedJob, "selectedJob");
+  console.warn(city, "city");
+  console.warn(salary, "salary");
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
   };
 
-  const loadJobs = () => {
-    GetAllJobs().then((res) => {
-      setJob(res.data);
-    });
-  };
-
   useEffect(() => {
     getFiveOffers();
-    loadJobs();
   }, []);
-
-  console.warn(job, "job");
 
   return (
     <div className="mainPage">
@@ -38,11 +39,11 @@ const MainPage = () => {
           Comprendre ton histoire, ton parcours, ton projet, c'est ce qui nous
           motive
         </h2>
-        <SearchBar />
+        <SearchBar setSelectedJob={setSelectedJob} setCity={setCity} />
         <div className="filters_offers">
           <div className="mainPage_filters">
-            <SalaryBox />
-            <PublicationDateBox />
+            <SalaryBox salary={salary} setSalary={setSalary} />
+            <PublicationDateBox setDate={setChoosenDate} />
           </div>
           <div className="mainPage_offers">
             <div className="all_offers_titleblock">
