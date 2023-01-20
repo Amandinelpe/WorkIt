@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { resetPassword } from "../apis/resetPassword";
 import "../styles/ForgottenPassword.css";
 
 const ForgottenPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState();
-  const tempoSendEmail = (emailUser) => {
-    axios
-      .put("http://localhost:5000/api/user/resetPassword", {
-        email: emailUser,
-      })
+  const tempoSendEmail = () => {
+    resetPassword(email)
       .then((response) => {
         console.warn(response.data);
         setMessage({ ...response.data });

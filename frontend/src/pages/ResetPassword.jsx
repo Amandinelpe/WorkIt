@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { checkToken } from "../apis/checkToken";
+import { modifyPassword } from "../apis/modifyPassword";
 import BannierePartenaire from "../components/BannierePartenaire";
 import "../styles/ResetPassword.css";
 
@@ -13,8 +14,7 @@ const ResetPassword = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .post("http://localhost:5000/api/user/checkToken", { token })
+    checkToken(token)
       .then((response) => setEmail(response.data.user))
       .catch((error) => console.warn(error));
   }, [token]);
@@ -23,10 +23,7 @@ const ResetPassword = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios
-      .put(`http://localhost:5000/api/user/changePassword/${id}`, {
-        password,
-      })
+    modifyPassword(id, password)
       .then((response) => {
         setMessage(response.data);
         setTimeout(() => {
