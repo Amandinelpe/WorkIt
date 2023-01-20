@@ -5,7 +5,7 @@ const { validationResult } = require("express-validator");
 const argon2 = require("argon2");
 const nodemailer = require("nodemailer");
 const userModel = require("../models/userModel");
-const { jwtSign } = require("../middlewares/jwt");
+const { jwtSign, jwtVerify } = require("../helpers/jwt");
 
 const userController = {
   getAllUsers: (req, res, next) => {
@@ -145,9 +145,8 @@ const userController = {
         const message = {
           from: "olga_yasn@hotmail.com",
           to: email,
-          subject: "Your password reset link",
-          text: "Hello to myself!",
-          html: `<p>Hello! Did you forget your password ? Please follow the link below to reset your password</p> <a href="${process.env.FRONTEND_URL}/resetPassword/${token}" target="_blank">Reset password</a>`,
+          subject: "Changement mot de passe",
+          html: `<p>Salut! Tu as oublié ton mot de passe? Suis le lien ci-dessous</p> <a href="${process.env.FRONTEND_URL}/ResetPassword/${token}/${user.id}" target="_blank">Modifier le mot de passe</a>`,
         };
 
         userModel.updateOne(newData, user.id).then((result) => {
@@ -164,13 +163,46 @@ const userController = {
             console.warn("Message sent: %s", info.messageId);
             console.warn("Preview URL: %s", nodemailer.getTestMessageUrl(info));
             return res.status(200).send({
-              message: "email sent successfully please follow instructions",
+              message: "Email envoyé. Suis les instructions",
               preview: nodemailer.getTestMessageUrl(info),
             });
           });
         });
       });
     });
+  },
+  verifyToken: (req, res) => {
+    const { token } = req.body;
+
+    if (!token) {
+      return res.status(401).send("couldn't find temporary token");
+    }
+    const userInfo = jwtVerify(token);
+    if (!userInfo) {
+      return res.status(401).send("token expired or invalid please try again");
+    }
+    res.status(200).send({ message: "valid token", user: userInfo.email });
+  },
+
+  updatePassword: async (req, res, next) => {
+    const { id } = req.params;
+    const { password } = req.body;
+
+    try {
+      const hashedPassword = await argon2.hash(password);
+      const data = {
+        password: hashedPassword,
+        reset_token: null,
+      };
+      userModel.updateOne(data, id).then((result) => {
+        if (result.affectedRows === 0) {
+          return res.status(400).send("Erreur de changement de mot de passe");
+        }
+        return res.status(200).send("Mot de passe modifié");
+      });
+    } catch (err) {
+      return next(err);
+    }
   },
 };
 

@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "../styles/ForgottenPassword.css";
 
 const ForgottenPassword = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState();
+  const tempoSendEmail = (emailUser) => {
+    axios
+      .put("http://localhost:5000/api/user/resetPassword", {
+        email: emailUser,
+      })
+      .then((response) => {
+        console.warn(response.data);
+        setMessage({ ...response.data });
+        setTimeout(() => {
+          window.location.replace(response.data.preview);
+        }, 2000);
+      })
+      .catch((error) => console.warn(error));
+  };
+
   return (
     <div className="forgotten_password_block">
       <h1 className="forgotten_password_title"> Mot de passe oublié ? </h1>
@@ -16,14 +34,21 @@ const ForgottenPassword = () => {
             type="email"
             name="email"
             id="email"
-            placeholder="test@blabla.com"
+            placeholder="votre email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
-          <button className="forgotten_password_send_button" type="submit">
+          <button
+            className="forgotten_password_send_button"
+            type="button"
+            onClick={() => tempoSendEmail(email)}
+          >
             ENVOYER
           </button>
         </div>
+        {message && <h1>{message.message}</h1>}
       </form>
     </div>
   );
