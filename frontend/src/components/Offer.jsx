@@ -8,7 +8,8 @@ const Offer = ({ firm, date, title, logo, city, experience }) => {
   return (
     <div className="bloc_offer">
       <div className="offer_block_job">
-        <p id="text_entreprise">{firm}</p><br />
+        <p id="text_entreprise">{firm}</p>
+        <br />
         <p id="text_job">{title}</p>
         <div className="offer_filter">
           <p className="border_button">{experience}</p>

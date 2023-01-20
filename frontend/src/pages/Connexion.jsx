@@ -11,7 +11,7 @@ const Connexion = ({ user }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const { login, auth } = useContext(authContext);
-  console.log(user,)
+
   useEffect(() => {
     if (auth.data) {
       navigate("/Main");
@@ -53,12 +53,12 @@ const Connexion = ({ user }) => {
       <div className="connexion-candidat">
         <div className="title">
           <h1>Connecte toi</h1>
-          <h3>à ton espace personnel</h3>
+          <h3>à ton espace {user === "user" ? "personnel" : "consultant"}</h3>
         </div>
         <form
           name="connexion"
           method="post"
-          className={`connexion-form ${user}`}
+          className="connexion-form"
           onSubmit={handleSubmit}
         >
           <div className="connexion-input">
@@ -98,9 +98,7 @@ const Connexion = ({ user }) => {
             </h4>
           </div>
         </form>
-        <div>
-          <BannierePartenaire />
-        </div>
+        <div>{user === "user" && <BannierePartenaire />}</div>
       </div>
     </div>
   );
