@@ -28,6 +28,17 @@ a {
   backdrop-filter: blur(20px);
   border-radius: 60px;
 }
+.items.active {
+  font-size: 0.8rem;
+  padding: 16px 40px;
+  margin: 0 20px 0 5px;
+  color: white;
+  list-style-type: none;
+  background: #ff8150;
+  opacity: 0.9;
+  backdrop-filter: blur(20px);
+  border-radius: 60px;
+}
 
 .items:hover {
   background: #ff8150;

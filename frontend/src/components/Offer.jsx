@@ -18,7 +18,6 @@ const Offer = ({ firm, date, title, logo, city, experience }) => {
         <p id="text_date">{date}</p>
       </div>
       <div className="offer_block_details">
-        <p id="border_button_offer">Voir l'offre</p>
         <div
           onClick={() => setIsFavorite(!isFavorite)}
           onKeyDown=""
@@ -26,6 +25,7 @@ const Offer = ({ firm, date, title, logo, city, experience }) => {
         />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
+        <p id="border_button_offer">Voir l'offre</p>
     </div>
   );
 };
