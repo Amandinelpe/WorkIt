@@ -25,7 +25,7 @@ const Offer = ({ firm, date, title, logo, city, experience }) => {
         />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
-        <p id="border_button_offer">Voir l'offre</p>
+      <p id="border_button_offer">Voir l'offre</p>
     </div>
   );
 };

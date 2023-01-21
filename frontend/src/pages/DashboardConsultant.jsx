@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
@@ -29,7 +30,12 @@ const DashboardConsultant = () => {
   };
 
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <NavBar />
       <HelloButton />
       <div className="mydashboard_body">
@@ -39,7 +45,7 @@ const DashboardConsultant = () => {
       <div>
         <Footer />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

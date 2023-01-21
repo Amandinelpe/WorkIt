@@ -39,7 +39,7 @@
 .border_button {
   color: var(--purple-dark);
   border: 1px solid var(--purple-dark);
-  
+
   border-radius: 10px;
   padding: 1vh 2vw;
   margin-right: 5%;
