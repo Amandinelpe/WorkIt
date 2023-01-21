@@ -22,6 +22,7 @@
 .chat__mainHeader {
   display: flex;
   align-items: center;
+  width: 100%;
   height: 5vh;
   margin-top: 2vh;
 }
@@ -47,7 +48,7 @@
   color: #fff;
 }
 
-.message__chats p {
+.message__sender p {
   font-size: 13px;
   margin-left: 1vw;
 }
@@ -55,6 +56,7 @@
 .sender__name {
   text-align: right;
   margin-right: 1vw;
+  font-size: 13px;
 }
 
 .message__sender {
@@ -62,7 +64,7 @@
   max-width: 300px;
   padding: 10px;
   border-radius: 10px;
-  margin-left: 32vw;
+  margin-left: 31vw;
   font-size: 15px;
 }
 

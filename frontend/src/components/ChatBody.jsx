@@ -1,28 +1,12 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
-import ChatFooter from "./ChatFooter";
+import React from "react";
 import "../styles/ChatBody.css";
 
-const ChatBody = ({ socket }) => {
-  // const navigate = useNavigate();
-  const [chatMessages, setChatMessages] = useState([]);
-
-  // const handleOpenChat = () => {
-  //   navigate("/Messagerie");
-  //   window.location.reload();
-  // };
-
-  useEffect(() => {
-    socket.on("newMessage", (messages) => {
-      setChatMessages([...chatMessages, messages]);
-    });
-  }, [chatMessages]);
-
+const ChatBody = ({ socket, typingStatus, chatMessage, lastMessageRef }) => {
   return (
     <div className="chat_box_container">
       <div className="message__container">
-        {chatMessages.map((message) =>
+        {chatMessage.map((message) =>
           message.socketID === socket.id ? (
             <div className="message__chats" key={message.id}>
               <p className="sender__name">Vous</p>
@@ -32,7 +16,7 @@ const ChatBody = ({ socket }) => {
             </div>
           ) : (
             <div className="message__chats">
-              <p>{message.userName}Votre interlocuteur</p>
+              <p>{message.userName}Ton consultant</p>
               <div className="message__recipient">
                 <p>{message.message}</p>
               </div>
@@ -40,18 +24,18 @@ const ChatBody = ({ socket }) => {
           )
         )}
       </div>
-      <div className="chat_footer_body">
-        <ChatFooter socket={socket} />
+      <div className={lastMessageRef}>
+        <p>{typingStatus}</p>
       </div>
     </div>
   );
 };
 
 ChatBody.propTypes = {
-  socket: PropTypes.shape({
-    id: PropTypes.string,
-    on: PropTypes.func,
-  }).isRequired,
+  socket: PropTypes.objectOf.isRequired,
+  typingStatus: PropTypes.shape.isRequired,
+  chatMessage: PropTypes.arrayOf.isRequired,
+  lastMessageRef: PropTypes.objectOf.isRequired,
 };
 
 export default ChatBody;

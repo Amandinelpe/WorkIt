@@ -1,45 +1,67 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/ChatFooter.css";
 
-const ChatFooter = ({ socket }) => {
-  const [message, setMessage] = useState("");
-  // const { userName } = useContext(userContext);
+const ChatFooter = ({ socket, setTypingStatus }) => {
+  const [inputMessage, setInputMessage] = useState("");
 
   const handleSendMessage = (e) => {
     e.preventDefault();
     socket.emit("sendMessage", {
-      // userName,
       socketID: socket.id,
-      message,
+      text: inputMessage,
+      name: socket.id,
     });
-    setMessage("");
+    setInputMessage("");
   };
 
+  const handleChange = (e) => {
+    setInputMessage(e.target.value);
+  };
+
+  let timeOut;
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Entrer") {
+      clearTimeout(timeOut);
+      handleSendMessage(e);
+    } else {
+      socket.emit("typing", { typing: true });
+      clearTimeout(timeOut);
+      timeOut = setTimeout(() => {
+        socket.emit("typing", { typing: false });
+      }, 4000);
+    }
+  };
+
+  useEffect(() => {
+    socket.on("isTyping", (data) => setTypingStatus(data));
+  }, [socket]);
+
   return (
-    <div className="chat__footer">
-      <div className="message__status">
-        <p>Votre interlocuteur est en train d'écrire...</p>
-      </div>
+    <form className="chat__footer">
       <input
         type="text"
         placeholder="Ecrire un message"
         className="message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
+        value={inputMessage || ""}
+        onChange={handleChange}
+        onKeyDown={(e) => handleKeyDown(e)}
       />
       <button type="button" className="sendBtn" onClick={handleSendMessage}>
         Envoyer
       </button>
-    </div>
+    </form>
   );
 };
 
 ChatFooter.propTypes = {
   socket: PropTypes.shape({
     emit: PropTypes.func,
+    on: PropTypes.func,
     id: PropTypes.string,
   }).isRequired,
+  setTypingStatus: PropTypes.objectOf.isRequired,
 };
 
 export default ChatFooter;
