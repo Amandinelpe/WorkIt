@@ -24,9 +24,9 @@ const ForgottenPassword = () => {
   return (
     <motion.div
       className="forgotten_password_block"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
       <h1 className="forgotten_password_title"> Mot de passe oublié ? </h1>
