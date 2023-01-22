@@ -41,7 +41,6 @@ a {
 }
 
 .items:hover {
-  background: #ff8150;
   transform: scale(1.1);
 }
 
