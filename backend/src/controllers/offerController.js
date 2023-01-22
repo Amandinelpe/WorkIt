@@ -37,6 +37,36 @@ const offerController = {
       .then(([offers]) => res.status(200).send(offers))
       .catch((err) => next(err));
   },
+  getOffersByState: (req, res, next) => {
+    const where = [];
+    const { limit } = req.query;
+    if (req.query.city != null) {
+      where.push({
+        column: "firm_city",
+        value: req.query.city,
+        operator: "=",
+      });
+    }
+    if (req.query.job_id != null) {
+      where.push({
+        column: "job_id",
+        value: req.query.job_id,
+        operator: "=",
+      });
+    }
+    if (req.query.salary != null) {
+      where.push({
+        column: "salary",
+        value: req.query.salary,
+        operator: ">=",
+      });
+    }
+
+    offerModel
+      .findOffersByState(where, limit)
+      .then(([offers]) => res.status(200).send(offers))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = offerController;

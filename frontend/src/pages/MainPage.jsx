@@ -18,6 +18,7 @@ const MainPage = () => {
   const [selectedJob, setSelectedJob] = useState("");
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
+  /*   const [limit, setLimit] = useState(5); */
 
   /*   Will serve soon */
   console.warn(choosenDate, "choosenDate");

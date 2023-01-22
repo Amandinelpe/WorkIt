@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 const Offer = ({ firm, date, title, logo, city, experience }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const formatedDate = new Date(date).toLocaleDateString();
+
   return (
     <div className="bloc_offer">
       <div className="offer_block_job">
@@ -15,7 +17,7 @@ const Offer = ({ firm, date, title, logo, city, experience }) => {
           <p className="border_button">{experience}</p>
           <p className="border_button">{city}</p>
         </div>
-        <p id="text_date">{date}</p>
+        <p id="text_date">{formatedDate}</p>
       </div>
       <div className="offer_block_details">
         <div
