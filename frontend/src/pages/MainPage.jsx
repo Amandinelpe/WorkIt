@@ -18,7 +18,7 @@ const MainPage = () => {
   const [selectedJob, setSelectedJob] = useState("");
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
-  /*   const [limit, setLimit] = useState(5); */
+  const [limit, setLimit] = useState(5);
 
   /*   Will serve soon */
   console.warn(choosenDate, "choosenDate");
@@ -26,14 +26,15 @@ const MainPage = () => {
   console.warn(city, "city");
   console.warn(salary, "salary");
   console.warn(offers, "offers");
+  console.warn(setLimit);
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
   };
 
   const filterOffers = async () => {
-    await FilterOffer(city).then((res) => {
-      setOffers([res.data]);
+    await FilterOffer(city, selectedJob, salary, limit).then((res) => {
+      setOffers(res.data);
     });
   };
 
@@ -43,7 +44,7 @@ const MainPage = () => {
 
   useEffect(() => {
     filterOffers();
-  }, [city]);
+  }, [city, selectedJob, choosenDate, salary, limit]);
 
   return (
     <motion.div

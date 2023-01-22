@@ -64,7 +64,7 @@ const offerController = {
 
     offerModel
       .findOffersByState(where, limit)
-      .then(([offers]) => res.status(200).send(offers))
+      .then((offers) => res.status(200).send(offers))
       .catch((err) => next(err));
   },
 };
