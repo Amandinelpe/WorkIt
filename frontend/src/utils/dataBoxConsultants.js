@@ -7,7 +7,7 @@ const dataBoxConsultants = [
       "Modifier une entreprise",
       "Supprimer une entreprise",
     ],
-    link: "Annonces",
+    link: "entreprises",
   },
 
   {

@@ -14,4 +14,11 @@ const findOne = (id) => {
     .then(([firm]) => firm);
 };
 
-module.exports = { findAll, findOne };
+const findOfferByFirm = (id) => {
+  return db
+    .promise()
+    .query("SELECT COUNT(*) FROM offer WHERE firm_id = ?", [id])
+    .then(([number]) => number);
+};
+
+module.exports = { findAll, findOne, findOfferByFirm };
