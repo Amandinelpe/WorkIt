@@ -1,12 +1,25 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router-dom";
+import ChatFooter from "./ChatFooter";
 import "../styles/ChatBody.css";
 
-const ChatBody = ({ socket, typingStatus, chatMessage, lastMessageRef }) => {
+const ChatBody = ({ socket }) => {
+  // const navigate = useNavigate();
+  const [chatMessages, setChatMessages] = useState([]);
+  // const handleOpenChat = () => {
+  //   navigate("/Messagerie");
+  //   window.location.reload();
+  // };
+  useEffect(() => {
+    socket.on("newMessage", (messages) => {
+      setChatMessages([...chatMessages, messages]);
+    });
+  }, [chatMessages]);
   return (
     <div className="chat_box_container">
       <div className="message__container">
-        {chatMessage.map((message) =>
+        {chatMessages.map((message) =>
           message.socketID === socket.id ? (
             <div className="message__chats" key={message.id}>
               <p className="sender__name">Vous</p>
@@ -16,7 +29,7 @@ const ChatBody = ({ socket, typingStatus, chatMessage, lastMessageRef }) => {
             </div>
           ) : (
             <div className="message__chats">
-              <p>{message.userName}Ton consultant</p>
+              <p>{message.userName}Votre interlocuteur</p>
               <div className="message__recipient">
                 <p>{message.message}</p>
               </div>
@@ -24,18 +37,16 @@ const ChatBody = ({ socket, typingStatus, chatMessage, lastMessageRef }) => {
           )
         )}
       </div>
-      <div className={lastMessageRef}>
-        <p>{typingStatus}</p>
+      <div className="chat_footer_body">
+        <ChatFooter socket={socket} />
       </div>
     </div>
   );
 };
-
 ChatBody.propTypes = {
-  socket: PropTypes.objectOf.isRequired,
-  typingStatus: PropTypes.shape.isRequired,
-  chatMessage: PropTypes.arrayOf.isRequired,
-  lastMessageRef: PropTypes.objectOf.isRequired,
+  socket: PropTypes.shape({
+    id: PropTypes.string,
+    on: PropTypes.func,
+  }).isRequired,
 };
-
 export default ChatBody;
