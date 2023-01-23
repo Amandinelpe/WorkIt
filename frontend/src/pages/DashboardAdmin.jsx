@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import NavBar from "../components/NavBar";
 import BoxAdmin from "../components/BoxAdmin";
+import HelloButton from "../components/HelloButton";
 import Footer from "../components/Footer";
 import "../styles/BoxAdmin.css";
 import MyProfile from "../components/MyProfile";
@@ -25,6 +26,7 @@ const DashboardAdmin = () => {
   return (
     <div>
       <NavBar />
+      <HelloButton />
       <div className="mydashboardadmin_body">
         <BoxAdmin handleContent={handleContent} />
       </div>

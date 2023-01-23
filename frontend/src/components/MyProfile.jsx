@@ -2,8 +2,19 @@ import React from "react";
 import RadioButton from "./RadioButton";
 import "../styles/MyProfile.css";
 import dataMyProfile from "../utils/dataMyProfile";
+import { GetAllJobs } from "../utils/getAllJobs";
 
 const MyProfile = () => {
+  const [jobs, setJobs] = React.useState([]);
+
+  const getAllJobs = async () => {
+    setJobs(await GetAllJobs());
+  };
+
+  React.useEffect(() => {
+    getAllJobs();
+  }, []);
+
   return (
     <div className="myProfile">
       <div className="flex flex-fd-column flex-ai-center flex-jc-center">
@@ -88,11 +99,13 @@ const MyProfile = () => {
                 <div className="flex flex-fd-column flex-gap-3vh">
                   <label>
                     Poste actuel ou dernier poste occupé
-                    <input
-                      type="text"
-                      name="poste-actuel"
-                      className="large-input"
-                    />
+                    <select name="poste-actuel">
+                      {jobs.map((job) => (
+                        <option key={job.id} value={job.name}>
+                          {job.job_title}
+                        </option>
+                      ))}
+                    </select>
                   </label>
                   <div>
                     <p className="label">Disponibilité</p>
