@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import "../styles/Offer.css";
 
 const OfferEmpty = () => {
@@ -7,9 +7,8 @@ const OfferEmpty = () => {
       <div className="offer_block_job">
         <p id="text_entreprise">Aucune offre trouvée</p>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default OfferEmpty
+export default OfferEmpty;
