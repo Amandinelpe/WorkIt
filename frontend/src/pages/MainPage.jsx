@@ -1,8 +1,10 @@
 import { React, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import OfferEmpty from "@components/OfferEmpty";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import { GetFiveOffers } from "../utils/getOffers";
+import { FilterOffer } from "../apis/offerApi";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
@@ -11,28 +13,33 @@ import "../styles/MainPage.css";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
-
   const [city, setCity] = useState("");
   const [selectedJob, setSelectedJob] = useState("");
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
-
-  /*   Will serve soon */
-  console.warn(choosenDate, "choosenDate");
-  console.warn(selectedJob, "selectedJob");
-  console.warn(city, "city");
-  console.warn(salary, "salary");
-
-  const getFiveOffers = async () => {
-    setOffers(await GetFiveOffers());
+  const [limit, setLimit] = useState(5);
+  const handleLimit = () => {
+    setLimit(limit + 5);
   };
 
+  const filterOffers = async () => {
+    await FilterOffer(city, selectedJob, salary, choosenDate, limit).then(
+      (res) => {
+        setOffers(res.data);
+      }
+    );
+  };
   useEffect(() => {
-    getFiveOffers();
-  }, []);
+    filterOffers();
+  }, [city, selectedJob, choosenDate, salary, limit]);
 
   return (
-    <div className="mainPage">
+    <motion.div
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <NavBar />
       <div className="mainPage_body">
         <h2 className="mainpage_introduction">
@@ -50,10 +57,26 @@ const MainPage = () => {
               <h2 className="all_offers_title">Les offres du moment</h2>
             </div>
             <div className="offers_body">
-              {offers.map((offer) => (
-                <Offer firm={offer.firm} date={offer.date} />
-              ))}
-              <button type="button" className="all_offres_button">
+              {offers.length === 0 ? (
+                <OfferEmpty />
+              ) : (
+                offers.map((offer) => (
+                  <Offer
+                    firm={offer.name}
+                    date={offer.date}
+                    title={offer.title}
+                    logo={offer.logo_url}
+                    city={offer.city}
+                    experience={offer.experience}
+                    id={offer.id}
+                  />
+                ))
+              )}
+              <button
+                type="button"
+                className="all_offres_button"
+                onClick={handleLimit}
+              >
                 {" "}
                 Voir plus d'offres{" "}
               </button>
@@ -62,7 +85,7 @@ const MainPage = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 

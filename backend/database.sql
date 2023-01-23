@@ -157,6 +157,24 @@ CREATE TABLE `state_offer` (
     )
 );
 
+CREATE TABLE `spontaneous_application` (
+	`id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`job_id` int NOT NULL,
+	`application_state_id` int NOT NULL,
+    `creation_date` DATETIME NOT NULL,
+	PRIMARY KEY (
+        `id`
+    )
+);
+
+CREATE TABLE `application_state` (
+	`id` INT auto_increment NOT NULL,
+	`name` varchar(100) NOT NULL,
+	PRIMARY KEY (
+        `id`
+    )
+);
 
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
@@ -191,16 +209,58 @@ REFERENCES `state_offer` (`id`);
 
 ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_offer_id` FOREIGN KEY(`offer_id`)
 REFERENCES `offer` (`id`);
-
 ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_user_id` FOREIGN KEY(`user_id`)
 REFERENCES `user` (`id`);
+
+ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_job_id` FOREIGN KEY(`job_id`)
+REFERENCES `job` (`id`);
+ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_state_id` FOREIGN KEY(`application_state_id`)
+REFERENCES `application_state` (`id`);
 
 INSERT INTO role (status) VALUES('user');
 INSERT INTO role (status) VALUES('consultant');
 INSERT INTO role (status) VALUES('admin');
 
-
-INSERT INTO job (category, job_title) VALUES ('Technologies','Développeur Back End'), ('Technologies','Développeur Front End'), ('Technologies','Développeur Full Stack'), ('Technologies','DevOps'), ('Technologies','Lead technique'), ('Technologies','Architecte Infrastructure'), ('Technologies','Scrum master'), ('Technologies','Product owner'), ('Technologies','Product Manager'), ('Technologies','Ingénieur Test'), ('Technologies','UX / UI designer'),  ('Technologies','Administrateur Système  Réseaux'), ('Technologies','Ingénieur Système Cloud'),('Technologies','Architecte Logiciel'),('Technologies','Ingénieur Hardware'), ('Technologies','Analyste fonctionnel / AMOA'), ('Technologies','Intégrateur Web'), ('Technologies','Ingénieur Logiciel Embarqué'), ('Technologies','Technicien support'), ('Management / Marketing','Directeur du Système d Informations'), ('Management / Marketing','Directeur / chef de projet'), ('Management / Marketing','Directeur technique / CTO'), ('Management / Marketing','Responsable de la Sécurité du Système Informatique'), ('Management / Marketing','Directeur Marketing'),('Management / Marketing','Service Delivery Manager'),('Management / Marketing','Customer Success Manager'), ('Management / Marketing','Chief Operating Officer'), ('Management / Marketing','Business Developper'), ('Management / Marketing','Growth Hacker'), ('Management / Marketing','Expert SEO Trafic content Manager'), ('Management / Marketing','Chef de projet Web'), ('DATA','Data Architect'), ('DATA','Data Engineer'), ('DATA','Data Analyst'), ('DATA','Data Scientist'), ('Ressources humaines','Consultant en recrutement IT'), ('Ressources humaines','Recruteur tech');
+INSERT INTO job (category, job_title)
+VALUES ('Technologies','Développeur Back End'),
+       ('Technologies','Développeur Front End'),
+       ('Technologies','Développeur Full Stack'),
+       ('Technologies','DevOps'),
+       ('Technologies','Lead technique'),
+       ('Technologies','Architecte Infrastructure'),
+       ('Technologies','Scrum master'),
+       ('Technologies','Product owner'),
+       ('Technologies','Product Manager'),
+       ('Technologies','Ingénieur Test'),
+       ('Technologies','UX / UI designer'),
+       ('Technologies','Administrateur Système  Réseaux'),
+       ('Technologies','Ingénieur Système Cloud'),
+       ('Technologies','Architecte Logiciel'),
+       ('Technologies','Ingénieur Hardware'),
+       ('Technologies','Analyste fonctionnel / AMOA'),
+       ('Technologies','Intégrateur Web'),
+       ('Technologies','Ingénieur Logiciel Embarqué'),
+       ('Technologies','Technicien support'),
+       ('Management / Marketing','Directeur du Système d Informations'),
+       ('Management / Marketing','Directeur / chef de projet'),
+       ('Management / Marketing','Directeur technique / CTO'),
+       ('Management / Marketing','Responsable de la Sécurité du Système Informatique'),
+       ('Management / Marketing','Directeur Marketing'),
+       ('Management / Marketing','Service Delivery Manager'),
+       ('Management / Marketing','Customer Success Manager'),
+       ('Management / Marketing','Chief Operating Officer'),
+       ('Management / Marketing','Business Developper'),
+       ('Management / Marketing','Growth Hacker'),
+       ('Management / Marketing','Expert SEO Trafic content Manager'),
+       ('Management / Marketing','Chef de projet Web'),
+       ('DATA','Data Architect'),
+       ('DATA','Data Engineer'),
+       ('DATA','Data Analyst'),
+       ('DATA','Data Scientist'),
+       ('Ressources humaines','Consultant en recrutement IT'),
+       ('Ressources humaines','Recruteur tech');
 
 INSERT INTO experience (experience) VALUES
      ('Debutant'),
@@ -276,3 +336,36 @@ INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,post
 	 (1,'femme','Josette','Colin','josettecol@gmail.com','Nantes',44000,'FRANCE','5 rue du temple','0640899678',1,NULL,NULL,NULL,'chomage',3,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,7,NULL,NULL),
 	 (1,'homme','Bertrand','Molina','btr@gmail.com','soustons',40140,'FRANCE','8 rue des pins','0558411032',1,NULL,NULL,NULL,'boulanger',7,NULL,NULL,1,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,8,NULL,NULL),
      (1,'homme','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,1,NULL,1,NULL,NULL);
+
+INSERT INTO externatic.application_state (id, name) VALUES
+    (1, 'En attente'),
+    (2, 'En cours de traitement'),
+    (3, 'Refusée'),
+    (4, 'Acceptée');
+
+INSERT INTO externatic.`spontaneous_application` (`user_id`,`job_id`,`application_state_id`, `creation_date` )
+VALUES
+  (3,23,1,"2022-08-25 20:53:44"),
+  (3,13,3,"2022-09-09 03:48:58"),
+  (3,3,3,"2023-01-20 16:11:19"),
+  (4,15,2,"2022-12-31 03:07:01"),
+  (2,8,4,"2022-03-24 01:14:46"),
+  (4,11,3,"2022-09-18 07:58:06"),
+  (2,6,2,"2022-11-15 18:23:07"),
+  (4,21,3,"2022-08-13 16:00:40"),
+  (4,13,3,"2022-09-10 20:11:29"),
+  (2,2,1,"2022-04-16 21:43:28"),
+  (2,33,3,"2022-03-19 20:36:33"),
+  (2,12,3,"2022-05-20 01:48:36"),
+  (2,10,2,"2022-03-16 11:30:18"),
+  (1,34,2,"2022-07-22 07:36:14"),
+  (3,24,3,"2022-11-13 03:30:59"),
+  (3,30,1,"2022-04-03 01:40:25"),
+  (2,33,3,"2022-05-28 13:09:14"),
+  (2,9,2,"2022-08-21 14:19:17"),
+  (2,4,3,"2022-02-16 17:14:59"),
+  (2,10,2,"2022-09-24 19:13:00");
+
+-- Test Actualiser
+-- INSERT INTO externatic.`spontaneous_application` (`user_id`,`job_id`,`application_state_id`, `creation_date` )
+-- VALUES (3,23,1,"2024-08-25 20:53:44");

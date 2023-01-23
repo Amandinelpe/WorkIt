@@ -1,0 +1,24 @@
+.all_offres_titleblock {
+  color: var(--white);
+  background-color: var(--purple-light);
+  height: 12vh;
+  border-radius: 50px 50px 0 0;
+}
+
+h2 .all_offres_title {
+  padding-bottom: 1vh;
+}
+
+.all_offres_button {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 3px 3px rgb(147 169 235 / 50%);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-family: var(--text-font-family-jost);
+  width: 15vw;
+  background-color: var(--white);
+  color: var(--purple-dark);
+  cursor: pointer;
+  margin-bottom: 2vh;
+}

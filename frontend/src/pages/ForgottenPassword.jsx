@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { resetPassword } from "../apis/resetPassword";
 import "../styles/ForgottenPassword.css";
 
@@ -18,7 +19,13 @@ const ForgottenPassword = () => {
   };
 
   return (
-    <div className="forgotten_password_block">
+    <motion.div
+      className="forgotten_password_block"
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <h1 className="forgotten_password_title"> Mot de passe oublié ? </h1>
       <form className="forgotten_password_form">
         <h2>
@@ -47,7 +54,7 @@ const ForgottenPassword = () => {
         </div>
         {message && <h1>{message.message}</h1>}
       </form>
-    </div>
+    </motion.div>
   );
 };
 

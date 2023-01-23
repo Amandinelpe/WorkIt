@@ -1,4 +1,6 @@
 // eslint-disable-next-line no-unused-vars
+import axios from "axios";
+import { motion } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { checkToken } from "../apis/checkToken";
@@ -34,7 +36,12 @@ const ResetPassword = () => {
   };
 
   return (
-    <div>
+    <motion.div
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="reset_password">
         <div className="reset_password_title">
           <h1>Change ton mot de passe</h1>
@@ -78,7 +85,7 @@ const ResetPassword = () => {
           <BannierePartenaire />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
