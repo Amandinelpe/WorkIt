@@ -15,7 +15,7 @@ const ResetPassword = () => {
 
   useEffect(() => {
     axios
-      .post("http://localhost:5000/api/user/checkToken", { token })
+      .post("http://localhost:3001/api/user/checkToken", { token })
       .then((response) => setEmail(response.data.user))
       .catch((error) => console.warn(error));
   }, [token]);
@@ -25,7 +25,7 @@ const ResetPassword = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(`http://localhost:5000/api/user/changePassword/${id}`, {
+      .put(`http://localhost:3001/api/user/changePassword/${id}`, {
         password,
       })
       .then((response) => {
