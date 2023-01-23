@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GetOffers } from "../utils/getOffers";
 import Offer from "./Offer";
+import "../styles/AnnoncesConsultant.css";
 import StateBox from "./StateBox";
 
 const AnnoncesConsultant = () => {

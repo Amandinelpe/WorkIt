@@ -16,7 +16,10 @@ import ForgottenPassword from "./pages/ForgottenPassword";
 import ResetPassword from "./pages/ResetPassword";
 import ProtectedRouteUser from "./context/ProtectedRouteUser";
 import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
+// import ProtectedRouteAdmin from "./context/ProtectedRouteAdmin";
 import "@progress/kendo-theme-default/dist/all.css";
+import DashboardAdmin from "./pages/DashboardAdmin";
+
 import "./App.css";
 
 const App = () => {
@@ -55,6 +58,14 @@ const App = () => {
               <ProtectedRouteConsultant>
                 <DashboardConsultant />
               </ProtectedRouteConsultant>
+            }
+          />
+          <Route
+            path="/DashboardAdmin"
+            element={
+              // <ProtectedRouteAdmin>
+              <DashboardAdmin />
+              // </ProtectedRouteAdmin>
             }
           />
           <Route path="/CreateProfile" element={<CreateProfile />} />

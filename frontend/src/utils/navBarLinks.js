@@ -1,4 +1,7 @@
-export const navBarSignIn = [{ id: 1, name: "S'identifier", link: "/" }];
+export const navBarSignIn = [
+  { id: 1, name: "Accueil", link: "/Main" },
+  { id: 2, name: "S'identifier", link: "/" },
+];
 
 export const navBarUser = [
   { id: 1, name: "Recherche", link: "/Main" },

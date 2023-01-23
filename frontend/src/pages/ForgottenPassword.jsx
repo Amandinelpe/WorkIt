@@ -8,7 +8,7 @@ const ForgottenPassword = () => {
   const [message, setMessage] = useState();
   const tempoSendEmail = (emailUser) => {
     axios
-      .put("http://localhost:5000/api/user/resetPassword", {
+      .put("http://localhost:3001/api/user/resetPassword", {
         email: emailUser,
       })
       .then((response) => {

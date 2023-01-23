@@ -70,7 +70,13 @@ const offerController = {
         operator: ">=",
       });
     }
-
+    if (req.query.date != null) {
+      where.push({
+        column: "date",
+        value: req.query.date,
+        operator: ">=",
+      });
+    }
     offerModel
       .findOffersByState(where, limit)
       .then((offers) => res.status(200).send(offers))

@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import OfferEmpty from "@components/OfferEmpty";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
@@ -12,27 +13,22 @@ import "../styles/MainPage.css";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
-
   const [city, setCity] = useState("");
   const [selectedJob, setSelectedJob] = useState("");
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
   const [limit, setLimit] = useState(5);
-
-  /*   Will serve soon */
-  console.warn(choosenDate, "choosenDate");
-  console.warn(selectedJob, "selectedJob");
-  console.warn(city, "city");
-  console.warn(salary, "salary");
-  console.warn(offers, "offers");
-  console.warn(setLimit);
-
-  const filterOffers = async () => {
-    await FilterOffer(city, selectedJob, salary, limit).then((res) => {
-      setOffers(res.data);
-    });
+  const handleLimit = () => {
+    setLimit(limit + 5);
   };
 
+  const filterOffers = async () => {
+    await FilterOffer(city, selectedJob, salary, choosenDate, limit).then(
+      (res) => {
+        setOffers(res.data);
+      }
+    );
+  };
   useEffect(() => {
     filterOffers();
   }, [city, selectedJob, choosenDate, salary, limit]);
@@ -61,18 +57,26 @@ const MainPage = () => {
               <h2 className="all_offers_title">Les offres du moment</h2>
             </div>
             <div className="offers_body">
-              {offers.map((offer) => (
-                <Offer
-                  firm={offer.name}
-                  date={offer.date}
-                  title={offer.title}
-                  logo={offer.logo_url}
-                  city={offer.city}
-                  experience={offer.experience}
-                  id={offer.id}
-                />
-              ))}
-              <button type="button" className="all_offres_button">
+              {offers.length === 0 ? (
+                <OfferEmpty />
+              ) : (
+                offers.map((offer) => (
+                  <Offer
+                    firm={offer.name}
+                    date={offer.date}
+                    title={offer.title}
+                    logo={offer.logo_url}
+                    city={offer.city}
+                    experience={offer.experience}
+                    id={offer.id}
+                  />
+                ))
+              )}
+              <button
+                type="button"
+                className="all_offres_button"
+                onClick={handleLimit}
+              >
                 {" "}
                 Voir plus d'offres{" "}
               </button>
