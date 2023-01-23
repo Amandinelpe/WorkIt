@@ -1,44 +1,56 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import "../styles/Modal.css";
 
-const OfferDetail = ({ isModalOpen, setIsModalOpen }) => {
-  if (!isModalOpen) {
+const OfferDetail = ({ show, onClose }) => {
+  if (!show) {
     return null;
   }
-  const postuler = () => {};
-  const ajouter = () => {};
 
-  return (
-    <div className="modalBox">
-      <h1> Titre de l'offre </h1>
-      <div>
-        <p> Lieu</p>
-        <p> Date de publication</p>
-        <p> Salaire</p>
-        <p> Entreprise</p>
-        <p> Description entreprise</p>
-        <p> Description</p>
-        <p>Soft skills</p>
-        <p>Hard skills</p>
-        <p>Experience</p>
-        <button type="submit" onClick={postuler}>
-          Postuler
-        </button>
-        <button type="submit" onClick={ajouter}>
-          Ajouter à ses coups de coeur
-        </button>
-        <button type="submit" onClick={setIsModalOpen}>
-          {" "}
-          Fermer
-        </button>
+  return ReactDOM.createPortal(
+    <div
+      className="modalBox"
+      onClick={onClose}
+      onKeyDown={onClose}
+      role="textbox"
+      tabIndex={0}
+    >
+      <div
+        role="textbox"
+        className="modalContent"
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
+        tabIndex={0}
+      >
+        <div className="modal-header">
+          <h1> Titre de l'offre </h1>
+        </div>
+        <div className="modal-body">
+          <p> Lieu</p>
+          <p> Date de publication</p>
+          <p> Salaire</p>
+          <p> Entreprise</p>
+          <p> Description entreprise</p>
+          <p> Description</p>
+          <p>Soft skills</p>
+          <p>Hard skills</p>
+          <p>Experience</p>
+        </div>
+        <div className="modal-footer">
+          <button onClick={onClose} type="submit">
+            {" "}
+            Fermer
+          </button>
+        </div>
       </div>
-    </div>
+    </div>,
+    document.getElementById("root")
   );
 };
 
 OfferDetail.propTypes = {
-  isModalOpen: PropTypes.func.isRequired,
-  setIsModalOpen: PropTypes.func.isRequired,
+  show: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 export default OfferDetail;

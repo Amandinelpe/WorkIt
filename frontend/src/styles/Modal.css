@@ -1,11 +1,29 @@
 .modalBox {
   position: fixed;
-  left: O;
+  left: -200;
   top: O;
-  right: 0;
   bottom: 0;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.modalContent {
+  width: 100vw;
+  background-color: #fff;
+}
+.modalHeader,
+.modalFooter {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.modal-title {
+  margin: 0;
+  font-size: 18px;
+}
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }

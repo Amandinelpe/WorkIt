@@ -3,15 +3,13 @@ import "../styles/Offer.css";
 import PropTypes from "prop-types";
 import OfferDetail from "../modals/OfferDetail";
 
-const Offer = ({ firm, date, title, logo, city }) => {
+const Offer = ({ firm, date, title, logo, city, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [show, setShow] = useState(false);
 
   const formatedDate = new Date(date).toLocaleDateString();
 
-  const deployModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
+  console.warn(id, "id");
 
   return (
     <div className="bloc_offer">
@@ -30,13 +28,17 @@ const Offer = ({ firm, date, title, logo, city }) => {
           onKeyDown=""
           role="presentation"
         />
+        <OfferDetail show={show} onClose={() => setShow(false)} />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
       <div>
-        <button type="submit" id="border_button_offer" onClick={deployModal}>
+        <button
+          type="submit"
+          id="border_button_offer"
+          onClick={() => setShow(true)}
+        >
           Voir l'offre
         </button>
-        <OfferDetail isModalOpen={isModalOpen} setIsModalOpen={deployModal} />
       </div>
     </div>
   );
@@ -48,6 +50,7 @@ Offer.propTypes = {
   logo: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   firm: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Offer;
