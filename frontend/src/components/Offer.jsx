@@ -5,19 +5,21 @@ import PropTypes from "prop-types";
 const Offer = ({ firm, date, title, logo, city, experience }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const formatedDate = new Date(date).toLocaleDateString();
+
   return (
     <div className="bloc_offer">
       <div className="offer_block_job">
         <p id="text_entreprise">{firm}</p>
+        <br />
         <p id="text_job">{title}</p>
         <div className="offer_filter">
           <p className="border_button">{experience}</p>
           <p className="border_button">{city}</p>
         </div>
-        <p id="text_date">{date}</p>
+        <p id="text_date">{formatedDate}</p>
       </div>
       <div className="offer_block_details">
-        <p id="border_button_offer">Voir l'offre</p>
         <div
           onClick={() => setIsFavorite(!isFavorite)}
           onKeyDown=""
@@ -25,6 +27,7 @@ const Offer = ({ firm, date, title, logo, city, experience }) => {
         />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
+      <p id="border_button_offer">Voir l'offre</p>
     </div>
   );
 };
