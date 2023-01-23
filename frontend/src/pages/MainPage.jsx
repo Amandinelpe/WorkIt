@@ -9,6 +9,7 @@ import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
 
 import "../styles/MainPage.css";
+import OfferEmpty from "@components/OfferEmpty";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
@@ -32,7 +33,7 @@ const MainPage = () => {
       setOffers(res.data);
     });
   };
-
+  console.log(offers,"offers");
   useEffect(() => {
     filterOffers();
   }, [city, selectedJob, choosenDate, salary, limit]);
@@ -61,7 +62,7 @@ const MainPage = () => {
               <h2 className="all_offers_title">Les offres du moment</h2>
             </div>
             <div className="offers_body">
-              {offers.map((offer) => (
+              { offers.length=== 0 ? <OfferEmpty/> : offers.map((offer) => (
                 <Offer
                   firm={offer.name}
                   date={offer.date}
