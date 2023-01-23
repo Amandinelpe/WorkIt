@@ -1,11 +1,17 @@
 import { React, useState } from "react";
 import "../styles/Offer.css";
 import PropTypes from "prop-types";
+import OfferDetail from "../modals/OfferDetail";
 
-const Offer = ({ firm, date, title, logo, city, experience }) => {
+const Offer = ({ firm, date, title, logo, city }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const formatedDate = new Date(date).toLocaleDateString();
+
+  const deployModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <div className="bloc_offer">
@@ -14,7 +20,6 @@ const Offer = ({ firm, date, title, logo, city, experience }) => {
         <br />
         <p id="text_job">{title}</p>
         <div className="offer_filter">
-          <p className="border_button">{experience}</p>
           <p className="border_button">{city}</p>
         </div>
         <p id="text_date">{formatedDate}</p>
@@ -27,7 +32,12 @@ const Offer = ({ firm, date, title, logo, city, experience }) => {
         />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
-      <p id="border_button_offer">Voir l'offre</p>
+      <div>
+        <button type="submit" id="border_button_offer" onClick={deployModal}>
+          Voir l'offre
+        </button>
+        <OfferDetail isModalOpen={isModalOpen} setIsModalOpen={deployModal} />
+      </div>
     </div>
   );
 };
@@ -37,7 +47,6 @@ Offer.propTypes = {
   title: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  experience: PropTypes.string.isRequired,
   firm: PropTypes.string.isRequired,
 };
 
