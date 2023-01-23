@@ -109,3 +109,19 @@
 .k-filter-row > .k-table-td {
   border: unset;
 }
+
+.grid_candidature span.red {
+  color: var(--red);
+}
+
+.grid_candidature span.grey {
+  color: var(--grey-light);
+}
+
+.grid_candidature span.green {
+  color: var(--green);
+}
+
+.grid_candidature span.orange {
+  color: var(--orange);
+}

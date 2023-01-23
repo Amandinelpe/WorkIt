@@ -46,6 +46,32 @@ const cellNomPrenom = (props) => {
   );
 };
 
+const cellEtat = (props) => {
+  let className = "";
+
+  switch (props.dataItem.application_state_id) {
+    case 1:
+      className = "grey";
+      break;
+    case 2:
+      className = "orange";
+      break;
+    case 3:
+      className = "red";
+      break;
+    case 4:
+      className = "green";
+      break;
+    default:
+      break;
+  }
+  return (
+    <td>
+      <span className={className}>{props.dataItem.name}</span>
+    </td>
+  );
+};
+
 const Candidature = () => {
   const [page, setPage] = React.useState(initialDataState);
   const [spontaneousApplications, setSpontaneousApplications] = useState([]);
@@ -109,7 +135,7 @@ const Candidature = () => {
                     width="200px"
                   />
                   <GridColumn title="Traitement" cell={cellTraitement} />
-                  <GridColumn field="name" title="Etat" />
+                  <GridColumn title="Etat" cell={cellEtat} />
                 </Grid>
               </IntlProvider>
             </LocalizationProvider>

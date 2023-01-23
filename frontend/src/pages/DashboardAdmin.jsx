@@ -4,7 +4,7 @@ import BoxAdmin from "../components/BoxAdmin";
 import HelloButton from "../components/HelloButton";
 import Footer from "../components/Footer";
 import "../styles/BoxAdmin.css";
-import MyProfile from "../components/MyProfile";
+import FicheCandidat from "../components/FicheCandidat";
 import Dashboard from "../components/Dashboard";
 
 const DashboardAdmin = () => {
@@ -16,8 +16,8 @@ const DashboardAdmin = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      case "my-profile":
-        return <MyProfile />;
+      case "fiche-candidat":
+        return <FicheCandidat />;
       default:
         return <Dashboard />;
     }

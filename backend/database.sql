@@ -300,11 +300,10 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 	 ('absolue');
 
      INSERT INTO state_offer (name) VALUES
-	 ('En traitement'),
-	 ('Pourvu'),
-	 ('Clôturé'),
-	 ('Suspendu'),
-	 ('Abandonné');
+	('En attente'),
+    ('En cours de traitement'),
+    ('Refusée'),
+    ('Acceptée');
 
      INSERT INTO contract (id, contract_type) VALUES(1, 'CDI'), (2, 'CDD'), (3, 'Stage'), (4, 'Contrat de professionnalisation'), (5, 'Contrat d apprentissage');
 
