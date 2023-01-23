@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
@@ -17,6 +18,7 @@ const MainPage = () => {
   const [selectedJob, setSelectedJob] = useState("");
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
+  const [limit, setLimit] = useState(5);
 
   /*   Will serve soon */
   console.warn(choosenDate, "choosenDate");
@@ -24,14 +26,15 @@ const MainPage = () => {
   console.warn(city, "city");
   console.warn(salary, "salary");
   console.warn(offers, "offers");
+  console.warn(setLimit);
 
   const getFiveOffers = async () => {
     setOffers(await GetFiveOffers());
   };
 
   const filterOffers = async () => {
-    await FilterOffer(city).then((res) => {
-      setOffers([res.data]);
+    await FilterOffer(city, selectedJob, salary, limit).then((res) => {
+      setOffers(res.data);
     });
   };
 
@@ -41,10 +44,15 @@ const MainPage = () => {
 
   useEffect(() => {
     filterOffers();
-  }, [city]);
+  }, [city, selectedJob, choosenDate, salary, limit]);
 
   return (
-    <div className="mainPage">
+    <motion.div
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <NavBar />
       <div className="mainPage_body">
         <h2 className="mainpage_introduction">
@@ -82,7 +90,7 @@ const MainPage = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 
