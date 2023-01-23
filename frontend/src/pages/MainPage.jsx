@@ -21,7 +21,7 @@ const MainPage = () => {
   const handleLimit = () => {
     setLimit(limit + 5);
   };
- 
+
   const filterOffers = async () => {
     await FilterOffer(city, selectedJob, salary, choosenDate, limit).then(
       (res) => {
