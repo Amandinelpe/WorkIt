@@ -35,11 +35,11 @@ h2.salary_title {
 }
 
 .minimal_salary {
-  color: var(--black);
+  color: var(--bleu);
   font-weight: normal;
 }
 
 .amount_salary {
-  color: var(--black);
+  color: var(--bleu);
   font-weight: bold;
 }
