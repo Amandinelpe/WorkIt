@@ -24,7 +24,7 @@
 
 .body_box {
   background-color: var(--white);
-  height: 25vh;
+  height: 32vh;
   width: 20vw;
   display: flex;
   justify-content: center;
