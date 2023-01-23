@@ -58,7 +58,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  box-shadow: 6px 6px 2px 1px rgb(0 0 255 / 20%);
   gap: 20px;
 }
 
