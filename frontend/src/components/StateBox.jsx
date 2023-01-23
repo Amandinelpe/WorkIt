@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import stateOffer from "../utils/stateOffer";
 import "../styles/PublicationDateBox.css";
 
-const StateBox = ({ setState }) => {
+const StateBox = ({ setFilterOffer, filterOffer }) => {
   return (
     <div className="publication_date_box">
       <div className="date_titleblock">
@@ -11,17 +11,22 @@ const StateBox = ({ setState }) => {
       </div>
       <div className="date_body">
         <fieldset>
-          {stateOffer.map((state) => (
+          {stateOffer.map((etat) => (
             <div>
               <input
                 className="input_date"
                 type="radio"
-                id={state.id}
-                name={state.name}
-                value={state.value}
-                onChange={(e) => setState(e.target.id)}
+                id={etat.id}
+                name={etat.name}
+                value={etat.value}
+                onChange={(e) =>
+                  setFilterOffer({
+                    ...filterOffer,
+                    [e.target.name]: Number(e.target.id),
+                  })
+                }
               />
-              <label htmlFor={state.id}>{state.value}</label>
+              <label htmlFor={etat.id}>{etat.value}</label>
             </div>
           ))}
         </fieldset>
@@ -33,5 +38,6 @@ const StateBox = ({ setState }) => {
 export default StateBox;
 
 StateBox.propTypes = {
-  setState: PropTypes.func.isRequired,
+  setFilterOffer: PropTypes.func.isRequired,
+  filterOffer: PropTypes.string.isRequired,
 };

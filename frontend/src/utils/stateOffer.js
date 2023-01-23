@@ -1,32 +1,32 @@
 const stateOffer = [
   {
     id: 0,
-    name: "statechoice",
+    name: "state",
     value: "Tous",
   },
   {
     id: 1,
-    name: "statechoice",
+    name: "state",
     value: "En traitements",
   },
   {
     id: 2,
-    name: "statechoice",
+    name: "state",
     value: "Pourvus",
   },
   {
     id: 3,
-    name: "statechoice",
+    name: "state",
     value: "Clôturés",
   },
   {
     id: 4,
-    name: "statechoice",
+    name: "state",
     value: "Suspendus",
   },
   {
     id: 5,
-    name: "statechoice",
+    name: "state",
     value: "Abandonnés",
   },
 ];
