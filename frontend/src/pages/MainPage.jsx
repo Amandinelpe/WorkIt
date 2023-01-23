@@ -13,19 +13,21 @@ import "../styles/MainPage.css";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
-
   const [city, setCity] = useState("");
   const [selectedJob, setSelectedJob] = useState("");
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
   const [limit, setLimit] = useState(5);
-
-  console.warn(setLimit);
-
+  const handleLimit = () => {
+    setLimit(limit + 5);
+  };
+ 
   const filterOffers = async () => {
-    await FilterOffer(city, selectedJob, salary, limit).then((res) => {
-      setOffers(res.data);
-    });
+    await FilterOffer(city, selectedJob, salary, choosenDate, limit).then(
+      (res) => {
+        setOffers(res.data);
+      }
+    );
   };
   useEffect(() => {
     filterOffers();
@@ -70,7 +72,11 @@ const MainPage = () => {
                   />
                 ))
               )}
-              <button type="button" className="all_offres_button">
+              <button
+                type="button"
+                className="all_offres_button"
+                onClick={handleLimit}
+              >
                 {" "}
                 Voir plus d'offres{" "}
               </button>
