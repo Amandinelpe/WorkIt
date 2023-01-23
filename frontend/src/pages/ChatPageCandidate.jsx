@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import socketIO from "socket.io-client";
 import React from "react";
+import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
 import BoxCandidate from "../components/BoxCandidate";
@@ -12,7 +13,12 @@ const ChatPageCandidate = () => {
   const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
 
   return (
-    <div className="inbox">
+    <motion.div
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <NavBar />
       <HelloButton />
       <div className="inbox_body">
@@ -31,7 +37,7 @@ const ChatPageCandidate = () => {
       <div>
         <Footer />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

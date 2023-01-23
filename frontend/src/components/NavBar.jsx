@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // import { HiOutlineUserCircle } from "react-icons/Hi";
 import { authContext } from "../context/AuthContext";
 import {
@@ -41,14 +41,14 @@ const NavBar = () => {
     <div className="navbar">
       <ul>
         {navBar.map((section) => (
-          <Link
+          <NavLink
             to={section.link}
             className="items"
             key={section.id}
             onClick={() => handleLogout(section.id)}
           >
             {section.name}
-          </Link>
+          </NavLink>
         ))}
         {/* <HiOutlineUserCircle className="my_profile_icon" /> */}
       </ul>

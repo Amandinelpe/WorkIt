@@ -115,6 +115,7 @@
   background-color: var(--white);
   color: var(--purple-light);
   margin-top: 8.5vh;
+  cursor: pointer;
 }
 
 .p_small {
@@ -125,4 +126,5 @@
 .link_p {
   font-weight: bold;
   color: var(--blue);
+  text-decoration: underline;
 }

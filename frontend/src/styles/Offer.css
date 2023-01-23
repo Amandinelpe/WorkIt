@@ -7,7 +7,8 @@
   background-color: var(--white);
   border-radius: 20px;
   box-shadow: var(--purple-light) 5px 5px 15px;
-  margin-bottom: 2vw;
+  margin-bottom: 1vw;
+  padding-right: 1vw;
 }
 .offer_block_job {
   display: flex;
@@ -20,6 +21,7 @@
 #text_entreprise {
   font-size: 1vw;
   color: var(--purple-dark);
+  text-decoration: underline;
 }
 #text_job {
   font-size: 1.2vw;
@@ -37,6 +39,7 @@
 .border_button {
   color: var(--purple-dark);
   border: 1px solid var(--purple-dark);
+
   border-radius: 10px;
   padding: 1vh 2vw;
   margin-right: 5%;
@@ -47,10 +50,15 @@
   border-radius: 10px;
   padding: 1vh 2vw;
 }
+
+#border_button_offer:hover {
+  text-decoration: underline;
+  transform: scale(1.1);
+}
 .offer_block_details {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 55%;
   width: 30%;
@@ -63,6 +71,6 @@
   font-size: 2vw;
 }
 .offer_logo {
-  height: 50%;
+  width: 9vw;
   margin-right: 5%;
 }

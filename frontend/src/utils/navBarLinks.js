@@ -1,10 +1,7 @@
-export const navBarSignIn = [
-  { id: 1, name: "Accueil", link: "/Main" },
-  { id: 2, name: "S'identifier", link: "/" },
-];
+export const navBarSignIn = [{ id: 1, name: "S'identifier", link: "/" }];
 
 export const navBarUser = [
-  { id: 1, name: "Accueil", link: "/Main" },
+  { id: 1, name: "Recherche", link: "/Main" },
   { id: 2, name: "Messagerie", link: "/Messagerie" },
   { id: 3, name: "Mon espace", link: "/DashboardCandidate" },
   { id: 4, name: "Deconnexion", link: "/" },
