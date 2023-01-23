@@ -1,8 +1,10 @@
 import { React, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import { GetOffers } from "../utils/getOffers";
+import { GetFiveOffers } from "../utils/getOffers";
+import { FilterOffer } from "../apis/offerApi";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
@@ -16,23 +18,41 @@ const MainPage = () => {
   const [selectedJob, setSelectedJob] = useState("");
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
+  const [limit, setLimit] = useState(5);
 
   /*   Will serve soon */
   console.warn(choosenDate, "choosenDate");
   console.warn(selectedJob, "selectedJob");
   console.warn(city, "city");
   console.warn(salary, "salary");
+  console.warn(offers, "offers");
+  console.warn(setLimit);
 
   const getFiveOffers = async () => {
     setOffers(await GetOffers(0));
+  };
+
+  const filterOffers = async () => {
+    await FilterOffer(city, selectedJob, salary, limit).then((res) => {
+      setOffers(res.data);
+    });
   };
 
   useEffect(() => {
     getFiveOffers();
   }, []);
 
+  useEffect(() => {
+    filterOffers();
+  }, [city, selectedJob, choosenDate, salary, limit]);
+
   return (
-    <div className="mainPage">
+    <motion.div
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <NavBar />
       <div className="mainPage_body">
         <h2 className="mainpage_introduction">
@@ -51,7 +71,15 @@ const MainPage = () => {
             </div>
             <div className="offers_body">
               {offers.map((offer) => (
-                <Offer firm={offer.firm} date={offer.date} />
+                <Offer
+                  firm={offer.name}
+                  date={offer.date}
+                  title={offer.title}
+                  logo={offer.logo_url}
+                  city={offer.city}
+                  experience={offer.experience}
+                  id={offer.id}
+                />
               ))}
               <button type="button" className="all_offres_button">
                 {" "}
@@ -62,7 +90,7 @@ const MainPage = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 

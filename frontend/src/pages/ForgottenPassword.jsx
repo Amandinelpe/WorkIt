@@ -1,19 +1,34 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import "../styles/ForgottenPassword.css";
 
 const ForgottenPassword = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState();
-  const resetMyPassword = () => {
+  const tempoSendEmail = (emailUser) => {
     axios
-      .post("http://localhost:5000/api/user/resetPassword", { email })
-      .then((response) => setMessage({ ...response.data }))
+      .put("http://localhost:5000/api/user/resetPassword", {
+        email: emailUser,
+      })
+      .then((response) => {
+        console.warn(response.data);
+        setMessage({ ...response.data });
+        setTimeout(() => {
+          window.location.replace(response.data.preview);
+        }, 2000);
+      })
       .catch((error) => console.warn(error));
   };
 
   return (
-    <div className="forgotten_password_block">
+    <motion.div
+      className="forgotten_password_block"
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <h1 className="forgotten_password_title"> Mot de passe oublié ? </h1>
       <form className="forgotten_password_form">
         <h2>
@@ -34,20 +49,15 @@ const ForgottenPassword = () => {
         <div>
           <button
             className="forgotten_password_send_button"
-            type="submit"
-            onClick={resetMyPassword}
+            type="button"
+            onClick={() => tempoSendEmail(email)}
           >
             ENVOYER
           </button>
         </div>
-        {message && (
-          <>
-            <h1>{message.message}</h1>
-            <a href={message.preview}>Preview</a>
-          </>
-        )}
+        {message && <h1>{message.message}</h1>}
       </form>
-    </div>
+    </motion.div>
   );
 };
 

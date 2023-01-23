@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -48,10 +49,16 @@ const Connexion = ({ user }) => {
 
   return (
     <div>
-      <div className="connexion-candidat">
+      <motion.div
+        className="connexion-candidat"
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -100, opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="title">
           <h1>Connecte toi</h1>
-          <h3>à ton espace personnel</h3>
+          <h3>à ton espace {user === "user" ? "personnel" : "consultant"}</h3>
         </div>
         <form
           name="connexion"
@@ -96,10 +103,8 @@ const Connexion = ({ user }) => {
             </h4>
           </div>
         </form>
-        <div>
-          <BannierePartenaire />
-        </div>
-      </div>
+        <div>{user === "user" && <BannierePartenaire />}</div>
+      </motion.div>
     </div>
   );
 };

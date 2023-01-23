@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import shape1 from "../assets/img/bloc-blanc.png";
 import shape2 from "../assets/img/bloc-violet.png";
 import wlogo from "../assets/img/logo-central.png";
@@ -6,7 +7,13 @@ import "../styles/Home.css";
 
 const Home = () => {
   return (
-    <div className="home_page">
+    <motion.div
+      className="home_page"
+      initial={{ x: 100, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -100, opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="title_block">
         <h1>
           Chez WorkIT, nous te connectons avec les meilleures entreprises.
@@ -55,7 +62,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
