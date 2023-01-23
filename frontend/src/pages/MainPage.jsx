@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import { GetFiveOffers } from "../utils/getOffers";
 import { FilterOffer } from "../apis/offerApi";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
@@ -28,19 +27,11 @@ const MainPage = () => {
   console.warn(offers, "offers");
   console.warn(setLimit);
 
-  const getFiveOffers = async () => {
-    setOffers(await GetFiveOffers());
-  };
-
   const filterOffers = async () => {
     await FilterOffer(city, selectedJob, salary, limit).then((res) => {
       setOffers(res.data);
     });
   };
-
-  useEffect(() => {
-    getFiveOffers();
-  }, []);
 
   useEffect(() => {
     filterOffers();
