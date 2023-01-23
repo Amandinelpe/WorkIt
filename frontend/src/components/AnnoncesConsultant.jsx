@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from "react";
-import Filter from "./Filter";
-import { GetFiveOffers } from "../utils/getOffers";
+import { GetOffers } from "../utils/getOffers";
 import Offer from "./Offer";
+import StateBox from "./StateBox";
 
 const AnnoncesConsultant = () => {
   const [offers, setOffers] = useState([]);
-  const [stateOffer, setStateOffer] = useState("");
+  const [stateOffer, setStateOffer] = useState(0);
 
-  const getFiveOffers = async () => {
-    setOffers(await GetFiveOffers());
+  const getFilterOffers = async () => {
+    setOffers(await GetOffers(stateOffer));
   };
 
   useEffect(() => {
-    getFiveOffers();
-  }, []);
+    getFilterOffers();
+  }, [stateOffer]);
 
   console.warn(stateOffer, "stateOffer");
   return (
     <div>
       <div className="filters_offers">
         <div className="mainPage_filters">
-          <Filter
-            table="state_offer"
-            name="Etat de l'offre"
-            setState={setStateOffer}
-          />
+          <StateBox setState={setStateOffer} />
         </div>
         <div className="mainPage_offers">
           <div className="all_offres_titleblock">

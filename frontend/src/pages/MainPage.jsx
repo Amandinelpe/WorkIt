@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
-import { GetFiveOffers } from "../utils/getOffers";
+import { GetOffers } from "../utils/getOffers";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
@@ -24,7 +24,7 @@ const MainPage = () => {
   console.warn(salary, "salary");
 
   const getFiveOffers = async () => {
-    setOffers(await GetFiveOffers());
+    setOffers(await GetOffers(0));
   };
 
   useEffect(() => {

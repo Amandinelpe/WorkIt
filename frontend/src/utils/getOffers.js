@@ -8,6 +8,10 @@ const requestApi = (finalUrl) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const GetFiveOffers = () => {
-  return requestApi("offer/");
+export const GetOffers = (param) => {
+  if (param == 0) {
+    return requestApi("offer/");
+  } else {
+    return requestApi("offer/?state=" + param);
+  }
 };

@@ -19,11 +19,9 @@ const Connexion = ({ user }) => {
   }, []);
 
   const handleChange = (event) => {
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [event.target.name]: event.target.value,
-      };
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
     });
   };
 

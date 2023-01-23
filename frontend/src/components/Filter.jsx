@@ -31,7 +31,7 @@ const Filter = ({ table, name, setState }) => {
       </div>
       <div className="body_box">
         <fieldset>
-          {/* <div>
+          <div>
             <input
               type="radio"
               id="all"
@@ -42,7 +42,7 @@ const Filter = ({ table, name, setState }) => {
             />
             <label htmlFor="all">Tous</label>
             <br />
-          </div> */}
+          </div>
           {filter.map((item) => (
             <div>
               <input
