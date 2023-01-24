@@ -109,7 +109,7 @@ CREATE TABLE `offer` (
     `country` VARCHAR(500)  NOT NULL ,
     `job_id` int  NOT NULL ,
     `salary` int  NULL ,
-    `description_firm` VARCHAR(500)  NOT NULL ,
+    `description_firm` VARCHAR(3000)  NOT NULL ,
     `description_mission` VARCHAR(3000)  NOT NULL ,
     `soft_skills` VARCHAR(500)  NOT NULL ,
     `hard_skills` VARCHAR(500)  NOT NULL ,

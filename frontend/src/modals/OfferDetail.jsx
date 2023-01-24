@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import "../styles/Modal.css";
 
-
 const OfferDetail = ({ show, onClose, id }) => {
   if (!show) {
     return null;
