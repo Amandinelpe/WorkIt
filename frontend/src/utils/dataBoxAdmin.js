@@ -8,7 +8,7 @@ const dataBoxAdmin = [
       "Modifier une entreprise",
       "Supprimer une entreprise",
     ],
-    link: "Entreprise",
+    link: "entreprise",
   },
 
   {
@@ -43,7 +43,7 @@ const dataBoxAdmin = [
       "Modifier un média",
       "Supprimer un média",
     ],
-    link: "dashboard",
+    link: "medias",
   },
 ];
 

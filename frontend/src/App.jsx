@@ -10,7 +10,6 @@ import ChatPageCandidate from "./pages/ChatPageCandidate";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
-import AdminConsultantPage from "./pages/AdminConsultantPage";
 import "./styles/Flex.css";
 import ForgottenPassword from "./pages/ForgottenPassword";
 import ResetPassword from "./pages/ResetPassword";
@@ -69,7 +68,6 @@ const App = () => {
             }
           />
           <Route path="/CreateProfile" element={<CreateProfile />} />
-          <Route path="/AdminConsultant" element={<AdminConsultantPage />} />
           <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
           <Route path="/ResetPassword/:token/:id" element={<ResetPassword />} />
           <Route path="*" element={<Error />} />
