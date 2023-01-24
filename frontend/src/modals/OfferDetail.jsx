@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { GetOfferById } from "../apis/offerApi";
+import close from "../assets/img/annuler.png";
 import "../styles/Modal.css";
 
 const OfferDetail = ({ show, onClose, id }) => {
   if (!show) {
     return null;
   }
-  
+
   const [dataOffer, setDataOffer] = useState({});
- 
-  useEffect(() => {GetOfferById(id).then((res) => setDataOffer(res.data))}, []);
+
+  useEffect(() => {
+    GetOfferById(id).then((res) => setDataOffer(res.data));
+  }, []);
 
   return ReactDOM.createPortal(
     <div
@@ -29,24 +32,25 @@ const OfferDetail = ({ show, onClose, id }) => {
         tabIndex={0}
       >
         <div className="modal-header">
-          <h1> {dataOffer.title} </h1>
+          <img src={dataOffer.logo_url} alt={dataOffer.logo_url} width="8%"/>
+          <img onClick={onClose} src={close} alt="close" width="4%" />
         </div>
         <div className="modal-body">
-          <p> {dataOffer.firm_city} </p>
-          <p> {dataOffer.date} </p>
+          <h1 className="modal-title"> {dataOffer.title} </h1>
+          <p> {dataOffer.firm_city}{"   /offre publiée le "}  {new Date(dataOffer.date).toLocaleDateString()} </p>
+          <h2>Description de la société</h2>
           <p> {dataOffer.description_firm} </p>
+          <h2>Mission proposée</h2>
           <p> {dataOffer.description_mission} </p>
-          <p> {dataOffer.hard_skills}  </p>
+          <h2>Environnement technique</h2>
+          <p> {dataOffer.hard_skills} </p>
+          <h2>Compétences requises</h2>
           <p> {dataOffer.soft_skills} </p>
+          <h2>Expérience requise</h2>
           <p>{dataOffer.experience} </p>
-          <p>{dataOffer.logo_url} </p>
         </div>
         <div className="modal-footer">
-          <button onClick={onClose} type="submit">
-            {" "}
-            Fermer
-          </button>
-         
+          <button className="postule-button"> Je postule </button>
         </div>
       </div>
     </div>,

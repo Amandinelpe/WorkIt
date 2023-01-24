@@ -1,7 +1,7 @@
 .modalBox {
   position: fixed;
   left: 0;
-  right:0;
+  right: 0;
   top: O;
   bottom: 0;
   height: 100%;
@@ -12,27 +12,57 @@
 }
 .modalContent {
   position: relative;
-  top : 0.5vw;
-  bottom:2vw;
-  left:0.5vw;
-  right:2vw;
+  top: 0.5vw;
+  bottom: 2vw;
+  left: 0.1vw;
+  right: 2vw;
   margin-left: auto;
   margin-right: auto;
   width: 85vw;
   height: 85%;
   background-color: #fff;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.modalHeader,
-.modalFooter {
+.modal-header {
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  display:flex;
+  justify-content: space-between;
 }
 .modal-title {
-  margin: 0;
+  margin-bottom: 2vw;
   font-size: 18px;
+  color: var(--purple-dark);
 }
 .modal-body {
   padding: 10px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+}
+
+.modal-footer {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  display:flex;
+  justify-content: center;
+}
+
+.postule-button {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 3px 3px rgb(147 169 235 / 50%);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-family: var(--text-font-family-jost);
+  width: 15vw;
+  background-color: var(--white);
+  color: var(--purple-dark);
+  cursor: pointer;
+  margin-bottom: 2vh;
+}
+.postule-button:hover {
+  box-shadow: 4px 4px 2px 1px var(--orange);
+  transform: scale(1.1);
 }
