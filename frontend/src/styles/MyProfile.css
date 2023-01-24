@@ -1,4 +1,4 @@
-.myProfile .box {
+.my-profile .box {
   margin-top: 10vh;
   margin-bottom: 10vh;
   width: 75vw;
@@ -6,11 +6,11 @@
   flex-direction: column;
 }
 
-.myProfile .box .box_candidate {
+.my-profile .box .box_candidate {
   padding: 4vh 6vw;
 }
 
-.myProfile .box .box_candidate_body {
+.my-profile .box .box_candidate_body {
   font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
@@ -30,13 +30,13 @@
   gap: 3vh;
 }
 
-.myProfile .box .box_candidate_body h3 {
+.my-profile .box .box_candidate_body h3 {
   color: #4e55ad;
   padding-bottom: 4vh;
   font-size: 1.4em;
 }
 
-.myProfile .radio-button-container {
+.my-profile .radio-button-container {
   display: block;
   position: relative;
   padding-left: 30px;
@@ -48,13 +48,13 @@
   user-select: none;
 }
 
-.myProfile .radio-button-container input {
+.my-profile .radio-button-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.myProfile .radio-button-container .checkmark {
+.my-profile .radio-button-container .checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -64,54 +64,54 @@
   border-radius: 50%;
 }
 
-.myProfile .radio-button-container:hover input ~ .checkmark {
+.my-profile .radio-button-container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
-.myProfile .radio-button-container input:checked ~ .checkmark {
+.my-profile .radio-button-container input:checked ~ .checkmark {
   background-color: var(--purple-light);
 }
 
-.myProfile .radio-button-container .checkmark:after {
+.my-profile .radio-button-container .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-.myProfile .radio-button-container input:checked ~ .checkmark:after {
+.my-profile .radio-button-container input:checked ~ .checkmark:after {
   display: block;
 }
 
-.myProfile .radio-button-container p {
+.my-profile .radio-button-container p {
   margin-top: 3px;
 }
 
-.myProfile .field {
+.my-profile .field {
   gap: 3vw;
   padding: 3vh 0 3vh 0;
 }
 
-.myProfile .informations-personnelles {
+.my-profile .informations-personnelles {
   width: 100%;
   gap: 2vw;
 }
 
-.myProfile .informations-personnelles div:nth-child(1) {
+.my-profile .informations-personnelles div:nth-child(1) {
   width: 40vw;
 }
 
-.myProfile .picture_profil img {
+.my-profile .picture_profil img {
   width: 13vw;
   height: auto;
   border-radius: 50%;
 }
 
-.myProfile .picture_profil {
+.my-profile .picture_profil {
   gap: 2vh;
   color: grey;
 }
 
-.myProfile .inputfile {
+.my-profile .inputfile {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -120,7 +120,7 @@
   z-index: -1;
 }
 
-.myProfile .inputfile + label {
+.my-profile .inputfile + label {
   width: 14vw;
   height: 5vh;
   cursor: pointer;
@@ -134,32 +134,36 @@
   border-radius: 20px;
 }
 
-.myProfile .small-input {
+.my-profile .small-input {
   width: 18vw;
 }
 
-.myProfile .large-input {
+.my-profile .large-input {
   width: 30vw;
 }
 
-.myProfile .small-input,
-.myProfile .large-input {
+.my-profile .small-input,
+.my-profile .large-input {
   height: 4.5vh;
   border: #d9d9d9 solid 1px;
+  padding: 8px;
+  outline: none;
+  color: #4e55ad;
+  font-size: 0.9em;
 }
 
-.myProfile label {
+.my-profile label {
   display: flex;
   flex-direction: column;
   gap: 2vh;
 }
 
-.myProfile label,
-.myProfile .label {
+.my-profile label,
+.my-profile .label {
   font-size: 1.2em;
 }
 
-.myProfile p {
+.my-profile p {
   font-size: 0.9em;
 }
 
@@ -173,4 +177,33 @@
 
 .flex-gap-7vh {
   gap: 7vh;
+}
+
+.my-profile .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2vh;
+  font-size: 1.3em;
+  width: 100%;
+}
+
+.my-profile .btn-enregistrer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  height: 4vh;
+  cursor: pointer;
+  background-color: var(--bleu);
+  color: var(--white);
+  border-radius: 15px;
+  border: none;
+}
+
+.my-profile .btn-enregistrer:disabled,
+.my-profile .btn-enregistrer[disabled] {
+  opacity: 0.5;
+  cursor: initial;
 }

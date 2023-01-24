@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import dataBox from "../utils/dataBox";
 import "../styles/BoxCandidate.css";
 
-const BoxCandidate = ({ handleContent }) => {
+const BoxCandidate = ({ setContent }) => {
   const onClick = (e, link) => {
     e.preventDefault();
-    handleContent(link);
+    setContent(link);
   };
 
   return (
@@ -16,9 +16,7 @@ const BoxCandidate = ({ handleContent }) => {
           key={box.id}
           className="box_candidate"
           onClick={(e) => onClick(e, box.link)}
-          onKeyDown={(e) => onClick(e, box.link)}
-          role="button"
-          tabIndex={0}
+          role="presentation"
         >
           <div key={box.id} className="box_candidate_title">
             <h1>{box.title}</h1>
@@ -39,5 +37,5 @@ const BoxCandidate = ({ handleContent }) => {
 export default BoxCandidate;
 
 BoxCandidate.propTypes = {
-  handleContent: PropTypes.func.isRequired,
+  setContent: PropTypes.func.isRequired,
 };

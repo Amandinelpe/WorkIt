@@ -1,10 +1,11 @@
 import { React, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { GetFavoritesOffers } from "../utils/getFavoritesOffers";
 import { GetMyApplications } from "../utils/getMyApplications";
 import JobAlert from "./JobAlert";
 import Offer from "./Offer";
 
-const Dashboard = () => {
+const Dashboard = ({ show }) => {
   const [favoritesOffers, setFavoritesOffers] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
 
@@ -24,6 +25,7 @@ const Dashboard = () => {
     getAllApplications();
   }, []);
 
+  if (!show) return null;
   return (
     <div>
       <div className="my_favorites_body">
@@ -85,3 +87,7 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+Dashboard.propTypes = {
+  show: PropTypes.bool.isRequired,
+};

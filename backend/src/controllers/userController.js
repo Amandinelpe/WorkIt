@@ -204,6 +204,22 @@ const userController = {
       return next(err);
     }
   },
+  updateUser: async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+      userModel.updateOne(req.body, id).then((result) => {
+        if (result.affectedRows === 0) {
+          return res
+            .status(400)
+            .send("Erreur lors la mise à jour de l'utilisateur");
+        }
+        return res.status(200).send("Utilisateur mis à jour");
+      });
+    } catch (err) {
+      return next(err);
+    }
+  },
 };
 
 module.exports = userController;

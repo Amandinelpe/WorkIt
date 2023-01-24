@@ -16,6 +16,8 @@ userRouter.post(
   emailValidator,
   userController.createUser
 );
+
+userRouter.put("/:id", userController.updateUser);
 userRouter.put("/resetPassword", userController.resetPassword);
 userRouter.put("/changePassword/:id", userController.updatePassword);
 userRouter.post("/checkToken", userController.verifyToken);

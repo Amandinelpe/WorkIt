@@ -16,9 +16,7 @@ const BoxCandidate = ({ handleContent }) => {
           key={box.id}
           className="box_candidate"
           onClick={(e) => onClick(e, box.link)}
-          onKeyDown={(e) => onClick(e, box.link)}
-          role="button"
-          tabIndex={0}
+          role="presentation"
         >
           <div key={box.id} className="box_candidate_title">
             <h1>{box.title}</h1>

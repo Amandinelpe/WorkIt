@@ -1,4 +1,5 @@
 import { React, useState } from "react";
+import socketIO from "socket.io-client";
 import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import BoxCandidate from "../components/BoxCandidate";
@@ -10,24 +11,8 @@ import MyProfile from "../components/MyProfile";
 import ChatBody from "../components/ChatBody";
 
 const DashboardCandidate = () => {
+  const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
   const [content, setContent] = useState("dashboard");
-
-  const handleContent = (ctn) => {
-    setContent(ctn);
-  };
-
-  const renderSwitch = () => {
-    switch (content) {
-      case "my-profile":
-        return <MyProfile />;
-      case "dashboard":
-        return <Dashboard />;
-      case "messagerie":
-        return <ChatBody />;
-      default:
-        return <Dashboard />;
-    }
-  };
 
   return (
     <motion.div
@@ -39,9 +24,11 @@ const DashboardCandidate = () => {
       <NavBar />
       <HelloButton />
       <div className="mydashboard_body">
-        <BoxCandidate handleContent={handleContent} />
+        <BoxCandidate setContent={setContent} />
       </div>
-      {renderSwitch()}
+      <Dashboard show={content === "dashboard"} />
+      <MyProfile show={content === "my-profile"} />
+      <ChatBody socket={socket} show={content === "messagerie"} />
       <div>
         <Footer />
       </div>
