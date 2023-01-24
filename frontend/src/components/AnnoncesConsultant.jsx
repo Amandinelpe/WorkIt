@@ -28,7 +28,7 @@ const AnnoncesConsultant = () => {
             {offers.map((offer) => (
               <Offer firm={offer.firm} date={offer.date} />
             ))}
-            <button type="button" className="all_offres_button">
+            <button type="button" className="all_offres_button_consultant">
               {" "}
               Voir plus d'offres{" "}
             </button>
