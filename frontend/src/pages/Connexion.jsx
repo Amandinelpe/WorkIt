@@ -99,10 +99,11 @@ const Connexion = ({ user }) => {
             <h4>
               <Link to="/ForgottenPassword">Mot de passe oublié ?</Link>
             </h4>
-
-            <h4>
-              <Link to="/CreateProfile">Créer un profil ici </Link>
-            </h4>
+            {user === "user" && (
+              <h4>
+                <Link to="/CreateProfile">Créer un profil ici </Link>
+              </h4>
+            )}
           </div>
         </form>
         <div>{user === "user" && <BannierePartenaire />}</div>
