@@ -1,6 +1,7 @@
 .modalBox {
   position: fixed;
-  left: -200;
+  left: 0;
+  right:0;
   top: O;
   bottom: 0;
   height: 100%;
@@ -10,7 +11,15 @@
   justify-content: center;
 }
 .modalContent {
-  width: 100vw;
+  position: relative;
+  top : 0.5vw;
+  bottom:2vw;
+  left:0.5vw;
+  right:2vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85vw;
+  height: 85%;
   background-color: #fff;
 }
 .modalHeader,

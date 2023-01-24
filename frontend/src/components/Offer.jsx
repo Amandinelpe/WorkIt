@@ -30,7 +30,7 @@ const Offer = ({ firm, date, title, logo, city, id }) => {
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
       <div>
-        <button
+        <button 
           type="submit"
           id="border_button_offer"
           onClick={() => setShow(true)}

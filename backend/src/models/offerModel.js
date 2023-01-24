@@ -20,7 +20,7 @@ const findOne = (id) => {
   return db
     .promise()
     .query(
-      "SELECT * FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN experience ON offer.experience_id = experience.id WHERE offer.id = ?",
+      "SELECT *, offer.id FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN experience ON offer.experience_id = experience.id WHERE offer.id = ?",
       [id]
     )
     .then(([offer]) => offer);
@@ -40,7 +40,7 @@ const findOffersByCity = (city) => {
 };
 const findOffersByState = (where, limit) => {
   const initialSql =
-    "SELECT * FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN experience ON offer.experience_id = experience.id ";
+    "SELECT offer.id, firm.name, offer.title, offer.date, offer.firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN experience ON offer.experience_id = experience.id ";
   const states = where.map(({ value }) => value);
   states.push(Number(limit));
   return db
