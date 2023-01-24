@@ -14,11 +14,11 @@ const findOne = (id) => {
     .then(([firm]) => firm);
 };
 
-const findOfferByFirm = (id) => {
+const findOfferByFirm = () => {
   return db
     .promise()
-    .query("SELECT COUNT(*) FROM offer WHERE firm_id = ?", [id])
-    .then(([number]) => number);
+    .query("SELECT firm_id, COUNT(*) FROM externatic.offer GROUP BY firm_id")
+    .then(([firmOffers]) => firmOffers);
 };
 
 module.exports = { findAll, findOne, findOfferByFirm };

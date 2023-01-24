@@ -1,13 +1,13 @@
-// eslint-disable-next-line import/prefer-default-export
-import axios from "axios";
+// // eslint-disable-next-line import/prefer-default-export
+// import axios from "axios";
 
-const apiUrl = import.meta.env.VITE_BACKEND_URL;
+// const apiUrl = import.meta.env.VITE_BACKEND_URL;
 
-const requestApi = (finalUrl) => {
-  return axios.get(apiUrl + finalUrl).then((response) => response.data);
-};
+// const requestApi = (finalUrl) => {
+//   return axios.get(apiUrl + finalUrl).then((response) => response.data);
+// };
 
-// eslint-disable-next-line import/prefer-default-export
-export const GetCountOffers = () => {
-  return requestApi("/offer/:id");
-};
+// // eslint-disable-next-line import/prefer-default-export
+// export const GetCountOffers = () => {
+//   return requestApi("firm/:id/offers");
+// };

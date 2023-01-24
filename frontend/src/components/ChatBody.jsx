@@ -1,16 +1,11 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import ChatFooter from "./ChatFooter";
 import "../styles/ChatBody.css";
 
 const ChatBody = ({ socket }) => {
-  // const navigate = useNavigate();
   const [chatMessages, setChatMessages] = useState([]);
-  // const handleOpenChat = () => {
-  //   navigate("/Messagerie");
-  //   window.location.reload();
-  // };
+
   useEffect(() => {
     socket.on("newMessage", (messages) => {
       setChatMessages([...chatMessages, messages]);

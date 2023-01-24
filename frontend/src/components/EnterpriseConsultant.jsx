@@ -20,15 +20,10 @@ const initialDataState = {
 const EnterpriseConsultant = () => {
   const [page, setPage] = React.useState(initialDataState);
   const [myEnterprises, setMyEnterprises] = useState([]);
-  // const [countOffers, setCountOffers] = useState([]);
 
   const getMyEnterprises = async () => {
     setMyEnterprises(await GetMyEnterprises());
   };
-
-  // const getCountOffers = async () => {
-  //   setCountOffers(await GetCountOffers());
-  // };
 
   const pageChange = (event) => {
     setPage(event.page);
