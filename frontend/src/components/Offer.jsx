@@ -1,7 +1,7 @@
 import { React, useState } from "react";
-import "../styles/Offer.css";
 import PropTypes from "prop-types";
 import OfferDetail from "../modals/OfferDetail";
+import "../styles/Offer.css";
 
 const Offer = ({ firm, date, title, logo, city, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -29,7 +29,7 @@ const Offer = ({ firm, date, title, logo, city, id }) => {
         <OfferDetail show={show} onClose={() => setShow(false)} id={id} />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
-      <div>
+      <div className="see_offer_div">
         <button
           type="submit"
           id="border_button_offer"

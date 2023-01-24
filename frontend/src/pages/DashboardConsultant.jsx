@@ -8,9 +8,10 @@ import Dashboard from "../components/Dashboard";
 import AnnoncesConsultant from "../components/AnnoncesConsultant";
 import "../styles/DashboardConsultants.css";
 import Candidature from "../components/Candidature";
+import Candidats from "../components/Candidats";
 
 const DashboardConsultant = () => {
-  const [content, setContent] = useState("dashboard");
+  const [content, setContent] = useState("Annonces");
 
   const handleContent = (ctn) => {
     setContent(ctn);
@@ -20,8 +21,8 @@ const DashboardConsultant = () => {
     switch (content) {
       case "Annonces":
         return <AnnoncesConsultant />;
-      case "dashboard":
-        return <Dashboard />;
+      case "candidats":
+        return <Candidats />;
       case "candidatures":
         return <Candidature />;
       default:
