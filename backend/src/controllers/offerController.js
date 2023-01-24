@@ -10,6 +10,15 @@ const offerController = {
     if (req.query.state != null) {
       where.push(`state_offer_id = '${req.query.state}'`);
     }
+    if (req.query.job_id != null) {
+      where.push(`job_id = '${req.query.job_id}'`);
+    }
+    if (req.query.salary != null) {
+      where.push(`salary = '${req.query.salary}'`);
+    }
+    if (req.query.limit != null) {
+      where.push(`limit = '${req.query.limit}'`);
+    }
 
     offerModel
       .findAll(where)

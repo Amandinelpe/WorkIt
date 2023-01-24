@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import "../styles/Filter.css";
 
-const Filter = ({ table, name }) => {
+const Filter = ({ table, name, setState }) => {
   const [filter, setFilter] = useState([]);
 
   const getFilter = () => {
@@ -38,6 +38,7 @@ const Filter = ({ table, name }) => {
               name="all"
               value="*"
               className="input_box"
+              onChange={(e) => setState(e.target.value)}
             />
             <label htmlFor="all">Tous</label>
             <br />
@@ -45,14 +46,14 @@ const Filter = ({ table, name }) => {
           {filter.map((item) => (
             <div>
               <input
+                className="input_box"
                 type="radio"
                 id={item.name}
                 name={item.name}
                 value={item.name}
-                className="input_box"
+                onChange={(e) => setState(e.target.value)}
               />
               <label htmlFor="all">{item.name}</label>
-              <br />
             </div>
           ))}
         </fieldset>
@@ -64,6 +65,7 @@ const Filter = ({ table, name }) => {
 export default Filter;
 
 Filter.propTypes = {
+  setState: PropTypes.func.isRequired,
   table: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
