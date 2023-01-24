@@ -33,6 +33,8 @@ const MainPage = () => {
     filterOffers();
   }, [city, selectedJob, choosenDate, salary, limit]);
 
+  /*   console.log(offers, "offers"); */
+
   return (
     <motion.div
       initial={{ x: 100, opacity: 0 }}

@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import "../styles/Modal.css";
-
 
 const OfferDetail = ({ show, onClose, id }) => {
   if (!show) {
     return null;
   }
   console.warn(id, "id");
+
+  useEffect(() => console.warn(id, "useEffect"), []);
 
   return ReactDOM.createPortal(
     <div
