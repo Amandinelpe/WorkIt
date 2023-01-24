@@ -8,6 +8,7 @@ import Dashboard from "../components/Dashboard";
 import "../styles/DashboardConsultants.css";
 import Candidature from "../components/Candidature";
 import EnterpriseConsultant from "../components/EnterpriseConsultant";
+import Candidats from "../components/Candidats";
 
 const DashboardConsultant = () => {
   const [content, setContent] = useState("Annonces");
