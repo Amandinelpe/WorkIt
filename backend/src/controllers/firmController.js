@@ -16,8 +16,8 @@ const firmController = {
   },
   getFirmOfferById: (req, res, next) => {
     firmModel
-      .findAll()
-      .then(([firmOfferById]) => res.status(200).send(firmOfferById))
+      .findOfferByFirm()
+      .then((firmOffers) => res.status(200).send(firmOffers))
       .catch((err) => next(err));
   },
 };

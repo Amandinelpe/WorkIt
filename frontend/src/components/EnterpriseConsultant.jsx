@@ -7,8 +7,7 @@ import {
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import frMessages from "../utils/fr.json";
 import SearchBar from "./SearchBar";
-import { GetMyEnterprises } from "../apis/firmApi";
-// import { GetCountOffers } from "../apis/countOffer";
+import { GetNumberOffers } from "../apis/firmApi";
 
 loadMessages(frMessages, "fr-FR");
 
@@ -21,16 +20,16 @@ const EnterpriseConsultant = () => {
   const [page, setPage] = React.useState(initialDataState);
   const [myEnterprises, setMyEnterprises] = useState([]);
 
-  const getMyEnterprises = async () => {
-    setMyEnterprises(await GetMyEnterprises());
-  };
-
   const pageChange = (event) => {
     setPage(event.page);
   };
 
+  const getDetailsEnterprises = async () => {
+    setMyEnterprises(await GetNumberOffers());
+  };
+
   useEffect(() => {
-    getMyEnterprises();
+    getDetailsEnterprises();
   }, []);
 
   return (
@@ -44,13 +43,6 @@ const EnterpriseConsultant = () => {
           <h2>Mes entreprises</h2>
         </div>
         <div className="dashboard_enterprises">
-          <button
-            type="submit"
-            className="btn-container"
-            onClick={getMyEnterprises}
-          >
-            Actualiser
-          </button>
           <LocalizationProvider language="fr-FR">
             <IntlProvider locale="fr">
               <Grid
@@ -63,7 +55,7 @@ const EnterpriseConsultant = () => {
                 onPageChange={pageChange}
               >
                 <GridColumn
-                  field="creation_date_entry"
+                  field="Id entreprise"
                   title="Date d'entrée"
                   width="120px"
                 />
@@ -72,10 +64,10 @@ const EnterpriseConsultant = () => {
                   field="name"
                   width="200px"
                 />
-                <GridColumn field="id" title="Id entreprise" width="60px" />
+                <GridColumn title="Id entreprise" field="id" width="60px" />
                 <GridColumn
-                  field="number"
                   title="Nombre d'annonces"
+                  field="nbreoffers"
                   width="150px"
                 />
                 <GridColumn field="" title="Etat" />

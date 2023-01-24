@@ -11,3 +11,7 @@ const requestApi = (finalUrl) => {
 export const GetMyEnterprises = () => {
   return requestApi("firm/");
 };
+
+export const GetNumberOffers = () => {
+  return requestApi("firm/offer");
+};
