@@ -283,10 +283,7 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
      (2,'Amandine','Leporace','0768076995','Bordeaux','leporace.amandine@gmail.com','$argon2id$v=19$m=16,t=2,p=1$ZWd3QjVPSmpUWFdyWDV1Vg$69CKCWqeR7Jo6OZxzVbGWA','https://www.linkedin.com/in/amandine-leporace-aa023222a/');
 
 
-     INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
-VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
-('contact@cdiscount.com', 'password', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
-('contact@kwantic.com', 'password', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3);
+ 
 
 INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
 	 (3,1,'Michael','Birepinte','mickael.birepinte@gmail.com','Salut'),
@@ -307,28 +304,6 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 	 ('Abandonné');
 
      INSERT INTO contract (id, contract_type) VALUES(1, 'CDI'), (2, 'CDD'), (3, 'Stage'), (4, 'Contrat de professionnalisation'), (5, 'Contrat d apprentissage');
-
-     INSERT INTO externatic.offer (title,
-    firm_id,
-    firm_city,
-    date,
-    postal_code,
-   country,
-    job_id,
-    salary,
-   description_firm,
-    description_mission,
-    soft_skills,
-    hard_skills,
-    experience_id,
-    contract_type,
-    consultant_id,
-    urgence_id,
-     state_offer_id 
-) VALUES
-	 ('Front-End Developpeur',1,'Bordeaux','2023-01-01','92000','France',2,35000,'Betclic Group est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Gestion des anomalies remontées sur le périmètre technique dans le respect des engagements de service (délais) et des bonnes pratiques (qualité, sécurité) via l outil de ticketing, assurer et coordonner les demandes sur le périmètre technique, réalisation de l analyse technico-fonctionnelle avec les équipes de SI et du métier, participation à la conception et à la réalisation de la solution avec les équipes','Vous êtes curieux, force de proposition et avez le sens du service. Vous savez gérer les priorités, prendre des initiatives, et vous adapter à différents acteurs. Vous avez une capacité d écoute et d analyse et vous savez être force de proposition. Vous faites preuve d une bonne aisance rédactionnelle','Issu d une formation informatique vous avez une première expérience en développement sur SAGE X3',2, 1, 1, 1,1),
-     ('Senior JAVA Developpeur', 2,'Bègles','2022-12-23','33130','France',2,45000,'Netfective Technology est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Prendre en charge la conception, le développement, les tests et la documentation, participer aux phases d analyse, de recette et de mise en production, Assurer le support aux utilisateurs, corriger les dysfonctionnements et prendre en charge les évolutions, proposer des actions d optimisation des process et outils de développement','-','Connaissances requises en développement Web autour des technologies Java, HTML, CSS, Javascript, XSL, SQL',3, 1, 2, 2,1),
-     ('PHP Developpeur', 3,'Bordeaux','2022-12-10','33000','France',2,33000,'Betclic Group est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Gestion des anomalies remontées sur le périmètre technique dans le respect des engagements de service (délais) et des bonnes pratiques (qualité, sécurité) via l outil de ticketing, assurer et coordonner les demandes sur le périmètre technique, réalisation de l analyse technico-fonctionnelle avec les équipes de SI et du métier, participation à la conception et à la réalisation de la solution avec les équipes','Vous êtes curieux, force de proposition et avez le sens du service. Vous savez gérer les priorités, prendre des initiatives, et vous adapter à différents acteurs. Vous avez une capacité d écoute et d analyse et vous savez être force de proposition. Vous faites preuve d une bonne aisance rédactionnelle','Issu d une formation informatique vous avez une première expérience en développement sur SAGE X3',2, 1, 1, 1,2);
 	
 
 INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNote, reset_token) VALUES
@@ -336,7 +311,23 @@ INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,post
 	 (1,'femme','Josette','Colin','josettecol@gmail.com','Nantes',44000,'FRANCE','5 rue du temple','0640899678',1,NULL,NULL,NULL,'chomage',3,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,7,NULL,NULL),
 	 (1,'homme','Bertrand','Molina','btr@gmail.com','soustons',40140,'FRANCE','8 rue des pins','0558411032',1,NULL,NULL,NULL,'boulanger',7,NULL,NULL,1,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,8,NULL,NULL),
      (1,'homme','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,1,NULL,1,NULL,NULL);
-
+     
+     INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
+VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
+('contact@cdiscount.com', 'password', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
+('contact@kwantic.com', 'password', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3),
+('contact@fictivtech.com', 'password', 'FictivTech', '05 40 20 10 30', 'Toulouse', 31000, 'France', '50 Avenue des Minimes', 'IT', 'https://i.imgur.com/ad10O6I.png', 4),
+('contact@virtuosoft.com', 'password', 'Virtuosoft', '05 67 89 12 34', 'Pau', 64000, 'France', '12 Rue de la Paix', 'IT', 'https://i.imgur.com/aSn3btX.png', 5),
+('contact@innovasys.com', 'password', 'Innovasys', '05 57 88 99 01', 'Agen', 47000, 'France', '1 Place des Lices', 'IT', 'https://i.imgur.com/bAflqnS.png', 6),
+('contact@techonix.com', 'password', 'Techonix', '05 56 45 33 21', 'Bordeaux', 33000, 'France', '5 Avenue de la Victoire', 'IT', 'https://i.imgur.com/U9BJ3oG.png', 7),
+('contact@softwaresolutions.com', 'password', 'Software Solutions', '05 78 23 67 89', 'Toulouse', 31000, 'France', '3 Rue des Carmes', 'IT', 'https://i.imgur.com/U0bOMYC.png', 8),
+('contact@digitalexpert.com', 'password', 'Digital Expert', '05 12 34 56 78', 'Pau', 64000, 'France', '4 Avenue Charles de Gaulle', 'IT', 'https://i.imgur.com/5K9qZs0.png', 9),
+('contact@cybertechgroup.com', 'password', 'Cybertech Group', '05 67 89 01 23', 'Agen', 47000, 'France', '2 Place de la Republique', 'IT', 'https://i.imgur.com/lIqdysJ.png', 10),
+('contact@infotechplus.com', 'password', 'Infotech Plus', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '1 Rue de la Bourse', 'IT', 'https://i.imgur.com/SAQVt0b.png', 11),
+('contact@cloudtechconsulting.com', 'password', 'Cloudtech Consulting', '05 78 90 12 34', 'Toulouse', 31000, 'France', '6 Boulevard de Strasbourg', 'IT', 'https://i.imgur.com/k1hg6Ok.png', 12),
+('contact@datatechpro.com', 'password', 'Datatech Pro', '05 12 34 56 78', 'Pau', 64000, 'France', '7 Avenue des Pyrenees', 'IT', 'https://i.imgur.com/b6NLZ9b.png', 11),
+('contact@techminds.com', 'password', 'TechMinds', '05 67 89 01 23', 'Agen', 47000, 'France', '8 Place de la Gare', 'IT', 'https://i.imgur.com/2CxRzMh.png', 4),
+('contact@digisolutions.com', 'password', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
 INSERT INTO externatic.application_state (id, name) VALUES
     (1, 'En attente'),
     (2, 'En cours de traitement'),
@@ -403,3 +394,6 @@ INSERT INTO externatic.offer (title,firm_id,firm_city,`date`,postal_code,country
 	 ('Data Scientist (H/F)',3,'Toulouse','2023-01-13',31000,'France',35,47000,'Software Solutions est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques',' Audit sur un périmètre infrastructure dans un contexte de refonte de l''architecture réseau : Etude de l’existant et proposer une nouvelle architecture, Refonte de l''architecture réseau, Mise en place d''une architecture, Création d''une salle serveur, Remplacement des équipements switchs DC et Sièges','-','Expérience significative en développement BackEnd (+ de 3 ans),',2,1,2,1,3),
 	 ('Consultant en recrutement IT (H/F)',3,'Bordeaux','2023-01-14',33000,'France',36,35000,'DigiSolutions est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Maintenir et faire évoluer le site e-commerce https://www.artphotolimited.com/(RubyOnRails, MongoDB) tant sur sa partie frontend que backend, sous la supervision de notre CTO','Autonomie, Créativité, sens de l’innovation, Adaptabilité et flexibilité, Capacité d’analyse et de synthèse, Esprit d’équipe / sens de la communauté','Connaissances requises en développement Web autour des technologies Java, HTML, CSS, Javascript, XSL, SQL',3,1,3,3,2),
 	 ('Recruteur tech (H/F)',3,'Toulouse','2023-01-23',31000,'France',37,47000,'Software Solutions est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Maintenir et faire évoluer le site e-commerce https://www.artphotolimited.com/(RubyOnRails, MongoDB) tant sur sa partie frontend que backend, sous la supervision de notre CTO','-','Front (vuejs ou react), Sensibilité sur l''UX/UI, Linux (bash), Compétence devops, Saas & Cloud, Requêtage SQL',4,1,4,2,2);
+
+
+
