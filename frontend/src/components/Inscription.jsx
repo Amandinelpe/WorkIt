@@ -78,7 +78,7 @@ const Inscription = () => {
           >
             <option value="">Mon métier rercherché</option>
             {jobs.map((job) => (
-              <option classNvalue={job.id}>{job.job_title}</option>
+              <option value={job.id}>{job.job_title}</option>
             ))}
           </select>
         </label>
