@@ -40,6 +40,17 @@
   justify-content: space-between;
   padding-bottom: 1.5vw;
 }
+
+.header-button {
+  width: 4%;
+  cursor: pointer;
+  padding: 0.5vw;
+  border-radius: 30%;
+}
+.header-button:hover {
+  transform: scale(1.5);
+}
+
 .modal-body {
   overflow: scroll;
   display: flex;
@@ -55,7 +66,8 @@
   padding: 10px;
   border-bottom: 1px solid #ccc;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .postule-button {
@@ -69,6 +81,7 @@
   background-color: var(--white);
   color: var(--purple-dark);
   cursor: pointer;
+  margin-top: 2vw;
   margin-bottom: 2vh;
 }
 .postule-button:hover {
@@ -92,4 +105,7 @@
   color: var(--purple-dark);
   margin-bottom: 3vw;
   text-align: justify;
+}
+.send-candidature {
+  color: red;
 }

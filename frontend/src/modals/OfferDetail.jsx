@@ -1,20 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
+import { authContext } from "../context/AuthContext";
 import { GetOfferById } from "../apis/offerApi";
 import close from "../assets/img/annuler.png";
+import isfav from "../assets/img/fav.png";
+import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
 
 const OfferDetail = ({ show, onClose, id }) => {
   if (!show) {
     return null;
   }
-
+  const [postulation, setPostulation] = useState("");
   const [dataOffer, setDataOffer] = useState({});
+  const [fav, setFav] = useState(false);
+  const { auth } = useContext(authContext);
 
   useEffect(() => {
     GetOfferById(id).then((res) => setDataOffer(res.data));
   }, []);
+
+  const handleSubmit = () => {
+    if (auth.data) {
+      if (auth.data.role_id === 1) {
+        setPostulation(
+          "Votre candidature a bien été envoyée. Votre interlocuteur vous contactera prochainement."
+        );
+      } else {
+        setPostulation("Veuillez vous connecter pour postuler");
+      }
+    } else {
+      setPostulation("Veuillez vous connecter pour postuler");
+    }
+  };
+
   /* eslint no-return-assign: "error" */
   return ReactDOM.createPortal(
     <div
@@ -34,13 +54,23 @@ const OfferDetail = ({ show, onClose, id }) => {
         <div className="modal-header">
           <div className="header-img">
             <img src={dataOffer.logo_url} alt={dataOffer.logo_url} width="8%" />
+            {auth.data && auth.data.role_id === 1 ? (
+              <img
+                className="header-button"
+                aria-hidden="true"
+                onClick={() => setFav(!fav)}
+                onKeyDown={onClose}
+                src={fav ? isfav : notfav}
+                alt="close"
+              />
+            ) : null}
             <img
+              className="header-button"
               aria-hidden="true"
               onClick={onClose}
               onKeyDown={onClose}
               src={close}
               alt="close"
-              width="4%"
             />
           </div>
           <div>
@@ -74,7 +104,12 @@ const OfferDetail = ({ show, onClose, id }) => {
           <p className="modal-text">{dataOffer.experience} </p>
         </div>
         <div className="modal-footer">
-          <button type="submit" className="postule-button">
+          <p className="send-candidature">{postulation}</p>
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="postule-button"
+          >
             {" "}
             Je postule{" "}
           </button>
