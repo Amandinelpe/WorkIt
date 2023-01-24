@@ -26,6 +26,20 @@ const cellNomPrenom = (props) => {
     </td>
   );
 };
+const cellActive = (props) => {
+  if (props.dataItem.isActive === 1) {
+    return (
+      <td>
+        <span>Oui</span>
+      </td>
+    );
+  }
+  return (
+    <td>
+      <span>Non</span>
+    </td>
+  );
+};
 
 const Candidats = () => {
   const [page, setPage] = useState(initialDataState);
@@ -51,7 +65,7 @@ const Candidats = () => {
         </div>
         <div className="candidature-box">
           <div className="nouvelles_candidatures">
-            <h2>Les candidats </h2>
+            <h2>LES CANDIDATS </h2>
           </div>
           <div className="dashboard_candidature">
             <button type="submit" className="btn-container" onClick={getUsers}>
@@ -70,16 +84,27 @@ const Candidats = () => {
                 >
                   <GridColumn
                     title="Nom Prénom"
-                    width="180px"
+                    width="160px"
                     cell={cellNomPrenom}
                   />
-                  <GridColumn field="id" title="Id candidat" />
+                  <GridColumn
+                    field="consultant_id"
+                    title="Consultant Id"
+                    width="120px"
+                  />
                   <GridColumn
                     field="phone"
-                    title="numéro de telephone"
+                    title="Numéro de telephone"
+                    width="180px"
+                  />
+                  <GridColumn field="email" title="Email" width="200px" />
+                  <GridColumn field="city" title="Ville" width="100px" />
+                  <GridColumn
+                    field="job_title"
+                    title="Métier recherché"
                     width="200px"
                   />
-                  <GridColumn field="city" title="Ville" />
+                  <GridColumn cell={cellActive} title="En recherche" />
                 </Grid>
               </IntlProvider>
             </LocalizationProvider>
