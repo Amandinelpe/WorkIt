@@ -42,7 +42,7 @@ const AnnoncesConsultant = () => {
                 experience={offer.experience}
               />
             ))}
-            <button type="button" className="all_offres_button">
+            <button type="button" className="all_offres_button_consultant">
               {" "}
               Voir plus d'offres{" "}
             </button>
