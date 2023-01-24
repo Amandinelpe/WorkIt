@@ -3,10 +3,12 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import "../styles/Modal.css";
 
-const OfferDetail = ({ show, onClose }) => {
+
+const OfferDetail = ({ show, onClose, id }) => {
   if (!show) {
     return null;
   }
+  console.warn(id, "id");
 
   return ReactDOM.createPortal(
     <div
@@ -52,5 +54,6 @@ const OfferDetail = ({ show, onClose }) => {
 OfferDetail.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 export default OfferDetail;

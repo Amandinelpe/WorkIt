@@ -28,7 +28,7 @@ const Offer = ({ firm, date, title, logo, city, id }) => {
           onKeyDown=""
           role="presentation"
         />
-        <OfferDetail show={show} onClose={() => setShow(false)} />
+        <OfferDetail show={show} onClose={() => setShow(false)} id={id} />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
       <div>
