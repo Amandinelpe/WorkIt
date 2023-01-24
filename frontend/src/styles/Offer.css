@@ -3,13 +3,14 @@
   justify-content: space-between;
   align-items: center;
   width: 50vw;
-  height: 20vh;
+  height: 22vh;
   background-color: var(--white);
   border-radius: 20px;
   box-shadow: var(--purple-light) 5px 5px 15px;
   margin-bottom: 1vw;
   padding-right: 1vw;
 }
+
 .offer_block_job {
   display: flex;
   flex-direction: column;
@@ -18,43 +19,56 @@
   height: 90%;
   margin-left: 1.5vw;
 }
+
 #text_entreprise {
-  font-size: 1vw;
-  color: var(--purple-dark);
-  text-decoration: underline;
+  margin-top: 0.5vh;
+  font-size: 2.5vh;
+  color: var(--bleu);
 }
+
 #text_job {
   font-size: 1.2vw;
   color: var(--purple-dark);
+  margin-bottom: 1vh;
 }
+
 #text_date {
   font-size: 0.8vw;
   color: var(--purple-dark);
   opacity: 0.7;
 }
+
 .offer_filter {
   display: flex;
   width: 50%;
+  margin-bottom: 1vh;
 }
+
 .border_button {
   color: var(--purple-dark);
   border: 1px solid var(--purple-dark);
-
   border-radius: 10px;
   padding: 1vh 2vw;
   margin-right: 5%;
+  display: flex;
+  align-items: center;
+  font-size: 1vw;
 }
+
 #border_button_offer {
   color: var(--purple-dark);
   border: 1px solid var(--purple-dark);
   border-radius: 10px;
   padding: 1vh 2vw;
+  display: flex;
+  text-align: center;
 }
 
 #border_button_offer:hover {
   text-decoration: underline;
   transform: scale(1.1);
 }
+
 .offer_block_details {
   display: flex;
   flex-direction: column;
@@ -63,13 +77,16 @@
   height: 55%;
   width: 30%;
 }
+
 #full_earth {
   font-size: 2vw;
   color: var(--red);
 }
+
 #empty_earth {
   font-size: 2vw;
 }
+
 .offer_logo {
   width: 9vw;
   margin-right: 5%;

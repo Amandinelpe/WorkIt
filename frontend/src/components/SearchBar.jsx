@@ -38,6 +38,7 @@ const SearchBar = ({ setSelectedJob, setCity }) => {
               <option disabled selected value>
                 Quoi?{" "}
               </option>
+              <option value="">Tous les postes</option>
               {job.map((work) => (
                 <option value={work.id}> {work.job_title}</option>
               ))}
@@ -51,6 +52,7 @@ const SearchBar = ({ setSelectedJob, setCity }) => {
                 {" "}
                 Ou?{" "}
               </option>
+              <option value="">Partout</option>
               {cities.map((city) => (
                 <option value={city.firm_city}>{city.firm_city} </option>
               ))}
