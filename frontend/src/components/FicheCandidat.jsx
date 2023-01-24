@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const FicheCandidat = () => {
   return (
@@ -6,6 +6,6 @@ const FicheCandidat = () => {
       <h1>Fiche candidat</h1>
     </div>
   );
-}
+};
 
 export default FicheCandidat;
