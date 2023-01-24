@@ -14,11 +14,24 @@ const OfferDetail = ({ show, onClose, id }) => {
   }
   const [postulation, setPostulation] = useState("");
   const [dataOffer, setDataOffer] = useState({});
-  const [fav, setFav] = useState(false);
   const { auth } = useContext(authContext);
-
+  const [userOffer, setUserOffer] = useState({
+    user_id: "",
+    offer_id: id,
+    isFavorite: false,
+    candidated: false,
+  });
+  const initUserOffer = () => {
+    if (auth.data === !null) {
+      setUserOffer({
+        ...userOffer,
+        user_id: auth.data.id,
+      });
+    }
+  };
   useEffect(() => {
     GetOfferById(id).then((res) => setDataOffer(res.data));
+    initUserOffer();
   }, []);
 
   const handleSubmit = () => {
@@ -58,9 +71,14 @@ const OfferDetail = ({ show, onClose, id }) => {
               <img
                 className="header-button"
                 aria-hidden="true"
-                onClick={() => setFav(!fav)}
+                onClick={() =>
+                  setUserOffer({
+                    ...userOffer,
+                    isFavorite: !userOffer.isFavorite,
+                  })
+                }
                 onKeyDown={onClose}
-                src={fav ? isfav : notfav}
+                src={userOffer.isFavorite ? isfav : notfav}
                 alt="close"
               />
             ) : null}
@@ -76,14 +94,15 @@ const OfferDetail = ({ show, onClose, id }) => {
           <div>
             <h1 className="modal-title"> {dataOffer.title} </h1>
             <p>
-              {" "}
-              {dataOffer.firm_city}
-              {"   /offre publiée le "}{" "}
+              {"   Offre publiée le "}{" "}
               {new Date(dataOffer.date).toLocaleDateString()}{" "}
             </p>
           </div>
         </div>
+
         <div className="modal-body">
+          <h2 className="modal-subtitle">Lieu</h2>
+          <p className="modal-text-uppercase"> {dataOffer.firm_city} </p>
           <h2 className="modal-subtitle">Description de la société</h2>
           <p className="modal-text"> {dataOffer.description_firm} </p>
           <h2 className="modal-subtitle">Mission proposée</h2>

@@ -13,5 +13,11 @@ const findOne = (id) => {
     .query("SELECT * FROM userOffer where id = ?", [id])
     .then(([userOffer]) => userOffer);
 };
+const createOne = (payload) => {
+  return db
+    .promise()
+    .query("INSERT INTO userOffer SET ?", [payload])
+    .then((userOffer) => userOffer);
+};
 
-module.exports = { findAll, findOne };
+module.exports = { findAll, findOne, createOne };

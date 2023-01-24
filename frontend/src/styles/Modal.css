@@ -106,6 +106,14 @@
   margin-bottom: 3vw;
   text-align: justify;
 }
+.modal-text-uppercase {
+  font-size: 1rem;
+  color: var(--purple-dark);
+  margin-bottom: 3vw;
+  text-align: justify;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 .send-candidature {
   color: red;
 }
