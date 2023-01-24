@@ -9,14 +9,10 @@ const { jwtSign, jwtVerify } = require("../helpers/jwt");
 
 const userController = {
   getAllUsers: (req, res, next) => {
-    if (req.roleId === 1) {
-      userModel
-        .findAll()
-        .then((users) => res.status(200).send(users))
-        .catch((err) => next(err));
-    } else {
-      return res.status(401).send({ message: "Unauthorized" });
-    }
+    userModel
+      .findAll()
+      .then(([users]) => res.status(200).send(users))
+      .catch((err) => next(err));
   },
   getUserById: (req, res, next) => {
     const { id } = req.params;

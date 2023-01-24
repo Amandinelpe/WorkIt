@@ -8,7 +8,6 @@ import { FilterOffer } from "../apis/offerApi";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
-
 import "../styles/MainPage.css";
 import "../styles/OffersList.css";
 

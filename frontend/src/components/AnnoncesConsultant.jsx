@@ -1,29 +1,34 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Filter from "./Filter";
-import { GetFiveOffers } from "../utils/getOffers";
-import Offer from "./Offer";
 import "../styles/AnnoncesConsultant.css";
 import "../styles/OffersList.css";
+import { GetOffers } from "../utils/getOffers";
+import Offer from "./Offer";
+import "../styles/AnnoncesConsultant.css";
+import StateBox from "./StateBox";
 
 const AnnoncesConsultant = ({ show }) => {
   const [offers, setOffers] = useState([]);
+  const [filterOffer, setFilterOffer] = useState({
+    city: "",
+    selectedJob: "",
+    salary: "",
+    state: 0,
+  });
 
-  const getFiveOffers = async () => {
-    setOffers(await GetFiveOffers());
+  const getFilterOffers = async () => {
+    setOffers(await GetOffers(filterOffer));
   };
 
   useEffect(() => {
-    getFiveOffers();
-  }, []);
-
-  if (!show) return null;
+    getFilterOffers();
+  }, [filterOffer]);
 
   return (
     <div className="annonce-consultant">
       <div className="filters_offers">
         <div className="mainPage_filters">
-          <Filter table="state_offer" name="Etat de l'offre" />
+          <StateBox setFilterOffer={setFilterOffer} filterOffer={filterOffer} />
         </div>
         <div className="mainPage_offers">
           <div className="all_offers_titleblock">
@@ -32,13 +37,15 @@ const AnnoncesConsultant = ({ show }) => {
           <div className="offers_body">
             {offers.map((offer) => (
               <Offer
-                title={offer.title}
-                firm={offer.firm}
+                firm={offer.name}
                 date={offer.date}
+                title={offer.title}
                 logo={offer.logo_url}
+                city={offer.city}
+                experience={offer.experience}
               />
             ))}
-            <button type="button" className="all_offres_button">
+            <button type="button" className="all_offres_button_consultant">
               {" "}
               Voir plus d'offres{" "}
             </button>

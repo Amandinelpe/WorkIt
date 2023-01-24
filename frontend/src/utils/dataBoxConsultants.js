@@ -10,7 +10,7 @@ const dataBoxConsultants = [
     id: 2,
     title: "Mes candidats",
     sections: ["Nouveaux", "En cours", "Embauchés", "Vivier", "Archivés"],
-    link: "mescandidats",
+    link: "candidats",
   },
 
   {

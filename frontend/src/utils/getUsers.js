@@ -15,4 +15,5 @@ export const GetUsers = () => {
 // eslint-disable-next-line import/prefer-default-export
 export const GetUser = (id) => {
   return requestApi(`user/${id}`);
+  return requestApi("user/");
 };

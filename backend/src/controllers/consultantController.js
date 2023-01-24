@@ -68,10 +68,11 @@ const consultantController = {
           firstname,
           lastname,
           password: hashedPassword,
+          consultant_id,
         } = consultant;
         if (await argon2.verify(hashedPassword, password)) {
           const token = jwt.sign(
-            { id, userEmail, firstname, lastname, role_id },
+            { id, userEmail, firstname, lastname, role_id, consultant_id },
             process.env.JWT_AUTH_SECRET,
             { expiresIn: "1h" }
           );
@@ -85,6 +86,7 @@ const consultantController = {
               firstname,
               lastname,
               role_id,
+              consultant_id,
             });
         } else {
           res.status(401).send({ message: "Invalid email or password" });

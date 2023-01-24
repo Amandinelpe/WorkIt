@@ -4,7 +4,7 @@ const db = require("../../config");
 const findAll = () => {
   return db
     .promise()
-    .query("SELECT * FROM user")
+    .query("SELECT * FROM user JOIN job ON user.job_id = job.id")
     .then((users) => users);
 };
 
