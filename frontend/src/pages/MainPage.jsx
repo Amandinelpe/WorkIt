@@ -68,7 +68,6 @@ const MainPage = () => {
                     title={offer.title}
                     logo={offer.logo_url}
                     city={offer.city}
-                    experience={offer.experience}
                     id={offer.id}
                   />
                 ))

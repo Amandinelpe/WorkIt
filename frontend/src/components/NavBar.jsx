@@ -50,7 +50,6 @@ const NavBar = () => {
             {section.name}
           </NavLink>
         ))}
-        {/* <HiOutlineUserCircle className="my_profile_icon" /> */}
       </ul>
     </div>
   );
