@@ -1,16 +1,11 @@
-import React from "react";
-// import RadioButton from "./RadioButton";
-import "../styles/FicheCandidat.css";
+import React from 'react';
 
 const FicheCandidat = () => {
-
   return (
-    <div className="Fiche_Candidat">
     <div>
-      <h1>Fiche candidat.e</h1>
-    </div>
+      <h1>Fiche candidat</h1>
     </div>
   );
-};
+}
 
 export default FicheCandidat;
