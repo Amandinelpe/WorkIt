@@ -6,9 +6,8 @@ import {
   loadMessages,
 } from "@progress/kendo-react-intl";
 import frMessages from "../utils/fr.json";
-import { GetSpontaneousApplications } from "../utils/getSpontaneousApplications";
-import SearchBar from "./SearchBar";
-import Comparer from "../assets/img/comparer.png";
+import { GetUsers } from "../utils/getUsers";
+import StateBox from "./StateBox";
 import "../styles/Candidature.css";
 
 loadMessages(frMessages, "fr-FR");
@@ -16,24 +15,6 @@ loadMessages(frMessages, "fr-FR");
 const initialDataState = {
   skip: 0,
   take: 10,
-};
-
-const cellTraitement = () => {
-  const style = {
-    textAlign: "center",
-    verticalAlign: "middle",
-  };
-
-  const logoStyle = {
-    width: "20px",
-    height: "20px",
-  };
-
-  return (
-    <td style={style}>
-      <img src={Comparer} alt="Comparer" style={logoStyle} />
-    </td>
-  );
 };
 
 const cellNomPrenom = (props) => {
@@ -46,58 +27,47 @@ const cellNomPrenom = (props) => {
   );
 };
 
-const Candidature = () => {
-  const [page, setPage] = React.useState(initialDataState);
-  const [spontaneousApplications, setSpontaneousApplications] = useState([]);
+const Candidats = () => {
+  const [page, setPage] = useState(initialDataState);
+  const [users, setUsers] = useState([]);
 
   const pageChange = (event) => {
     setPage(event.page);
   };
 
-  const getSpontaneousApplications = async () => {
-    setSpontaneousApplications(await GetSpontaneousApplications());
+  const getUsers = async () => {
+    setUsers(await GetUsers());
   };
 
   useEffect(() => {
-    getSpontaneousApplications();
+    getUsers();
   }, []);
 
   return (
     <div className="container_body">
-      <SearchBar />
       <div className="container">
-        <div className="filter-box">{/** Filter box */}</div>
+        <div className="filter-box">
+          <StateBox />
+        </div>
         <div className="candidature-box">
           <div className="nouvelles_candidatures">
-            <h2>Nouvelles candidatures spontanées</h2>
+            <h2>Les candidats </h2>
           </div>
           <div className="dashboard_candidature">
-            <button
-              type="submit"
-              className="btn-container"
-              onClick={getSpontaneousApplications}
-            >
+            <button type="submit" className="btn-container" onClick={getUsers}>
               Actualiser
             </button>
             <LocalizationProvider language="fr-FR">
               <IntlProvider locale="fr">
                 <Grid
                   className="grid_candidature"
-                  data={spontaneousApplications.slice(
-                    page.skip,
-                    page.take + page.skip
-                  )}
+                  data={users.slice(page.skip, page.take + page.skip)}
                   skip={page.skip}
                   take={page.take}
-                  total={spontaneousApplications.length}
+                  total={users.length}
                   pageable
                   onPageChange={pageChange}
                 >
-                  <GridColumn
-                    field="creation_date_convert"
-                    title="Date d'arrivée"
-                    width="120px"
-                  />
                   <GridColumn
                     title="Nom Prénom"
                     width="180px"
@@ -105,12 +75,11 @@ const Candidature = () => {
                   />
                   <GridColumn field="id" title="Id candidat" />
                   <GridColumn
-                    field="job_title"
-                    title="Intitulé du poste"
+                    field="phone"
+                    title="numéro de telephone"
                     width="200px"
                   />
-                  <GridColumn title="Traitement" cell={cellTraitement} />
-                  <GridColumn field="name" title="Etat" />
+                  <GridColumn field="city" title="Ville" />
                 </Grid>
               </IntlProvider>
             </LocalizationProvider>
@@ -121,4 +90,4 @@ const Candidature = () => {
   );
 };
 
-export default Candidature;
+export default Candidats;

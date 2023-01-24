@@ -8,14 +8,15 @@ const requestApi = (finalUrl) => {
 };
 
 export const GetOffers = (param) => {
-  console.log(param,"hello");
+  console.log(param, "hello");
   const apiRequest = "offer/?";
   const cityRequest = param.city == "" ? "" : `city=${param.city}&`;
   const stateRequest = param.state == 0 ? "" : `state=${param.state}&`;
-  const jobRequest = param.selectedJob == "" ? "" : `job_id=${param.selectedJob}&`;
+  const jobRequest =
+    param.selectedJob == "" ? "" : `job_id=${param.selectedJob}&`;
   const salaryRequest = param.salary == 0 ? "" : `salary=${param.salary}&`;
-  
 
-  return requestApi(`${apiRequest}${cityRequest}${stateRequest}${jobRequest}${salaryRequest}`)
-  ;
+  return requestApi(
+    `${apiRequest}${cityRequest}${stateRequest}${jobRequest}${salaryRequest}`
+  );
 };
