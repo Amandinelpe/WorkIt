@@ -62,11 +62,14 @@
   padding: 1vh 2vw;
   display: flex;
   text-align: center;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 #border_button_offer:hover {
-  text-decoration: underline;
   transform: scale(1.1);
+  color: var(--orange);
+  border: 1px solid var(--orange);
 }
 
 .offer_block_details {

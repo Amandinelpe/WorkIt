@@ -1,7 +1,8 @@
 const db = require("../../config");
 
 const findAll = (where) => {
-  const initSql = "SELECT * FROM offer";
+  const initSql =
+    "SELECT * FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN experience ON offer.experience_id = experience.id ";
   if (where.length > 0) {
     return db
       .promise()
@@ -19,7 +20,10 @@ const findAll = (where) => {
 const findOne = (id) => {
   return db
     .promise()
-    .query("SELECT * FROM offer where id = ?", [id])
+    .query(
+      "SELECT * FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN experience ON offer.experience_id = experience.id WHERE offer.id = ?",
+      [id]
+    )
     .then(([offer]) => offer);
 };
 const findAllCities = () => {

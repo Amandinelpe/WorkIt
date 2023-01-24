@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import OfferEmpty from "@components/OfferEmpty";
+import OfferEmpty from "../components/OfferEmpty";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
@@ -8,7 +8,6 @@ import { FilterOffer } from "../apis/offerApi";
 import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
-
 import "../styles/MainPage.css";
 
 const MainPage = () => {
@@ -67,7 +66,6 @@ const MainPage = () => {
                     title={offer.title}
                     logo={offer.logo_url}
                     city={offer.city}
-                    experience={offer.experience}
                     id={offer.id}
                   />
                 ))

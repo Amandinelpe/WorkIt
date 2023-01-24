@@ -9,7 +9,7 @@ h2 .all_offres_title {
   padding-bottom: 1vh;
 }
 
-.all_offres_button {
+.all_offres_button_consultant {
   border-radius: 20px;
   border: none;
   box-shadow: 3px 3px rgb(147 169 235 / 50%);
@@ -21,4 +21,9 @@ h2 .all_offres_title {
   color: var(--purple-dark);
   cursor: pointer;
   margin-bottom: 2vh;
+}
+
+.all_offres_button_consultant:hover {
+  box-shadow: 4px 4px 2px 1px var(--orange);
+  transform: scale(1.1);
 }

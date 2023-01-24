@@ -21,3 +21,7 @@ export const FilterOffer = (city, selectedJob, salary, choosenDate, limit) => {
       `${apiRequest}${cityRequest}${jobRequest}${salaryRequest}${dateRequest}${limitRequest}`
   );
 };
+
+export const GetOfferById = (id) => {
+  return axios.get(apiUrl + "offer/" + id);
+};

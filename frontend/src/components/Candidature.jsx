@@ -61,6 +61,7 @@ const Candidature = () => {
   useEffect(() => {
     getSpontaneousApplications();
   }, []);
+
   return (
     <div className="container_body">
       <SearchBar />

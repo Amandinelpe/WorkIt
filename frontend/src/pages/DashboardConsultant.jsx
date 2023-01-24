@@ -10,7 +10,7 @@ import Candidature from "../components/Candidature";
 import EnterpriseConsultant from "../components/EnterpriseConsultant";
 
 const DashboardConsultant = () => {
-  const [content, setContent] = useState("dashboard");
+  const [content, setContent] = useState("Annonces");
 
   const handleContent = (ctn) => {
     setContent(ctn);
@@ -20,8 +20,8 @@ const DashboardConsultant = () => {
     switch (content) {
       case "entreprises":
         return <EnterpriseConsultant />;
-      case "dashboard":
-        return <Dashboard />;
+      case "candidats":
+        return <Candidats />;
       case "candidatures":
         return <Candidature />;
       default:
