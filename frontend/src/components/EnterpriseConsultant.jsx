@@ -7,7 +7,8 @@ import {
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import frMessages from "../utils/fr.json";
 import SearchBar from "./SearchBar";
-import { GetNumberOffers } from "../apis/firmApi";
+import { GetFirmOffer } from "../apis/firmApi";
+import "../styles/EnterpriseConsultant.css";
 
 loadMessages(frMessages, "fr-FR");
 
@@ -24,12 +25,12 @@ const EnterpriseConsultant = () => {
     setPage(event.page);
   };
 
-  const getDetailsEnterprises = async () => {
-    setMyEnterprises(await GetNumberOffers());
+  const getFirmOffer = async () => {
+    setMyEnterprises(await GetFirmOffer());
   };
 
   useEffect(() => {
-    getDetailsEnterprises();
+    getFirmOffer();
   }, []);
 
   return (
@@ -40,40 +41,42 @@ const EnterpriseConsultant = () => {
           {/** Filter box enterprise */}
         </div>
         <div className="enterprise-box">
-          <h2>Mes entreprises</h2>
-        </div>
-        <div className="dashboard_enterprises">
-          <LocalizationProvider language="fr-FR">
-            <IntlProvider locale="fr">
-              <Grid
-                className="grid_enterprise"
-                data={myEnterprises.slice(page.skip, page.take + page.skip)}
-                skip={page.skip}
-                take={page.take}
-                total={myEnterprises.length}
-                pageable
-                onPageChange={pageChange}
-              >
-                <GridColumn
-                  field="Id entreprise"
-                  title="Date d'entrée"
-                  width="120px"
-                />
-                <GridColumn
-                  title="Nom de l'entreprise"
-                  field="name"
-                  width="200px"
-                />
-                <GridColumn title="Id entreprise" field="id" width="60px" />
-                <GridColumn
-                  title="Nombre d'annonces"
-                  field="nbreoffers"
-                  width="150px"
-                />
-                <GridColumn field="" title="Etat" />
-              </Grid>
-            </IntlProvider>
-          </LocalizationProvider>
+          <div className="enterprise-details">
+            <h2>Mes entreprises</h2>
+          </div>
+          <div className="dashboard_enterprises">
+            <LocalizationProvider language="fr-FR">
+              <IntlProvider locale="fr">
+                <Grid
+                  className="grid_enterprise"
+                  data={myEnterprises.slice(page.skip, page.take + page.skip)}
+                  skip={page.skip}
+                  take={page.take}
+                  total={myEnterprises.length}
+                  pageable
+                  onPageChange={pageChange}
+                >
+                  <GridColumn
+                    title="Id entreprise"
+                    field="firm_id"
+                    width="70vw"
+                  />
+                  <GridColumn
+                    title="Nom de l'entreprise"
+                    field="name"
+                    width="300vw"
+                  />
+                  <GridColumn title="Email" field="email" width="300vw" />
+                  <GridColumn title="Ville" field="city" width="300vw" />
+                  <GridColumn
+                    title="Nombre d'annonces"
+                    field="nbreoffers"
+                    width="150vw"
+                  />
+                </Grid>
+              </IntlProvider>
+            </LocalizationProvider>
+          </div>
         </div>
       </div>
     </div>

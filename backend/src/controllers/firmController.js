@@ -14,7 +14,7 @@ const firmController = {
       .then(([firm]) => res.status(200).send(firm))
       .catch((err) => next(err));
   },
-  getFirmOfferById: (req, res, next) => {
+  getFirmOffer: (req, res, next) => {
     firmModel
       .findOfferByFirm()
       .then((firmOffers) => res.status(200).send(firmOffers))
