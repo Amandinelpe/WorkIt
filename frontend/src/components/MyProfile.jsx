@@ -17,13 +17,13 @@ const MyProfile = ({ show }) => {
   const [message, setMessage] = useState();
   const [disableSaveButton, setDisableSaveButton] = useState(true);
 
-  const handleChange = (e) => {
+  const handleChange = (e, customValue) => {
     setMessage(null);
     setDisableSaveButton(false);
     const { name, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: customValue ?? value,
     }));
   };
 
@@ -73,9 +73,11 @@ const MyProfile = ({ show }) => {
                           key={item.id}
                           labelName={item.description}
                           inputName="gender_id"
-                          inputValue={user.gender_id}
+                          inputValue={item.id}
                           checked={user.gender_id === item.id}
-                          onChange={handleChange}
+                          onChange={(e) =>
+                            handleChange(e, parseInt(e.target.value, 10))
+                          }
                         />
                       ))}
                     </div>
@@ -239,7 +241,7 @@ const MyProfile = ({ show }) => {
                   <label>
                     Salaire (annuel brut)
                     <input
-                      type="text"
+                      type="number"
                       name="salary"
                       className="small-input"
                       value={user.salary}

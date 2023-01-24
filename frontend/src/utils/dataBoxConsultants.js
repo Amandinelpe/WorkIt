@@ -3,14 +3,14 @@ const dataBoxConsultants = [
     id: 1,
     title: "Mes annonces",
     sections: ["Liste de mes postes en ligne"],
-    link: "Annonces",
+    link: "annonce",
   },
 
   {
     id: 2,
     title: "Mes candidats",
     sections: ["Nouveaux", "En cours", "Embauchés", "Vivier", "Archivés"],
-    link: "dashboard",
+    link: "mescandidats",
   },
 
   {
@@ -21,7 +21,7 @@ const dataBoxConsultants = [
       "Candidatures en cours",
       "Candidatures archivées",
     ],
-    link: "candidatures",
+    link: "candidature",
   },
   {
     id: 4,
@@ -30,7 +30,7 @@ const dataBoxConsultants = [
       "Je consulte mes messages",
       "Je rentre en relation avec un candidat",
     ],
-    link: "dashboard",
+    link: "messagerie",
   },
 ];
 

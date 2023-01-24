@@ -17,7 +17,7 @@ const dataBox = [
     id: 3,
     title: "Messagerie",
     sections: ["Je rentre en contact avec un.e consultant.e"],
-    link: null,
+    link: "messagerie",
   },
 ];
 

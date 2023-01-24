@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import dataBoxConsultants from "../utils/dataBoxConsultants";
 import "../styles/BoxCandidate.css";
 
-const BoxCandidate = ({ handleContent }) => {
+const BoxCandidate = ({ setContent }) => {
   const onClick = (e, link) => {
     e.preventDefault();
-    handleContent(link);
+    setContent(link);
   };
 
   return (
@@ -37,5 +37,5 @@ const BoxCandidate = ({ handleContent }) => {
 export default BoxCandidate;
 
 BoxCandidate.propTypes = {
-  handleContent: PropTypes.func.isRequired,
+  setContent: PropTypes.func.isRequired,
 };

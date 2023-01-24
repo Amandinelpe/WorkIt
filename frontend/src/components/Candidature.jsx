@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import {
   IntlProvider,
@@ -9,7 +10,8 @@ import frMessages from "../utils/fr.json";
 import { GetSpontaneousApplications } from "../utils/getSpontaneousApplications";
 import SearchBar from "./SearchBar";
 import Comparer from "../assets/img/comparer.png";
-import "../styles/Candidature.css";
+import "../styles/GridContainer.css";
+import "../styles/KendoGrid.css";
 
 loadMessages(frMessages, "fr-FR");
 
@@ -72,7 +74,7 @@ const cellEtat = (props) => {
   );
 };
 
-const Candidature = () => {
+const Candidature = ({ show }) => {
   const [page, setPage] = React.useState(initialDataState);
   const [spontaneousApplications, setSpontaneousApplications] = useState([]);
 
@@ -87,16 +89,18 @@ const Candidature = () => {
   useEffect(() => {
     getSpontaneousApplications();
   }, []);
+
+  if (!show) return null;
   return (
-    <div className="container_body">
+    <div className="container-body">
       <SearchBar />
       <div className="container">
         <div className="filter-box">{/** Filter box */}</div>
-        <div className="candidature-box">
-          <div className="nouvelles_candidatures">
+        <div className="grid-container-box">
+          <div className="grid-container-box-title">
             <h2>Nouvelles candidatures spontanées</h2>
           </div>
-          <div className="dashboard_candidature">
+          <div className="grid-container">
             <button
               type="submit"
               className="btn-container"
@@ -107,7 +111,7 @@ const Candidature = () => {
             <LocalizationProvider language="fr-FR">
               <IntlProvider locale="fr">
                 <Grid
-                  className="grid_candidature"
+                  className="grid"
                   data={spontaneousApplications.slice(
                     page.skip,
                     page.take + page.skip
@@ -147,3 +151,7 @@ const Candidature = () => {
 };
 
 export default Candidature;
+
+Candidature.propTypes = {
+  show: PropTypes.bool.isRequired,
+};

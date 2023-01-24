@@ -11,7 +11,7 @@ const RadioButton = (props) => {
         type="radio"
         name={inputName}
         value={inputValue}
-        checked={checked}
+        defaultChecked={checked}
         onChange={onChange}
       />
       <span className="checkmark" />

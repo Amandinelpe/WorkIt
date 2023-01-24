@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import OfferEmpty from "@components/OfferEmpty";
+import OfferEmpty from "../components/OfferEmpty";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
@@ -10,6 +10,7 @@ import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
 
 import "../styles/MainPage.css";
+import "../styles/OffersList.css";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
