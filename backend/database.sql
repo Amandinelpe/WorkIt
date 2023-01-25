@@ -5,7 +5,7 @@ USE externatic;
 CREATE TABLE `user` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
-    `gender_id` INT NULL ,
+    `gender`  VARCHAR(50)  NOT NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(50)  NOT NULL ,
@@ -176,19 +176,8 @@ CREATE TABLE `application_state` (
     )
 );
 
-CREATE TABLE `gender` (
-	`id` INT auto_increment NOT NULL,
-	`name` varchar(100) NOT NULL,
-	`description` varchar(100) NOT NULL,
-	PRIMARY KEY (
-        `id`
-    )
-);
-
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
-ALTER TABLE `user` ADD CONSTRAINT `fk_user_gender_id` FOREIGN KEY(`gender_id`)
-REFERENCES `gender` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_job_id` FOREIGN KEY(`job_id`)
 REFERENCES `job` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_experience_id` FOREIGN KEY(`experience_id`)
@@ -278,11 +267,6 @@ INSERT INTO experience (experience) VALUES
      ('2-3 ans'),
      ('4-10 ans'),
      ('10 ans et +');
-
-     INSERT INTO externatic.gender (name, description) VALUES
-    ('Femme', 'Je suis une femme'),
-    ('Homme', 'Je suis un homme'),
-    ('Non-binaire', 'Je suis non-binaire');
     
 INSERT INTO externatic.application_state (name) VALUES
     ('En attente'),
@@ -299,7 +283,7 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
      (2,'Ophelie','Gavernie','0796896321','Begles','opheliegaverie@gmail.com','gdteej#48569','https://www.linkedin.com/in/ophelie-gavernie/%27'),
      (2,'Bertrand','Pomelo','0769365478','Bordeaux','bertrandpomelo@gmail.com','89654derop#klmp','https://www.linkedin.com/in/bertrand-pomelo/%27'),
      (2,'Carole','Artelis','0658963250','Cauderan','carole.artelis@gmail.com','7856aldopme','https://www.linkedin.com/in/carole-artelis/%27'),
-          (2,'Michael','Birepinte','062356637','Bordeaux','mickael.birepinte@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$yYVpZ3U+F/ee1AZlNTaZYQ$Zua2dOcNVSU5He6hV8h5z9uRwyXRQrq6gc0lSA6IjQU','https://www.linkedin.com/in/michael-birepinte/'),
+     (2,'Michael','Birepinte','062356637','Bordeaux','mickael.birepinte@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$yYVpZ3U+F/ee1AZlNTaZYQ$Zua2dOcNVSU5He6hV8h5z9uRwyXRQrq6gc0lSA6IjQU','https://www.linkedin.com/in/michael-birepinte/'),
      (2,'Luc','Jaubert','0625458978','Bordeaux','lucjaubert@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$K2QB56XZobdyCRWiiUuhIg$gYT2ev6y4g/K28Y96kjzaIqk4BBj/k+o6wE3U3CMG78','https://www.linkedin.com/in/luc-jaubert/'),
      (2,'Olga','Yasnopolskaya','06963969620','Bordeaux','olga_yasn@hotmail.com','$argon2id$v=19$m=65536,t=3,p=4$QxHxZ2KRGgnpOzs5AL0YBQ$ZM6Altf4QNGDMFTdpZ7baT6lunYEplqDawawGpoC5Iw','https://www.linkedin.com/in/olga-yasnopolskaya-349b04aa/'),
      (2,'Amandine','Leporace','0768076995','Bordeaux','leporace.amandine@gmail.com','$argon2id$v=19$m=16,t=2,p=1$ZWd3QjVPSmpUWFdyWDV1Vg$69CKCWqeR7Jo6OZxzVbGWA','https://www.linkedin.com/in/amandine-leporace-aa023222a/');
@@ -308,9 +292,9 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
  
 
 INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
-	 (3,1,'Michael','Birepinte','mickael.birepinte@gmail.com','Salut'),
-	 (3,1,'Olga','Yasno','olga_yasn@hotmail.com','Coucou'),
-	 (3,2,'Luc','Jaubert','lucjaubert@gmail.com','Pessac');
+	 (3,'homme','Michael','Birepinte','mickael.birepinte@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM'),
+	 (3,'femme','Olga','Yasno','olga_yasn@hotmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM'),
+	 (3,'homme','Luc','Jaubert','lucjaubert@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM');
 
      INSERT INTO urgence (name) VALUES
 	 ('faible'),
