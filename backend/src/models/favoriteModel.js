@@ -14,12 +14,13 @@ const findOne = (id) => {
     .query("SELECT * FROM favorite where id = ?", [id])
     .then(([favorite]) => favorite);
 };
-const findOneByUser = (user_id, role_id) => {
+const findOneByUser = (user_id, offer_id) => {
+  console.log(user_id, offer_id);
   return db
     .promise()
-    .query("SELECT * FROM favorite where user_id = ? and role_id = ?", [
+    .query("SELECT * FROM favorite where user_id = ? and offer_id = ?", [
       user_id,
-      role_id,
+      offer_id,
     ])
     .then(([favorite]) => favorite);
 };
