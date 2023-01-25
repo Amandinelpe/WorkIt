@@ -8,7 +8,6 @@ import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import frMessages from "../utils/fr.json";
 import SearchBar from "./SearchBar";
 import { GetFirmOffer } from "../apis/firmOfferApi";
-// import SearchBoxEnterprises from "./SearchBoxEnterprises";
 import "../styles/EnterpriseConsultant.css";
 
 loadMessages(frMessages, "fr-FR");
@@ -21,6 +20,7 @@ const initialDataState = {
 const EnterpriseConsultant = () => {
   const [page, setPage] = React.useState(initialDataState);
   const [myEnterprises, setMyEnterprises] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const pageChange = (event) => {
     setPage(event.page);
@@ -34,27 +34,45 @@ const EnterpriseConsultant = () => {
     getFirmOffer();
   }, []);
 
+  const handleSearch = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  const filteredFirms = myEnterprises.filter((firm) => {
+    return firm.name.toLowerCase().includes(searchValue.toLowerCase());
+  });
+
   return (
     <div className="container_enterprise_body">
       <SearchBar />
       <div className="container_enterprise">
-        <div className="searchbox-enterprise">
-          <div className="searchbox-enterprise-title">
-            {/* <SearchBoxEnterprises /> */}
+        <div className="enterprise-box">
+          <div className="enterprise-details">
+            <h2>Mes entreprises</h2>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Rechercher une entreprise"
+                value={searchValue}
+                onChange={handleSearch}
+              />
+              <button type="submit">Rechercher</button>
+            </form>
           </div>
-          <div className="enterprise-box">
-            <div className="enterprise-details">
-              <h2>Mes entreprises</h2>
-            </div>
+          <div className="dashboard_body">
             <div className="dashboard_enterprises">
               <LocalizationProvider language="fr-FR">
                 <IntlProvider locale="fr">
                   <Grid
                     className="grid_enterprise"
-                    data={myEnterprises.slice(page.skip, page.take + page.skip)}
+                    data={filteredFirms.slice(page.skip, page.take + page.skip)}
                     skip={page.skip}
                     take={page.take}
-                    total={myEnterprises.length}
+                    total={filteredFirms.length}
                     pageable
                     onPageChange={pageChange}
                   >
