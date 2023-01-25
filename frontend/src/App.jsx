@@ -16,6 +16,7 @@ import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
 import "@progress/kendo-theme-default/dist/all.css";
 import DashboardAdmin from "./pages/DashboardAdmin";
 import "./styles/Flex.css";
+import FicheCandidat from "./components/FicheCandidat";
 
 import "./App.css";
 
@@ -23,7 +24,7 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div>
+    <div id="app">
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pat}>
           <Route path="/" element={<Home />} />
@@ -64,6 +65,7 @@ const App = () => {
           <Route path="/CreateProfile" element={<CreateProfile />} />
           <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
           <Route path="/ResetPassword/:token/:id" element={<ResetPassword />} />
+          <Route path="/FicheCandidat" element={<FicheCandidat />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </AnimatePresence>

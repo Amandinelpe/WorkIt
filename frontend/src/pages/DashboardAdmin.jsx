@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import BoxAdmin from "../components/BoxAdmin";
 import Footer from "../components/Footer";
-import MyProfile from "../components/MyProfile";
 import Dashboard from "../components/Dashboard";
 import Candidats from "../components/Candidats";
 import ListeConsultants from "../components/ListeConsultants";
-// import EnterpriseConsultant from "../components/EnterpriseConsultant";
+import EnterpriseConsultant from "../components/EnterpriseConsultant";
 import "../styles/BoxAdmin.css";
 
 const DashboardAdmin = () => {
@@ -19,14 +18,14 @@ const DashboardAdmin = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      // case "entreprise":
-      //   return <EnterpriseConsultant />;
+      case "entreprise":
+        return <EnterpriseConsultant />;
       case "candidat":
         return <Candidats />;
       case "consultant":
         return <ListeConsultants />;
       case "medias":
-        return <MyProfile />;
+        return <Dashboard />;
       default:
         return <Dashboard />;
     }

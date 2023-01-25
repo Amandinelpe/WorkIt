@@ -18,8 +18,7 @@
   color: var(--white);
   font-family: var(--text-font-family-jost);
   font-size: 1rem;
-  font-weight: lighter;
-  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .body_box {

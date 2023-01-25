@@ -5,9 +5,8 @@ import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
 import Chat from "../components/Chat";
 import Footer from "../components/Footer";
-import Dashboard from "../components/Dashboard";
 import Candidature from "../components/Candidature";
-// import EnterpriseConsultant from "../components/EnterpriseConsultant";
+import EnterpriseConsultant from "../components/EnterpriseConsultant";
 import Candidats from "../components/Candidats";
 import "../styles/DashboardConsultants.css";
 
@@ -20,8 +19,8 @@ const DashboardConsultant = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      // case "entreprises":
-      //   return <EnterpriseConsultant />;
+      case "entreprises":
+        return <EnterpriseConsultant />;
       case "candidats":
         return <Candidats />;
       case "candidatures":
@@ -29,7 +28,7 @@ const DashboardConsultant = () => {
       case "messagerie":
         return <Chat />;
       default:
-        return <Dashboard />;
+        return <EnterpriseConsultant />;
     }
   };
 

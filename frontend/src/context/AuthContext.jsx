@@ -28,8 +28,8 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    setAuth({});
     window.localStorage.removeItem("user");
+    setAuth({});
     navigate("/", { replace: true, state: "Disconnected" });
   };
 

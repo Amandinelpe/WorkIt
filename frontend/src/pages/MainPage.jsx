@@ -9,6 +9,7 @@ import Offer from "../components/Offer";
 import SalaryBox from "../components/SalaryBox";
 import PublicationDateBox from "../components/PublicationDateBox";
 import "../styles/MainPage.css";
+import "../styles/OffersList.css";
 
 const MainPage = () => {
   const [offers, setOffers] = useState([]);
@@ -65,7 +66,7 @@ const MainPage = () => {
                     date={offer.date}
                     title={offer.title}
                     logo={offer.logo_url}
-                    city={offer.city}
+                    city={offer.firm_city}
                     id={offer.id}
                   />
                 ))

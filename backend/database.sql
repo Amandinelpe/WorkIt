@@ -4,7 +4,7 @@ USE externatic;
 CREATE TABLE `user` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
-    `gender` VARCHAR(50)  NULL ,
+    `gender`  VARCHAR(50)  NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(50)  NOT NULL ,
@@ -175,6 +175,26 @@ CREATE TABLE `application_state` (
     )
 );
 
+CREATE TABLE `favorite` (
+	`favorite_id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`offer_id` int NOT NULL,
+	PRIMARY KEY (
+        `favorite_id`
+    )
+);
+
+
+CREATE TABLE `candidated` (
+	`candidated_id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`offer_id` int NOT NULL,
+	PRIMARY KEY (
+        `candidated_id`
+    )
+);
+
+
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_job_id` FOREIGN KEY(`job_id`)
@@ -215,8 +235,18 @@ ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application
 REFERENCES `user` (`id`);
 ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_job_id` FOREIGN KEY(`job_id`)
 REFERENCES `job` (`id`);
-ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_state_id` FOREIGN KEY(`application_state_id`)
-REFERENCES `application_state` (`id`);
+
+ALTER TABLE `favorite` ADD CONSTRAINT `fk_favorite_offer_id` FOREIGN KEY(`offer_id`)
+REFERENCES `offer` (`id`);
+ALTER TABLE `favorite` ADD CONSTRAINT `fk_favorite_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+
+ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_offer_id` FOREIGN KEY(`offer_id`)
+REFERENCES `offer` (`id`);
+ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+
+
 
 INSERT INTO role (status) VALUES('user');
 INSERT INTO role (status) VALUES('consultant');
@@ -266,6 +296,12 @@ INSERT INTO experience (experience) VALUES
      ('2-3 ans'),
      ('4-10 ans'),
      ('10 ans et +');
+    
+INSERT INTO externatic.application_state (name) VALUES
+    ('En attente'),
+    ('En cours de traitement'),
+    ('Refusée'),
+    ('Acceptée');
 
 INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,linkedin) VALUES
      (2,'Paul','Delos','0625456289','Bordeaux','pauldelos@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM','https://www.linkedin.com/in/paul-delos/%27'),
@@ -276,7 +312,7 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
      (2,'Ophelie','Gavernie','0796896321','Begles','opheliegaverie@gmail.com','gdteej#48569','https://www.linkedin.com/in/ophelie-gavernie/%27'),
      (2,'Bertrand','Pomelo','0769365478','Bordeaux','bertrandpomelo@gmail.com','89654derop#klmp','https://www.linkedin.com/in/bertrand-pomelo/%27'),
      (2,'Carole','Artelis','0658963250','Cauderan','carole.artelis@gmail.com','7856aldopme','https://www.linkedin.com/in/carole-artelis/%27'),
-          (2,'Michael','Birepinte','062356637','Bordeaux','mickael.birepinte@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$yYVpZ3U+F/ee1AZlNTaZYQ$Zua2dOcNVSU5He6hV8h5z9uRwyXRQrq6gc0lSA6IjQU','https://www.linkedin.com/in/michael-birepinte/'),
+     (2,'Michael','Birepinte','062356637','Bordeaux','mickael.birepinte@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$yYVpZ3U+F/ee1AZlNTaZYQ$Zua2dOcNVSU5He6hV8h5z9uRwyXRQrq6gc0lSA6IjQU','https://www.linkedin.com/in/michael-birepinte/'),
      (2,'Luc','Jaubert','0625458978','Bordeaux','lucjaubert@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$K2QB56XZobdyCRWiiUuhIg$gYT2ev6y4g/K28Y96kjzaIqk4BBj/k+o6wE3U3CMG78','https://www.linkedin.com/in/luc-jaubert/'),
      (2,'Olga','Yasnopolskaya','06963969620','Bordeaux','olga_yasn@hotmail.com','$argon2id$v=19$m=65536,t=3,p=4$QxHxZ2KRGgnpOzs5AL0YBQ$ZM6Altf4QNGDMFTdpZ7baT6lunYEplqDawawGpoC5Iw','https://www.linkedin.com/in/olga-yasnopolskaya-349b04aa/'),
      (2,'Amandine','Leporace','0768076995','Bordeaux','leporace.amandine@gmail.com','$argon2id$v=19$m=16,t=2,p=1$ZWd3QjVPSmpUWFdyWDV1Vg$69CKCWqeR7Jo6OZxzVbGWA','https://www.linkedin.com/in/amandine-leporace-aa023222a/');
@@ -300,9 +336,9 @@ VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bo
 ('contact@digisolutions.com', 'password', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
 
 INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
-	 (3,1,'Michael','Birepinte','mickael.birepinte@gmail.com','Salut'),
-	 (3,1,'Olga','Yasno','olga_yasn@hotmail.com','Coucou'),
-	 (3,2,'Luc','Jaubert','lucjaubert@gmail.com','Pessac');
+	 (3,'homme','Michael','Birepinte','mickael.birepinte@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM'),
+	 (3,'femme','Olga','Yasno','olga_yasn@hotmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM'),
+	 (3,'homme','Luc','Jaubert','lucjaubert@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM');
 
      INSERT INTO urgence (name) VALUES
 	 ('faible'),
@@ -311,11 +347,10 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 	 ('absolue');
 
      INSERT INTO state_offer (name) VALUES
-	 ('En traitement'),
-	 ('Pourvu'),
-	 ('Clôturé'),
-	 ('Suspendu'),
-	 ('Abandonné');
+	('En attente'),
+    ('En cours de traitement'),
+    ('Refusée'),
+    ('Acceptée');
 
      INSERT INTO contract (id, contract_type) VALUES(1, 'CDI'), (2, 'CDD'), (3, 'Stage'), (4, 'Contrat de professionnalisation'), (5, 'Contrat d apprentissage');
 	
@@ -353,11 +388,6 @@ VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bo
 ('contact@datatechpro.com', 'password', 'Datatech Pro', '05 12 34 56 78', 'Pau', 64000, 'France', '7 Avenue des Pyrenees', 'IT', 'https://i.imgur.com/b6NLZ9b.png', 11),
 ('contact@techminds.com', 'password', 'TechMinds', '05 67 89 01 23', 'Agen', 47000, 'France', '8 Place de la Gare', 'IT', 'https://i.imgur.com/2CxRzMh.png', 4),
 ('contact@digisolutions.com', 'password', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
-INSERT INTO externatic.application_state (id, name) VALUES
-    (1, 'En attente'),
-    (2, 'En cours de traitement'),
-    (3, 'Refusée'),
-    (4, 'Acceptée');
 
 INSERT INTO externatic.`spontaneous_application` (`user_id`,`job_id`,`application_state_id`, `creation_date` )
 VALUES
@@ -468,3 +498,11 @@ INSERT INTO externatic.offer (title,firm_id,firm_city,`date`,postal_code,country
 	 ('Consultant en recrutement IT (H/F)',3,'Bordeaux','2023-01-24',33000,'France',36,46000,'Kwantic est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Maintenir et faire évoluer le site e-commerce https://www.artphotolimited.com/(RubyOnRails, MongoDB) tant sur sa partie frontend que backend, sous la supervision de notre CTO','Autonomie, Créativité, sens de l’innovation, Adaptabilité et flexibilité, Capacité d’analyse et de synthèse, Esprit d’équipe / sens de la communauté','Front (vuejs ou react), Sensibilité sur l''UX/UI, Linux (bash), Compétence devops, Saas & Cloud, Requêtage SQL',3,1,1,3,2),
 	 ('Recruteur tech (H/F)',8,'Toulouse','2023-02-02',31000,'France',37,37000,'Software Solutions est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques',' Audit sur un périmètre infrastructure dans un contexte de refonte de l''architecture réseau : Etude de l’existant et proposer une nouvelle architecture, Refonte de l''architecture réseau, Mise en place d''une architecture, Création d''une salle serveur, Remplacement des équipements switchs DC et Sièges','Vous êtes curieux, force de proposition et avez le sens du service. Vous savez gérer les priorités, prendre des initiatives, et vous adapter à différents acteurs. Vous avez une capacité d écoute et d analyse et vous savez être force de proposition. Vous faites preuve d une bonne aisance rédactionnelle','Front (vuejs ou react), Sensibilité sur l''UX/UI, Linux (bash), Compétence devops, Saas & Cloud, Requêtage SQL',2,1,2,2,3),
 	 ('Front-End Developpeur (H/F)',4,'Toulouse','2023-02-04',31000,'France',2,38000,'FictivTech est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Maintenir et faire évoluer le site e-commerce https://www.artphotolimited.com/(RubyOnRails, MongoDB) tant sur sa partie frontend que backend, sous la supervision de notre CTO','-','Front (vuejs ou react), Sensibilité sur l''UX/UI, Linux (bash), Compétence devops, Saas & Cloud, Requêtage SQL',2,1,3,2,4);
+
+INSERT INTO externatic.favorite (user_id,offer_id) VALUES
+	 (1,8),
+	 (1,12);
+
+INSERT INTO externatic.candidated (user_id,offer_id) VALUES
+	 (1,8),
+	 (1,12);
