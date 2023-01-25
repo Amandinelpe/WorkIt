@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const favoriteModel = require("../models/favoriteModel");
 
 const favoriteController = {
@@ -15,8 +16,8 @@ const favoriteController = {
       .catch((err) => next(err));
   },
   getfavoriteByUser: (req, res, next) => {
-    const offer_id = req.query.offer_id;
-    const user_id = req.query.user_id;
+    const { offer_id } = req.query;
+    const { user_id } = req.query;
     favoriteModel
       .findOneByUser(user_id, offer_id)
       .then(([favorite]) => res.status(200).send(favorite))
@@ -25,7 +26,7 @@ const favoriteController = {
   postFavorite: (req, res, next) => {
     const { user_id, offer_id } = req.body;
     favoriteModel
-      .createOne({user_id, offer_id})
+      .createOne({ user_id, offer_id })
       .then((favorite) => res.status(200).send(favorite))
       .catch((err) => next(err));
   },
@@ -35,7 +36,7 @@ const favoriteController = {
       .deleteOne(id)
       .then((favorite) => res.status(200).send(favorite))
       .catch((err) => next(err));
-  }
+  },
 };
 
 module.exports = favoriteController;

@@ -3,7 +3,11 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { authContext } from "../context/AuthContext";
 import { GetOfferById } from "../apis/offerApi";
-import { GetFavoriteByUserAndOffer } from "../apis/favoriteApi";
+import {
+  GetFavoriteByUserAndOffer,
+  PostFavorite,
+  DeleteFavorite,
+} from "../apis/favoriteApi";
 import close from "../assets/img/annuler.png";
 import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
@@ -48,14 +52,23 @@ const OfferDetail = ({ show, onClose, id }) => {
       }
     }
   };
-/*   console.log(userOffer, "userOffer");
+  /*   console.log(userOffer, "userOffer");
   console.log(auth.data, "auth.data");
   console.log(favoriteId, "favoriteID"); */
   const setFavorite = () => {
-    setUserOffer({
-      ...userOffer,
-      isFavorite: !userOffer.isFavorite,
-    });
+    if (userOffer.isFavorite) {
+      DeleteFavorite(favoriteId).then((res) => console.warn(res));
+      setUserOffer({
+        ...userOffer,
+        isFavorite: !userOffer.isFavorite,
+      });
+    } else {
+      PostFavorite(userOffer).then((res) => console.warn(res));
+      setUserOffer({
+        ...userOffer,
+        isFavorite: !userOffer.isFavorite,
+      });
+    }
   };
 
   useEffect(() => {
