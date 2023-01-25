@@ -21,6 +21,20 @@ const favoriteController = {
       .findOneByUser(user_id, offer_id)
       .then(([favorite]) => res.status(200).send(favorite))
       .catch((err) => next(err));
+  },
+  postFavorite: (req, res, next) => {
+    const { user_id, offer_id } = req.body;
+    favoriteModel
+      .createOne({user_id, offer_id})
+      .then((favorite) => res.status(200).send(favorite))
+      .catch((err) => next(err));
+  },
+  deleteFavorite: (req, res, next) => {
+    const { id } = req.params;
+    favoriteModel
+      .deleteOne(id)
+      .then((favorite) => res.status(200).send(favorite))
+      .catch((err) => next(err));
   }
 };
 
