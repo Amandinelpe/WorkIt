@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
+import Chat from "../components/Chat";
 import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
-import "../styles/DashboardConsultants.css";
 import Candidature from "../components/Candidature";
-import EnterpriseConsultant from "../components/EnterpriseConsultant";
+// import EnterpriseConsultant from "../components/EnterpriseConsultant";
 import Candidats from "../components/Candidats";
+import "../styles/DashboardConsultants.css";
 
 const DashboardConsultant = () => {
   const [content, setContent] = useState("Annonces");
@@ -19,12 +20,14 @@ const DashboardConsultant = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      case "entreprises":
-        return <EnterpriseConsultant />;
+      // case "entreprises":
+      //   return <EnterpriseConsultant />;
       case "candidats":
         return <Candidats />;
       case "candidatures":
         return <Candidature />;
+      case "messagerie":
+        return <Chat />;
       default:
         return <Dashboard />;
     }

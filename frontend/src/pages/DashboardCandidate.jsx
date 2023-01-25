@@ -4,10 +4,10 @@ import NavBar from "../components/NavBar";
 import BoxCandidate from "../components/BoxCandidate";
 import HelloButton from "../components/HelloButton";
 import Footer from "../components/Footer";
-import "../styles/DashboardCandidate.css";
 import Dashboard from "../components/Dashboard";
 import MyProfile from "../components/MyProfile";
-import ChatBody from "../components/ChatBody";
+import Chat from "../components/Chat";
+import "../styles/DashboardCandidate.css";
 
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
@@ -23,7 +23,7 @@ const DashboardCandidate = () => {
       case "dashboard":
         return <Dashboard />;
       case "messagerie":
-        return <ChatBody />;
+        return <Chat />;
       default:
         return <Dashboard />;
     }
