@@ -34,5 +34,4 @@ router.use("/state_offer", stateOfferRouter);
 router.use("/spontaneous_application", spontaneousApplicationRouter);
 router.use("/favorite", favoriteRouter);
 router.use("/candidated", candidatedRouter);
-
 module.exports = router;
