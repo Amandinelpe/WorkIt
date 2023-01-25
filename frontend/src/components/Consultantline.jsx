@@ -1,11 +1,18 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const Consultantline = () => {
+const ConsultantLine = ({ consultant }) => {
   return (
     <div>
-      <h1>Coucou</h1>
+      <h1>
+        {consultant.firstname} {consultant.lastname}{" "}
+      </h1>
     </div>
   );
 };
 
-export default Consultantline;
+ConsultantLine.propTypes = {
+  consultant: PropTypes.string.isRequired,
+};
+
+export default ConsultantLine;

@@ -1,20 +1,23 @@
 import { React, useEffect, useState } from "react";
 import { GetAllConsultants } from "../utils/getAllConsultants";
-import Consultantline from "./Consultantline";
+import ConsultantLine from "./ConsultantLine";
 
 const ListeConsultants = () => {
   const [consultants, setConsultants] = useState([]);
+  // console.log(consultants, "coucou");
 
   const getListAllConsultants = async () => {
-    setConsultants(await GetAllConsultants);
+    setConsultants(await GetAllConsultants());
   };
 
-  useEffect(() => getListAllConsultants(), []);
+  useEffect(() => {
+    getListAllConsultants();
+  }, []);
 
   return (
     <div>
       {consultants.map((consultant) => (
-        <Consultantline key={consultant.id} consultant={consultant} />
+        <ConsultantLine key={consultant.id} consultant={consultant} />
       ))}
     </div>
   );
