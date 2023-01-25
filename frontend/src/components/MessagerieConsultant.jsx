@@ -33,14 +33,14 @@ const exempleDataGrid = [
   },
 ];
 
-const MessagerieConsultant = ({ show }) => {
+const MessagerieConsultant = () => {
   const [page, setPage] = React.useState(initialDataState);
 
   const pageChange = (event) => {
     setPage(event.page);
   };
 
-  if (!show) return null;
+
   return (
     <div className="container-body">
       <SearchBar />
@@ -82,7 +82,3 @@ const MessagerieConsultant = ({ show }) => {
 };
 
 export default MessagerieConsultant;
-
-MessagerieConsultant.propTypes = {
-  show: PropTypes.bool.isRequired,
-};

@@ -4,10 +4,9 @@ import socketIO from "socket.io-client";
 import ChatBody from "./ChatBody";
 import "../styles/MessagerieCandidat.css";
 
-const MessagerieCandidat = ({ show }) => {
+const MessagerieCandidat = () => {
   const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
 
-  if (!show) return null;
   return (
     <div className="messagerie-candidat">
       <div className="flex flex-fd-column flex-ai-center flex-jc-center">
@@ -31,5 +30,4 @@ MessagerieCandidat.propTypes = {
     id: PropTypes.string,
     on: PropTypes.func,
   }).isRequired,
-  show: PropTypes.bool.isRequired,
 };

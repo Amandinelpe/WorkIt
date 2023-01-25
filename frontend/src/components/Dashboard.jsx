@@ -5,7 +5,7 @@ import { GetMyApplications } from "../utils/getMyApplications";
 import JobAlert from "./JobAlert";
 import Offer from "./Offer";
 
-const Dashboard = ({ show }) => {
+const Dashboard = () => {
   const [favoritesOffers, setFavoritesOffers] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
 
@@ -25,7 +25,6 @@ const Dashboard = ({ show }) => {
     getAllApplications();
   }, []);
 
-  if (!show) return null;
   return (
     <div>
       <div className="my_favorites_body">
@@ -87,7 +86,3 @@ const Dashboard = ({ show }) => {
 };
 
 export default Dashboard;
-
-Dashboard.propTypes = {
-  show: PropTypes.bool.isRequired,
-};

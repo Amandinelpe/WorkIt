@@ -7,7 +7,7 @@ import Offer from "./Offer";
 import "../styles/AnnoncesConsultant.css";
 import StateBox from "./StateBox";
 
-const AnnoncesConsultant = ({ show }) => {
+const AnnoncesConsultant = () => {
   const [offers, setOffers] = useState([]);
   const [filterOffer, setFilterOffer] = useState({
     city: "",
@@ -58,6 +58,3 @@ const AnnoncesConsultant = ({ show }) => {
 
 export default AnnoncesConsultant;
 
-AnnoncesConsultant.propTypes = {
-  show: PropTypes.bool.isRequired,
-};

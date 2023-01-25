@@ -33,14 +33,13 @@ const exempleDataGrid = [
   },
 ];
 
-const ListeCandidat = ({ show }) => {
+const ListeCandidat = () => {
   const [page, setPage] = React.useState(initialDataState);
 
   const pageChange = (event) => {
     setPage(event.page);
   };
 
-  if (!show) return null;
   return (
     <div className="container-body">
       <SearchBar />
@@ -83,6 +82,4 @@ const ListeCandidat = ({ show }) => {
 
 export default ListeCandidat;
 
-ListeCandidat.propTypes = {
-  show: PropTypes.bool.isRequired,
-};
+

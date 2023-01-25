@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import dataBoxConsultants from "../utils/dataBoxConsultants";
 import "../styles/BoxCandidate.css";
 
-const BoxCandidate = ({ setContent }) => {
+const BoxCandidate = ({ handleContent }) => {
   const onClick = (e, link) => {
     e.preventDefault();
-    setContent(link);
+    handleContent(link);
   };
 
   return (
@@ -16,7 +16,9 @@ const BoxCandidate = ({ setContent }) => {
           key={box.id}
           className="box_candidate"
           onClick={(e) => onClick(e, box.link)}
-          role="presentation"
+          onKeyDown={(e) => onClick(e, box.link)}
+          role="button"
+          tabIndex={0}
         >
           <div key={box.id} className="box_candidate_title">
             <h1>{box.title}</h1>
@@ -37,5 +39,5 @@ const BoxCandidate = ({ setContent }) => {
 export default BoxCandidate;
 
 BoxCandidate.propTypes = {
-  setContent: PropTypes.func.isRequired,
+  handleContent: PropTypes.func.isRequired,
 };

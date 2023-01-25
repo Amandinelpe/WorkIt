@@ -74,7 +74,7 @@ const cellEtat = (props) => {
   );
 };
 
-const Candidature = ({ show }) => {
+const Candidature = () => {
   const [page, setPage] = React.useState(initialDataState);
   const [spontaneousApplications, setSpontaneousApplications] = useState([]);
 
@@ -90,7 +90,6 @@ const Candidature = ({ show }) => {
     getSpontaneousApplications();
   }, []);
 
-  if (!show) return null;
   return (
     <div className="container-body">
       <SearchBar />
@@ -151,7 +150,3 @@ const Candidature = ({ show }) => {
 };
 
 export default Candidature;
-
-Candidature.propTypes = {
-  show: PropTypes.bool.isRequired,
-};

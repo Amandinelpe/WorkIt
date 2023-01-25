@@ -4,14 +4,31 @@ import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
 import Footer from "../components/Footer";
-import ListeCandidat from "../components/ListeCandidat";
+import Dashboard from "../components/Dashboard";
 import AnnoncesConsultant from "../components/AnnoncesConsultant";
 import "../styles/DashboardConsultants.css";
 import Candidature from "../components/Candidature";
-import MessagerieCandidat from "../components/MessagerieConsultant";
+import Candidats from "../components/Candidats";
 
 const DashboardConsultant = () => {
-  const [content, setContent] = useState("annonce");
+  const [content, setContent] = useState("annonces");
+
+  const handleContent = (ctn) => {
+    setContent(ctn);
+  };
+
+  const renderSwitch = () => {
+    switch (content) {
+      case "annonces":
+        return <AnnoncesConsultant />;
+      case "candidats":
+        return <Candidats />;
+      case "candidatures":
+        return <Candidature />;
+      default:
+        return <Dashboard />;
+    }
+  };
 
   return (
     <motion.div
@@ -23,12 +40,9 @@ const DashboardConsultant = () => {
       <NavBar />
       <HelloButton />
       <div className="mydashboard_body">
-        <BoxConsultants setContent={setContent} />
+        <BoxConsultants handleContent={handleContent} />
       </div>
-      <AnnoncesConsultant show={content === "annonce"} />
-      <ListeCandidat show={content === "mescandidats"} />
-      <Candidature show={content === "candidature"} />
-      <MessagerieCandidat show={content === "messagerie"} />
+      <div className="mydashboard_render">{renderSwitch()}</div>
       <div>
         <Footer />
       </div>

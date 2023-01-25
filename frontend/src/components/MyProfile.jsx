@@ -9,9 +9,8 @@ import { GetAllExperiences } from "../utils/getExperiences";
 import { GetUser } from "../utils/getUsers";
 import { UpdateUser } from "../utils/updateUser";
 
-const MyProfile = ({ show }) => {
+const MyProfile = () => {
   const [jobs, setJobs] = useState([]);
-  const [genders, setGenders] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState();
@@ -29,7 +28,6 @@ const MyProfile = ({ show }) => {
 
   useEffect(() => {
     const getDatas = async () => {
-      setGenders(await GetAllGenders());
       setJobs(await GetAllJobs());
       setExperiences(await GetAllExperiences());
 
@@ -52,7 +50,6 @@ const MyProfile = ({ show }) => {
     }
   };
 
-  if (!show) return null;
   return (
     <div className="my-profile">
       <div className="flex flex-fd-column flex-ai-center flex-jc-center">
@@ -67,7 +64,7 @@ const MyProfile = ({ show }) => {
                 <div>
                   <div className="gender">
                     <p className="label">Genre</p>
-                    <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
+                    {/* <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
                       {genders.map((item) => (
                         <RadioButton
                           key={item.id}
@@ -80,7 +77,7 @@ const MyProfile = ({ show }) => {
                           }
                         />
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                   <div className="flex flex-fd-row flex-jc-space-between">
                     <div className="flex flex-fd-column flex-gap-3vh">
@@ -281,6 +278,3 @@ const MyProfile = ({ show }) => {
 
 export default MyProfile;
 
-MyProfile.propTypes = {
-  show: PropTypes.bool.isRequired,
-};

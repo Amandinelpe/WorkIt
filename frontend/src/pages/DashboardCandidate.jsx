@@ -12,6 +12,25 @@ import MessagerieCandidat from "../components/MessagerieCandidat";
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
 
+  const handleContent = (ctn) => {
+    setContent(ctn);
+  };
+
+  const renderSwitch = () => {
+    switch (content) {
+      case "my-profile":
+        return <MyProfile />;
+      case "dashboard":
+        return <Dashboard />;
+      case "messagerie":
+        return <MessagerieCandidat />;
+      default:
+        return <Dashboard />;
+    }
+  };
+
+  console.log(content);
+
   return (
     <motion.div
       initial={{ x: 100, opacity: 0 }}
@@ -22,11 +41,9 @@ const DashboardCandidate = () => {
       <NavBar />
       <HelloButton />
       <div className="mydashboard_body">
-        <BoxCandidate setContent={setContent} />
+        <BoxCandidate handleContent={handleContent} />
       </div>
-      <Dashboard show={content === "dashboard"} />
-      <MyProfile show={content === "my-profile"} />
-      <MessagerieCandidat show={content === "messagerie"} />
+      {renderSwitch()}
       <div>
         <Footer />
       </div>
