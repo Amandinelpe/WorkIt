@@ -46,6 +46,7 @@ const offerController = {
       .then(([offers]) => res.status(200).send(offers))
       .catch((err) => next(err));
   },
+
   getOffersByState: (req, res, next) => {
     const where = [];
     const { limit } = req.query;

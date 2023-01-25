@@ -1,9 +1,13 @@
 const dataBoxConsultants = [
   {
     id: 1,
-    title: "Mes annonces",
-    sections: ["Liste de mes postes en ligne"],
-    link: "annonces",
+    title: "Mes entreprises",
+    sections: [
+      "Ajouter une entreprise",
+      "Modifier une entreprise",
+      "Supprimer une entreprise",
+    ],
+    link: "entreprises",
   },
 
   {
@@ -30,6 +34,7 @@ const dataBoxConsultants = [
       "Je consulte mes messages",
       "Je rentre en relation avec un candidat",
     ],
+    link: "messagerie",
     link: "messagerie",
   },
 ];
