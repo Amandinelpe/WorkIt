@@ -5,6 +5,7 @@ import "../styles/ChatBody.css";
 
 const ChatBody = ({ socket }) => {
   const [chatMessages, setChatMessages] = useState([]);
+  const [typingMessage, setTypingMessage] = useState("");
 
   useEffect(() => {
     socket.on("newMessage", (messages) => {
@@ -32,8 +33,10 @@ const ChatBody = ({ socket }) => {
           )
         )}
       </div>
+      <p>{typingMessage}</p>
+
       <div className="chat_footer_body">
-        <ChatFooter socket={socket} />
+        <ChatFooter socket={socket} setTypingMessage={setTypingMessage} />
       </div>
     </div>
   );

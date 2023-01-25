@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS externatic;
 CREATE DATABASE externatic;
 USE externatic;
@@ -303,7 +302,7 @@ VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bo
 INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
 	 (3,1,'Michael','Birepinte','mickael.birepinte@gmail.com','Salut'),
 	 (3,1,'Olga','Yasno','olga_yasn@hotmail.com','Coucou'),
-	 (3,2,'Luc','Jaubert','lucjaubert@gmail.com','mdplj');
+	 (3,2,'Luc','Jaubert','lucjaubert@gmail.com','Pessac');
 
      INSERT INTO urgence (name) VALUES
 	 ('faible'),
@@ -319,6 +318,8 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 	 ('Abandonné');
 
      INSERT INTO contract (id, contract_type) VALUES(1, 'CDI'), (2, 'CDD'), (3, 'Stage'), (4, 'Contrat de professionnalisation'), (5, 'Contrat d apprentissage');
+	
+
 	
 
 INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNote, reset_token) VALUES

@@ -8,6 +8,6 @@ const requestApi = (finalUrl) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const GetMyEnterprises = () => {
-  return requestApi("firm/");
+export const GetAllFirms = () => {
+  return requestApi("firm");
 };

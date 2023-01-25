@@ -1,12 +1,10 @@
 import { Routes, Route, Link, useLocation } from "react-router-dom";
-import socketIO from "socket.io-client";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
 import CreateProfile from "./pages/CreateProfile";
 import Connexion from "./pages/Connexion";
 import DashboardCandidate from "./pages/DashboardCandidate";
-import ChatPageCandidate from "./pages/ChatPageCandidate";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
@@ -22,7 +20,6 @@ import DashboardAdmin from "./pages/DashboardAdmin";
 import "./App.css";
 
 const App = () => {
-  const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
   const location = useLocation();
 
   return (
@@ -40,10 +37,6 @@ const App = () => {
           />
           <Route path="/admin" element={<Connexion user="admin" />} />
           <Route path="/Main" element={<MainPage />} />
-          <Route
-            path="/Messagerie"
-            element={<ChatPageCandidate socket={socket} />}
-          />
           <Route
             path="/DashboardCandidate"
             element={

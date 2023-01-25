@@ -5,6 +5,7 @@ const dataBox = [
     sections: ["Mes coups de coeur", "Mes alertes", "Mes candidatures"],
     link: "dashboard",
   },
+
   {
     id: 2,
     title: "Mon profil",
