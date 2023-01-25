@@ -1,24 +1,17 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import ChatFooter from "./ChatFooter";
 import "../styles/ChatBody.css";
 
 const ChatBody = ({ socket }) => {
-  // const navigate = useNavigate();
   const [chatMessages, setChatMessages] = useState([]);
-
-  // const handleOpenChat = () => {
-  //   navigate("/Messagerie");
-  //   window.location.reload();
-  // };
+  const [typingMessage, setTypingMessage] = useState("");
 
   useEffect(() => {
     socket.on("newMessage", (messages) => {
       setChatMessages([...chatMessages, messages]);
     });
   }, [chatMessages]);
-
   return (
     <div className="chat_box_container">
       <div className="message__container">
@@ -40,18 +33,18 @@ const ChatBody = ({ socket }) => {
           )
         )}
       </div>
+      <p>{typingMessage}</p>
+
       <div className="chat_footer_body">
-        <ChatFooter socket={socket} />
+        <ChatFooter socket={socket} setTypingMessage={setTypingMessage} />
       </div>
     </div>
   );
 };
-
 ChatBody.propTypes = {
   socket: PropTypes.shape({
     id: PropTypes.string,
     on: PropTypes.func,
   }).isRequired,
 };
-
 export default ChatBody;

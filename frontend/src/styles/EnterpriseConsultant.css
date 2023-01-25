@@ -1,4 +1,4 @@
-.container_body .container {
+.container_enterprise_body .container_enterprise {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -7,23 +7,36 @@
   gap: 8px;
 }
 
-.container_body .container .filter-box {
+.container_enterprise_body .container_enterprise .filter-box-enterprise {
   display: flex;
   width: 20vw;
 }
 
-.container_body .container .candidature-box {
-  width: 70vw;
+.container_enterprise_body .container_enterprise .enterprise-box {
+  width: 79vw;
 }
 
-.container_body {
+.container_enterprise_body {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 2vw;
 }
 
-.nouvelles_candidatures h2 {
+.container_enterprise_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2vw;
+}
+
+.container_enterprise {
+  margin-right: 2vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+
+.enterprise-box h2 {
   font-family: var(--text-font-family-jost);
   font-size: 0.9rem;
   padding: 4vh 7vh;
@@ -33,7 +46,7 @@
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
-.dashboard_candidature .btn-container {
+.dashboard_enterprises .btn-container {
   font-size: 0.8rem;
   color: white;
   background: #ff5400;
@@ -50,7 +63,7 @@
   cursor: pointer;
 }
 
-.dashboard_candidature {
+.dashboard_enterprises {
   padding: 4vh 2vw 2vh 2vw;
   background-color: var(--white);
   border-radius: 0 0 20px 20px;
@@ -62,7 +75,7 @@
   gap: 20px;
 }
 
-.dashboard_candidature .text_cross {
+.dashboard_enterprises .text_cross {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -74,26 +87,28 @@
 
 /* KENDO GRID */
 
-.grid_candidature,
-.grid_candidature .k-table-thead,
+.grid_enterprise,
+.grid_enterprise .k-table-thead,
 .k-table-header,
 .k-table-group-sticky-header,
-.grid_candidature .k-button-flat-primary {
+.grid_enterprise .k-button-flat-primary {
   color: var(--purple-light) !important;
 }
 
-.grid_candidature .k-column-title {
+.grid_enterprise .k-column-title {
   white-space: break-spaces;
-  height: 36px;
+  height: 35px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
-.grid_candidature .k-table-thead,
+.grid_enterprise .k-table-thead,
 .k-table-header,
 .k-table-group-sticky-header {
   background-color: var(--white);
 }
 
-.grid_candidature .k-grid-header,
+.grid_enterprise .k-grid-header,
 .k-grid-header-wrap,
 .k-grouping-header,
 .k-grid .k-table-th,

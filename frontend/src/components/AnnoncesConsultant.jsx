@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import "../styles/AnnoncesConsultant.css";
 import "../styles/OffersList.css";
 import { GetOffers } from "../utils/getOffers";
 import Offer from "./Offer";
-import "../styles/AnnoncesConsultant.css";
 import StateBox from "./StateBox";
 
 const AnnoncesConsultant = () => {
@@ -57,4 +55,3 @@ const AnnoncesConsultant = () => {
 };
 
 export default AnnoncesConsultant;
-

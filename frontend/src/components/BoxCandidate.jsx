@@ -4,7 +4,6 @@ import dataBox from "../utils/dataBox";
 import "../styles/BoxCandidate.css";
 
 const BoxCandidate = ({ handleContent }) => {
-
   const onClick = (e, link) => {
     e.preventDefault();
     handleContent(link);
@@ -40,5 +39,5 @@ const BoxCandidate = ({ handleContent }) => {
 export default BoxCandidate;
 
 BoxCandidate.propTypes = {
-  setContent: PropTypes.func.isRequired,
+  handleContent: PropTypes.func.isRequired,
 };

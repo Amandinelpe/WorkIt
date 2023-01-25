@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import {
   IntlProvider,
@@ -39,7 +38,6 @@ const MessagerieConsultant = () => {
   const pageChange = (event) => {
     setPage(event.page);
   };
-
 
   return (
     <div className="container-body">

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import RadioButton from "./RadioButton";
 import "../styles/MyProfile.css";
 import dataMyProfile from "../utils/dataMyProfile";
 import { GetAllJobs } from "../utils/getAllJobs";
-import { GetAllGenders } from "../utils/getGenders";
 import { GetAllExperiences } from "../utils/getExperiences";
 import { GetUser } from "../utils/getUsers";
 import { UpdateUser } from "../utils/updateUser";
@@ -277,4 +275,3 @@ const MyProfile = () => {
 };
 
 export default MyProfile;
-
