@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import BoxAdmin from "../components/BoxAdmin";
-import HelloButton from "../components/HelloButton";
 import Footer from "../components/Footer";
 import MyProfile from "../components/MyProfile";
 import Dashboard from "../components/Dashboard";
@@ -40,7 +39,6 @@ const DashboardAdmin = () => {
     >
       <div>
         <NavBar />
-        <HelloButton />
         <div className="mydashboardadmin_body">
           <BoxAdmin handleContent={handleContent} />
         </div>

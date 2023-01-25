@@ -6,9 +6,9 @@ import BoxConsultants from "../components/BoxConsultants";
 import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
 import AnnoncesConsultant from "../components/AnnoncesConsultant";
-import "../styles/DashboardConsultants.css";
 import Candidature from "../components/Candidature";
 import Candidats from "../components/Candidats";
+import "../styles/DashboardConsultants.css";
 
 const DashboardConsultant = () => {
   const [content, setContent] = useState("annonces");

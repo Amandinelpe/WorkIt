@@ -38,6 +38,7 @@ const App = () => {
             path="/ConnexionConsultant"
             element={<Connexion user="consultant" />}
           />
+          <Route path="/admin" element={<Connexion user="admin" />} />
           <Route path="/Main" element={<MainPage />} />
           <Route
             path="/Messagerie"

@@ -58,7 +58,11 @@ const Connexion = ({ user }) => {
       >
         <div className="title">
           <h1>Connecte toi</h1>
-          <h3>à ton espace {user === "user" ? "personnel" : "consultant"}</h3>
+          <h3>
+            à ton espace {user === "user" ? "personnel" : ""}{" "}
+            {user === "consultant" ? "consultant" : ""}{" "}
+            {user === "admin" ? "administrateur" : ""}
+          </h3>
         </div>
         <form
           name="connexion"
