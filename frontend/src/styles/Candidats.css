@@ -1,75 +1,75 @@
 .container_body .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    width: 100%;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  gap: 8px;
 }
 
 .container_body .container .filter-box {
-    display: flex;
-    width: 20vw;
+  display: flex;
+  width: 20vw;
 }
 
 .container_body .container .candidature-box {
-    width: 70vw;
+  width: 70vw;
 }
 
 .container_body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2vw;
 }
 
 .nouvelles_candidatures h2 {
-    font-family: var(--text-font-family-jost);
-    font-size: 0.9rem;
-    padding: 4vh 7vh;
-    border-radius: 50px 50px 0 0;
-    color: var(--white);
-    background: var(--purple-light);
-    box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  font-family: var(--text-font-family-jost);
+  font-size: 0.9rem;
+  padding: 4vh 7vh;
+  border-radius: 50px 50px 0 0;
+  color: var(--white);
+  background: var(--purple-light);
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
 .dashboard_candidature .btn-container {
-    font-size: 0.8rem;
-    color: white;
-    background: #ff5400;
-    border-radius: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 30px;
-    text-transform: uppercase;
-    -webkit-box-shadow: -2px 3px 4px 0px rgba(184, 197, 235, 1);
-    box-shadow: -2px 3px 4px 0px rgba(184, 197, 235, 1);
-    border: unset;
-    cursor: pointer;
+  font-size: 0.8rem;
+  color: white;
+  background: #ff5400;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 30px;
+  text-transform: uppercase;
+  -webkit-box-shadow: -2px 3px 4px 0px rgba(184, 197, 235, 1);
+  box-shadow: -2px 3px 4px 0px rgba(184, 197, 235, 1);
+  border: unset;
+  cursor: pointer;
 }
 
 .dashboard_candidature {
-    padding: 4vh 2vw 2vh 2vw;
-    background-color: var(--white);
-    border-radius: 0 0 20px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
-    gap: 20px;
+  padding: 4vh 2vw 2vh 2vw;
+  background-color: var(--white);
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  gap: 20px;
 }
 
 .dashboard_candidature .text_cross {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 5vw;
-    margin-left: 4vw;
-    align-items: center;
-    color: #93a9eb;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5vw;
+  margin-left: 4vw;
+  align-items: center;
+  color: #93a9eb;
 }
 
 /* KENDO GRID */
@@ -79,18 +79,18 @@
 .k-table-header,
 .k-table-group-sticky-header,
 .grid_candidature .k-button-flat-primary {
-    color: var(--purple-light) !important;
+  color: var(--purple-light) !important;
 }
 
 .grid_candidature .k-column-title {
-    white-space: break-spaces;
-    height: 36px;
+  white-space: break-spaces;
+  height: 36px;
 }
 
 .grid_candidature .k-table-thead,
 .k-table-header,
 .k-table-group-sticky-header {
-    background-color: var(--white);
+  background-color: var(--white);
 }
 
 .grid_candidature .k-grid-header,
@@ -104,8 +104,8 @@
 .k-grid-content-locked,
 .k-grid-footer-locked,
 .k-grid-header-locked,
-.k-filter-row>.k-table-th,
-.k-filter-row>td,
-.k-filter-row>.k-table-td {
-    border: unset;
+.k-filter-row > .k-table-th,
+.k-filter-row > td,
+.k-filter-row > .k-table-td {
+  border: unset;
 }

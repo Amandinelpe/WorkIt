@@ -29,8 +29,6 @@ const DashboardCandidate = () => {
     }
   };
 
-  console.log(content);
-
   return (
     <motion.div
       initial={{ x: 100, opacity: 0 }}

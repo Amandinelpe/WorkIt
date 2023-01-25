@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import {
   IntlProvider,
@@ -81,5 +80,3 @@ const ListeCandidat = () => {
 };
 
 export default ListeCandidat;
-
-

@@ -19,7 +19,6 @@ const userOfferRouter = require("./userOfferRouter");
 const favoriteRouter = require("./favoriteRouter");
 const candidatedRouter = require("./candidatedRouter");
 const spontaneousApplicationRouter = require("./spontaneousApplicationRouter");
-const genderRouter = require("./genderRouter");
 
 router.use("/firm", firmRouter);
 router.use("/contract", contractRouter);
@@ -35,5 +34,4 @@ router.use("/state_offer", stateOfferRouter);
 router.use("/spontaneous_application", spontaneousApplicationRouter);
 router.use("/favorite", favoriteRouter);
 router.use("/candidated", candidatedRouter);
-
 module.exports = router;

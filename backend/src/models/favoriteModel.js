@@ -14,5 +14,14 @@ const findOne = (id) => {
     .query("SELECT * FROM favorite where id = ?", [id])
     .then(([favorite]) => favorite);
 };
+const findOneByUser = (user_id, role_id) => {
+  return db
+    .promise()
+    .query("SELECT * FROM favorite where user_id = ? and role_id = ?", [
+      user_id,
+      role_id,
+    ])
+    .then(([favorite]) => favorite);
+};
 
-module.exports = { findAll, findOne };
+module.exports = { findAll, findOne, findOneByUser };
