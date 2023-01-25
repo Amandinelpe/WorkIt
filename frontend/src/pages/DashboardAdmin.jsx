@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import MyProfile from "../components/MyProfile";
 import Dashboard from "../components/Dashboard";
 import Candidats from "../components/Candidats";
+import ListeConsultants from "../components/ListeConsultants";
 // import EnterpriseConsultant from "../components/EnterpriseConsultant";
 import "../styles/BoxAdmin.css";
 
@@ -23,7 +24,7 @@ const DashboardAdmin = () => {
       case "candidat":
         return <Candidats />;
       case "consultant":
-        return <MyProfile />;
+        return <ListeConsultants />;
       case "medias":
         return <MyProfile />;
       default:
