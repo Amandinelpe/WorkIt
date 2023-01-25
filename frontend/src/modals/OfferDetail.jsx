@@ -67,21 +67,6 @@ const OfferDetail = ({ show, onClose, id }) => {
         <div className="modal-header">
           <div className="header-img">
             <img src={dataOffer.logo_url} alt={dataOffer.logo_url} width="8%" />
-            {auth.data && auth.data.role_id === 1 ? (
-              <img
-                className="header-button"
-                aria-hidden="true"
-                onClick={() =>
-                  setUserOffer({
-                    ...userOffer,
-                    isFavorite: !userOffer.isFavorite,
-                  })
-                }
-                onKeyDown={onClose}
-                src={userOffer.isFavorite ? isfav : notfav}
-                alt="close"
-              />
-            ) : null}
             <img
               className="header-button"
               aria-hidden="true"
@@ -93,10 +78,28 @@ const OfferDetail = ({ show, onClose, id }) => {
           </div>
           <div>
             <h1 className="modal-title"> {dataOffer.title} </h1>
+            <div className="header-img" >
+
             <p>
               {"   Offre publiée le "}{" "}
               {new Date(dataOffer.date).toLocaleDateString()}{" "}
             </p>
+              {auth.data && auth.data.role_id === 1 ? (
+                <img
+                  className="header-button"
+                  aria-hidden="true"
+                  onClick={() =>
+                    setUserOffer({
+                      ...userOffer,
+                      isFavorite: !userOffer.isFavorite,
+                    })
+                  }
+                  onKeyDown={onClose}
+                  src={userOffer.isFavorite ? isfav : notfav}
+                  alt="close"
+                />
+              ) : null}
+            </div>
           </div>
         </div>
 
