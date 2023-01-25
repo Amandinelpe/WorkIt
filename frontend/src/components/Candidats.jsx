@@ -8,7 +8,7 @@ import {
 import frMessages from "../utils/fr.json";
 import { GetUsers } from "../utils/getUsers";
 import StateBox from "./StateBox";
-import "../styles/Candidature.css";
+import "../styles/Candidats.css";
 
 loadMessages(frMessages, "fr-FR");
 

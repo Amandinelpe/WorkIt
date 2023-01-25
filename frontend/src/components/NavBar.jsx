@@ -15,7 +15,7 @@ const NavBar = () => {
   const [navBar, setNavBar] = useState([]);
 
   const handleLogout = (id) => {
-    if (id === 4) {
+    if (id === 3) {
       logout();
     }
   };

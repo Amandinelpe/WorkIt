@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import "../styles/DashboardCandidate.css";
 import Dashboard from "../components/Dashboard";
 import MyProfile from "../components/MyProfile";
-import ChatBody from "../components/ChatBody";
+import MessagerieCandidat from "../components/MessagerieCandidat";
 
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
@@ -23,11 +23,13 @@ const DashboardCandidate = () => {
       case "dashboard":
         return <Dashboard />;
       case "messagerie":
-        return <ChatBody />;
+        return <MessagerieCandidat />;
       default:
         return <Dashboard />;
     }
   };
+
+  console.log(content);
 
   return (
     <motion.div

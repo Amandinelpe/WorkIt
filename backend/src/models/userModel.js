@@ -31,14 +31,14 @@ const createOne = (payload) => {
 const updateOne = (payload, id) => {
   return db
     .promise()
-    .query("UPDATE user SET ? WHERE id = ?", [payload, id])
+    .query("UPDATE user SET ? WHERE id = ?", [payload, parseInt(id, 10)])
     .then(([res]) => res);
 };
 
 const deleteOne = (id) => {
   return db
     .promise()
-    .query("DELETE FROM user WHERE id = ?", [id])
+    .query("DELETE FROM user WHERE id = ?", [parseInt(id, 10)])
     .then(([res]) => res);
 };
 

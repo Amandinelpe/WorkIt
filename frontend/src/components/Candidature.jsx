@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import {
   IntlProvider,
@@ -9,7 +10,8 @@ import frMessages from "../utils/fr.json";
 import { GetSpontaneousApplications } from "../utils/getSpontaneousApplications";
 import SearchBar from "./SearchBar";
 import Comparer from "../assets/img/comparer.png";
-import "../styles/Candidature.css";
+import "../styles/GridContainer.css";
+import "../styles/KendoGrid.css";
 
 loadMessages(frMessages, "fr-FR");
 
@@ -46,6 +48,32 @@ const cellNomPrenom = (props) => {
   );
 };
 
+const cellEtat = (props) => {
+  let className = "";
+
+  switch (props.dataItem.application_state_id) {
+    case 1:
+      className = "grey";
+      break;
+    case 2:
+      className = "orange";
+      break;
+    case 3:
+      className = "red";
+      break;
+    case 4:
+      className = "green";
+      break;
+    default:
+      break;
+  }
+  return (
+    <td>
+      <span className={className}>{props.dataItem.name}</span>
+    </td>
+  );
+};
+
 const Candidature = () => {
   const [page, setPage] = React.useState(initialDataState);
   const [spontaneousApplications, setSpontaneousApplications] = useState([]);
@@ -63,15 +91,15 @@ const Candidature = () => {
   }, []);
 
   return (
-    <div className="container_body">
+    <div className="container-body">
       <SearchBar />
       <div className="container">
         <div className="filter-box">{/** Filter box */}</div>
-        <div className="candidature-box">
-          <div className="nouvelles_candidatures">
+        <div className="grid-container-box">
+          <div className="grid-container-box-title">
             <h2>Nouvelles candidatures spontanées</h2>
           </div>
-          <div className="dashboard_candidature">
+          <div className="grid-container">
             <button
               type="submit"
               className="btn-container"
@@ -82,7 +110,7 @@ const Candidature = () => {
             <LocalizationProvider language="fr-FR">
               <IntlProvider locale="fr">
                 <Grid
-                  className="grid_candidature"
+                  className="grid"
                   data={spontaneousApplications.slice(
                     page.skip,
                     page.take + page.skip
@@ -110,7 +138,7 @@ const Candidature = () => {
                     width="200px"
                   />
                   <GridColumn title="Traitement" cell={cellTraitement} />
-                  <GridColumn field="name" title="Etat" />
+                  <GridColumn title="Etat" cell={cellEtat} />
                 </Grid>
               </IntlProvider>
             </LocalizationProvider>
