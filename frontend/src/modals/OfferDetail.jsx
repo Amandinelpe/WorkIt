@@ -8,6 +8,11 @@ import {
   PostFavorite,
   DeleteFavorite,
 } from "../apis/favoriteApi";
+import {
+  GetCandidatedByUserAndOffer,
+  PostCandidated,
+  DeleteCandidated,
+} from "../apis/candidatedApi";
 import close from "../assets/img/annuler.png";
 import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
@@ -17,7 +22,7 @@ const OfferDetail = ({ show, onClose, id }) => {
   if (!show) {
     return null;
   }
-  const [postulation, setPostulation] = useState("");
+
   const [dataOffer, setDataOffer] = useState({});
   const { auth } = useContext(authContext);
   const [userOffer, setUserOffer] = useState({
@@ -27,14 +32,7 @@ const OfferDetail = ({ show, onClose, id }) => {
     candidated: false,
   });
   const [favoriteId, setFavoriteId] = useState();
-
-  /*   const checkFavorite = () => {
-        GetFavoriteByUserAndOffer(auth.data.id, id).then((res) => {
-          if (res.data.length !== 0) {
-            setUserOffer({...userOffer, isFavorite: true})
-          }
-        });
-      } */
+  const [candidatedId, setCandidatedId] = useState();
 
   const initUserOffer = () => {
     if (auth.data) {
@@ -46,15 +44,22 @@ const OfferDetail = ({ show, onClose, id }) => {
         GetFavoriteByUserAndOffer(auth.data.id, id).then((res) => {
           if (res.data.length !== 0) {
             setUserOffer({ ...userOffer, isFavorite: true });
-            setFavoriteId(res.data.favorite_id);
-          }
+            setFavoriteId(res.data.favorite_id) }     
         });
+        GetCandidatedByUserAndOffer(auth.data.id, id).then((res) => { 
+          if (res.data.length !== 0) {
+            setUserOffer({ ...userOffer, candidated: true });
+            setCandidatedId(res.data.candidated_id) }     
+        })
       }
     }
   };
-  /*   console.log(userOffer, "userOffer");
+
+
+/*   console.log(userOffer, "userOffer");
   console.log(auth.data, "auth.data");
-  console.log(favoriteId, "favoriteID"); */
+  console.log(favoriteId, "favoriteID"); 
+  console.log(candidatedId, "candidatedId"); */
   const setFavorite = () => {
     if (userOffer.isFavorite) {
       DeleteFavorite(favoriteId).then((res) => console.warn(res));
@@ -79,9 +84,7 @@ const OfferDetail = ({ show, onClose, id }) => {
   const handleSubmit = () => {
     if (auth.data) {
       if (auth.data.role_id === 1) {
-        setPostulation(
-          "Votre candidature a bien été envoyée. Votre interlocuteur vous contactera prochainement."
-        );
+        GetCandidatedByUserAndOffer(auth.data.id, id).then((res) =>console.log(res.data))
       } else {
         setPostulation("Veuillez vous connecter pour postuler");
       }
@@ -162,15 +165,17 @@ const OfferDetail = ({ show, onClose, id }) => {
           <p className="modal-text">{dataOffer.experience} </p>
         </div>
         <div className="modal-footer">
-          <p className="send-candidature">{postulation}</p>
-          <button
+          
+          {userOffer.candidated ?
+            ( <p className="send-candidature">Votre candidature a bien été envoyée. Votre interlocuteur vous contactera prochainement.</p>) :
+          (<button
             onClick={handleSubmit}
             type="submit"
             className="postule-button"
           >
             {" "}
             Je postule{" "}
-          </button>
+          </button>)}
         </div>
       </div>
     </div>,
