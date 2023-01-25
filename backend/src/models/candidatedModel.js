@@ -38,5 +38,4 @@ const deleteOne = (id) => {
     .then((candidated) => candidated);
 };
 
-
 module.exports = { findAll, findOne, findOneByUser, createOne, deleteOne };
