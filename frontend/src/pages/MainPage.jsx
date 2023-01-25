@@ -66,7 +66,7 @@ const MainPage = () => {
                     date={offer.date}
                     title={offer.title}
                     logo={offer.logo_url}
-                    city={offer.city}
+                    city={offer.firm_city}
                     id={offer.id}
                   />
                 ))

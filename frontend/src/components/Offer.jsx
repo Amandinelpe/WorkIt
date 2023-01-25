@@ -9,8 +9,6 @@ const Offer = ({ firm, date, title, logo, city, id }) => {
 
   const formatedDate = new Date(date).toLocaleDateString();
 
-  console.warn(id, "id");
-
   return (
     <div className="bloc_offer">
       <div className="offer_block_job">

@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS externatic;
 CREATE DATABASE externatic;
 USE externatic;
@@ -176,6 +175,26 @@ CREATE TABLE `application_state` (
     )
 );
 
+CREATE TABLE `favorite` (
+	`favorite_id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`offer_id` int NOT NULL,
+	PRIMARY KEY (
+        `favorite_id`
+    )
+);
+
+
+CREATE TABLE `candidated` (
+	`candidated_id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`offer_id` int NOT NULL,
+	PRIMARY KEY (
+        `candidated_id`
+    )
+);
+
+
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_job_id` FOREIGN KEY(`job_id`)
@@ -216,8 +235,18 @@ ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application
 REFERENCES `user` (`id`);
 ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_job_id` FOREIGN KEY(`job_id`)
 REFERENCES `job` (`id`);
-ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_state_id` FOREIGN KEY(`application_state_id`)
-REFERENCES `application_state` (`id`);
+
+ALTER TABLE `favorite` ADD CONSTRAINT `fk_favorite_offer_id` FOREIGN KEY(`offer_id`)
+REFERENCES `offer` (`id`);
+ALTER TABLE `favorite` ADD CONSTRAINT `fk_favorite_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+
+ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_offer_id` FOREIGN KEY(`offer_id`)
+REFERENCES `offer` (`id`);
+ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+
+
 
 INSERT INTO role (status) VALUES('user');
 INSERT INTO role (status) VALUES('consultant');
@@ -452,3 +481,11 @@ INSERT INTO externatic.offer (title,firm_id,firm_city,`date`,postal_code,country
 	 ('Consultant en recrutement IT (H/F)',3,'Bordeaux','2023-01-24',33000,'France',36,46000,'Kwantic est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Maintenir et faire évoluer le site e-commerce https://www.artphotolimited.com/(RubyOnRails, MongoDB) tant sur sa partie frontend que backend, sous la supervision de notre CTO','Autonomie, Créativité, sens de l’innovation, Adaptabilité et flexibilité, Capacité d’analyse et de synthèse, Esprit d’équipe / sens de la communauté','Front (vuejs ou react), Sensibilité sur l''UX/UI, Linux (bash), Compétence devops, Saas & Cloud, Requêtage SQL',3,1,1,3,2),
 	 ('Recruteur tech (H/F)',8,'Toulouse','2023-02-02',31000,'France',37,37000,'Software Solutions est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques',' Audit sur un périmètre infrastructure dans un contexte de refonte de l''architecture réseau : Etude de l’existant et proposer une nouvelle architecture, Refonte de l''architecture réseau, Mise en place d''une architecture, Création d''une salle serveur, Remplacement des équipements switchs DC et Sièges','Vous êtes curieux, force de proposition et avez le sens du service. Vous savez gérer les priorités, prendre des initiatives, et vous adapter à différents acteurs. Vous avez une capacité d écoute et d analyse et vous savez être force de proposition. Vous faites preuve d une bonne aisance rédactionnelle','Front (vuejs ou react), Sensibilité sur l''UX/UI, Linux (bash), Compétence devops, Saas & Cloud, Requêtage SQL',2,1,2,2,3),
 	 ('Front-End Developpeur (H/F)',4,'Toulouse','2023-02-04',31000,'France',2,38000,'FictivTech est une société de conseil en technologies de l information et de la communication. Nous accompagnons nos clients dans la transformation digitale de leurs activités et de leurs processus métiers. Nous intervenons sur des projets de développement, d intégration, de déploiement et de maintenance de solutions informatiques','Maintenir et faire évoluer le site e-commerce https://www.artphotolimited.com/(RubyOnRails, MongoDB) tant sur sa partie frontend que backend, sous la supervision de notre CTO','-','Front (vuejs ou react), Sensibilité sur l''UX/UI, Linux (bash), Compétence devops, Saas & Cloud, Requêtage SQL',2,1,3,2,4);
+
+INSERT INTO externatic.favorite (user_id,offer_id) VALUES
+	 (1,8),
+	 (1,12);
+
+INSERT INTO externatic.candidated (user_id,offer_id) VALUES
+	 (1,8),
+	 (1,12);

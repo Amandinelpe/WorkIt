@@ -28,7 +28,7 @@ const App = () => {
   const location = useLocation();
 
   return (
-    <div>
+    <div id="app">
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pat}>
           <Route path="/" element={<Home />} />
