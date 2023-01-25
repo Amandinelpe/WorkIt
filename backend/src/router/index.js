@@ -16,6 +16,7 @@ const experienceRouter = require("./experienceRouter");
 const urgencyRouter = require("./urgencyRouter");
 const stateOfferRouter = require("./stateOfferRouter");
 const spontaneousApplicationRouter = require("./spontaneousApplicationRouter");
+const genderRouter = require("./genderRouter");
 
 router.use("/firm", firmRouter);
 router.use("/contract", contractRouter);
@@ -28,5 +29,6 @@ router.use("/offer", offerRouter);
 router.use("/urgence", urgencyRouter);
 router.use("/state_offer", stateOfferRouter);
 router.use("/spontaneous_application", spontaneousApplicationRouter);
+router.use("/gender", genderRouter);
 
 module.exports = router;

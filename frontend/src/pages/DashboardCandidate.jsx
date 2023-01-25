@@ -7,27 +7,10 @@ import Footer from "../components/Footer";
 import "../styles/DashboardCandidate.css";
 import Dashboard from "../components/Dashboard";
 import MyProfile from "../components/MyProfile";
-import ChatBody from "../components/ChatBody";
+import MessagerieCandidat from "../components/MessagerieCandidat";
 
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
-
-  const handleContent = (ctn) => {
-    setContent(ctn);
-  };
-
-  const renderSwitch = () => {
-    switch (content) {
-      case "my-profile":
-        return <MyProfile />;
-      case "dashboard":
-        return <Dashboard />;
-      case "messagerie":
-        return <ChatBody />;
-      default:
-        return <Dashboard />;
-    }
-  };
 
   return (
     <motion.div
@@ -39,9 +22,11 @@ const DashboardCandidate = () => {
       <NavBar />
       <HelloButton />
       <div className="mydashboard_body">
-        <BoxCandidate handleContent={handleContent} />
+        <BoxCandidate setContent={setContent} />
       </div>
-      {renderSwitch()}
+      <Dashboard show={content === "dashboard"} />
+      <MyProfile show={content === "my-profile"} />
+      <MessagerieCandidat show={content === "messagerie"} />
       <div>
         <Footer />
       </div>

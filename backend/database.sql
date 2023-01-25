@@ -5,7 +5,7 @@ USE externatic;
 CREATE TABLE `user` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `role_id` int  NOT NULL ,
-    `gender` VARCHAR(50)  NULL ,
+    `gender_id` INT NULL ,
     `firstname` VARCHAR(50)  NOT NULL ,
     `lastname` VARCHAR(50)  NOT NULL ,
     `email` VARCHAR(50)  NOT NULL ,
@@ -176,8 +176,19 @@ CREATE TABLE `application_state` (
     )
 );
 
+CREATE TABLE `gender` (
+	`id` INT auto_increment NOT NULL,
+	`name` varchar(100) NOT NULL,
+	`description` varchar(100) NOT NULL,
+	PRIMARY KEY (
+        `id`
+    )
+);
+
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
+ALTER TABLE `user` ADD CONSTRAINT `fk_user_gender_id` FOREIGN KEY(`gender_id`)
+REFERENCES `gender` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_job_id` FOREIGN KEY(`job_id`)
 REFERENCES `job` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_experience_id` FOREIGN KEY(`experience_id`)
@@ -268,6 +279,17 @@ INSERT INTO experience (experience) VALUES
      ('4-10 ans'),
      ('10 ans et +');
 
+     INSERT INTO externatic.gender (name, description) VALUES
+    ('Femme', 'Je suis une femme'),
+    ('Homme', 'Je suis un homme'),
+    ('Non-binaire', 'Je suis non-binaire');
+    
+INSERT INTO externatic.application_state (name) VALUES
+    ('En attente'),
+    ('En cours de traitement'),
+    ('Refusée'),
+    ('Acceptée');
+
 INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,linkedin) VALUES
      (2,'Paul','Delos','0625456289','Bordeaux','pauldelos@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM','https://www.linkedin.com/in/paul-delos/%27'),
      (2,'Jeremie','Cavanier','0625458978','Bordeaux','jeremiecavanier@gmail.com','256poulpom','https://www.linkedin.com/in/jeremie-cavanier/%27'),
@@ -297,11 +319,10 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 	 ('absolue');
 
      INSERT INTO state_offer (name) VALUES
-	 ('En traitement'),
-	 ('Pourvu'),
-	 ('Clôturé'),
-	 ('Suspendu'),
-	 ('Abandonné');
+	('En attente'),
+    ('En cours de traitement'),
+    ('Refusée'),
+    ('Acceptée');
 
      INSERT INTO contract (id, contract_type) VALUES(1, 'CDI'), (2, 'CDD'), (3, 'Stage'), (4, 'Contrat de professionnalisation'), (5, 'Contrat d apprentissage');
 	
@@ -337,11 +358,6 @@ VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bo
 ('contact@datatechpro.com', 'password', 'Datatech Pro', '05 12 34 56 78', 'Pau', 64000, 'France', '7 Avenue des Pyrenees', 'IT', 'https://i.imgur.com/b6NLZ9b.png', 11),
 ('contact@techminds.com', 'password', 'TechMinds', '05 67 89 01 23', 'Agen', 47000, 'France', '8 Place de la Gare', 'IT', 'https://i.imgur.com/2CxRzMh.png', 4),
 ('contact@digisolutions.com', 'password', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
-INSERT INTO externatic.application_state (id, name) VALUES
-    (1, 'En attente'),
-    (2, 'En cours de traitement'),
-    (3, 'Refusée'),
-    (4, 'Acceptée');
 
 INSERT INTO externatic.`spontaneous_application` (`user_id`,`job_id`,`application_state_id`, `creation_date` )
 VALUES
