@@ -5,7 +5,6 @@ import "../styles/ChatFooter.css";
 const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState("");
   // const { userName } = useContext(userContext);
-
   const handleSendMessage = (e) => {
     e.preventDefault();
     socket.emit("sendMessage", {
@@ -15,7 +14,6 @@ const ChatFooter = ({ socket }) => {
     });
     setMessage("");
   };
-
   return (
     <div className="chat__footer">
       <div className="message__status">
@@ -34,12 +32,10 @@ const ChatFooter = ({ socket }) => {
     </div>
   );
 };
-
 ChatFooter.propTypes = {
   socket: PropTypes.shape({
     emit: PropTypes.func,
     id: PropTypes.string,
   }).isRequired,
 };
-
 export default ChatFooter;

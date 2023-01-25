@@ -14,6 +14,12 @@ const firmController = {
       .then(([firm]) => res.status(200).send(firm))
       .catch((err) => next(err));
   },
+  getFirmOfferById: (req, res, next) => {
+    firmModel
+      .findAll()
+      .then(([firmOfferById]) => res.status(200).send(firmOfferById))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = firmController;

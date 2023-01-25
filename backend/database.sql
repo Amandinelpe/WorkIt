@@ -283,12 +283,27 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
      (2,'Amandine','Leporace','0768076995','Bordeaux','leporace.amandine@gmail.com','$argon2id$v=19$m=16,t=2,p=1$ZWd3QjVPSmpUWFdyWDV1Vg$69CKCWqeR7Jo6OZxzVbGWA','https://www.linkedin.com/in/amandine-leporace-aa023222a/');
 
 
- 
+     INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
+VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
+('contact@cdiscount.com', 'password', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
+('contact@kwantic.com', 'password', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3),
+('contact@fictivtech.com', 'password', 'FictivTech', '05 40 20 10 30', 'Toulouse', 31000, 'France', '50 Avenue des Minimes', 'IT', 'https://i.imgur.com/ad10O6I.png', 4),
+('contact@virtuosoft.com', 'password', 'Virtuosoft', '05 67 89 12 34', 'Pau', 64000, 'France', '12 Rue de la Paix', 'IT', 'https://i.imgur.com/aSn3btX.png', 5),
+('contact@innovasys.com', 'password', 'Innovasys', '05 57 88 99 01', 'Agen', 47000, 'France', '1 Place des Lices', 'IT', 'https://i.imgur.com/bAflqnS.png', 6),
+('contact@techonix.com', 'password', 'Techonix', '05 56 45 33 21', 'Bordeaux', 33000, 'France', '5 Avenue de la Victoire', 'IT', 'https://i.imgur.com/U9BJ3oG.png', 7),
+('contact@softwaresolutions.com', 'password', 'Software Solutions', '05 78 23 67 89', 'Toulouse', 31000, 'France', '3 Rue des Carmes', 'IT', 'https://i.imgur.com/U0bOMYC.png', 8),
+('contact@digitalexpert.com', 'password', 'Digital Expert', '05 12 34 56 78', 'Pau', 64000, 'France', '4 Avenue Charles de Gaulle', 'IT', 'https://i.imgur.com/5K9qZs0.png', 9),
+('contact@cybertechgroup.com', 'password', 'Cybertech Group', '05 67 89 01 23', 'Agen', 47000, 'France', '2 Place de la Republique', 'IT', 'https://i.imgur.com/lIqdysJ.png', 10),
+('contact@infotechplus.com', 'password', 'Infotech Plus', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '1 Rue de la Bourse', 'IT', 'https://i.imgur.com/SAQVt0b.png', 11),
+('contact@cloudtechconsulting.com', 'password', 'Cloudtech Consulting', '05 78 90 12 34', 'Toulouse', 31000, 'France', '6 Boulevard de Strasbourg', 'IT', 'https://i.imgur.com/k1hg6Ok.png', 12),
+('contact@datatechpro.com', 'password', 'Datatech Pro', '05 12 34 56 78', 'Pau', 64000, 'France', '7 Avenue des Pyrenees', 'IT', 'https://i.imgur.com/b6NLZ9b.png', 11),
+('contact@techminds.com', 'password', 'TechMinds', '05 67 89 01 23', 'Agen', 47000, 'France', '8 Place de la Gare', 'IT', 'https://i.imgur.com/2CxRzMh.png', 4),
+('contact@digisolutions.com', 'password', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
 
 INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
 	 (3,1,'Michael','Birepinte','mickael.birepinte@gmail.com','Salut'),
 	 (3,1,'Olga','Yasno','olga_yasn@hotmail.com','Coucou'),
-	 (3,2,'Luc','Jaubert','lucjaubert@gmail.com','Pessac');
+	 (3,2,'Luc','Jaubert','lucjaubert@gmail.com','mdplj');
 
      INSERT INTO urgence (name) VALUES
 	 ('faible'),

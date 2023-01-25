@@ -11,7 +11,6 @@ import "../styles/ChatPageCandidate.css";
 
 const ChatPageCandidate = () => {
   const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
-
   return (
     <motion.div
       initial={{ x: 100, opacity: 0 }}
@@ -40,9 +39,7 @@ const ChatPageCandidate = () => {
     </motion.div>
   );
 };
-
 export default ChatPageCandidate;
-
 ChatPageCandidate.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   socket: PropTypes.objectOf.isRequired,

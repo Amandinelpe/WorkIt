@@ -5,10 +5,8 @@ import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
 import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
-import AnnoncesConsultant from "../components/AnnoncesConsultant";
 import Candidature from "../components/Candidature";
-import Candidats from "../components/Candidats";
-import "../styles/DashboardConsultants.css";
+import EnterpriseConsultant from "../components/EnterpriseConsultant";
 
 const DashboardConsultant = () => {
   const [content, setContent] = useState("annonces");
@@ -19,10 +17,10 @@ const DashboardConsultant = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      case "annonces":
-        return <AnnoncesConsultant />;
-      case "candidats":
-        return <Candidats />;
+      case "entreprises":
+        return <EnterpriseConsultant />;
+      case "dashboard":
+        return <Dashboard />;
       case "candidatures":
         return <Candidature />;
       default:
