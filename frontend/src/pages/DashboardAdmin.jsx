@@ -8,6 +8,7 @@ import Candidats from "../components/Candidats";
 import ListeConsultants from "../components/ListeConsultants";
 import EnterpriseConsultant from "../components/EnterpriseConsultant";
 import "../styles/BoxAdmin.css";
+import "../styles/DashboardAdmin.css";
 
 const DashboardAdmin = () => {
   const [content, setContent] = useState("dashboard");
@@ -43,7 +44,7 @@ const DashboardAdmin = () => {
         <div className="mydashboardadmin_body">
           <BoxAdmin handleContent={handleContent} />
         </div>
-        {renderSwitch()}
+        <div className="dashboard_components">{renderSwitch()}</div>
         <div>
           <Footer />
         </div>
