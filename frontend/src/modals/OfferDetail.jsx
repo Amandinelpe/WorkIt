@@ -3,8 +3,12 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { authContext } from "../context/AuthContext";
 import { GetOfferById } from "../apis/offerApi";
-/* import { CreateUserOffer } from "../apis/userOfferApi";
- */ import close from "../assets/img/annuler.png";
+import {
+  GetFavoriteByUserAndOffer,
+  PostFavorite,
+  DeleteFavorite,
+} from "../apis/favoriteApi";
+import close from "../assets/img/annuler.png";
 import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
@@ -22,21 +26,49 @@ const OfferDetail = ({ show, onClose, id }) => {
     isFavorite: false,
     candidated: false,
   });
+  const [favoriteId, setFavoriteId] = useState();
+
+  /*   const checkFavorite = () => {
+        GetFavoriteByUserAndOffer(auth.data.id, id).then((res) => {
+          if (res.data.length !== 0) {
+            setUserOffer({...userOffer, isFavorite: true})
+          }
+        });
+      } */
 
   const initUserOffer = () => {
-    if (auth.data === !null) {
-      setUserOffer({
-        ...userOffer,
-        user_id: auth.data.id,
-      });
+    if (auth.data) {
+      if (auth.data.role_id === 1) {
+        setUserOffer({
+          ...userOffer,
+          user_id: auth.data.id,
+        });
+        GetFavoriteByUserAndOffer(auth.data.id, id).then((res) => {
+          if (res.data.length !== 0) {
+            setUserOffer({ ...userOffer, isFavorite: true });
+            setFavoriteId(res.data.favorite_id);
+          }
+        });
+      }
     }
   };
-
+  /*   console.log(userOffer, "userOffer");
+  console.log(auth.data, "auth.data");
+  console.log(favoriteId, "favoriteID"); */
   const setFavorite = () => {
-    setUserOffer({
-      ...userOffer,
-      isFavorite: !userOffer.isFavorite,
-    });
+    if (userOffer.isFavorite) {
+      DeleteFavorite(favoriteId).then((res) => console.warn(res));
+      setUserOffer({
+        ...userOffer,
+        isFavorite: !userOffer.isFavorite,
+      });
+    } else {
+      PostFavorite(userOffer).then((res) => console.warn(res));
+      setUserOffer({
+        ...userOffer,
+        isFavorite: !userOffer.isFavorite,
+      });
+    }
   };
 
   useEffect(() => {
