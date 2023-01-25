@@ -19,7 +19,7 @@ const candidatedController = {
     const { user_id } = req.query;
     candidatedModel
       .findOneByUser(user_id, offer_id)
-      .then(([candidated]) => res.status(200).send(favorite))
+      .then(([candidated]) => res.status(200).send(candidated))
       .catch((err) => next(err));
   },
   postCandidated: (req, res, next) => {
