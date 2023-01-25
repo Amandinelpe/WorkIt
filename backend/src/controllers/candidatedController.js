@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable consistent-return */
 const candidatedModel = require("../models/candidatedModel");
 
 const candidatedController = {

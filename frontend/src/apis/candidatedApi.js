@@ -9,12 +9,13 @@ export const GetAllCandidated = () => {
 };
 
 export const GetCandidatedByUserAndOffer = (user_id, offer_id) => {
+  console.log("user_id, offer_id", user_id, offer_id);
   return axios.get(
     apiUrl + "candidated/user/" + `?user_id=${user_id}&offer_id=${offer_id}`
   );
 };
-export const PostCandidated = (payload) => {
-  return axios.post(apiUrl + "candidated", payload);
+export const PostCandidated = (user_id, offer_id) => {
+  return axios.post(apiUrl + "candidated", { user_id, offer_id });
 };
 export const DeleteCandidated = (id) => {
   return axios.delete(apiUrl + "candidated/" + id);
