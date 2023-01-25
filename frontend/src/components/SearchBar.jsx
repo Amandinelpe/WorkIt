@@ -52,7 +52,7 @@ const SearchBar = ({ setSelectedJob, setCity }) => {
                 {" "}
                 Ou?{" "}
               </option>
-              <option value="">Partout</option>
+              <option value="">Toutes les villes</option>
               {cities.map((city) => (
                 <option value={city.firm_city}>{city.firm_city} </option>
               ))}

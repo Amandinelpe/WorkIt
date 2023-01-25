@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import "../styles/AnnoncesConsultant.css";
+import "../styles/OffersList.css";
 import { GetOffers } from "../utils/getOffers";
 import Offer from "./Offer";
-import "../styles/AnnoncesConsultant.css";
 import StateBox from "./StateBox";
 
 const AnnoncesConsultant = () => {
@@ -22,14 +23,14 @@ const AnnoncesConsultant = () => {
   }, [filterOffer]);
 
   return (
-    <div>
+    <div className="annonce-consultant">
       <div className="filters_offers">
         <div className="mainPage_filters">
           <StateBox setFilterOffer={setFilterOffer} filterOffer={filterOffer} />
         </div>
         <div className="mainPage_offers">
-          <div className="all_offres_titleblock">
-            <h2 className="all_offres_title">Les Offres</h2>
+          <div className="all_offers_titleblock">
+            <h2 className="all_offers_title">Les Offres</h2>
           </div>
           <div className="offers_body">
             {offers.map((offer) => (

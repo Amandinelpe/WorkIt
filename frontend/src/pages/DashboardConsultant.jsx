@@ -11,7 +11,7 @@ import Candidats from "../components/Candidats";
 import "../styles/DashboardConsultants.css";
 
 const DashboardConsultant = () => {
-  const [content, setContent] = useState("Annonces");
+  const [content, setContent] = useState("annonces");
 
   const handleContent = (ctn) => {
     setContent(ctn);
