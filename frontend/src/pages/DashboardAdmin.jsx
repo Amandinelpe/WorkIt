@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import MyProfile from "../components/MyProfile";
 import Dashboard from "../components/Dashboard";
 import Candidats from "../components/Candidats";
+// import EnterpriseConsultant from "../components/EnterpriseConsultant";
 import "../styles/BoxAdmin.css";
 
 const DashboardAdmin = () => {
@@ -17,8 +18,8 @@ const DashboardAdmin = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      case "entreprise":
-        return <MyProfile />;
+      // case "entreprise":
+      //   return <EnterpriseConsultant />;
       case "candidat":
         return <Candidats />;
       case "consultant":
