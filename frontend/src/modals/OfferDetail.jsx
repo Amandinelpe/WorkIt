@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { authContext } from "../context/AuthContext";
 import { GetOfferById } from "../apis/offerApi";
-import close from "../assets/img/annuler.png";
+/* import { CreateUserOffer } from "../apis/userOfferApi";
+ */ import close from "../assets/img/annuler.png";
 import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
@@ -21,6 +22,7 @@ const OfferDetail = ({ show, onClose, id }) => {
     isFavorite: false,
     candidated: false,
   });
+
   const initUserOffer = () => {
     if (auth.data === !null) {
       setUserOffer({
@@ -29,6 +31,14 @@ const OfferDetail = ({ show, onClose, id }) => {
       });
     }
   };
+
+  const setFavorite = () => {
+    setUserOffer({
+      ...userOffer,
+      isFavorite: !userOffer.isFavorite,
+    });
+  };
+
   useEffect(() => {
     GetOfferById(id).then((res) => setDataOffer(res.data));
     initUserOffer();
@@ -78,22 +88,16 @@ const OfferDetail = ({ show, onClose, id }) => {
           </div>
           <div>
             <h1 className="modal-title"> {dataOffer.title} </h1>
-            <div className="header-img" >
-
-            <p>
-              {"   Offre publiée le "}{" "}
-              {new Date(dataOffer.date).toLocaleDateString()}{" "}
-            </p>
+            <div className="header-img">
+              <p>
+                {"   Offre publiée le "}{" "}
+                {new Date(dataOffer.date).toLocaleDateString()}{" "}
+              </p>
               {auth.data && auth.data.role_id === 1 ? (
                 <img
                   className="header-button"
                   aria-hidden="true"
-                  onClick={() =>
-                    setUserOffer({
-                      ...userOffer,
-                      isFavorite: !userOffer.isFavorite,
-                    })
-                  }
+                  onClick={() => setFavorite()}
                   onKeyDown={onClose}
                   src={userOffer.isFavorite ? isfav : notfav}
                   alt="close"

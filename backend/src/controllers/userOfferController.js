@@ -38,6 +38,13 @@ const userOfferController = {
       })
       .catch((err) => next(err));
   },
+  getUserOfferByOfferAndUser: (req, res, next) => {
+    const { offer_id, user_id } = req.params;
+    userOfferModel
+      .findByOfferAndUser(offer_id, user_id)
+      .then(([userOffer]) => res.status(200).send(userOffer))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = userOfferController;
