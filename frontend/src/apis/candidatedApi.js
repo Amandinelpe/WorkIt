@@ -20,3 +20,6 @@ export const PostCandidated = (user_id, offer_id) => {
 export const DeleteCandidated = (id) => {
   return axios.delete(apiUrl + "candidated/" + id);
 };
+export const GetCandidatedsByUser = (user_id) => {
+  return axios.get(apiUrl + "candidated/user/" + user_id);
+};

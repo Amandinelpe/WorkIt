@@ -37,5 +37,11 @@ const deleteOne = (id) => {
     .query("DELETE from candidated WHERE candidated_id = ?", [id])
     .then((candidated) => candidated);
 };
+const findAllByUser = (user_id) => {
+  return db
+    .promise()
+    .query("SELECT offer.id, firm.name, offer.title, offer.date, firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN candidated ON candidated.offer_id = offer.id where user_id = ?", [user_id])
+    .then(([applications]) => applications);
+}
 
-module.exports = { findAll, findOne, findOneByUser, createOne, deleteOne };
+module.exports = { findAll, findOne, findOneByUser, createOne, deleteOne, findAllByUser };

@@ -1,10 +1,11 @@
 import { React, useEffect, useState, useContext } from "react";
+import { m } from "framer-motion";
 import { authContext } from "../context/AuthContext";
 import { AllFavoriteId } from "../apis/favoriteApi";
-import { GetMyApplications } from "../utils/getMyApplications";
 import JobAlert from "./JobAlert";
 import Offer from "./Offer";
 import OfferEmpty from "./OfferEmpty";
+import { GetCandidatedsByUser } from "../apis/candidatedApi";
 
 const Dashboard = () => {
   const { auth } = useContext(authContext);
@@ -18,17 +19,16 @@ const Dashboard = () => {
     );
   };
 
-  const getAllApplications = async () => {
-    setMyApplications(await GetMyApplications());
+  const getAllApplicationsId = async () => {
+    await GetCandidatedsByUser(auth.data.id).then((res) =>
+      setMyApplications(res.data)
+    );
   };
 
   useEffect(() => {
     getAllFavoritesId();
+    getAllApplicationsId();
   }, [reload]);
-
-  useEffect(() => {
-    getAllApplications();
-  }, []);
 
   return (
     <div>
@@ -53,46 +53,50 @@ const Dashboard = () => {
                 />
               ))
             )}
-            <button type="button" className="all_favorites_offers_button">
-              {" "}
-              Voir plus d'offres{" "}
-            </button>
           </div>
         </div>
       </div>
-      <div className="job_alerts_body">
-        <div className="job_alerts">
-          <div className="job_alerts_titleblock">
-            <h2 className="job_alerts_title">Mes alertes</h2>
+      <div className="my_applications_body">
+        <div className="my_applications_offers">
+          <div className="my_applications_titleblock">
+            <h2 className="my_applications_title">Mes candidatures</h2>
           </div>
-          <div className="job_alerts_created">
-            <div className="create_new_alert">
-              <button type="button" className="create_new_alert_button">
-                {" "}
-                Créer une nouvelle alerte{" "}
-              </button>
-            </div>
-            <div className="my_alerts_offers_body">
-              <JobAlert />
-            </div>
-            <button type="button" className="job_alerts_button">
-              {" "}
-              Voir plus d'alertes{" "}
-            </button>
+          <div className="my_applications_offers_body">
+            {myApplications.length === 0 ? (
+              <OfferEmpty />
+            ) : (
+              myApplications.map((offer) => (
+                <Offer
+                  date={offer.date}
+                  firm={offer.name}
+                  title={offer.title}
+                  logo={offer.logo_url}
+                  city={offer.firm_city}
+                  id={offer.id}
+                  setReload={setReload}
+                />
+              ))
+            )}
           </div>
         </div>
-        <div className="my_applications_body">
-          <div className="my_applications_offers">
-            <div className="my_applications_titleblock">
-              <h2 className="my_applications_title">Mes candidatures</h2>
+        <div className="job_alerts_body">
+          <div className="job_alerts">
+            <div className="job_alerts_titleblock">
+              <h2 className="job_alerts_title">Mes alertes</h2>
             </div>
-            <div className="my_applications_offers_body">
-              {myApplications.map((application) => (
-                <Offer date={application.date} />
-              ))}
-              <button type="button" className="my_applications_offers_button">
+            <div className="job_alerts_created">
+              <div className="create_new_alert">
+                <button type="button" className="create_new_alert_button">
+                  {" "}
+                  Créer une nouvelle alerte{" "}
+                </button>
+              </div>
+              <div className="my_alerts_offers_body">
+                <JobAlert />
+              </div>
+              <button type="button" className="job_alerts_button">
                 {" "}
-                Voir plus de candidatures{" "}
+                Voir plus d'alertes{" "}
               </button>
             </div>
           </div>
