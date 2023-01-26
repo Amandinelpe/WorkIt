@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import HelloButton from "../components/HelloButton";
 // import { HiOutlineUserCircle } from "react-icons/Hi";
 import { authContext } from "../context/AuthContext";
 import {
@@ -42,14 +43,15 @@ const NavBar = () => {
       <ul>
         {navBar.map((section) => (
           <NavLink
-            to={section.link}
-            className="items"
-            key={section.id}
-            onClick={() => handleLogout(section.id)}
+          to={section.link}
+          className="items"
+          key={section.id}
+          onClick={() => handleLogout(section.id)}
           >
             {section.name}
           </NavLink>
         ))}
+        {auth.data && < HelloButton />}
       </ul>
     </div>
   );

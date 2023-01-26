@@ -40,7 +40,6 @@ const DashboardConsultant = () => {
       transition={{ duration: 0.5 }}
     >
       <NavBar />
-      <HelloButton />
       <div className="mydashboard_body">
         <BoxConsultants handleContent={handleContent} />
       </div>

@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import BoxCandidate from "../components/BoxCandidate";
-import HelloButton from "../components/HelloButton";
 import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
 import MyProfile from "../components/MyProfile";
@@ -37,7 +36,6 @@ const DashboardCandidate = () => {
       transition={{ duration: 0.5 }}
     >
       <NavBar />
-      <HelloButton />
       <div className="mydashboard_body">
         <BoxCandidate handleContent={handleContent} />
       </div>
