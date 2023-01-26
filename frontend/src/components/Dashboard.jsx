@@ -1,15 +1,21 @@
-import { React, useEffect, useState } from "react";
-import { GetFavoritesOffers } from "../utils/getFavoritesOffers";
+import { React, useEffect, useState, useContext } from "react";
+import { authContext } from "../context/AuthContext";
+import { AllFavoriteId } from "../apis/favoriteApi";
 import { GetMyApplications } from "../utils/getMyApplications";
 import JobAlert from "./JobAlert";
 import Offer from "./Offer";
+import OfferEmpty from "./OfferEmpty";
 
 const Dashboard = () => {
+  const { auth } = useContext(authContext);
   const [favoritesOffers, setFavoritesOffers] = useState([]);
   const [myApplications, setMyApplications] = useState([]);
+  const [reload, setReload] = useState(true);
 
-  const getAllFavoritesOffers = async () => {
-    setFavoritesOffers(await GetFavoritesOffers());
+  const getAllFavoritesId = async () => {
+    await AllFavoriteId(auth.data.id).then((res) =>
+      setFavoritesOffers(res.data)
+    );
   };
 
   const getAllApplications = async () => {
@@ -17,8 +23,8 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    getAllFavoritesOffers();
-  }, []);
+    getAllFavoritesId();
+  }, [reload]);
 
   useEffect(() => {
     getAllApplications();
@@ -32,9 +38,21 @@ const Dashboard = () => {
             <h2 className="all_favorites_offers_title">Mes coups de coeur</h2>
           </div>
           <div className="my_favorites_offers_body">
-            {favoritesOffers.map((offer) => (
-              <Offer date={offer.date} />
-            ))}
+            {favoritesOffers.length === 0 ? (
+              <OfferEmpty />
+            ) : (
+              favoritesOffers.map((offer) => (
+                <Offer
+                  date={offer.date}
+                  firm={offer.name}
+                  title={offer.title}
+                  logo={offer.logo_url}
+                  city={offer.firm_city}
+                  id={offer.id}
+                  setReload={setReload}
+                />
+              ))
+            )}
             <button type="button" className="all_favorites_offers_button">
               {" "}
               Voir plus d'offres{" "}

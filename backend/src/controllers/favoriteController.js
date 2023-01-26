@@ -37,6 +37,13 @@ const favoriteController = {
       .then((favorite) => res.status(200).send(favorite))
       .catch((err) => next(err));
   },
+  getFavoritesByUser: (req, res, next) => {
+    const { user_id } = req.params;
+    favoriteModel
+      .findAllByUser(user_id)
+      .then((favorites) => res.status(200).send(favorites))
+      .catch((err) => next(err));
+  }
 };
 
 module.exports = favoriteController;
