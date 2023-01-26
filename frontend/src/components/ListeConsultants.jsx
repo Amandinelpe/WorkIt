@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { GetAllConsultants } from "../utils/getAllConsultants";
 import ConsultantLine from "./ConsultantLine";
+import FicheConsultant from "./FicheConsultant";
 import "../styles/ListeConsultants.css";
 
 const ListeConsultants = () => {
@@ -36,6 +37,7 @@ const ListeConsultants = () => {
           </div>
         </div>
       </div>
+      <FicheConsultant />
     </div>
   );
 };
