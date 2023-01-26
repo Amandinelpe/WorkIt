@@ -48,6 +48,7 @@ const MyProfile = () => {
     }
   };
 
+  console.log(user, "hello");
   return (
     <div className="my-profile">
       <div className="flex flex-fd-column flex-ai-center flex-jc-center">
@@ -60,23 +61,7 @@ const MyProfile = () => {
               <h3>Mes informations personnelles</h3>
               <div className="informations-personnelles flex flex-fd-row flex-ai-flex-start flex-jc-space-between">
                 <div>
-                  <div className="gender">
-                    <p className="label">Genre</p>
-                    {/* <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
-                      {genders.map((item) => (
-                        <RadioButton
-                          key={item.id}
-                          labelName={item.description}
-                          inputName="gender_id"
-                          inputValue={item.id}
-                          checked={user.gender_id === item.id}
-                          onChange={(e) =>
-                            handleChange(e, parseInt(e.target.value, 10))
-                          }
-                        />
-                      ))}
-                    </div> */}
-                  </div>
+                  <div className="gender"></div>
                   <div className="flex flex-fd-row flex-jc-space-between">
                     <div className="flex flex-fd-column flex-gap-3vh">
                       <label>
@@ -225,8 +210,8 @@ const MyProfile = () => {
                             key={item.id}
                             labelName={item.experience}
                             inputName="experience_id"
-                            inputValue={user.experience_id}
-                            checked={user.experience_id === item.id}
+                            inputValue={item.id}
+                            checked={item.experience_id === item.id}
                             onChange={handleChange}
                           />
                         );

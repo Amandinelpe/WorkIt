@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
       navigate("/DashboardConsultant");
     } else if (data.role_id === 3) {
       setUser("admin");
-      navigate("/AdminConsultant");
+      navigate("/DashboardAdmin");
     } else {
       setUser("user");
       navigate("/Main");

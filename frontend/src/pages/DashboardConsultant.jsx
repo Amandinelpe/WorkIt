@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
-import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
 import Chat from "../components/Chat";
 import Footer from "../components/Footer";
@@ -13,8 +12,8 @@ import "../styles/DashboardConsultants.css";
 const DashboardConsultant = () => {
   const [content, setContent] = useState("annonces");
 
-  const handleContent = (ctn) => {
-    setContent(ctn);
+  const handleContent = (link) => {
+    setContent(link);
   };
 
   const renderSwitch = () => {

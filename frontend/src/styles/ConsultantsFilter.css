@@ -22,15 +22,16 @@
 .date_body {
   background-color: var(--white);
   height: auto;
+  padding: 1.5vw;
   width: 20vw;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0 0 20px 20px;
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
-  color: var(--purple-dark);
+  color: var(--purple-light);
 }
 
 .input_date {
-  margin-top: 1.5vh;
+  margin-top: 1.8vh;
 }

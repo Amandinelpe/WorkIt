@@ -1,10 +1,18 @@
 /* eslint-disable camelcase */
 const db = require("../../config");
 
-const findAll = () => {
+const findAll = (where) => {
+  const initSql =
+    "SELECT * FROM user JOIN job ON user.job_id = job.id";
+  if (where.length > 0) {
+    return db
+      .promise()
+      .query(`${initSql} WHERE ${where.join(" AND ")}`)
+      .then((users) => users);
+  }
   return db
     .promise()
-    .query("SELECT * FROM user JOIN job ON user.job_id = job.id")
+    .query("SELECT * FROM user JOIN job ON user.job_id = job.id ORDER by consultant_id ASC")
     .then((users) => users);
 };
 
