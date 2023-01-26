@@ -8,8 +8,6 @@ import DashboardCandidate from "./pages/DashboardCandidate";
 import DashboardConsultant from "./pages/DashboardConsultant";
 import Error from "./pages/Error";
 import LOGO from "./assets/img/logo.png";
-import AdminConsultantPage from "./pages/AdminConsultantPage";
-import "./styles/Flex.css";
 import ForgottenPassword from "./pages/ForgottenPassword";
 import ResetPassword from "./pages/ResetPassword";
 import ProtectedRouteUser from "./context/ProtectedRouteUser";
@@ -17,6 +15,7 @@ import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
 // import ProtectedRouteAdmin from "./context/ProtectedRouteAdmin";
 import "@progress/kendo-theme-default/dist/all.css";
 import DashboardAdmin from "./pages/DashboardAdmin";
+import "./styles/Flex.css";
 import FicheCandidat from "./components/FicheCandidat";
 
 import "./App.css";
@@ -37,6 +36,7 @@ const App = () => {
             path="/ConnexionConsultant"
             element={<Connexion user="consultant" />}
           />
+          <Route path="/admin" element={<Connexion user="admin" />} />
           <Route path="/Main" element={<MainPage />} />
           <Route
             path="/DashboardCandidate"
@@ -63,7 +63,6 @@ const App = () => {
             }
           />
           <Route path="/CreateProfile" element={<CreateProfile />} />
-          <Route path="/AdminConsultant" element={<AdminConsultantPage />} />
           <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
           <Route path="/ResetPassword/:token/:id" element={<ResetPassword />} />
           <Route path="/FicheCandidat" element={<FicheCandidat />} />

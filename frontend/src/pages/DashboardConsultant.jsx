@@ -13,8 +13,8 @@ import "../styles/DashboardConsultants.css";
 const DashboardConsultant = () => {
   const [content, setContent] = useState("annonces");
 
-  const handleContent = (ctn) => {
-    setContent(ctn);
+  const handleContent = (link) => {
+    setContent(link);
   };
 
   const renderSwitch = () => {

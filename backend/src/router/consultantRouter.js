@@ -3,7 +3,6 @@ const express = require("express");
 const consultantRouter = express.Router();
 
 const consultantController = require("../controllers/consultantController");
-const authenticationConsultant = require("../middlewares/authenticationConsultant");
 
 consultantRouter.post("/login", consultantController.login);
 consultantRouter.get(
