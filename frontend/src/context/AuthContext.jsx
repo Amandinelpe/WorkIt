@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
       navigate("/DashboardConsultant");
     } else if (data.role_id === 3) {
       setUser("admin");
-      navigate("/AdminConsultant");
+      navigate("/DashboardAdmin");
     } else {
       setUser("user");
       navigate("/Main");
@@ -28,8 +28,8 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    setAuth({});
     window.localStorage.removeItem("user");
+    setAuth({});
     navigate("/", { replace: true, state: "Disconnected" });
   };
 

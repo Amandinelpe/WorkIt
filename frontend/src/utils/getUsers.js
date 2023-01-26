@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_BACKEND_URL;
@@ -7,6 +8,19 @@ const requestApi = (finalUrl) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const GetUsers = () => {
-  return requestApi("user/");
+export const GetUsers = (param) => {
+
+  const apiRequest = "user/?";
+  const consultantRequest = param.consultant_id == "" ? "" : `consultant_id=${param.consultant_id}&`;
+
+  return requestApi(
+    `${apiRequest}${consultantRequest}`
+  );
+
+};
+
+// eslint-disable-next-line import/prefer-default-export
+export const GetUser = (id) => {
+  return requestApi(`user/${id}`);
+  
 };

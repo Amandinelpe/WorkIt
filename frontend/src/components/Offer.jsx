@@ -9,8 +9,6 @@ const Offer = ({ firm, date, title, logo, city, id }) => {
 
   const formatedDate = new Date(date).toLocaleDateString();
 
-  console.warn(id, "id");
-
   return (
     <div className="bloc_offer">
       <div className="offer_block_job">
@@ -28,7 +26,7 @@ const Offer = ({ firm, date, title, logo, city, id }) => {
           onKeyDown=""
           role="presentation"
         />
-        <OfferDetail show={show} onClose={() => setShow(false)} id={id} />
+        <OfferDetail show={show} onClose={() => setShow(false)} offerId={id} />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
       <div className="see_offer_div">

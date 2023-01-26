@@ -1,11 +1,22 @@
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { authContext } from "../context/AuthContext";
 import shape1 from "../assets/img/bloc-blanc.png";
 import shape2 from "../assets/img/bloc-violet.png";
 import wlogo from "../assets/img/logo-central.png";
 import "../styles/Home.css";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const { auth } = useContext(authContext);
+
+  useEffect(() => {
+    if (auth.data) {
+      navigate("/Main");
+    }
+  }, []);
+
   return (
     <motion.div
       className="home_page"
@@ -15,6 +26,9 @@ const Home = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="title_block">
+        <Link to="/DashboardAdmin">
+          <button type="button">Admin</button>
+        </Link>
         <h1>
           Chez WorkIT, nous te connectons avec les meilleures entreprises.
         </h1>

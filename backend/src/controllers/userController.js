@@ -9,11 +9,18 @@ const { jwtSign, jwtVerify } = require("../helpers/jwt");
 
 const userController = {
   getAllUsers: (req, res, next) => {
+     const where = [];
+
+    if (req.query.consultant_id != null) {
+      where.push(`consultant_id = ${req.query.consultant_id}`);
+    }
+  
     userModel
-      .findAll()
+      .findAll(where)
       .then(([users]) => res.status(200).send(users))
       .catch((err) => next(err));
   },
+ 
   getUserById: (req, res, next) => {
     const { id } = req.params;
     userModel
@@ -195,6 +202,22 @@ const userController = {
           return res.status(400).send("Erreur de changement de mot de passe");
         }
         return res.status(200).send("Mot de passe modifié");
+      });
+    } catch (err) {
+      return next(err);
+    }
+  },
+  updateUser: async (req, res, next) => {
+    const { id } = req.params;
+
+    try {
+      userModel.updateOne(req.body, id).then((result) => {
+        if (result.affectedRows === 0) {
+          return res
+            .status(400)
+            .send("Erreur lors la mise à jour de l'utilisateur");
+        }
+        return res.status(200).send("Utilisateur mis à jour");
       });
     } catch (err) {
       return next(err);

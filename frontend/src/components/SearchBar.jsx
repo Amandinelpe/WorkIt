@@ -34,6 +34,7 @@ const SearchBar = ({ setSelectedJob, setCity }) => {
             <select
               id="job_select"
               onChange={(e) => setSelectedJob(e.target.value)}
+              autoComplete="on"
             >
               <option disabled selected value>
                 Quoi?{" "}
@@ -47,12 +48,16 @@ const SearchBar = ({ setSelectedJob, setCity }) => {
         </div>
         <div className="inputBox">
           <label htmlFor="city_select">
-            <select id="city_select" onChange={(e) => setCity(e.target.value)}>
+            <select
+              id="city_select"
+              onChange={(e) => setCity(e.target.value)}
+              autoComplete="on"
+            >
               <option disabled selected value>
                 {" "}
                 Ou?{" "}
               </option>
-              <option value="">Partout</option>
+              <option value="">Toutes les villes</option>
               {cities.map((city) => (
                 <option value={city.firm_city}>{city.firm_city} </option>
               ))}

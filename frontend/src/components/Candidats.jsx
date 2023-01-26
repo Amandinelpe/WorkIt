@@ -7,8 +7,8 @@ import {
 } from "@progress/kendo-react-intl";
 import frMessages from "../utils/fr.json";
 import { GetUsers } from "../utils/getUsers";
-import StateBox from "./StateBox";
-import "../styles/Candidature.css";
+import ConsultantsFilter from "./ConsultantsFilter";
+import "../styles/Candidats.css";
 
 loadMessages(frMessages, "fr-FR");
 
@@ -44,24 +44,30 @@ const cellActive = (props) => {
 const Candidats = () => {
   const [page, setPage] = useState(initialDataState);
   const [users, setUsers] = useState([]);
+  const [filterUser, setFilterUser] = useState({
+    consultant_id: 0,
+  });
 
   const pageChange = (event) => {
     setPage(event.page);
   };
 
   const getUsers = async () => {
-    setUsers(await GetUsers());
+    setUsers(await GetUsers(filterUser));
   };
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [filterUser]);
 
   return (
     <div className="container_body">
       <div className="container">
         <div className="filter-box">
-          <StateBox />
+          <ConsultantsFilter
+            setFilterUser={setFilterUser}
+            filterUser={filterUser}
+          />
         </div>
         <div className="candidature-box">
           <div className="nouvelles_candidatures">

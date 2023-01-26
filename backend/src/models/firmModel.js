@@ -14,4 +14,13 @@ const findOne = (id) => {
     .then(([firm]) => firm);
 };
 
-module.exports = { findAll, findOne };
+const findOfferByFirm = () => {
+  return db
+    .promise()
+    .query(
+      "select firm_id, name, email, city, count(*) as 'nbreoffers' from offer inner join firm on offer.firm_id = firm.id group by firm_id"
+    )
+    .then(([firmOffers]) => firmOffers);
+};
+
+module.exports = { findAll, findOne, findOfferByFirm };

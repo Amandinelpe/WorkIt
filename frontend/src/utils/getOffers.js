@@ -8,7 +8,6 @@ const requestApi = (finalUrl) => {
 };
 
 export const GetOffers = (param) => {
-  console.log(param, "hello");
   const apiRequest = "offer/?";
   const cityRequest = param.city == "" ? "" : `city=${param.city}&`;
   const stateRequest = param.state == 0 ? "" : `state=${param.state}&`;

@@ -16,9 +16,21 @@ const io = socketIo(server, {
   },
 });
 
+const users = [];
 io.on("connection", (socket) => {
   socket.on("sendMessage", (payload) => {
     io.emit("newMessage", payload);
+  });
+  socket.on("typing", (data) => {
+    if (data.typing) {
+      socket.broadcast.emit("isTyping", "est en train d'écrire...");
+    } else {
+      socket.broadcast.emit("isTyping", "");
+    }
+  });
+  socket.on("newUser", (data) => {
+    users.push(data);
+    io.emit("newUserResponse", users);
   });
 });
 
