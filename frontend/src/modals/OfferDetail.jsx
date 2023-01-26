@@ -8,82 +8,76 @@ import {
   PostFavorite,
   DeleteFavorite,
 } from "../apis/favoriteApi";
+import {
+  GetCandidatedByUserAndOffer,
+  PostCandidated,
+} from "../apis/candidatedApi";
 import close from "../assets/img/annuler.png";
 import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
 
-const OfferDetail = ({ show, onClose, id }) => {
+const OfferDetail = ({ show, onClose, offerId }) => {
   if (!show) {
     return null;
   }
   const [postulation, setPostulation] = useState("");
   const [dataOffer, setDataOffer] = useState({});
   const { auth } = useContext(authContext);
-  const [userOffer, setUserOffer] = useState({
-    user_id: "",
-    offer_id: id,
-    isFavorite: false,
-    candidated: false,
-  });
   const [favoriteId, setFavoriteId] = useState();
-
-  /*   const checkFavorite = () => {
-        GetFavoriteByUserAndOffer(auth.data.id, id).then((res) => {
-          if (res.data.length !== 0) {
-            setUserOffer({...userOffer, isFavorite: true})
-          }
-        });
-      } */
+  const [candidatedId, setCandidatedId] = useState();
 
   const initUserOffer = () => {
     if (auth.data) {
       if (auth.data.role_id === 1) {
-        setUserOffer({
-          ...userOffer,
-          user_id: auth.data.id,
-        });
-        GetFavoriteByUserAndOffer(auth.data.id, id).then((res) => {
-          if (res.data.length !== 0) {
-            setUserOffer({ ...userOffer, isFavorite: true });
+        GetFavoriteByUserAndOffer(auth.data.id, offerId).then((res) => {
+          if (res.data) {
             setFavoriteId(res.data.favorite_id);
+          }
+        });
+        GetCandidatedByUserAndOffer(auth.data.id, offerId).then((res) => {
+          if (res.data) {
+            setCandidatedId(res.data.candidated_id);
           }
         });
       }
     }
   };
-  /*   console.log(userOffer, "userOffer");
-  console.log(auth.data, "auth.data");
-  console.log(favoriteId, "favoriteID"); */
+
+  useEffect(() => {
+    GetOfferById(offerId).then((res) => setDataOffer(res.data));
+    initUserOffer();
+  }, []);
+
   const setFavorite = () => {
-    if (userOffer.isFavorite) {
+    if (favoriteId) {
       DeleteFavorite(favoriteId).then((res) => console.warn(res));
-      setUserOffer({
-        ...userOffer,
-        isFavorite: !userOffer.isFavorite,
-      });
+      setFavoriteId(null);
     } else {
-      PostFavorite(userOffer).then((res) => console.warn(res));
-      setUserOffer({
-        ...userOffer,
-        isFavorite: !userOffer.isFavorite,
+      PostFavorite(auth.data.id, offerId).then((response) => {
+        if (response.data) {
+          GetFavoriteByUserAndOffer(auth.data.id, offerId).then((res) => {
+            if (res.data.favorite_id) {
+              setFavoriteId(res.data.favorite_id);
+            }
+          });
+        }
       });
     }
   };
 
-  useEffect(() => {
-    GetOfferById(id).then((res) => setDataOffer(res.data));
-    initUserOffer();
-  }, []);
-
   const handleSubmit = () => {
     if (auth.data) {
       if (auth.data.role_id === 1) {
-        setPostulation(
-          "Votre candidature a bien été envoyée. Votre interlocuteur vous contactera prochainement."
-        );
-      } else {
-        setPostulation("Veuillez vous connecter pour postuler");
+        PostCandidated(auth.data.id, offerId).then((response) => {
+          if (response.data) {
+            GetCandidatedByUserAndOffer(auth.data.id, offerId).then((res) => {
+              if (res.data.candidated_id) {
+                setCandidatedId(res.data.candidated_id);
+              }
+            });
+          }
+        });
       }
     } else {
       setPostulation("Veuillez vous connecter pour postuler");
@@ -131,7 +125,7 @@ const OfferDetail = ({ show, onClose, id }) => {
                   aria-hidden="true"
                   onClick={() => setFavorite()}
                   onKeyDown={onClose}
-                  src={userOffer.isFavorite ? isfav : notfav}
+                  src={favoriteId ? isfav : notfav}
                   alt="close"
                 />
               ) : null}
@@ -163,14 +157,21 @@ const OfferDetail = ({ show, onClose, id }) => {
         </div>
         <div className="modal-footer">
           <p className="send-candidature">{postulation}</p>
-          <button
-            onClick={handleSubmit}
-            type="submit"
-            className="postule-button"
-          >
-            {" "}
-            Je postule{" "}
-          </button>
+          {candidatedId ? (
+            <p className="send-candidature">
+              Votre candidature a bien été envoyée. Votre interlocuteur vous
+              contactera prochainement.
+            </p>
+          ) : (
+            <button
+              onClick={handleSubmit}
+              type="submit"
+              className="postule-button"
+            >
+              {" "}
+              Je postule{" "}
+            </button>
+          )}
         </div>
       </div>
     </div>,
@@ -181,6 +182,6 @@ const OfferDetail = ({ show, onClose, id }) => {
 OfferDetail.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  offerId: PropTypes.number.isRequired,
 };
 export default OfferDetail;

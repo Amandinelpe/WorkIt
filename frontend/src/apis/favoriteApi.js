@@ -13,8 +13,8 @@ export const GetFavoriteByUserAndOffer = (user_id, offer_id) => {
     apiUrl + "favorite/user/" + `?user_id=${user_id}&offer_id=${offer_id}`
   );
 };
-export const PostFavorite = (payload) => {
-  return axios.post(apiUrl + "favorite", payload);
+export const PostFavorite = (user_id, offer_id) => {
+  return axios.post(apiUrl + "favorite", { user_id, offer_id });
 };
 export const DeleteFavorite = (id) => {
   return axios.delete(apiUrl + "favorite/" + id);
