@@ -1,7 +1,8 @@
-.salary_box {
+.publication_date_box {
   margin: 0vh 4vw 5vh 4vw;
 }
-.salary_titleblock {
+
+.date_titleblock {
   background-color: var(--purple-light);
   height: 8vh;
   border-radius: 50px 50px 0 0;
@@ -11,35 +12,25 @@
   justify-content: center;
 }
 
-h2.salary_title {
+.date_title {
   color: var(--white);
   font-family: var(--text-font-family-jost);
   font-size: 1rem;
   font-weight: lighter;
 }
 
-.salary_body {
+.date_body {
   background-color: var(--white);
-  height: 13vh;
+  height: 55vh;
   width: 20vw;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 0 0 20px 20px;
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  color: var(--purple-light);
 }
 
-.salary_body h3 {
-  margin: 2vh 0;
-}
-
-.minimal_salary {
-  color: var(--purple-dark);
-  font-weight: normal;
-}
-
-.amount_salary {
-  color: var(--purple-dark);
-  font-weight: bold;
+.input_date {
+  margin-top: 1.8vh;
 }

@@ -7,9 +7,7 @@ const authenticationConsultant = require("../middlewares/authenticationConsultan
 
 consultantRouter.post("/login", consultantController.login);
 consultantRouter.get(
-  "/",
-  authenticationConsultant,
-  consultantController.getAllConsultants
+  "/", consultantController.getAllConsultants
 );
 consultantRouter.get("/:id", consultantController.getConsultantById);
 consultantRouter.post("/create", consultantController.createConsultant);
