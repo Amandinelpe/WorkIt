@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  IntlProvider,
-  LocalizationProvider,
-  loadMessages,
-} from "@progress/kendo-react-intl";
-import { Grid, GridColumn } from "@progress/kendo-react-grid";
-import frMessages from "../utils/fr.json";
 import { GetFirmOffer } from "../apis/firmOfferApi";
-import gridEntreprises from "../utils/gridEntreprises";
 import "../styles/EnterpriseConsultant.css";
 import search from "../assets/img/logo_search_enterprises.png";
 import GridEntreprises from "./GridEntreprises";
@@ -60,7 +52,6 @@ const EnterpriseConsultant = () => {
             </div>
           </div>
           <div className="dashboard_body">
-            <Grid data = {gridEntreprises} />
             <GridEntreprises filteredFirms={filteredFirms} />
           </div>
         </div>

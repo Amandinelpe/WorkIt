@@ -41,7 +41,6 @@ const MessagerieConsultant = () => {
 
   return (
     <div className="container-body">
-      <SearchBar />
       <div className="container">
         <div className="filter-box">{/** Filter box */}</div>
         <div className="grid-container-box">

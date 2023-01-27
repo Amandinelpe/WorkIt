@@ -1,11 +1,34 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import NavBar from "./NavBar";
 import Offer from "./Offer";
+import { GetFirmData, GetFirmOffer } from "../apis/firmApi"; 
+import { useEffect } from "react";
+
+
 
 const FirmForm = (updateFirm, firmOffer) => {
+  const {id} = useParams();
   const [firm, setFirm] = useState([]);
   const [message, setMessage] = useState();
   const [disableSaveButton, setDisableSaveButton] = useState(true);
+  const [firmOffers, setFirmOffers] = useState([]);
+  console.log(id, "id")
+  const getFirmData = async () => {
+    await GetFirmData(id).then((res) => setFirm(res.data)).catch ((err) => console.log(err));
+  }
 
+  const getFirmOffer = async () => {
+    await GetFirmOffer(id).then((res) => setFirmOffers(res.data)).catch ((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    getFirmData();
+    getFirmOffer();
+  },[])
+
+  console.log(firmOffers, "firmOffers");
+  console.log(firm, "firm");
   const handleChange = (e, customValue) => {
     setMessage(null);
     setDisableSaveButton(false);
@@ -17,6 +40,8 @@ const FirmForm = (updateFirm, firmOffer) => {
   };
 
   return (
+    <div>
+      <NavBar/>
     <div className="firm_form_body">
       <div className="firm_form_block">
         <div className="box_box_firm">
@@ -28,7 +53,7 @@ const FirmForm = (updateFirm, firmOffer) => {
               <div>
                 <div className="first_line_details">
                   <div className="entreprise">
-                    <p className="label-entreprise">Entreprise</p>
+                    <p className="label-entreprise">{firm.name}</p>
                   </div>
                   <div>
                     <div className="account_state">
@@ -38,7 +63,7 @@ const FirmForm = (updateFirm, firmOffer) => {
                           type="text"
                           name="account_state"
                           className="small-input"
-                        />
+                          />
                       </label>
                     </div>
                   </div>
@@ -51,7 +76,7 @@ const FirmForm = (updateFirm, firmOffer) => {
                         className="small-input"
                         value={firm.firm_id}
                         onChange={handleChange}
-                      />
+                        />
                     </label>
                   </div>
                   <div className="second_line_details">
@@ -61,7 +86,7 @@ const FirmForm = (updateFirm, firmOffer) => {
                         type="text"
                         name="niveau-qualification"
                         className="small-input"
-                      />
+                        />
                     </label>
                     <label>
                       Mon site internet
@@ -81,7 +106,7 @@ const FirmForm = (updateFirm, firmOffer) => {
                         type="text"
                         name="nombre de salariés"
                         className="small-input"
-                      />
+                        />
                     </label>
                     <label>
                       Email
@@ -90,7 +115,7 @@ const FirmForm = (updateFirm, firmOffer) => {
                         name="email"
                         className="small-input"
                         value={firm.email}
-                      />
+                        />
                     </label>
                   </div>
                   <div className="logo_enterprise_form">
@@ -118,71 +143,11 @@ const FirmForm = (updateFirm, firmOffer) => {
                           className="small-input"
                           value={firm.city}
                           onChange={handleChange}
-                        />
-                      </label>
-                      <label>
-                        Pays
-                        <input
-                          type="text"
-                          name="country"
-                          className="small-input"
-                          value={firm.country}
-                          onChange={handleChange}
-                        />
+                          />
                       </label>
                     </div>
                     <div className="current_offers">
                       <Offer value={firmOffer} />
-                    </div>
-                    <div className="offer_firm_big_title">
-                      <h2>Le poste</h2>
-                    </div>
-                    <div className="offer_firm_details">
-                      <label>
-                        Titre de l'emploi
-                        <input
-                          type="text"
-                          name="Titre de l'emploi"
-                          className="small-input_offer"
-                        />
-                      </label>
-                      <label>
-                        Type de contrat
-                        <input
-                          type="text"
-                          name="Type de contrat"
-                          className="small-input_offer"
-                        />
-                      </label>
-                      <div className="searched_profile">
-                        <label>
-                          Profil recherché
-                          <input
-                            type="text"
-                            name="Type de contrat"
-                            className="small-input_offer"
-                          />
-                        </label>
-                      </div>
-                      <div className="about_the_firm">
-                        <label>
-                          A propos de la société
-                          <input
-                            type="text"
-                            name="Type de contrat"
-                            className="small-input_offer"
-                          />
-                        </label>
-                      </div>
-                      <button
-                        type="submit"
-                        className="bouton_enregistrer"
-                        onClick={updateFirm}
-                        disabled={disableSaveButton}
-                      >
-                        Enregistrer
-                      </button>
-                      {message && <p>{message}</p>}
                     </div>
                   </div>
                 </div>
@@ -192,6 +157,7 @@ const FirmForm = (updateFirm, firmOffer) => {
         </div>
       </div>
     </div>
+                        </div>
   );
 };
 
