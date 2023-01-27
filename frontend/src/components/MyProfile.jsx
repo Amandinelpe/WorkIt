@@ -11,10 +11,6 @@ const MyProfile = () => {
   const [jobs, setJobs] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [user, setUser] = useState({});
-  const [file, setFile] = useState({
-    fileName: "",
-    file: "",
-  });
   const [message, setMessage] = useState();
 
   const handleChange = (e, customValue) => {
@@ -24,13 +20,6 @@ const MyProfile = () => {
       ...prevState,
       [name]: customValue ?? value,
     }));
-  };
-
-  const handleCV = (e) => {
-    setFile({
-      fileName: e.target.files[0].name,
-      file: e.target.files[0],
-    });
   };
 
   useEffect(() => {
@@ -120,7 +109,6 @@ const MyProfile = () => {
                           id="file"
                           className="inputfile"
                           accept="application/pdf"
-                          onChange={handleCV}
                         />
                         <label htmlFor="file">Je dépose mon CV</label>
                       </div>

@@ -37,7 +37,6 @@ const App = () => {
             element={<Connexion user="consultant" />}
           />
           <Route path="/ConnexionAdmin" element={<Connexion user="admin" />} />
-          <Route path="/admin" element={<Connexion user="admin" />} />
           <Route path="/Main" element={<MainPage />} />
           <Route
             path="/DashboardCandidate"

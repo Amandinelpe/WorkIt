@@ -1,5 +1,6 @@
-const adminModel = require("../models/adminModel");
+/* eslint-disable camelcase */
 const argon2 = require("argon2");
+const adminModel = require("../models/adminModel");
 const { jwtSign } = require("../helpers/jwt");
 
 const adminController = {

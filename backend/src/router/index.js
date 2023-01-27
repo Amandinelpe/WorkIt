@@ -21,8 +21,6 @@ const favoriteRouter = require("./favoriteRouter");
 const candidatedRouter = require("./candidatedRouter");
 const spontaneousApplicationRouter = require("./spontaneousApplicationRouter");
 
-
-
 router.use("/admin", adminRouter);
 router.use("/firm", firmRouter);
 router.use("/contract", contractRouter);
