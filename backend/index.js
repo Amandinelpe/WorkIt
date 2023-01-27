@@ -16,20 +16,32 @@ const io = socketIo(server, {
   },
 });
 
-const users = [];
+const users = {};
+
 io.on("connection", (socket) => {
+  // Handle new user joining the chat
+  socket.on("newUser", (data) => {
+    users[socket.id] = data;
+    io.emit("newUserResponse", users);
+  });
+
+  // Handle new message
   socket.on("sendMessage", (payload) => {
     io.emit("newMessage", payload);
   });
+
+  // Handle user typing
   socket.on("typing", (data) => {
     if (data.typing) {
-      socket.broadcast.emit("isTyping", "est en train d'écrire...");
+      socket.to(data.to).emit("isTyping", { user: users[socket.id] });
     } else {
-      socket.broadcast.emit("isTyping", "");
+      socket.to(data.to).emit("isTyping", { user: null });
     }
   });
-  socket.on("newUser", (data) => {
-    users.push(data);
+
+  // Handle user disconnection
+  socket.on("disconnect", () => {
+    delete users[socket.id];
     io.emit("newUserResponse", users);
   });
 });

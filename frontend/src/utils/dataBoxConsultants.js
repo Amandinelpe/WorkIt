@@ -35,7 +35,6 @@ const dataBoxConsultants = [
       "Je rentre en relation avec un candidat",
     ],
     link: "messagerie",
-    link: "messagerie",
   },
 ];
 

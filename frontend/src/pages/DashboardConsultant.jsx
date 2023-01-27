@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
-import Chat from "../components/Chat";
+import ChatConsultant from "../components/ChatConsultant";
 import Footer from "../components/Footer";
 import Candidature from "../components/Candidature";
 import EnterpriseConsultant from "../components/EnterpriseConsultant";
@@ -26,7 +26,7 @@ const DashboardConsultant = () => {
       case "candidatures":
         return <Candidature />;
       case "messagerie":
-        return <Chat />;
+        return <ChatConsultant />;
       default:
         return <EnterpriseConsultant />;
     }
