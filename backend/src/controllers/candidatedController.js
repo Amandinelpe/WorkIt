@@ -44,7 +44,7 @@ const candidatedController = {
       .findAllByUser(user_id)
       .then((candidateds) => res.status(200).send(candidateds))
       .catch((err) => next(err));
-  }
+  },
 };
 
 module.exports = candidatedController;

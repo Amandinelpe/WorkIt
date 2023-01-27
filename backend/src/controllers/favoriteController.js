@@ -43,7 +43,7 @@ const favoriteController = {
       .findAllByUser(user_id)
       .then((favorites) => res.status(200).send(favorites))
       .catch((err) => next(err));
-  }
+  },
 };
 
 module.exports = favoriteController;

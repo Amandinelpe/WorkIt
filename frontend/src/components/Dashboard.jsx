@@ -1,5 +1,4 @@
 import { React, useEffect, useState, useContext } from "react";
-import { m } from "framer-motion";
 import { authContext } from "../context/AuthContext";
 import { AllFavoriteId } from "../apis/favoriteApi";
 import JobAlert from "./JobAlert";
