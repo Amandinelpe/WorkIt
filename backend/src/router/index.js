@@ -5,6 +5,7 @@ const express = require("express");
 /* const uploadCv = multer({ dest: "uploadsCV/" }); */
 
 const router = express.Router();
+const adminRouter = require("./adminRouter");
 const userRouter = require("./userRouter");
 const roleRouter = require("./roleRouter");
 const firmRouter = require("./firmRouter");
@@ -20,6 +21,7 @@ const favoriteRouter = require("./favoriteRouter");
 const candidatedRouter = require("./candidatedRouter");
 const spontaneousApplicationRouter = require("./spontaneousApplicationRouter");
 
+router.use("/admin", adminRouter);
 router.use("/firm", firmRouter);
 router.use("/contract", contractRouter);
 router.use("/user", userRouter);

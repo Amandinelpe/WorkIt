@@ -12,11 +12,9 @@ const MyProfile = () => {
   const [experiences, setExperiences] = useState([]);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState();
-  const [disableSaveButton, setDisableSaveButton] = useState(true);
 
   const handleChange = (e, customValue) => {
     setMessage(null);
-    setDisableSaveButton(false);
     const { name, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
@@ -42,7 +40,6 @@ const MyProfile = () => {
     try {
       await UpdateUser(user);
       setMessage("Mise à jour effectué avec succès");
-      setDisableSaveButton(true);
     } catch (err) {
       setMessage(err.message);
     }
@@ -108,9 +105,10 @@ const MyProfile = () => {
                       <div>
                         <input
                           type="file"
-                          name="file"
+                          name="cv"
                           id="file"
                           className="inputfile"
+                          accept="application/pdf"
                         />
                         <label htmlFor="file">Je dépose mon CV</label>
                       </div>
@@ -245,7 +243,6 @@ const MyProfile = () => {
                 type="submit"
                 className="btn-enregistrer"
                 onClick={updateUser}
-                disabled={disableSaveButton}
               >
                 Enregistrer
               </button>

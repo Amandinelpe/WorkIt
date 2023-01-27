@@ -26,9 +26,6 @@ const Home = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="title_block">
-        <Link to="/DashboardAdmin">
-          <button type="button">Admin</button>
-        </Link>
         <h1>
           Chez WorkIT, nous te connectons avec les meilleures entreprises.
         </h1>

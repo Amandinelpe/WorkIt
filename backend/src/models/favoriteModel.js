@@ -40,7 +40,17 @@ const deleteOne = (id) => {
 const findAllByUser = (user_id) => {
   return db
     .promise()
-    .query("SELECT offer.id, firm.name, offer.title, offer.date, firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN favorite ON favorite.offer_id = offer.id where user_id = ?", [user_id])
+    .query(
+      "SELECT offer.id, firm.name, offer.title, offer.date, firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id JOIN favorite ON favorite.offer_id = offer.id where user_id = ?",
+      [user_id]
+    )
     .then(([favorites]) => favorites);
-}
-module.exports = { findAll, findOne, findOneByUser, createOne, deleteOne, findAllByUser };
+};
+module.exports = {
+  findAll,
+  findOne,
+  findOneByUser,
+  createOne,
+  deleteOne,
+  findAllByUser,
+};
