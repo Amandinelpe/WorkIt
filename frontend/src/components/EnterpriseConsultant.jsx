@@ -6,8 +6,8 @@ import {
 } from "@progress/kendo-react-intl";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import frMessages from "../utils/fr.json";
-import SearchBar from "./SearchBar";
 import { GetFirmOffer } from "../apis/firmOfferApi";
+import gridEntreprises from "../utils/gridEntreprises";
 import "../styles/EnterpriseConsultant.css";
 
 loadMessages(frMessages, "fr-FR");
@@ -48,7 +48,6 @@ const EnterpriseConsultant = () => {
 
   return (
     <div className="container_enterprise_body">
-      <SearchBar />
       <div className="container_enterprise">
         <div className="enterprise-box">
           <div className="enterprise-details">
@@ -64,6 +63,7 @@ const EnterpriseConsultant = () => {
             </form>
           </div>
           <div className="dashboard_body">
+            <Grid data = {gridEntreprises} />
             <div className="dashboard_enterprises">
               <LocalizationProvider language="fr-FR">
                 <IntlProvider locale="fr">
