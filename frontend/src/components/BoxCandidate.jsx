@@ -12,17 +12,19 @@ const BoxCandidate = ({ handleContent }) => {
   return (
     <div className="dashboard">
       {dataBox.map((box) => (
-        <div
-          key={box.id}
-          className="box_candidate"
-        >
+        <div key={box.id} className="box_candidate">
           <div key={box.id} className="box_candidate_title">
             <h1>{box.title}</h1>
           </div>
           <div className="box_candidate_body">
             <ul>
               {box.sections.map((section) => (
-                <li className ="box-candidate-li " onClick={(e) => onClick(e, section)}>{section}</li>
+                <li
+                  className="box-candidate-li "
+                  onClick={(e) => onClick(e, section)}
+                >
+                  {section}
+                </li>
               ))}
             </ul>
           </div>

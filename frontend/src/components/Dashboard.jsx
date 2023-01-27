@@ -1,15 +1,12 @@
 import { React, useEffect, useState, useContext } from "react";
 import { authContext } from "../context/AuthContext";
 import { AllFavoriteId } from "../apis/favoriteApi";
-import JobAlert from "./JobAlert";
 import Offer from "./Offer";
 import OfferEmpty from "./OfferEmpty";
-import { GetCandidatedsByUser } from "../apis/candidatedApi";
 
 const Dashboard = () => {
   const { auth } = useContext(authContext);
   const [favoritesOffers, setFavoritesOffers] = useState([]);
-  const [myApplications, setMyApplications] = useState([]);
   const [reload, setReload] = useState(true);
 
   const getAllFavoritesId = async () => {
@@ -18,15 +15,9 @@ const Dashboard = () => {
     );
   };
 
-  const getAllApplicationsId = async () => {
-    await GetCandidatedsByUser(auth.data.id).then((res) =>
-      setMyApplications(res.data)
-    );
-  };
-
+  console.log(reload, "reload");
   useEffect(() => {
     getAllFavoritesId();
-    getAllApplicationsId();
   }, [reload]);
 
   return (
@@ -49,6 +40,7 @@ const Dashboard = () => {
                   city={offer.firm_city}
                   id={offer.id}
                   setReload={setReload}
+                  reload={reload}
                 />
               ))
             )}

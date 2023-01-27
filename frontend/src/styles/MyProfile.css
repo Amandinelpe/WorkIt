@@ -30,7 +30,7 @@
   gap: 3vh;
 }
 
-.box-candidate-li  {
+.box-candidate-li {
   cursor: pointer;
 }
 .box-candidate-li:hover {

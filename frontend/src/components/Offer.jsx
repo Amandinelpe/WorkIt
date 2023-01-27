@@ -28,9 +28,11 @@ const Offer = ({ firm, date, title, logo, city, id, setReload }) => {
         />
         <OfferDetail
           show={show}
-          onClose={() => setShow(false)}
+          onClose={() => {
+            setShow(false);
+            setReload(id + 1);
+          }}
           offerId={id}
-          setReload={setReload}
         />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
@@ -54,7 +56,6 @@ Offer.propTypes = {
   city: PropTypes.string.isRequired,
   firm: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  setReload: PropTypes.func.isRequired,
 };
 
 export default Offer;
