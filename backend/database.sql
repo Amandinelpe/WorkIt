@@ -26,6 +26,7 @@ CREATE TABLE `user` (
     `hard_skills` VARCHAR(500)  NULL ,
     `experience_id` int  NULL ,
     `contract_id` int  NULL ,
+    `cv`  VARCHAR(200)  NULL ,
     `consultant_id` int  NULL ,
     `userNote` VARCHAR(1000)  NULL ,
     `reset_token` VARCHAR(250)  NULL ,

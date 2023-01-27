@@ -17,6 +17,6 @@ export const navBarConsultants = [
 
 export const navBarAdmin = [
   { id: 1, name: "Accueil", link: "/Main" },
-  { id: 2, name: "Mon espace", link: "/MonProfil" },
+  { id: 2, name: "Mon espace", link: "/DashboardAdmin" },
   { id: 3, name: "Deconnexion", link: "/" },
 ];
