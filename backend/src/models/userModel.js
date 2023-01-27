@@ -2,8 +2,7 @@
 const db = require("../../config");
 
 const findAll = (where) => {
-  const initSql =
-    "SELECT * FROM user JOIN job ON user.job_id = job.id";
+  const initSql = "SELECT * FROM user JOIN job ON user.job_id = job.id";
   if (where.length > 0) {
     return db
       .promise()
@@ -12,7 +11,9 @@ const findAll = (where) => {
   }
   return db
     .promise()
-    .query("SELECT * FROM user JOIN job ON user.job_id = job.id ORDER by consultant_id ASC")
+    .query(
+      "SELECT * FROM user JOIN job ON user.job_id = job.id ORDER by consultant_id ASC"
+    )
     .then((users) => users);
 };
 

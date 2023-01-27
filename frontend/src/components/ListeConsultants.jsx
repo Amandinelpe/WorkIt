@@ -6,9 +6,14 @@ import "../styles/ListeConsultants.css";
 
 const ListeConsultants = () => {
   const [consultants, setConsultants] = useState([]);
+  const [showFiche, setShowFiche] = useState(false);
 
   const getListAllConsultants = async () => {
     setConsultants(await GetAllConsultants());
+  };
+
+  const handleClick = () => {
+    setShowFiche(!showFiche);
   };
 
   useEffect(() => {
@@ -23,7 +28,11 @@ const ListeConsultants = () => {
       <div className="liste_consultants_body">
         <div className="liste_consultants_header">
           <div className="consultants_button_section">
-            <button type="button" className="button_add_consultant">
+            <button
+              type="button"
+              className="button_add_consultant"
+              onClick={handleClick}
+            >
               AJOUTER
             </button>
             <button type="button" className="button_add_consultant">
@@ -37,7 +46,12 @@ const ListeConsultants = () => {
           </div>
         </div>
       </div>
-      <FicheConsultant />
+      {showFiche && (
+        <div className="fiche_consultant_component">
+          {" "}
+          <FicheConsultant showFiche={showFiche} setShowFiche={setShowFiche} />
+        </div>
+      )}
     </div>
   );
 };
