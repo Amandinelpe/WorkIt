@@ -9,22 +9,12 @@ import frMessages from "../utils/fr.json";
 import { GetFirmOffer } from "../apis/firmOfferApi";
 import gridEntreprises from "../utils/gridEntreprises";
 import "../styles/EnterpriseConsultant.css";
-
-loadMessages(frMessages, "fr-FR");
-
-const initialDataState = {
-  skip: 0,
-  take: 10,
-};
+import search from "../assets/img/logo_search_enterprises.png";
+import GridEntreprises from "./GridEntreprises";
 
 const EnterpriseConsultant = () => {
-  const [page, setPage] = React.useState(initialDataState);
   const [myEnterprises, setMyEnterprises] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
-  const pageChange = (event) => {
-    setPage(event.page);
-  };
 
   const getFirmOffer = async () => {
     setMyEnterprises(await GetFirmOffer());
@@ -52,15 +42,22 @@ const EnterpriseConsultant = () => {
         <div className="enterprise-box">
           <div className="enterprise-details">
             <h2>Mes entreprises</h2>
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Rechercher une entreprise"
-                value={searchValue}
-                onChange={handleSearch}
-              />
-              <button type="submit">Rechercher</button>
-            </form>
+            <div className="search-box-enterprise">
+              <form onSubmit={handleSubmit}>
+                <input
+                  className="search-input-enterprise"
+                  type="text"
+                  placeholder="Rechercher une entreprise"
+                  value={searchValue}
+                  onChange={handleSearch}
+                />
+                <img
+                  src={search}
+                  alt="search"
+                  className="logo-search-enterprises"
+                />
+              </form>
+            </div>
           </div>
           <div className="dashboard_body">
             <Grid data = {gridEntreprises} />
@@ -97,6 +94,7 @@ const EnterpriseConsultant = () => {
                 </IntlProvider>
               </LocalizationProvider>
             </div>
+            <GridEntreprises filteredFirms={filteredFirms} />
           </div>
         </div>
       </div>
