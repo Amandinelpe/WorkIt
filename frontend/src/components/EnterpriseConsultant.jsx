@@ -61,39 +61,6 @@ const EnterpriseConsultant = () => {
           </div>
           <div className="dashboard_body">
             <Grid data = {gridEntreprises} />
-            <div className="dashboard_enterprises">
-              <LocalizationProvider language="fr-FR">
-                <IntlProvider locale="fr">
-                  <Grid
-                    className="grid_enterprise"
-                    data={filteredFirms.slice(page.skip, page.take + page.skip)}
-                    skip={page.skip}
-                    take={page.take}
-                    total={filteredFirms.length}
-                    pageable
-                    onPageChange={pageChange}
-                  >
-                    <GridColumn
-                      title="Id entreprise"
-                      field="firm_id"
-                      width="70vw"
-                    />
-                    <GridColumn
-                      title="Nom de l'entreprise"
-                      field="name"
-                      width="300vw"
-                    />
-                    <GridColumn title="Email" field="email" width="300vw" />
-                    <GridColumn title="Ville" field="city" width="300vw" />
-                    <GridColumn
-                      title="Nombre d'annonces"
-                      field="nbreoffers"
-                      width="150vw"
-                    />
-                  </Grid>
-                </IntlProvider>
-              </LocalizationProvider>
-            </div>
             <GridEntreprises filteredFirms={filteredFirms} />
           </div>
         </div>
