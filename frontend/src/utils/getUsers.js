@@ -9,18 +9,14 @@ const requestApi = (finalUrl) => {
 
 // eslint-disable-next-line import/prefer-default-export
 export const GetUsers = (param) => {
-
   const apiRequest = "user/?";
-  const consultantRequest = param.consultant_id == "" ? "" : `consultant_id=${param.consultant_id}&`;
+  const consultantRequest =
+    param.consultant_id == "" ? "" : `consultant_id=${param.consultant_id}&`;
 
-  return requestApi(
-    `${apiRequest}${consultantRequest}`
-  );
-
+  return requestApi(`${apiRequest}${consultantRequest}`);
 };
 
 // eslint-disable-next-line import/prefer-default-export
 export const GetUser = (id) => {
   return requestApi(`user/${id}`);
-  
 };

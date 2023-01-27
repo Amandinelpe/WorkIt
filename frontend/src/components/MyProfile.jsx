@@ -56,7 +56,6 @@ const MyProfile = () => {
     }
   };
 
-  console.log(user, "hello");
   return (
     <div className="my-profile">
       <div className="flex flex-fd-column flex-ai-center flex-jc-center">
@@ -69,7 +68,7 @@ const MyProfile = () => {
               <h3>Mes informations personnelles</h3>
               <div className="informations-personnelles flex flex-fd-row flex-ai-flex-start flex-jc-space-between">
                 <div>
-                  <div className="gender"></div>
+                  <div className="gender" />
                   <div className="flex flex-fd-row flex-jc-space-between">
                     <div className="flex flex-fd-column flex-gap-3vh">
                       <label>
