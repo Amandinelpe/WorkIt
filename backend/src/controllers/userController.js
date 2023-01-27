@@ -9,11 +9,18 @@ const { jwtSign, jwtVerify } = require("../helpers/jwt");
 
 const userController = {
   getAllUsers: (req, res, next) => {
+     const where = [];
+
+    if (req.query.consultant_id != null) {
+      where.push(`consultant_id = ${req.query.consultant_id}`);
+    }
+  
     userModel
-      .findAll()
+      .findAll(where)
       .then(([users]) => res.status(200).send(users))
       .catch((err) => next(err));
   },
+ 
   getUserById: (req, res, next) => {
     const { id } = req.params;
     userModel

@@ -8,15 +8,11 @@ const requestApi = (finalUrl) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const GetUsers = (param) => {
-  const apiRequest = "user/?";
-  const consultantRequest =
-    param.consultant_id == "" ? "" : `consultant_id=${param.consultant_id}&`;
-
-  return requestApi(`${apiRequest}${consultantRequest}`);
+export const GetConsultants = () => {
+  return requestApi("consultant/");
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const GetUser = (id) => {
-  return requestApi(`user/${id}`);
+export const GetConsultantById = (id) => {
+  return requestApi(`consultant/${id}`);
 };

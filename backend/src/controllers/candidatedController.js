@@ -38,6 +38,13 @@ const candidatedController = {
       .then((candidated) => res.status(200).send(candidated))
       .catch((err) => next(err));
   },
+  getCandidatedsByUser: (req, res, next) => {
+    const { user_id } = req.params;
+    candidatedModel
+      .findAllByUser(user_id)
+      .then((candidateds) => res.status(200).send(candidateds))
+      .catch((err) => next(err));
+  }
 };
 
 module.exports = candidatedController;

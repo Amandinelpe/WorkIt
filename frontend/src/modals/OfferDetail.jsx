@@ -17,7 +17,7 @@ import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
 
-const OfferDetail = ({ show, onClose, offerId }) => {
+const OfferDetail = ({ show, onClose, offerId, setReload }) => {
   if (!show) {
     return null;
   }
@@ -123,7 +123,10 @@ const OfferDetail = ({ show, onClose, offerId }) => {
                 <img
                   className="header-button"
                   aria-hidden="true"
-                  onClick={() => setFavorite()}
+                  onClick={() => {
+                    setFavorite();
+                    setReload(favoriteId);
+                  }}
                   onKeyDown={onClose}
                   src={favoriteId ? isfav : notfav}
                   alt="close"
@@ -164,7 +167,7 @@ const OfferDetail = ({ show, onClose, offerId }) => {
             </p>
           ) : (
             <button
-              onClick={handleSubmit}
+              onClick={()=>{handleSubmit(), setReload(candidatedId)}}
               type="submit"
               className="postule-button"
             >
@@ -183,5 +186,6 @@ OfferDetail.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   offerId: PropTypes.number.isRequired,
+  setReload: PropTypes.func.isRequired,
 };
 export default OfferDetail;

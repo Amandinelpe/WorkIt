@@ -25,7 +25,7 @@
 
 .nouvelles_candidatures h2 {
   font-family: var(--text-font-family-jost);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);

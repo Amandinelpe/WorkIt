@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
-import HelloButton from "../components/HelloButton";
 import BoxConsultants from "../components/BoxConsultants";
 import Chat from "../components/Chat";
 import Footer from "../components/Footer";
@@ -40,7 +39,6 @@ const DashboardConsultant = () => {
       transition={{ duration: 0.5 }}
     >
       <NavBar />
-      <HelloButton />
       <div className="mydashboard_body">
         <BoxConsultants handleContent={handleContent} />
       </div>
