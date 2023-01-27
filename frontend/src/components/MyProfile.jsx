@@ -11,17 +11,26 @@ const MyProfile = () => {
   const [jobs, setJobs] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [user, setUser] = useState({});
+  const [file, setFile] = useState({
+    fileName: "",
+    file: "",
+  });
   const [message, setMessage] = useState();
-  const [disableSaveButton, setDisableSaveButton] = useState(true);
 
   const handleChange = (e, customValue) => {
     setMessage(null);
-    setDisableSaveButton(false);
     const { name, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
       [name]: customValue ?? value,
     }));
+  };
+
+  const handleCV = (e) => {
+    setFile({
+      fileName: e.target.files[0].name,
+      file: e.target.files[0],
+    });
   };
 
   useEffect(() => {
@@ -42,7 +51,6 @@ const MyProfile = () => {
     try {
       await UpdateUser(user);
       setMessage("Mise à jour effectué avec succès");
-      setDisableSaveButton(true);
     } catch (err) {
       setMessage(err.message);
     }
@@ -108,9 +116,11 @@ const MyProfile = () => {
                       <div>
                         <input
                           type="file"
-                          name="file"
+                          name="cv"
                           id="file"
                           className="inputfile"
+                          accept="application/pdf"
+                          onChange={handleCV}
                         />
                         <label htmlFor="file">Je dépose mon CV</label>
                       </div>
@@ -245,7 +255,6 @@ const MyProfile = () => {
                 type="submit"
                 className="btn-enregistrer"
                 onClick={updateUser}
-                disabled={disableSaveButton}
               >
                 Enregistrer
               </button>

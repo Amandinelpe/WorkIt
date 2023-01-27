@@ -8,7 +8,7 @@ const ProtectedRouteAdmin = ({ children }) => {
   const { auth } = useContext(authContext);
 
   if (auth.data) {
-    if (auth.data.role_id !== 2) {
+    if (auth.data.role_id !== 3) {
       return <Navigate to="/" />;
     }
     return children;
