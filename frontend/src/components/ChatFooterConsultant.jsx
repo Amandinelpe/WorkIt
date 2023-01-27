@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState, useRef } from "react";
 import "../styles/ChatFooter.css";
 
-const ChatFooter = ({ socket, setTypingMessage }) => {
+const ChatFooterConsultant = ({ socket, setTypingMessage }) => {
   const [message, setMessage] = useState("");
   const isTyping = useRef(null);
 
@@ -61,7 +61,7 @@ const ChatFooter = ({ socket, setTypingMessage }) => {
   );
 };
 
-ChatFooter.propTypes = {
+ChatFooterConsultant.propTypes = {
   socket: PropTypes.shape({
     on: PropTypes.func,
     emit: PropTypes.func,
@@ -69,4 +69,4 @@ ChatFooter.propTypes = {
   }).isRequired,
   setTypingMessage: PropTypes.func.isRequired,
 };
-export default ChatFooter;
+export default ChatFooterConsultant;
