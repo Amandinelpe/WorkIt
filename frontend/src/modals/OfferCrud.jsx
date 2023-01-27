@@ -17,7 +17,7 @@ import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
 
-const OfferDetail = ({ show, onClose, offerId }) => {
+const OfferCrud = () => {
   if (!show) {
     return null;
   }
@@ -49,42 +49,6 @@ const OfferDetail = ({ show, onClose, offerId }) => {
     initUserOffer();
   }, []);
 
-  const setFavorite = () => {
-    if (favoriteId) {
-      DeleteFavorite(favoriteId).then((res) => console.warn(res));
-      setFavoriteId(null);
-    } else {
-      PostFavorite(auth.data.id, offerId).then((response) => {
-        if (response.data) {
-          GetFavoriteByUserAndOffer(auth.data.id, offerId).then((res) => {
-            if (res.data.favorite_id) {
-              setFavoriteId(res.data.favorite_id);
-            }
-          });
-        }
-      });
-    }
-  };
-
-  const handleSubmit = () => {
-    if (auth.data) {
-      if (auth.data.role_id === 1) {
-        PostCandidated(auth.data.id, offerId).then((response) => {
-          if (response.data) {
-            GetCandidatedByUserAndOffer(auth.data.id, offerId).then((res) => {
-              if (res.data.candidated_id) {
-                setCandidatedId(res.data.candidated_id);
-              }
-            });
-          }
-        });
-      }
-    } else {
-      setPostulation("Veuillez vous connecter pour postuler");
-    }
-  };
-
-  /* eslint no-return-assign: "error" */
   return ReactDOM.createPortal(
     <div
       className="modalBox"
@@ -125,6 +89,7 @@ const OfferDetail = ({ show, onClose, offerId }) => {
                   aria-hidden="true"
                   onClick={() => {
                     setFavorite();
+                    setReload(favoriteId);
                   }}
                   onKeyDown={onClose}
                   src={favoriteId ? isfav : notfav}
@@ -184,9 +149,4 @@ const OfferDetail = ({ show, onClose, offerId }) => {
   );
 };
 
-OfferDetail.propTypes = {
-  show: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  offerId: PropTypes.number.isRequired,
-};
-export default OfferDetail;
+export default OfferCrud;
