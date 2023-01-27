@@ -21,7 +21,8 @@
 
 .date_body {
   background-color: var(--white);
-  height: 55vh;
+  height: auto;
+  padding: 1.5vw;
   width: 20vw;
   display: flex;
   justify-content: center;

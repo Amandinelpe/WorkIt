@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import HelloButton from "./HelloButton";
 // import { HiOutlineUserCircle } from "react-icons/Hi";
 import { authContext } from "../context/AuthContext";
 import {
@@ -50,6 +51,7 @@ const NavBar = () => {
             {section.name}
           </NavLink>
         ))}
+        {auth.data && <HelloButton />}
       </ul>
     </div>
   );
