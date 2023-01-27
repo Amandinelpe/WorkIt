@@ -15,10 +15,6 @@ const BoxCandidate = ({ handleContent }) => {
         <div
           key={box.id}
           className="box_candidate"
-          onClick={(e) => onClick(e, box.link)}
-          onKeyDown={(e) => onClick(e, box.link)}
-          role="button"
-          tabIndex={0}
         >
           <div key={box.id} className="box_candidate_title">
             <h1>{box.title}</h1>
@@ -26,7 +22,7 @@ const BoxCandidate = ({ handleContent }) => {
           <div className="box_candidate_body">
             <ul>
               {box.sections.map((section) => (
-                <li >{section}</li>
+                <li className ="box-candidate-li " onClick={(e) => onClick(e, section)}>{section}</li>
               ))}
             </ul>
           </div>

@@ -30,6 +30,13 @@
   gap: 3vh;
 }
 
+.box-candidate-li  {
+  cursor: pointer;
+}
+.box-candidate-li:hover {
+  text-decoration: underline;
+}
+
 .my-profile .box .box_candidate_body h3 {
   color: #4e55ad;
   padding-bottom: 4vh;
