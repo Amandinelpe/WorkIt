@@ -12,11 +12,9 @@ const MyProfile = () => {
   const [experiences, setExperiences] = useState([]);
   const [user, setUser] = useState({});
   const [message, setMessage] = useState();
-  const [disableSaveButton, setDisableSaveButton] = useState(true);
 
   const handleChange = (e, customValue) => {
     setMessage(null);
-    setDisableSaveButton(false);
     const { name, value } = e.target;
     setUser((prevState) => ({
       ...prevState,
@@ -42,13 +40,11 @@ const MyProfile = () => {
     try {
       await UpdateUser(user);
       setMessage("Mise à jour effectué avec succès");
-      setDisableSaveButton(true);
     } catch (err) {
       setMessage(err.message);
     }
   };
 
-  console.log(user, "hello");
   return (
     <div className="my-profile">
       <div className="flex flex-fd-column flex-ai-center flex-jc-center">
@@ -61,7 +57,7 @@ const MyProfile = () => {
               <h3>Mes informations personnelles</h3>
               <div className="informations-personnelles flex flex-fd-row flex-ai-flex-start flex-jc-space-between">
                 <div>
-                  <div className="gender"></div>
+                  <div className="gender" />
                   <div className="flex flex-fd-row flex-jc-space-between">
                     <div className="flex flex-fd-column flex-gap-3vh">
                       <label>
@@ -109,9 +105,10 @@ const MyProfile = () => {
                       <div>
                         <input
                           type="file"
-                          name="file"
+                          name="cv"
                           id="file"
                           className="inputfile"
+                          accept="application/pdf"
                         />
                         <label htmlFor="file">Je dépose mon CV</label>
                       </div>
@@ -246,7 +243,6 @@ const MyProfile = () => {
                 type="submit"
                 className="btn-enregistrer"
                 onClick={updateUser}
-                disabled={disableSaveButton}
               >
                 Enregistrer
               </button>

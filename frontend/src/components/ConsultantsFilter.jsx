@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { GetConsultants } from "../utils/getConsultants";
 import PropTypes from "prop-types";
+import { GetConsultants } from "../utils/getConsultants";
 import "../styles/ConsultantsFilter.css";
 
 const ConsultantsFilter = ({ setFilterUser, filterUser }) => {
@@ -13,7 +13,6 @@ const ConsultantsFilter = ({ setFilterUser, filterUser }) => {
   useEffect(() => {
     getConsultantslist();
   }, []);
-
 
   return (
     <div className="publication_date_box">
@@ -65,6 +64,6 @@ const ConsultantsFilter = ({ setFilterUser, filterUser }) => {
 export default ConsultantsFilter;
 
 ConsultantsFilter.propTypes = {
-  setFilterOffer: PropTypes.func.isRequired,
-  filterOffer: PropTypes.string.isRequired,
+  setFilterUser: PropTypes.func.isRequired,
+  filterUser: PropTypes.string.isRequired,
 };

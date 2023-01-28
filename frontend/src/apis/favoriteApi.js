@@ -19,3 +19,7 @@ export const PostFavorite = (user_id, offer_id) => {
 export const DeleteFavorite = (id) => {
   return axios.delete(apiUrl + "favorite/" + id);
 };
+export const AllFavoriteId = (id) => {
+  console.log(id, "id");
+  return axios.get(apiUrl + "favorite/user/" + id);
+};

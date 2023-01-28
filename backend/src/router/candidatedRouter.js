@@ -8,5 +8,9 @@ candidatedRouter.get("/", candidatedController.getAllcandidateds);
 candidatedRouter.get("/user/", candidatedController.getCandidatedByUser);
 candidatedRouter.post("/", candidatedController.postCandidated);
 candidatedRouter.delete("/:id", candidatedController.deleteCandidated);
+candidatedRouter.get(
+  "/user/:user_id",
+  candidatedController.getCandidatedsByUser
+);
 
 module.exports = candidatedRouter;

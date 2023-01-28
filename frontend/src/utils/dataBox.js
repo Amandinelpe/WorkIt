@@ -9,7 +9,7 @@ const dataBox = [
   {
     id: 2,
     title: "Mon profil",
-    sections: ["Mes informations personnelles", "Ma situation actuelle"],
+    sections: ["Mes informations personnelles"],
     link: "my-profile",
   },
 

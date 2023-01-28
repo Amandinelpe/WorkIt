@@ -10,7 +10,7 @@
 }
 
 .dashboard .box_candidate {
-  cursor: pointer;
+  /*  cursor: pointer; */
 }
 
 .box_candidate_title {
@@ -28,7 +28,7 @@
   color: var(--purple-light);
   align-items: left;
   font-size: 0.8rem;
-  height: 24vh;
+  height: 10vw;
   padding: 4vh;
   display: flex;
   flex-direction: column;

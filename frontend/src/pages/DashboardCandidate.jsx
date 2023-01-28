@@ -2,11 +2,12 @@ import { React, useState } from "react";
 import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import BoxCandidate from "../components/BoxCandidate";
-import HelloButton from "../components/HelloButton";
 import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
+import DashboardApplications from "../components/DashboardApplications";
 import MyProfile from "../components/MyProfile";
 import Chat from "../components/Chat";
+import DashboardAlerts from "../components/DashboardAlerts";
 import "../styles/DashboardCandidate.css";
 
 const DashboardCandidate = () => {
@@ -18,12 +19,14 @@ const DashboardCandidate = () => {
 
   const renderSwitch = () => {
     switch (content) {
-      case "my-profile":
+      case "Mes informations personnelles":
         return <MyProfile />;
-      case "dashboard":
-        return <Dashboard />;
-      case "messagerie":
+      case "Je rentre en contact avec un.e consultant.e":
         return <Chat />;
+      case "Mes candidatures":
+        return <DashboardApplications />;
+      case "Mes alertes":
+        return <DashboardAlerts />;
       default:
         return <Dashboard />;
     }
@@ -37,7 +40,6 @@ const DashboardCandidate = () => {
       transition={{ duration: 0.5 }}
     >
       <NavBar />
-      <HelloButton />
       <div className="mydashboard_body">
         <BoxCandidate handleContent={handleContent} />
       </div>
