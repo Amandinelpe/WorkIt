@@ -1,5 +1,5 @@
 import { React, useEffect, useState} from "react";
-import Offer from "./Offer";
+import FirmOffer from "./FirmOffer";
 import { GetFirmOffer } from "../apis/firmApi"; 
 import OfferEmpty from "./OfferEmpty";
 
@@ -10,9 +10,6 @@ const [firmOffers, setFirmOffers] = useState([]);
   const getFirmOffers = async () => {
     await GetFirmOffer(id).then((res) => setFirmOffers(res.data)).catch ((err) => console.warn(err));
   }
-  console.log(id, "id")
-  console.log(firmOffers, "firmOffers")
-  console.log(reload, "reload");
   useEffect(() => {
     getFirmOffers()
   }, [reload]);
@@ -22,14 +19,14 @@ const [firmOffers, setFirmOffers] = useState([]);
       <div className="my_favorites_body">
         <div className="my_favorites_offers">
           <div className="all_favorites_offers_titleblock">
-            <h2 className="all_favorites_offers_title">Mes coups de coeur</h2>
+            <h2 className="all_favorites_offers_tMes coups de coeuritle">Les offres en cours</h2>
           </div>
           <div className="my_favorites_offers_body">
             {firmOffers.length === 0 ? (
               <OfferEmpty />
             ) : (
               firmOffers.map((offer) => (
-                <Offer
+                <FirmOffer
                   date={offer.date}
                   firm={offer.name}
                   title={offer.title}

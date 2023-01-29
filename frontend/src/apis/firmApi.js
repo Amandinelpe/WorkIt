@@ -9,5 +9,5 @@ const apiUrl = import.meta.env.VITE_BACKEND_URL;
   };
 
   export const GetFirmOffer = (id) => {
-    return axios.get(apiUrl + "firm/offer/" + id);
+    return axios.get(apiUrl + "offer/firm/" + id);
   }

@@ -83,6 +83,13 @@ const offerController = {
       .then((offers) => res.status(200).send(offers))
       .catch((err) => next(err));
   },
+  getAllOffersByFirm : (req, res, next) => {
+    const { id } = req.params;
+    offerModel
+      .findAllOffersByFirm(id)
+      .then(([offers]) => res.status(200).send(offers))
+      .catch((err) => next(err));
+  }
 };
 
 module.exports = offerController;
