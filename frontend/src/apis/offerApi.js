@@ -25,3 +25,7 @@ export const FilterOffer = (city, selectedJob, salary, choosenDate, limit) => {
 export const GetOfferById = (id) => {
   return axios.get(apiUrl + "offer/" + id);
 };
+
+export const DeleteOfferById = (id) => {
+  return axios.delete(apiUrl + "offer/" + id);
+}

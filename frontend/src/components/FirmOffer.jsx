@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import PropTypes from "prop-types";
-import OfferDetail from "../modals/OfferDetail";
+import OfferCrud from "../modals/OfferCrud";
 import "../styles/Offer.css";
 
 const FirmOffer = ({ firm, date, title, logo, city, id, setReload }) => {
@@ -26,7 +26,7 @@ const FirmOffer = ({ firm, date, title, logo, city, id, setReload }) => {
           onKeyDown=""
           role="presentation"
         />
-        <OfferDetail
+        <OfferCrud
           show={show}
           onClose={() => {
             setShow(false);

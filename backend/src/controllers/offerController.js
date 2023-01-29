@@ -89,6 +89,13 @@ const offerController = {
       .findAllOffersByFirm(id)
       .then(([offers]) => res.status(200).send(offers))
       .catch((err) => next(err));
+  },
+  deleteOfferById: (req, res, next) => {
+    const { id } = req.params;
+    offerModel
+      .deleteOne(id)
+      .then(() => res.status(200).send("Deleted"))
+      .catch((err) => next(err));
   }
 };
 

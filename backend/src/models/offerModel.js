@@ -62,7 +62,13 @@ const findOffersByState = (where, limit) => {
     return db
     .promise()
     .query("SELECT offer.id, firm.name, offer.title, offer.date, offer.firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id WHERE firm.id = ?", [id])
-  }
+  };
+  const deleteOne = (id) => {
+    return db
+    .promise()
+    .query("DELETE FROM offer WHERE id = ?", [id])
+    .then (([offer]) => offer)
+  };
 
 
 module.exports = {
@@ -72,4 +78,5 @@ module.exports = {
   findOffersByCity,
   findOffersByState,
   findAllOffersByFirm,
+  deleteOne,
 };
