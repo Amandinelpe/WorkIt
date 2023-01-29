@@ -2,13 +2,20 @@ import { React, useEffect, useState} from "react";
 import FirmOffer from "./FirmOffer";
 import { GetFirmOffer } from "../apis/firmApi"; 
 import OfferEmpty from "./OfferEmpty";
+import OfferForm from "../modals/OfferForm";
 
 const DashboardFirmOffers = ({id}) => {
 const [firmOffers, setFirmOffers] = useState([]);
   const [reload, setReload] = useState(true);
+  const [show, setShow] = useState(false);
 
   const getFirmOffers = async () => {
     await GetFirmOffer(id).then((res) => setFirmOffers(res.data)).catch ((err) => console.warn(err));
+  }
+
+  const openCreateOffer = () => {
+    setShow(true);
+
   }
 
   useEffect(() => {
@@ -23,7 +30,7 @@ const [firmOffers, setFirmOffers] = useState([]);
             <h2 className="all_favorites_offers_title">Les offres en cours</h2>
             <button
               onClick={() => {
-                askConfirmDelete();
+                openCreateOffer();
               }}
               type="submit"
               className="postule-button" 
@@ -31,6 +38,14 @@ const [firmOffers, setFirmOffers] = useState([]);
               {" "}
              Créer une annonce{" "}
             </button>
+            <OfferForm
+    show={show}
+    onClose={() => {
+      setShow(false);
+      setReload(id + 1);
+    }}
+    firmId={id}
+  />
           </div>
           <div className="my_favorites_offers_body">
             {firmOffers.length === 0 ? (
