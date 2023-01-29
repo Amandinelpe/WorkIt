@@ -9,35 +9,48 @@ const OfferForm = ({show, onClose, firmId}) => {
   if (!show) {
     return null;
   }
-  const [deleteMessage, setDeleteMessage] = useState("");
   const [firmData, setFirmData] = useState([]);
+  const [dataOffer, setDataOffer] = useState({});
   
   const getFirmData = async () => {
     await GetFirmData(firmId).then((res) => setFirmData(res.data));
   }
 
+  const postOffer = () => {
+
+
+
+  }
+  
   useEffect(() => {
     getFirmData();
   }, []);
 
+  useEffect(() => {
+    firmData && setDataOffer({...dataOffer, firm_id: firmData.id, });
+    }, [firmData]);
+
+
   return ReactDOM.createPortal(
+      
+      <form onSubmit={postOffer}>
     <div
       className="modalBox"
       onClick={onClose}
       onKeyDown={onClose}
       role="textbox"
       tabIndex={0}
-    >
+      >
       <div
         role="textbox"
         className="modalContent"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={(e) => e.stopPropagation()}
         tabIndex={0}
-      >
+        >
         <div className="modal-header">
           <div className="header-img">
-            <img src="" alt="" width="8%" />
+            <img src={firmData.logo_url} alt="" width="8%" />
             <img
               className="header-button"
               aria-hidden="true"
@@ -45,17 +58,15 @@ const OfferForm = ({show, onClose, firmId}) => {
               onKeyDown={onClose}
               src={close}
               alt="close"
-            />
+              />
           </div>
           <div>
             <h1 className="modal-title"> </h1>
             <div className="header-img">
-            {/*   <p>
+                 <p>
                 {"   Offre publiée le "}{" "}
-                {new Date(dataOffer.date).toLocaleDateString()}{" "}
-              </p>
-       */}
-                 
+                {new Date().toLocaleDateString()}{" "}
+                </p>   
             </div>
           </div>
         </div>
@@ -74,22 +85,25 @@ const OfferForm = ({show, onClose, firmId}) => {
                 <p className="modal-text">  </p>{" "}
           <h2 className="modal-subtitle">Expérience requise</h2>
           <p className="modal-text"></p>
+          <h2 className="modal-subtitle">Salaire brut annuel proposé</h2>
+          <p className="modal-text">€ </p>
         </div>
         <div className="modal-footer">
     
                  <button
              onClick={() => {
-           
-              }}
-              type="submit"
-              className="postule-button" 
-              >
+                 
+            }}
+            type="submit"
+            className="postule-button" 
+            >
              {" "}
             Publier l'annonce {" "}
            </button>
         </div>
       </div>
-    </div>,
+    </div>
+    </form>,
     document.getElementById("app")
   );
 };
