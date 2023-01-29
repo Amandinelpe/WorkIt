@@ -15,8 +15,6 @@ const NavBar = () => {
   const { auth, logout } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
 
-  
-
   const handleLogout = (id) => {
     if (id === 3) {
       logout();

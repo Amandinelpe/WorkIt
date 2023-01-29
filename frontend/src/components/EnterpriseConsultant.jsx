@@ -48,7 +48,6 @@ const EnterpriseConsultant = () => {
                   alt="search"
                   className="logo-search-enterprises"
                 />
-                
               </form>
             </div>
           </div>

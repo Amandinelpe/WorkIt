@@ -42,7 +42,7 @@ const DashboardCandidate = () => {
       <NavBar />
       <div className="mydashboard_candidate">
         <BoxCandidate handleContent={handleContent} />
-      {renderSwitch()}
+        {renderSwitch()}
       </div>
       <div>
         <Footer />

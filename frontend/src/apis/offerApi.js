@@ -28,4 +28,4 @@ export const GetOfferById = (id) => {
 
 export const DeleteOfferById = (id) => {
   return axios.delete(apiUrl + "offer/" + id);
-}
+};

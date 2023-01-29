@@ -5,7 +5,7 @@ import { GetOfferById, DeleteOfferById } from "../apis/offerApi";
 import close from "../assets/img/annuler.png";
 import "../styles/Modal.css";
 
-const OfferCrud = ({show, onClose, offerId}) => {
+const OfferCrud = ({ show, onClose, offerId }) => {
   if (!show) {
     return null;
   }
@@ -13,19 +13,21 @@ const OfferCrud = ({show, onClose, offerId}) => {
   const [dataOffer, setDataOffer] = useState({});
   const [confirmDelete, setConfirmDelete] = useState(false);
 
-  
   const askConfirmDelete = () => {
     setConfirmDelete(true);
-};
+  };
 
   const deleteOffer = () => {
-    DeleteOfferById(offerId).then((res) => {if (res.status === 200) {
-      
-   setDeleteMessage("L'offre a bien été supprimée")   
-    }
-  }).catch((err) => {console.warn(err)});
-  }
-  
+    DeleteOfferById(offerId)
+      .then((res) => {
+        if (res.status === 200) {
+          setDeleteMessage("L'offre a bien été supprimée");
+        }
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  };
 
   useEffect(() => {
     GetOfferById(offerId).then((res) => setDataOffer(res.data));
@@ -65,8 +67,6 @@ const OfferCrud = ({show, onClose, offerId}) => {
                 {"   Offre publiée le "}{" "}
                 {new Date(dataOffer.date).toLocaleDateString()}{" "}
               </p>
-      
-                 
             </div>
           </div>
         </div>
@@ -97,49 +97,49 @@ const OfferCrud = ({show, onClose, offerId}) => {
         </div>
         <div className="modal-footer">
           <p className="send-candidature">{deleteMessage}</p>
-            {deleteMessage==="" && (confirmDelete? (
-            <div> 
-            <p className="send-candidature">
-              Etes vous sûr de vouloir supprimer cette offre ?
-            </p>
-            <div>
-             <button
-             onClick={() => {
-               deleteOffer();
-              }}
-              type="submit"
-              className="postule-button" 
-              style={{color: "red"}}
-              >
-             {" "}
-            Je confirme {" "}
-           </button>
-           <button
-             onClick={() => {
-               setConfirmDelete(false);
-              }}
-              type="submit"
-              className="postule-button" 
-      
-              >
-             {" "}
-            Annuler {" "}
-           </button>
+          {deleteMessage === "" &&
+            (confirmDelete ? (
+              <div>
+                <p className="send-candidature">
+                  Etes vous sûr de vouloir supprimer cette offre ?
+                </p>
+                <div>
+                  <button
+                    onClick={() => {
+                      deleteOffer();
+                    }}
+                    type="submit"
+                    className="postule-button"
+                    style={{ color: "red" }}
+                  >
+                    {" "}
+                    Je confirme{" "}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setConfirmDelete(false);
+                    }}
+                    type="submit"
+                    className="postule-button"
+                  >
+                    {" "}
+                    Annuler{" "}
+                  </button>
                 </div>
-             </div>
-          ) : (
-            <button
-              onClick={() => {
-                askConfirmDelete();
-              }}
-              type="submit"
-              className="postule-button" 
-              style={{color: "red"}}
-            >
-              {" "}
-             Supprimer l'annonce{" "}
-            </button>
-          ))}
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  askConfirmDelete();
+                }}
+                type="submit"
+                className="postule-button"
+                style={{ color: "red" }}
+              >
+                {" "}
+                Supprimer l'annonce{" "}
+              </button>
+            ))}
         </div>
       </div>
     </div>,
@@ -152,6 +152,5 @@ OfferCrud.propTypes = {
   onClose: PropTypes.func.isRequired,
   offerId: PropTypes.number.isRequired,
 };
-
 
 export default OfferCrud;
