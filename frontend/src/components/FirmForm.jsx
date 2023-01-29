@@ -147,6 +147,7 @@ const FirmForm = (firmOffer) => {
                             </div>
                           </div>
                     <div className="current_offers">
+                      
                       <DashboardFirmOffers id={id}/>
                     </div>
                         </div>

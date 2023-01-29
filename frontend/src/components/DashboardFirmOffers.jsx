@@ -10,6 +10,7 @@ const [firmOffers, setFirmOffers] = useState([]);
   const getFirmOffers = async () => {
     await GetFirmOffer(id).then((res) => setFirmOffers(res.data)).catch ((err) => console.warn(err));
   }
+
   useEffect(() => {
     getFirmOffers()
   }, [reload]);
@@ -19,7 +20,17 @@ const [firmOffers, setFirmOffers] = useState([]);
       <div className="my_favorites_body">
         <div className="my_favorites_offers">
           <div className="all_favorites_offers_titleblock">
-            <h2 className="all_favorites_offers_tMes coups de coeuritle">Les offres en cours</h2>
+            <h2 className="all_favorites_offers_title">Les offres en cours</h2>
+            <button
+              onClick={() => {
+                askConfirmDelete();
+              }}
+              type="submit"
+              className="postule-button" 
+            >
+              {" "}
+             Créer une annonce{" "}
+            </button>
           </div>
           <div className="my_favorites_offers_body">
             {firmOffers.length === 0 ? (
