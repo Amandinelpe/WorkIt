@@ -9,10 +9,6 @@
   border-radius: 1vh;
 }
 
-.dashboard .box_candidate {
-  /*  cursor: pointer; */
-}
-
 .box_candidate_title {
   font-family: var(--text-font-family-jost);
   font-size: 0.9rem;

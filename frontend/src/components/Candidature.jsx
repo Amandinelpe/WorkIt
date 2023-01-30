@@ -93,7 +93,6 @@ const Candidature = () => {
     <div className="container-body">
       <SearchBar />
       <div className="container">
-        <div className="filter-box">{/** Filter box */}</div>
         <div className="grid-container-box">
           <div className="grid-container-box-title">
             <h2>Nouvelles candidatures spontanées</h2>

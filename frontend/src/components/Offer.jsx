@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import OfferDetail from "../modals/OfferDetail";
 import "../styles/Offer.css";
 
-const Offer = ({ firm, date, title, logo, city, id, setReload }) => {
+const Offer = ({ firm, date, title, logo, city, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -30,7 +30,6 @@ const Offer = ({ firm, date, title, logo, city, id, setReload }) => {
           show={show}
           onClose={() => {
             setShow(false);
-            setReload(id + 1);
           }}
           offerId={id}
         />

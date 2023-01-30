@@ -15,7 +15,6 @@ const Dashboard = () => {
     );
   };
 
-  console.log(reload, "reload");
   useEffect(() => {
     getAllFavoritesId();
   }, [reload]);

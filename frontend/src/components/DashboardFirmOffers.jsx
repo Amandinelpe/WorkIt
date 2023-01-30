@@ -1,20 +1,21 @@
-import { React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import Offer from "./Offer";
-import { GetFirmOffer } from "../apis/firmApi"; 
+import { GetFirmOffer } from "../apis/firmApi";
 import OfferEmpty from "./OfferEmpty";
 
-const DashboardFirmOffers = ({id}) => {
-const [firmOffers, setFirmOffers] = useState([]);
+const DashboardFirmOffers = () => {
+  // const { id } = useParams();
+  const [firmOffers, setFirmOffers] = useState([]);
   const [reload, setReload] = useState(true);
 
   const getFirmOffers = async () => {
-    await GetFirmOffer(id).then((res) => setFirmOffers(res.data)).catch ((err) => console.warn(err));
-  }
-  console.log(id, "id")
-  console.log(firmOffers, "firmOffers")
-  console.log(reload, "reload");
+    await GetFirmOffer()
+      .then((res) => setFirmOffers(res.data))
+      .catch((err) => console.warn(err));
+  };
+
   useEffect(() => {
-    getFirmOffers()
+    getFirmOffers();
   }, [reload]);
 
   return (

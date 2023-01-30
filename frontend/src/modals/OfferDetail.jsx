@@ -168,7 +168,6 @@ const OfferDetail = ({ show, onClose, offerId }) => {
             <button
               onClick={() => {
                 handleSubmit();
-                setReload(candidatedId);
               }}
               type="submit"
               className="postule-button"

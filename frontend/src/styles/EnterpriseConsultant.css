@@ -14,14 +14,14 @@
 
 .container_enterprise_body .container_enterprise .enterprise-box {
   width: 84vw;
-  height: 70vh;
+  height: 100vh;
 }
 
 .container_enterprise_body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2vw;
+  padding-top: 10vh;
 }
 
 .enterprise-details {
@@ -38,11 +38,21 @@
 
 .enterprise-details h2 {
   margin-top: 2vh;
+  font-size: 18px;
 }
 
 .container_enterprise {
   margin-top: 2vw;
   margin-bottom: 2vw;
+}
+
+.search-box-enterprise {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-box-enterprise img {
+  margin-right: 3vw;
 }
 
 .logo-search-enterprises {
@@ -64,7 +74,7 @@
   margin-left: 3vw;
 }
 
-.enterprise-details .search-input-enterprise {
+.search-box-enterprise .search-input-enterprise {
   color: var(--purple-dark);
   border: 2px solid #ccc;
   box-shadow: 0 0 2px 2px var(--purple-dark);
@@ -89,6 +99,21 @@
   margin-left: 4vw;
   align-items: center;
   color: #93a9eb;
+}
+
+.enterprise-box .btn_create_firmform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14vw;
+  height: 5vh;
+  cursor: pointer;
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 20px;
+  border: none;
+  margin-top: 1vh;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
 /* KENDO GRID */
