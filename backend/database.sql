@@ -26,7 +26,10 @@ CREATE TABLE `user` (
     `hard_skills` VARCHAR(500)  NULL ,
     `experience_id` int  NULL ,
     `contract_id` int  NULL ,
-    `cv`  VARCHAR(200)  NULL ,
+    `file`  VARCHAR(200)  NULL ,
+    `fileName`  VARCHAR(500)  NULL ,
+    `photo`  VARCHAR(200)  NULL ,
+    `photoName`  VARCHAR(500)  NULL ,
     `consultant_id` int  NULL ,
     `userNote` VARCHAR(1000)  NULL ,
     `reset_token` VARCHAR(250)  NULL ,
@@ -104,20 +107,20 @@ CREATE TABLE `offer` (
     `title` VARCHAR(100)  NOT NULL ,
     `firm_id` int  NOT NULL ,
     `firm_city` VARCHAR(500)  NULL ,
-    `date` DATE  NOT NULL ,
-    `postal_code` int  NOT NULL ,
-    `country` VARCHAR(500)  NOT NULL ,
+    `date` DATETIME   DEFAULT CURRENT_TIMESTAMP ,
+    `postal_code` int  NULL ,
+    `country` VARCHAR(500)  NULL ,
     `job_id` int  NOT NULL ,
     `salary` int  NULL ,
     `description_firm` VARCHAR(3000)  NOT NULL ,
     `description_mission` VARCHAR(3000)  NOT NULL ,
-    `soft_skills` VARCHAR(500)  NOT NULL ,
-    `hard_skills` VARCHAR(500)  NOT NULL ,
-    `experience_id` int  NOT NULL ,
-    `contract_type` int  NOT NULL ,
-    `consultant_id` int  NOT NULL ,
-    `urgence_id` int  NOT NULL ,
-    `state_offer_id` int  NOT NULL ,
+    `soft_skills` VARCHAR(500)  NULL ,
+    `hard_skills` VARCHAR(500)  NULL ,
+    `experience_id` int  NULL ,
+    `contract_type` int  NULL ,
+    `consultant_id` int  NULL ,
+    `urgence_id` int  NULL ,
+    `state_offer_id` int  NULL ,
 
     PRIMARY KEY (
         `id`
@@ -190,6 +193,7 @@ CREATE TABLE `candidated` (
 	`candidated_id` INT auto_increment NOT NULL,
 	`user_id` int NOT NULL,
 	`offer_id` int NOT NULL,
+    `application_state_id` int NOT NULL,
 	PRIMARY KEY (
         `candidated_id`
     )
@@ -246,6 +250,8 @@ ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_offer_id` FOREIGN KEY(`of
 REFERENCES `offer` (`id`);
 ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_user_id` FOREIGN KEY(`user_id`)
 REFERENCES `user` (`id`);
+ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_application_state_id` FOREIGN KEY(`application_state_id`)
+REFERENCES `application_state` (`id`);
 
 
 
@@ -299,7 +305,6 @@ INSERT INTO experience (experience) VALUES
      ('10 ans et +');
     
 INSERT INTO externatic.application_state (name) VALUES
-    ('En attente'),
     ('En cours de traitement'),
     ('Refusée'),
     ('Acceptée');
@@ -358,19 +363,19 @@ INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) 
 
 	
 
-INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNote, reset_token) VALUES
-	 (1,'homme','Luc','Thebest','lucthebest@gmail.com','Bordeaux',33000,'FRANCE','43 rue du loup','0640899345',1,'lebgdu33',NULL,NULL,'Developpeur',2,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,1,NULL,NULL),
-	 (1,'femme','Josette','Colin','josettecol@gmail.com','Nantes',44000,'FRANCE','5 rue du temple','0640899678',1,NULL,NULL,NULL,'chomage',3,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,7,NULL,NULL),
-	 (1,'homme','Bertrand','Molina','btr@gmail.com','soustons',40140,'FRANCE','8 rue des pins','0558411032',1,NULL,NULL,NULL,'boulanger',7,NULL,NULL,1,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,8,NULL,NULL),
-     (1,'homme','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,1,NULL,1,NULL,NULL),
-     (1,'homme','Paul','Dupont','paul.dupont@gmail.com','Lyon',69000,'France','12 rue de la Paix','0612345678',1,'paul.dupont@linkedin.com','','','Ingénieur en informatique',5,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,4,NULL,NULL),
-     (1,'femme','Sophie','Martin','sophie.martin@gmail.com','Paris',75000,'France','15 avenue des Champs-Elysées','0698765432',1,'sophie.martin@linkedin.com','','','Avocate',1,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,5,NULL,NULL),
-     (1,'homme','Emile','Leroy','emile.leroy@gmail.com','Marseille',13000,'France','2 rue de la Mer','0600000000',1,'emile.leroy@linkedin.com','','','Directeur commercial',3,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,6,NULL,NULL),
-     (1,'femme','Anne','Dubois','anne.dubois@gmail.com','Toulouse',31000,'France','18 rue des Fleurs','0622222222',1,'anne.dubois@linkedin.com','','','Enseignante',4,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,2,NULL,NULL),
-     (1,'homme','Pierre','Dupont','pierredupont@gmail.com','Paris',75000,'FRANCE','12 rue de la paix','0612345678',1,'pierredupont@linkedin.com','https://www.pierredupont.fr',NULL,'Ingénieur en informatique',4,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,1,NULL,NULL),
-     (1,'femme','Sophie','Martin','sophiemartin@gmail.com','Lyon',69000,'FRANCE','7 rue de la gare','0640899999',1,'sophiemartin@linkedin.com','https://www.sophiemartin.fr',NULL,'Conseillère en ressources humaines',5,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,8,NULL,NULL),
-     (1,'homme','Marc','Dubois','marcdubois@gmail.com','Marseille',13000,'FRANCE','15 avenue du Prado','0640891234',1,'marcdubois@linkedin.com','https://www.marcdubois.fr',NULL,'Architecte d intérieur',1,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,5,NULL,NULL),
-     (1,'homme','Jean','Leroy','jeanleroy@gmail.com','Nantes',44000,'FRANCE','2 rue des remparts','0640899999',1,'jeanleroy@linkedin.com','https://www.jeanleroy.fr',NULL,'Directeur des ventes',6,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,4,NULL,NULL);
+INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,postal_code,country,adress,phone,isActive,linkedin,website,github,actual_job,job_id,salary,diploma,handicap,password,hard_skills,experience_id,contract_id,consultant_id,userNote, reset_token, photo) VALUES
+	 (1,'homme','Luc','Thebest','lucthebest@gmail.com','Bordeaux',33000,'FRANCE','43 rue du loup','0640899345',1,'lebgdu33',NULL,NULL,'Developpeur',2,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,1,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+	 (1,'femme','Josette','Colin','josettecol@gmail.com','Nantes',44000,'FRANCE','5 rue du temple','0640899678',1,NULL,NULL,NULL,'chomage',3,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,7,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+	 (1,'homme','Bertrand','Molina','btr@gmail.com','soustons',40140,'FRANCE','8 rue des pins','0558411032',1,NULL,NULL,NULL,'boulanger',7,NULL,NULL,1,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,8,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'homme','José','Garcia','j.garcia@gmail.com','Bordeaux',33000,'France',' 6 Alleé des platanes','0678294729',0,'j.garcia@linkedin.com','',NULL,'Développpeur Web',2,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,1,NULL,1,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'homme','Paul','Dupont','paul.dupont@gmail.com','Lyon',69000,'France','12 rue de la Paix','0612345678',1,'paul.dupont@linkedin.com','','','Ingénieur en informatique',5,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,4,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'femme','Sophie','Martin','sophie.martin@gmail.com','Paris',75000,'France','15 avenue des Champs-Elysées','0698765432',1,'sophie.martin@linkedin.com','','','Avocate',1,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,5,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'homme','Emile','Leroy','emile.leroy@gmail.com','Marseille',13000,'France','2 rue de la Mer','0600000000',1,'emile.leroy@linkedin.com','','','Directeur commercial',3,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,6,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'femme','Anne','Dubois','anne.dubois@gmail.com','Toulouse',31000,'France','18 rue des Fleurs','0622222222',1,'anne.dubois@linkedin.com','','','Enseignante',4,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,2,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'homme','Pierre','Dupont','pierredupont@gmail.com','Paris',75000,'FRANCE','12 rue de la paix','0612345678',1,'pierredupont@linkedin.com','https://www.pierredupont.fr',NULL,'Ingénieur en informatique',4,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,1,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'femme','Sophie','Martin','sophiemartin@gmail.com','Lyon',69000,'FRANCE','7 rue de la gare','0640899999',1,'sophiemartin@linkedin.com','https://www.sophiemartin.fr',NULL,'Conseillère en ressources humaines',5,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,8,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'homme','Marc','Dubois','marcdubois@gmail.com','Marseille',13000,'FRANCE','15 avenue du Prado','0640891234',1,'marcdubois@linkedin.com','https://www.marcdubois.fr',NULL,'Architecte d intérieur',1,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,5,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"),
+     (1,'homme','Jean','Leroy','jeanleroy@gmail.com','Nantes',44000,'FRANCE','2 rue des remparts','0640899999',1,'jeanleroy@linkedin.com','https://www.jeanleroy.fr',NULL,'Directeur des ventes',6,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,4,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png");
 
     
      INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
@@ -504,6 +509,6 @@ INSERT INTO externatic.favorite (user_id,offer_id) VALUES
 	 (1,8),
 	 (1,12);
 
-INSERT INTO externatic.candidated (user_id,offer_id) VALUES
-	 (1,8),
-	 (1,12);
+INSERT INTO externatic.candidated (user_id,offer_id,application_state_id) VALUES
+	 (1,8,1),
+	 (1,12,1);

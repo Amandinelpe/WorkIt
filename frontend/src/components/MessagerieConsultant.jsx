@@ -6,7 +6,6 @@ import {
   loadMessages,
 } from "@progress/kendo-react-intl";
 import frMessages from "../utils/fr.json";
-import SearchBar from "./SearchBar";
 import "../styles/GridContainer.css";
 import "../styles/KendoGrid.css";
 
@@ -41,7 +40,6 @@ const MessagerieConsultant = () => {
 
   return (
     <div className="container-body">
-      <SearchBar />
       <div className="container">
         <div className="filter-box">{/** Filter box */}</div>
         <div className="grid-container-box">

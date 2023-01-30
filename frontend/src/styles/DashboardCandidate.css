@@ -20,6 +20,7 @@
   background-color: var(--purple-light);
   height: 12vh;
   border-radius: 50px 50px 0 0;
+  display: flex;
 }
 
 .all_favorites_offers_titleblock h2 {
@@ -168,4 +169,10 @@
 .my_applications_offers_button:hover {
   box-shadow: 4px 4px 2px 1px #ff8150;
   transform: scale(1.1);
+}
+
+.mydashboard_candidate {
+  margin-top: 2vh;
+  display: flex;
+  align-items: flex-start;
 }
