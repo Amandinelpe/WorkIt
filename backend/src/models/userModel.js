@@ -51,6 +51,20 @@ const deleteOne = (id) => {
     .then(([res]) => res);
 };
 
+const updateCv = (url, id) => {
+  return db
+    .promise()
+    .query("UPDATE user SET file = ? WHERE id = ?", [url, Number(id)])
+    .then(([res]) => res);
+};
+
+const updateImage = (url, id) => {
+  return db
+    .promise()
+    .query("UPDATE user SET photo = ? WHERE id = ?", [url, Number(id)])
+    .then(([res]) => res);
+};
+
 module.exports = {
   findAll,
   findOne,
@@ -58,4 +72,6 @@ module.exports = {
   createOne,
   updateOne,
   deleteOne,
+  updateCv,
+  updateImage,
 };
