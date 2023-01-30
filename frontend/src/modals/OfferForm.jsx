@@ -5,6 +5,7 @@ import { GetFirmData } from "../apis/firmApi";
 import { GetAllJobs, GetJobById } from "../apis/jobApi";
 import { GetAllExperiences } from "../apis/experienceApi";
 import { PostOffer } from "../apis/offerApi";
+import formOffer from "../utils/formOffer";
 import close from "../assets/img/annuler.png";
 import "../styles/Modal.css";
 
@@ -30,51 +31,49 @@ const OfferForm = ({ show, onClose, firmId }) => {
   };
 
   const loadExperiences = () => {
-      
-      GetAllExperiences().then((res) => {setExperiences(res.data);});
-      
-    }
-    
-    const handleChange = (e) => {
-        e.preventDefault();
-        setDataOffer({ ...dataOffer, [e.target.name]: e.target.value });
-    };
-  
-    
-    useEffect(() => {
-        getFirmData();
-        loadJobs();
-        loadExperiences();
-    }, []);
-    
-    
-    useEffect(() => {
-        firmData &&
-        setDataOffer({
-            ...dataOffer,
-            firm_id: firmData.id
-        });
-    }, [firmData]);
-    
-    useEffect(() => {
-        dataOffer.job_id &&
-        GetJobById(dataOffer.job_id).then((res) => {
-            setDataOffer({ ...dataOffer, title: res.data.job_title });
-        });
-    }, [dataOffer.job_id]);
+    GetAllExperiences().then((res) => {
+      setExperiences(res.data);
+    });
+  };
 
-    const postOffer = (e) => {
-      e.preventDefault();
-        PostOffer(dataOffer)
-        .then((res) => {
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    };
-    
-    return ReactDOM.createPortal(
+  const handleChange = (e) => {
+    e.preventDefault();
+    setDataOffer({ ...dataOffer, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    getFirmData();
+    loadJobs();
+    loadExperiences();
+  }, []);
+
+  useEffect(() => {
+    firmData &&
+      setDataOffer({
+        ...dataOffer,
+        firm_id: firmData.id,
+      });
+  }, [firmData]);
+
+  useEffect(() => {
+    dataOffer.job_id &&
+      GetJobById(dataOffer.job_id).then((res) => {
+        setDataOffer({ ...dataOffer, title: res.data.job_title });
+      });
+  }, [dataOffer.job_id]);
+
+  const postOffer = (e) => {
+    e.preventDefault();
+    PostOffer(dataOffer)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return ReactDOM.createPortal(
     <form onSubmit={postOffer}>
       <div
         className="modalBox"
@@ -123,53 +122,18 @@ const OfferForm = ({ show, onClose, firmId }) => {
           </div>
 
           <div className="modal-body">
-            <h2 className="modal-subtitle">Lieu</h2>
-            <input
-              type="text"
-              name="firm_city"
-              placeholder="Bordeaux"
-              className="modal-subtitle"
-              value={dataOffer.city}
-              onChange={handleChange}
-            />
-            <h2 className="modal-subtitle">Description de la société</h2>
-            <input
-              type="text"
-              name="description_firm"
-              placeholder="Lorem ipsum.."
-              className="modal-subtitle"
-              value={dataOffer.description_firm}
-              onChange={handleChange}
-            />
-            <h2 className="modal-subtitle">Mission proposée</h2>
-            <input
-              type="text"
-              name="description_mission"
-              placeholder="Lorem ipsum.."
-              className="modal-subtitle"
-              value={dataOffer.description_mission}
-              onChange={handleChange}
-            />
-            <h2 className="modal-subtitle">Environnement technique</h2>
-            <input
-              type="text"
-              name="hard_skills"
-              placeholder="Lorem ipsum.."
-              className="modal-subtitle"
-              value={dataOffer.hard_skills}
-              onChange={handleChange}
-            />
+            {formOffer.map((input) => (<div>
 
-            <h2 className="modal-subtitle">Compétences relationnelles</h2>
-            <input
-              type="text"
-              name="soft_skills"
-              placeholder="Lorem ipsum.."
-              className="modal-subtitle"
-              value={dataOffer.soft_skills}
-              onChange={handleChange}
+            <h2 className="modal-subtitle">{input.title}</h2><input
+            type={input.type}
+            name={input.name}
+            placeholder={input.placeholder}
+            className="modal-subtitle"
+     value={dataOffer[input.name]} 
+            onChange={handleChange}
             />
-
+            </div>
+            ))}
             <h2 className="modal-subtitle">Expérience requise</h2>
             <label htmlFor="experience_select">
               <select
@@ -179,25 +143,21 @@ const OfferForm = ({ show, onClose, firmId }) => {
                 onChange={handleChange}
                 autoComplete="on"
               >
-                <option  disabled selected value>Experience requise</option>
+                <option disabled selected value>
+                  Experience requise
+                </option>
                 {experiences.map((experience) => (
                   <option value={experience.id}>{experience.experience}</option>
                 ))}
               </select>
             </label>
-             
-            <h2 className="modal-subtitle" style= {{marginTop:25} }>Salaire brut annuel proposé</h2>
-            <input
-              type="number"
-              name="salary"
-              placeholder="File moi 30 000 "
-              className="modal-subtitle"
-              value={dataOffer.salary}
-              onChange={handleChange}
-            />
           </div>
           <div className="modal-footer">
-            <button onClick={postOffer} type="submit" className="postule-button">
+            <button
+              onClick={postOffer}
+              type="submit"
+              className="postule-button"
+            >
               {" "}
               Publier l'annonce{" "}
             </button>
