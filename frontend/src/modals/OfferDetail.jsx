@@ -17,7 +17,7 @@ import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
 
-const OfferDetail = ({ show, onClose, offerId, setReload }) => {
+const OfferDetail = ({ show, onClose, offerId }) => {
   if (!show) {
     return null;
   }
@@ -125,7 +125,6 @@ const OfferDetail = ({ show, onClose, offerId, setReload }) => {
                   aria-hidden="true"
                   onClick={() => {
                     setFavorite();
-                    setReload(favoriteId);
                   }}
                   onKeyDown={onClose}
                   src={favoriteId ? isfav : notfav}
@@ -157,6 +156,8 @@ const OfferDetail = ({ show, onClose, offerId, setReload }) => {
 
           <h2 className="modal-subtitle">Expérience requise</h2>
           <p className="modal-text">{dataOffer.experience} </p>
+          <h2 className="modal-subtitle">Salaire brut annuel proposé</h2>
+          <p className="modal-text">{dataOffer.salary}€ </p>
         </div>
         <div className="modal-footer">
           <p className="send-candidature">{postulation}</p>
@@ -188,6 +189,5 @@ OfferDetail.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   offerId: PropTypes.number.isRequired,
-  setReload: PropTypes.func.isRequired,
 };
 export default OfferDetail;

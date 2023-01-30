@@ -121,7 +121,6 @@ const MyProfile = () => {
                           name="file"
                           id="file"
                           className="inputfile"
-                          onChange={handleCV}
                         />
                         <label htmlFor="file">Je dépose mon CV</label>
                         <div className="fileName">

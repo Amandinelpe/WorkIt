@@ -10,3 +10,7 @@ export const GetAllJobs = () => {
 export const GetAllJobsTitles = () => {
   return axios.get(apiUrl + "job/jobtitles/");
 };
+
+export const GetJobById = (id) => {
+  return axios.get(apiUrl + "job/" + id);
+};

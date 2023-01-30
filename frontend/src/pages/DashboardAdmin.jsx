@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
 import BoxAdmin from "../components/BoxAdmin";
 import Footer from "../components/Footer";
-import Dashboard from "../components/Dashboard";
 import Candidats from "../components/Candidats";
 import ListeConsultants from "../components/ListeConsultants";
 import EnterpriseConsultant from "../components/EnterpriseConsultant";
@@ -26,9 +25,9 @@ const DashboardAdmin = () => {
       case "consultant":
         return <ListeConsultants />;
       case "medias":
-        return <Dashboard />;
+        return <EnterpriseConsultant />;
       default:
-        return <Dashboard />;
+        return <EnterpriseConsultant />;
     }
   };
 

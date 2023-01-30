@@ -15,6 +15,8 @@ import ProtectedRouteConsultant from "./context/ProtectedRouteConsultant";
 import ProtectedRouteAdmin from "./context/ProtectedRouteAdmin";
 import "@progress/kendo-theme-default/dist/all.css";
 import DashboardAdmin from "./pages/DashboardAdmin";
+import FirmForm from "./components/FirmForm";
+
 import "./styles/Flex.css";
 import FicheCandidat from "./components/FicheCandidat";
 
@@ -37,7 +39,6 @@ const App = () => {
             element={<Connexion user="consultant" />}
           />
           <Route path="/ConnexionAdmin" element={<Connexion user="admin" />} />
-          <Route path="/admin" element={<Connexion user="admin" />} />
           <Route path="/Main" element={<MainPage />} />
           <Route
             path="/DashboardCandidate"
@@ -67,6 +68,7 @@ const App = () => {
           <Route path="/ForgottenPassword" element={<ForgottenPassword />} />
           <Route path="/ResetPassword/:token/:id" element={<ResetPassword />} />
           <Route path="/FicheCandidat" element={<FicheCandidat />} />
+          <Route path="/FicheEntreprise/:id" element={<FirmForm />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </AnimatePresence>

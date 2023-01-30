@@ -18,7 +18,7 @@ const findOfferByFirm = () => {
   return db
     .promise()
     .query(
-      "select firm_id, name, email, city, count(*) as 'nbreoffers' from offer inner join firm on offer.firm_id = firm.id group by firm_id"
+      "select firm_id, name, contact_phone, email, city, count(*) as 'nbreoffers' from offer inner join firm on offer.firm_id = firm.id group by firm_id"
     )
     .then(([firmOffers]) => firmOffers);
 };

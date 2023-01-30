@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ChatFooter from "./ChatFooter";
 import "../styles/ChatBody.css";
 
-const ChatBody = ({ socket }) => {
+const ChatBodyConsultant = ({ socket }) => {
   const [chatMessages, setChatMessages] = useState([]);
   const [typingMessage, setTypingMessage] = useState("");
 
@@ -43,10 +43,10 @@ const ChatBody = ({ socket }) => {
     </div>
   );
 };
-ChatBody.propTypes = {
+ChatBodyConsultant.propTypes = {
   socket: PropTypes.shape({
     id: PropTypes.string,
     on: PropTypes.func,
   }).isRequired,
 };
-export default ChatBody;
+export default ChatBodyConsultant;
