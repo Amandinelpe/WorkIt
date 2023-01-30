@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import notificationLogo from "../assets/img/notifications.png";
 import "../styles/Notification.css";
 
@@ -19,6 +20,10 @@ const Notification = ({ socket }) => {
       )}
     </div>
   );
+};
+
+Notification.propTypes = {
+  socket: PropTypes.string.isRequired,
 };
 
 export default Notification;

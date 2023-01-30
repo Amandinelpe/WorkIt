@@ -12,13 +12,13 @@ const ListeConsultants = () => {
     setConsultants(await GetAllConsultants());
   };
 
-  const handleClick = () => {
-    setShowFiche(!showFiche);
-  };
-
   useEffect(() => {
     getListAllConsultants();
   }, []);
+
+  const handleClick = () => {
+    setShowFiche(!showFiche);
+  };
 
   return (
     <div className="liste_consultants">
@@ -35,13 +35,21 @@ const ListeConsultants = () => {
             >
               AJOUTER
             </button>
-            <button type="button" className="button_add_consultant">
+            <button
+              type="button"
+              className="button_add_consultant"
+              onClick={getListAllConsultants}
+            >
               ACTUALISER
             </button>
           </div>
           <div className="consultants-liste">
             {consultants.map((consultant) => (
-              <ConsultantLine key={consultant.id} consultant={consultant} />
+              <ConsultantLine
+                key={consultant.id}
+                consultant={consultant}
+                setConsultants={setConsultants}
+              />
             ))}
           </div>
         </div>

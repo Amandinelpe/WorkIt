@@ -52,7 +52,7 @@ const MyProfile = () => {
       if (user.fileName) {
         await UpdateUserFile(user);
       }
-      setMessage("Mise à jour effectué avec succès");
+      setMessage("Mise à jour effectuée avec succès");
     } catch (err) {
       setMessage(err.message);
     }
