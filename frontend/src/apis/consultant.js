@@ -36,7 +36,7 @@ export const CreateConsultant = ({
       role_id,
     })
     .then((response) => response.data)
-    .catch((err) => console.log(err));
+    .catch((err) => console.warn(err));
 };
 
 // eslint-disable-next-line import/prefer-default-export

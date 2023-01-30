@@ -45,7 +45,17 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
         linkedin: addNewConsultant.linkedin,
         role_id: addNewConsultant.role_id,
       })
-      .then((response) => response.data)
+      .then(() => {
+        setAddNewConsultant({
+          firstname: null,
+          lastname: null,
+          phone: null,
+          city: null,
+          email: null,
+          password: null,
+          linkedin: null,
+        });
+      })
       .catch((err) => console.warn(err));
   };
 
