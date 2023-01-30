@@ -10,7 +10,7 @@ const formOffer = [
   {
     id: 2,
     title: "Description de l'entreprise",
-    type: "text",
+    type: "textarea",
     name: "description_firm",
     placeholder: "Lorem ipsum",
     className: "modal-subtitle",
@@ -18,7 +18,7 @@ const formOffer = [
   {
     id: 3,
     title: "Description de la mission",
-    type: "text",
+    type: "textarea",
     name: "description_mission",
     placeholder: "Lorem ipsum",
     className: "modal-subtitle",
@@ -26,7 +26,7 @@ const formOffer = [
   {
     id: 4,
     title: "Compétences requises",
-    type: "text",
+    type: "textarea",
     name: "hard_skills",
     placeholder: "Lorem ipsum",
     className: "modal-subtitle",
@@ -34,7 +34,7 @@ const formOffer = [
   {
     id: 5,
     title: "Qualités requises",
-    type: "text",
+    type: "textarea",
     name: "soft_skills",
     placeholder: "Lorem ipsum",
     className: "modal-subtitle",
