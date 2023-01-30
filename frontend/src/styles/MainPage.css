@@ -8,6 +8,7 @@
 .mainpage_introduction {
   margin-bottom: 2vw;
   color: var(--purple-dark);
+  font-size: 1vw;
 }
 
 .filters_offers {

@@ -1,5 +1,4 @@
 import React from "react";
-import Copyright from "../assets/img/copyright.png";
 import instagram from "../assets/img/instagram.png";
 import facebook from "../assets/img/facebooklogo.png";
 import twitter from "../assets/img/twitterlogo.png";
@@ -45,10 +44,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright">
-        <p>
-          workIT <img src={Copyright} alt="logo" className="copyright-icon" />{" "}
-          2022 - Tous droits réservés
-        </p>
+        <p>WorkIT © 2022 - Tous droits réservés</p>
       </div>
     </div>
   );
