@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import FirmOffer from "./FirmOffer";
 import { GetFirmOffer } from "../apis/firmApi";
 import OfferEmpty from "./OfferEmpty";
@@ -70,6 +71,10 @@ const DashboardFirmOffers = ({ id }) => {
       </div>
     </div>
   );
+};
+
+DashboardFirmOffers.propTypes = {
+  id: PropTypes.number.isRequired,
 };
 
 export default DashboardFirmOffers;

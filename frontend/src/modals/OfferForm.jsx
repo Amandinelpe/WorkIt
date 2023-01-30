@@ -17,8 +17,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
   const [dataOffer, setDataOffer] = useState({});
   const [jobs, setJobs] = useState([]);
   const [experiences, setExperiences] = useState([]);
-
-  console.log(dataOffer, "dataOffer");
+  const [published, setPublished] = useState();
 
   const getFirmData = async () => {
     await GetFirmData(firmId).then((res) => setFirmData(res.data));
@@ -66,10 +65,12 @@ const OfferForm = ({ show, onClose, firmId }) => {
     e.preventDefault();
     PostOffer(dataOffer)
       .then((res) => {
-        console.log(res);
+        if (res.status === 200) {
+          setPublished("Votre offre a bien été publiée");
+        }
       })
       .catch((err) => {
-        console.log(err);
+        console.warn(err);
       });
   };
 
@@ -122,17 +123,18 @@ const OfferForm = ({ show, onClose, firmId }) => {
           </div>
 
           <div className="modal-body">
-            {formOffer.map((input) => (<div>
-
-            <h2 className="modal-subtitle">{input.title}</h2><input
-            type={input.type}
-            name={input.name}
-            placeholder={input.placeholder}
-            className="modal-subtitle"
-     value={dataOffer[input.name]} 
-            onChange={handleChange}
-            />
-            </div>
+            {formOffer.map((input) => (
+              <div>
+                <h2 className="modal-subtitle">{input.title}</h2>
+                <input
+                  type={input.type}
+                  name={input.name}
+                  placeholder={input.placeholder}
+                  className="modal-subtitle"
+                  value={dataOffer[input.name]}
+                  onChange={handleChange}
+                />
+              </div>
             ))}
             <h2 className="modal-subtitle">Expérience requise</h2>
             <label htmlFor="experience_select">
@@ -153,14 +155,17 @@ const OfferForm = ({ show, onClose, firmId }) => {
             </label>
           </div>
           <div className="modal-footer">
-            <button
-              onClick={postOffer}
-              type="submit"
-              className="postule-button"
-            >
-              {" "}
-              Publier l'annonce{" "}
-            </button>
+            <p className="send-candidature">{published}</p>
+            {published ? null : (
+              <button
+                onClick={postOffer}
+                type="submit"
+                className="postule-button"
+              >
+                {" "}
+                Publier l'annonce{" "}
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -172,6 +177,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
 OfferForm.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  firmId: PropTypes.number.isRequired,
 };
 
 export default OfferForm;

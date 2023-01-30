@@ -1,7 +1,7 @@
 const formOffer = [
   {
     id: 1,
-    title : "Lieu de la mission",
+    title: "Lieu de la mission",
     type: "text",
     name: "firm_city",
     placeholder: "Bordeaux",
@@ -9,7 +9,7 @@ const formOffer = [
   },
   {
     id: 2,
-    title : "Description de l'entreprise",
+    title: "Description de l'entreprise",
     type: "text",
     name: "description_firm",
     placeholder: "Lorem ipsum",
@@ -17,7 +17,7 @@ const formOffer = [
   },
   {
     id: 3,
-    title : "Description de la mission",
+    title: "Description de la mission",
     type: "text",
     name: "description_mission",
     placeholder: "Lorem ipsum",
@@ -25,7 +25,7 @@ const formOffer = [
   },
   {
     id: 4,
-    title : "Compétences requises",
+    title: "Compétences requises",
     type: "text",
     name: "hard_skills",
     placeholder: "Lorem ipsum",
@@ -33,7 +33,7 @@ const formOffer = [
   },
   {
     id: 5,
-    title : "Qualités requises",
+    title: "Qualités requises",
     type: "text",
     name: "soft_skills",
     placeholder: "Lorem ipsum",
@@ -42,7 +42,7 @@ const formOffer = [
 
   {
     id: 6,
-    title : "Salaire brut annuel proposé",
+    title: "Salaire brut annuel proposé",
     type: "number",
     name: "salary",
     placeholder: 30000,

@@ -56,6 +56,7 @@ FirmOffer.propTypes = {
   city: PropTypes.string.isRequired,
   firm: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  setReload: PropTypes.func.isRequired,
 };
 
 export default FirmOffer;
