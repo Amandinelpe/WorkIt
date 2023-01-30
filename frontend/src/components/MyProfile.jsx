@@ -5,16 +5,12 @@ import dataMyProfile from "../utils/dataMyProfile";
 import { GetAllJobs } from "../utils/getAllJobs";
 import { GetAllExperiences } from "../utils/getExperiences";
 import { GetUser } from "../utils/getUsers";
-import { UpdateUser } from "../utils/updateUser";
+import { UpdateUser, UpdateUserFile } from "../utils/updateUser";
 
 const MyProfile = () => {
   const [jobs, setJobs] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [user, setUser] = useState({});
-  const [file, setFile] = useState({
-    fileName: "",
-    file: "",
-  });
   const [message, setMessage] = useState();
 
   const handleChange = (e, customValue) => {
@@ -26,10 +22,11 @@ const MyProfile = () => {
     }));
   };
 
-  const handleCV = (e) => {
-    setFile({
-      fileName: e.target.files[0].name,
-      file: e.target.files[0],
+  const handleCV = (event) => {
+    setUser({
+      ...user,
+      fileName: event.target.files[0].name,
+      file: event.target.files[0],
     });
   };
 
@@ -37,7 +34,6 @@ const MyProfile = () => {
     const getDatas = async () => {
       setJobs(await GetAllJobs());
       setExperiences(await GetAllExperiences());
-
       const data = window.localStorage.getItem("user");
       if (data) {
         const userParse = JSON.parse(data);
@@ -48,8 +44,14 @@ const MyProfile = () => {
   }, []);
 
   const updateUser = async () => {
+    const formData = new FormData();
+    formData.append("upload", user.file);
+    formData.append("fileName", user.fileName);
     try {
       await UpdateUser(user);
+      if (user.fileName) {
+        await UpdateUserFile(user);
+      }
       setMessage("Mise à jour effectué avec succès");
     } catch (err) {
       setMessage(err.message);
@@ -116,24 +118,23 @@ const MyProfile = () => {
                       <div>
                         <input
                           type="file"
-                          name="cv"
+                          name="file"
                           id="file"
                           className="inputfile"
-                          accept="application/pdf"
                           onChange={handleCV}
                         />
                         <label htmlFor="file">Je dépose mon CV</label>
+                        <div className="fileName">
+                          {user.fileName && <p>{user.fileName}</p>}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="picture_profil flex flex-fd-column flex-ai-center flex-jc-center">
-                  <img
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-                    alt="utilisateur"
-                  />
-                  <p>Photo de profil</p>
-                </div>
+                {/* <div className="picture_profil flex flex-fd-column flex-ai-center flex-jc-center">
+                  <img src={user.photo} alt="utilisateur" />
+                </div> */}
+                {/* <ProfilePictucre user={user} setUser={setUser} /> */}
               </div>
             </div>
             <div>
@@ -141,7 +142,7 @@ const MyProfile = () => {
               <div className="flex flex-fd-row flex-ai-flex-start flex-jc-space-between">
                 <div className="flex flex-fd-column flex-gap-3vh">
                   <label>
-                    Poste actuel ou dernier poste occupé
+                    Poste recherché
                     <select
                       value={user.job_id}
                       name="job_id"
@@ -168,11 +169,13 @@ const MyProfile = () => {
                     </div>
                   </div>
                   <label>
-                    Niveau de qualification
+                    Niveau d'étude
                     <input
                       type="text"
-                      name="niveau-qualification"
+                      name="diploma"
                       className="small-input"
+                      value={user.diploma}
+                      onChange={handleChange}
                     />
                   </label>
                   <label>
@@ -206,8 +209,10 @@ const MyProfile = () => {
                     Situation actuelle
                     <input
                       type="text"
-                      name="situation-actuelle"
+                      name="actual_job"
                       className="large-input"
+                      value={user.actual_job}
+                      onChange={handleChange}
                     />
                   </label>
                   <div>

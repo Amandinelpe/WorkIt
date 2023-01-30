@@ -64,8 +64,6 @@ const ConsultantsFilter = ({ setFilterUser, filterUser }) => {
 export default ConsultantsFilter;
 
 ConsultantsFilter.propTypes = {
-  setFilterOffer: PropTypes.func.isRequired,
-  filterOffer: PropTypes.string.isRequired,
   setFilterUser: PropTypes.func.isRequired,
   filterUser: PropTypes.string.isRequired,
 };

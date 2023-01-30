@@ -9,18 +9,18 @@ const { jwtSign, jwtVerify } = require("../helpers/jwt");
 
 const userController = {
   getAllUsers: (req, res, next) => {
-     const where = [];
+    const where = [];
 
     if (req.query.consultant_id != null) {
       where.push(`consultant_id = ${req.query.consultant_id}`);
     }
-  
+
     userModel
       .findAll(where)
       .then(([users]) => res.status(200).send(users))
       .catch((err) => next(err));
   },
- 
+
   getUserById: (req, res, next) => {
     const { id } = req.params;
     userModel
@@ -222,6 +222,32 @@ const userController = {
     } catch (err) {
       return next(err);
     }
+  },
+  updateCv: (req, res, next) => {
+    const { id } = req.params;
+    const imgSrc = `${process.env.BACKEND_URL}/uploads/cv/${req.file.filename}`;
+    userModel
+      .updateCv(imgSrc, id)
+      .then((response) => {
+        if (response.affectedRows !== 0) {
+          return res.status(200).send("image uploaded successfully");
+        }
+        return res.status(404).send("error uploading image");
+      })
+      .catch((err) => next(err));
+  },
+  updateImage: (req, res, next) => {
+    const { id } = req.params;
+    const imgSrc = `${process.env.BACKEND_URL}/uploads/cv/${req.file.filename}`;
+    userModel
+      .updateImage(imgSrc, id)
+      .then((response) => {
+        if (response.affectedRows !== 0) {
+          return res.status(200).send("image uploaded successfully");
+        }
+        return res.status(404).send("error uploading image");
+      })
+      .catch((err) => next(err));
   },
 };
 

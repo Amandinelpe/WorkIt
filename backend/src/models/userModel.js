@@ -2,8 +2,7 @@
 const db = require("../../config");
 
 const findAll = (where) => {
-  const initSql =
-    "SELECT * FROM user JOIN job ON user.job_id = job.id";
+  const initSql = "SELECT * FROM user JOIN job ON user.job_id = job.id";
   if (where.length > 0) {
     return db
       .promise()
@@ -12,7 +11,9 @@ const findAll = (where) => {
   }
   return db
     .promise()
-    .query("SELECT * FROM user JOIN job ON user.job_id = job.id ORDER by consultant_id ASC")
+    .query(
+      "SELECT * FROM user JOIN job ON user.job_id = job.id ORDER by consultant_id ASC"
+    )
     .then((users) => users);
 };
 
@@ -50,6 +51,20 @@ const deleteOne = (id) => {
     .then(([res]) => res);
 };
 
+const updateCv = (url, id) => {
+  return db
+    .promise()
+    .query("UPDATE user SET file = ? WHERE id = ?", [url, Number(id)])
+    .then(([res]) => res);
+};
+
+const updateImage = (url, id) => {
+  return db
+    .promise()
+    .query("UPDATE user SET photo = ? WHERE id = ?", [url, Number(id)])
+    .then(([res]) => res);
+};
+
 module.exports = {
   findAll,
   findOne,
@@ -57,4 +72,6 @@ module.exports = {
   createOne,
   updateOne,
   deleteOne,
+  updateCv,
+  updateImage,
 };

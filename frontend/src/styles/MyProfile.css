@@ -207,3 +207,8 @@
   opacity: 0.5;
   cursor: initial;
 }
+.fileName {
+  margin-top: 2vh;
+  font-size: 1.5em;
+  margin-left: 2vw;
+}

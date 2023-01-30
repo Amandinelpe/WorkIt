@@ -26,7 +26,7 @@ const BoxCandidate = ({ handleContent }) => {
           <div className="box_candidate_body">
             <ul>
               {box.sections.map((section) => (
-                <li >{section}</li>
+                <li>{section}</li>
               ))}
             </ul>
           </div>
