@@ -4,7 +4,13 @@ const db = require("../../config");
 const findAll = () => {
   return db
     .promise()
-    .query("SELECT * FROM candidated")
+    .query(
+      `SELECT c.user_id, c.offer_id, u.firstname, u.lastname, o.title, a.name 
+        FROM candidated AS c 
+        JOIN user AS u ON c.user_id = u.id 
+        JOIN offer AS o ON c.offer_id = o.id 
+        JOIN application_state AS a ON c.application_state_id = a.id`
+    )
     .then(([candidateds]) => candidateds);
 };
 

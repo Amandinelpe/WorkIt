@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GetFirmOffer } from "../apis/firmOfferApi";
 import "../styles/EnterpriseConsultant.css";
-import search from "../assets/img/logo_search_enterprises.png";
+import search from "../assets/img/loupe.png";
 import GridEntreprises from "./GridEntreprises";
 
 const EnterpriseConsultant = () => {

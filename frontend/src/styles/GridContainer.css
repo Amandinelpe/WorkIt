@@ -4,12 +4,35 @@
   justify-content: space-around;
   align-items: flex-start;
   width: 100%;
-  gap: 8px;
 }
 
 .container-body .container .filter-box {
   display: flex;
   width: 20vw;
+}
+
+.box_grid_consultant h2 {
+  background-color: var(--purple-light);
+  color: var(--white);
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  border-radius: 50px 50px 0 0;
+  padding: 4vh 2vw 2vh 2vw;
+  height: 8vh;
+  width: 15vw;
+}
+
+.filtre_candidature {
+  background-color: var(--white);
+  color: var(--purple-light);
+  height: 20vh;
+  width: 15vw;
+  margin-right: 2vw;
+  font-size: 1.5vh;
+  border-radius: 0 0 50px 50px;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  display: flex;
+  text-align: left;
+  flex-direction: column;
 }
 
 .container-body {
@@ -26,11 +49,12 @@
 .grid-container-box-title h2 {
   font-family: var(--text-font-family-jost);
   font-size: 0.9rem;
-  padding: 4vh 7vh;
+  padding: 4vh 3vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
   background: var(--purple-light);
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  width: 62.5vw;
 }
 
 .grid-container .btn-container {
@@ -51,7 +75,7 @@
 }
 
 .grid-container {
-  padding: 4vh 2vw 2vh 2vw;
+  padding: 4vh 1vw 2vh 1vw;
   background-color: var(--white);
   border-radius: 0 0 20px 20px;
   display: flex;
@@ -60,6 +84,7 @@
   align-items: flex-end;
   box-shadow: 6px 6px 2px 1px rgb(0 0 255 / 20%);
   gap: 20px;
+  margin-right: 2vw;
 }
 
 .grid-container .text_cross {
