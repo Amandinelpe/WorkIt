@@ -23,7 +23,6 @@ const OfferForm = ({ show, onClose, firmId }) => {
     await GetFirmData(firmId).then((res) => setFirmData(res.data));
   };
 
-
   const loadJobs = () => {
     GetAllJobs().then((res) => {
       setJobs(res.data);
@@ -135,8 +134,6 @@ const OfferForm = ({ show, onClose, firmId }) => {
                   className="modalCrud-input"
                   value={dataOffer[input.name]}
                   onChange={handleChange}
-              
-         
                 />
               </div>
             ))}

@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import { UpdateOffer } from "../apis/offerApi";
-import { GetOfferById, DeleteOfferById, GetOnlyOfferInfos } from "../apis/offerApi";
+import {
+  UpdateOffer,
+  GetOfferById,
+  DeleteOfferById,
+  GetOnlyOfferInfos,
+} from "../apis/offerApi";
 import { GetAllJobs, GetJobById } from "../apis/jobApi";
 import { GetAllExperiences } from "../apis/experienceApi";
 import formOffer from "../utils/formOffer";
@@ -52,7 +56,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     setDisabled(false);
   };
 
-  const confirmModification= (e) => {
+  const confirmModification = (e) => {
     e.preventDefault();
     UpdateOffer(infosOffer, offerId)
       .then((res) => {
@@ -63,9 +67,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
       .catch((err) => {
         console.warn(err);
       });
-
-
-  }
+  };
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -85,7 +87,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     loadJobs();
     loadExperiences();
   }, []);
-  
+
   return ReactDOM.createPortal(
     <div
       className="modalCrudBox"
@@ -104,7 +106,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
         <div className="modalCrud-header">
           <div className="header-img">
             <img src={dataOffer.logo_url} alt={dataOffer.logo_url} width="8%" />
-            
+
             <img
               className="header-button"
               aria-hidden="true"
@@ -113,47 +115,44 @@ const OfferCrud = ({ show, onClose, offerId }) => {
               src={close}
               alt="close"
             />
-            
           </div>
           <div>
-          <label htmlFor="job_select">
-                <select
-                  required
-                  id="job_select"
-                  name="job_id"
-                  onChange={handleChange}
-                  autoComplete="on"
-                  className="modalCrud-title"
-                  disabled={disabled}
-                >
-                  <option value="">{dataOffer.title}</option>
-                  {jobs.map((job) => (
-                    <option value={Number(job.id)}>{job.job_title}</option>
-                  ))}
-                </select>
-              </label>
-              {disabled ?
-
-                (<button
-                onClick={modifyOffer
-                }
+            <label htmlFor="job_select">
+              <select
+                required
+                id="job_select"
+                name="job_id"
+                onChange={handleChange}
+                autoComplete="on"
+                className="modalCrud-title"
+                disabled={disabled}
+              >
+                <option value="">{dataOffer.title}</option>
+                {jobs.map((job) => (
+                  <option value={Number(job.id)}>{job.job_title}</option>
+                ))}
+              </select>
+            </label>
+            {disabled ? (
+              <button
+                onClick={modifyOffer}
                 type="submit"
                 className="postule-button"
-                >
-                {" "}
-               Modifier l'annonce{" "}
-              </button>) :
-              <button
-              onClick={confirmModification
-              }
-              type="submit"
-              className="postule-button"
-              style={{color: "red"}}
               >
                 {" "}
-                Confirmer la modification {" "}
+                Modifier l'annonce{" "}
               </button>
-              }
+            ) : (
+              <button
+                onClick={confirmModification}
+                type="submit"
+                className="postule-button"
+                style={{ color: "red" }}
+              >
+                {" "}
+                Confirmer la modification{" "}
+              </button>
+            )}
             <div className="header-img">
               <p>
                 {"   Offre publiée le "}{" "}
@@ -164,65 +163,45 @@ const OfferCrud = ({ show, onClose, offerId }) => {
         </div>
 
         <div className="modalCrud-body">
-        {formOffer.map((input) => (dataOffer[input.name] && 
-              <div>
-                <h2 className="modalCrud-subtitle">{input.title}</h2>
-                <textarea 
-                  type={input.type}
-                  name={input.name}
-                  placeholder={input.placeholder}
-                  className="modalCrud-input"
-                  value={dataOffer[input.name]}
-                  onChange={handleChange}
-                  disabled={disabled}
-                />
-              </div>
-            ))}
-            <h2 className="modalCrud-subtitle">Expérience requise</h2>
-            <label htmlFor="experience_select">
-              <select
-                required
-                id="experience_select"
-                name="experience_id"
-                onChange={handleChange}
-                autoComplete="on"
-                disabled={disabled}
-              >
-                <option disabled selected value>
-                {dataOffer.experience}
-                </option>
-                {experiences.map((experience) => (
-                  <option value={experience.id}>{experience.experience}</option>
-                ))}
-              </select>
-            </label>
-          
-          {/* <h2 className="modalCrud-subtitle">Lieu</h2>
-          <p className="modalCrud-text-uppercase"> {dataOffer.firm_city} </p>
-          <h2 className="modalCrud-subtitle">Description de la société</h2>
-          <p className="modalCrud-text"> {dataOffer.description_firm} </p>
-          <h2 className="modalCrud-subtitle">Mission proposée</h2>
-          <p className="modalCrud-text"> {dataOffer.description_mission} </p>
-          <h2 className="modalCrud-subtitle">Environnement technique</h2>
-          <p className="modalCrud-text"> {dataOffer.hard_skills} </p>
-
-          {
-            (dataOffer.soft_skills = !"-" && (
-              <div>
-                <h2 className="modalCrud-subtitle">Compétences relationnelles</h2>
-                <p className="modalCrud-text"> {dataOffer.soft_skills} </p>{" "}
-              </div>
-            ))
-          }
-
+          {formOffer.map(
+            (input) =>
+              dataOffer[input.name] && (
+                <div>
+                  <h2 className="modalCrud-subtitle">{input.title}</h2>
+                  <textarea
+                    type={input.type}
+                    name={input.name}
+                    placeholder={input.placeholder}
+                    className="modalCrud-input"
+                    value={dataOffer[input.name]}
+                    onChange={handleChange}
+                    disabled={disabled}
+                  />
+                </div>
+              )
+          )}
           <h2 className="modalCrud-subtitle">Expérience requise</h2>
-          <p className="modalCrud-text">{dataOffer.experience} </p>
-          <h2 className="modalCrud-subtitle">Salaire brut annuel proposé</h2>
-          <p className="modalCrud-text">{dataOffer.salary}€ </p> */}
+          <label htmlFor="experience_select">
+            <select
+              required
+              id="experience_select"
+              name="experience_id"
+              onChange={handleChange}
+              autoComplete="on"
+              disabled={disabled}
+            >
+              <option disabled selected value>
+                {dataOffer.experience}
+              </option>
+              {experiences.map((experience) => (
+                <option value={experience.id}>{experience.experience}</option>
+              ))}
+            </select>
+          </label>
         </div>
         <div className="modalCrud-footer">
           <p className="send-candidature">{deleteMessage}</p>
-          
+
           {deleteMessage === "" &&
             (confirmDelete ? (
               <div>

@@ -41,4 +41,4 @@ export const UpdateOffer = (offer, id) => {
 
 export const GetOnlyOfferInfos = (id) => {
   return axios.get(apiUrl + "offer/onlyOffer/" + id);
-}
+};
