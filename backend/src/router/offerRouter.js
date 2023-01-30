@@ -12,5 +12,7 @@ offerRouter.get("/firm/:id", offerController.getAllOffersByFirm);
 offerRouter.get("/city/:city", offerController.getOffersByCity);
 offerRouter.delete("/:id", offerController.deleteOfferById);
 offerRouter.post("/create", offerController.createOffer);
+offerRouter.put("/update/:id", offerController.updateOffer);
+offerRouter.get("/onlyOffer/:id", offerController.loadOnlyOfferInfos);
 
 module.exports = offerRouter;

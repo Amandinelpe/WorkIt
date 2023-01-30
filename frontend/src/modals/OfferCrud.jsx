@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import { GetOfferById, DeleteOfferById } from "../apis/offerApi";
+import { UpdateOffer } from "../apis/offerApi";
+import { GetOfferById, DeleteOfferById, GetOnlyOfferInfos } from "../apis/offerApi";
 import { GetAllJobs, GetJobById } from "../apis/jobApi";
 import { GetAllExperiences } from "../apis/experienceApi";
 import formOffer from "../utils/formOffer";
@@ -18,11 +19,12 @@ const OfferCrud = ({ show, onClose, offerId }) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [experiences, setExperiences] = useState([]);
   const [disabled, setDisabled] = useState(true);
+  const [infosOffer, setInfosOffer] = useState({});
 
   const askConfirmDelete = () => {
     setConfirmDelete(true);
   };
-  console.log("dataOffer", dataOffer)
+
   const deleteOffer = () => {
     DeleteOfferById(offerId)
       .then((res) => {
@@ -50,26 +52,36 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     setDisabled(false);
   };
 
-  const confirmModification= () => {
-
+  const confirmModification= (e) => {
+    e.preventDefault();
+    UpdateOffer(infosOffer, offerId)
+      .then((res) => {
+        if (res.status === 200) {
+          setDisabled(true);
+        }
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
 
 
   }
 
   const handleChange = (e) => {
     e.preventDefault();
-    setDataOffer({ ...dataOffer, [e.target.name]: e.target.value });
+    setInfosOffer({ ...infosOffer, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    dataOffer.job_id &&
-      GetJobById(dataOffer.job_id).then((res) => {
-        setDataOffer({ ...dataOffer, title: res.data.job_title });
+    infosOffer.job_id &&
+      GetJobById(infosOffer.job_id).then((res) => {
+        setInfosOffer({ ...infosOffer, title: res.data.job_title });
       });
-  }, [dataOffer.job_id]);
+  }, [infosOffer.job_id]);
 
   useEffect(() => {
     GetOfferById(offerId).then((res) => setDataOffer(res.data));
+    GetOnlyOfferInfos(offerId).then((res) => setInfosOffer(res.data));
     loadJobs();
     loadExperiences();
   }, []);

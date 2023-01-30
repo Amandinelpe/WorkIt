@@ -77,6 +77,22 @@ const findOffersByState = (where, limit) => {
     .then ((offer) => offer)
   };
 
+  const updateOne = (offer, id) => {
+    return db
+    .promise()
+    .query("UPDATE offer SET ? WHERE id = ?", [offer,id])
+    .then ((offer) => offer)
+  };
+  const findOnlyOfferInfos = (id) => {
+    return db
+      .promise()
+      .query(
+        "SELECT title, firm_id, firm_city, salary, description_firm, description_mission, soft_skills, hard_skills, experience_id  FROM offer WHERE offer.id = ?",
+        [id]
+      )
+      .then(([offer]) => offer);
+  };
+
 
 module.exports = {
   findAll,
@@ -87,4 +103,6 @@ module.exports = {
   findAllOffersByFirm,
   deleteOne,
   createOne,
+  updateOne,
+  findOnlyOfferInfos,
 };

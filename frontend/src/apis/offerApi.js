@@ -34,3 +34,11 @@ export const PostOffer = (offer) => {
   console.log(offer, "offer dans api");
   return axios.post(apiUrl + "offer/create/", offer);
 };
+
+export const UpdateOffer = (offer, id) => {
+  return axios.put(apiUrl + "offer/update/" + id, offer);
+};
+
+export const GetOnlyOfferInfos = (id) => {
+  return axios.get(apiUrl + "offer/onlyOffer/" + id);
+}
