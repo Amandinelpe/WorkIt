@@ -95,6 +95,13 @@ const consultantController = {
 
       .catch((err) => next(err));
   },
+  deleteConsultant: (req, res, next) => {
+    const { id } = req.params;
+    consultantModel
+      .deleteOne(id)
+      .then(([consultant]) => res.status(200).send(consultant))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = consultantController;

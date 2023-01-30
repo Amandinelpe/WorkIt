@@ -52,6 +52,7 @@ const MessagerieConsultant = () => {
             <button
               type="submit"
               className="btn-container"
+              // eslint-disable-next-line no-alert
               onClick={() => alert("Actualiser")}
             >
               Actualiser

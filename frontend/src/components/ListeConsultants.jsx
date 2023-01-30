@@ -18,7 +18,7 @@ const ListeConsultants = () => {
 
   useEffect(() => {
     getListAllConsultants();
-  }, []);
+  }, [consultants]);
 
   return (
     <div className="liste_consultants">
@@ -35,7 +35,11 @@ const ListeConsultants = () => {
             >
               AJOUTER
             </button>
-            <button type="button" className="button_add_consultant">
+            <button
+              type="button"
+              className="button_add_consultant"
+              onClick={getListAllConsultants}
+            >
               ACTUALISER
             </button>
           </div>

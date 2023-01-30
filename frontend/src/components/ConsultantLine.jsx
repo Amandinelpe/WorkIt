@@ -1,9 +1,14 @@
-import React from "react";
+import { React } from "react";
 import PropTypes from "prop-types";
 import consultantlogo from "../assets/img/personlogo.png";
+import { DeleteConsultant } from "../apis/consultant";
 import "../styles/ConsultantLine.css";
 
 const ConsultantLine = ({ consultant }) => {
+  const handleClick = () => {
+    DeleteConsultant(consultant.id);
+  };
+
   return (
     <div className="consultantline_body">
       <img src={consultantlogo} alt="logo" className="consultant_avatar" />
@@ -21,7 +26,11 @@ const ConsultantLine = ({ consultant }) => {
           {" "}
           Modifier
         </button>
-        <button type="button" className="button_consultant_delete">
+        <button
+          type="button"
+          className="button_consultant_delete"
+          onClick={handleClick}
+        >
           {" "}
           Supprimer
         </button>
