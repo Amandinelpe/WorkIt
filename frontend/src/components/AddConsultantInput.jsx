@@ -21,18 +21,15 @@ const AddConsultantInput = ({
 
   return (
     <div key={id}>
-      <label key={id}>
-        {" "}
-        {label}
-        <input
-          type={type}
-          name={name}
-          placeholder={placeholder}
-          value={value}
-          className={className}
-          onChange={handleChange}
-        />
-      </label>
+      <label htmlFor={name}> {label}</label>
+      <input
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        className={className}
+        onChange={handleChange}
+      />
     </div>
   );
 };

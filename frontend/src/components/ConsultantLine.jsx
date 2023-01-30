@@ -2,11 +2,18 @@ import { React } from "react";
 import PropTypes from "prop-types";
 import consultantlogo from "../assets/img/personlogo.png";
 import { DeleteConsultant } from "../apis/consultant";
+import { GetAllConsultants } from "../utils/getAllConsultants";
 import "../styles/ConsultantLine.css";
 
-const ConsultantLine = ({ consultant }) => {
+const ConsultantLine = ({ consultant, setConsultants }) => {
+  const getListAllConsultants = async () => {
+    setConsultants(await GetAllConsultants());
+  };
+
   const handleClick = () => {
-    DeleteConsultant(consultant.id);
+    DeleteConsultant(consultant.id)
+      .then(() => getListAllConsultants())
+      .catch((err) => console.warn(err));
   };
 
   return (
@@ -41,6 +48,7 @@ const ConsultantLine = ({ consultant }) => {
 
 ConsultantLine.propTypes = {
   consultant: PropTypes.string.isRequired,
+  setConsultants: PropTypes.func.isRequired,
 };
 
 export default ConsultantLine;

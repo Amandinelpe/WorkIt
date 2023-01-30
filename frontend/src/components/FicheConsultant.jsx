@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import PropTypes from "prop-types";
-import { CreateConsultant } from "../apis/consultant";
+import axios from "axios";
 import AddConsultantInput from "./AddConsultantInput";
 import dataFicheConsultant from "../utils/dataFicheConsultant";
 import profileimage from "../assets/img/profileimage.png";
@@ -19,13 +19,8 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
     linkedin: null,
   });
 
-  // console.log(addNewConsultant);
-
-  const handleClick = () => {
-    setShowFiche(!showFiche);
-  };
-
   const postConsultant = (event) => {
+    // console.log("postConsultant");
     event.preventDefault();
     if (
       addNewConsultant.firstname === null &&
@@ -37,10 +32,25 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
       addNewConsultant.linkedin === null
     ) {
       // eslint-disable-next-line no-alert
-      alert("Veuillez remplir tous les champs");
-    } else {
-      CreateConsultant(addNewConsultant).then((res) => console.warn(res.data));
+      return alert("Veuillez remplir tous les champs");
     }
+    return axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}consultant/createprofile`, {
+        firstname: addNewConsultant.firstname,
+        lastname: addNewConsultant.lastname,
+        phone: addNewConsultant.phone,
+        city: addNewConsultant.city,
+        email: addNewConsultant.email,
+        password: addNewConsultant.password,
+        linkedin: addNewConsultant.linkedin,
+        role_id: addNewConsultant.role_id,
+      })
+      .then((response) => response.data)
+      .catch((err) => console.warn(err));
+  };
+
+  const handleClick = () => {
+    setShowFiche(!showFiche);
   };
 
   return (
@@ -64,6 +74,7 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
               <div className="consultant_personal_information_inputs">
                 {dataFicheConsultant.map((data) => (
                   <AddConsultantInput
+                    key={data.id}
                     id={data.id}
                     label={data.label}
                     type={data.type}
@@ -75,6 +86,17 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
                     setAddNewConsultant={setAddNewConsultant}
                   />
                 ))}
+              </div>
+              <div className="consultant_profile_image_container">
+                <img
+                  src={profileimage}
+                  alt="profileimage"
+                  className="consultant_profile_image"
+                />
+                <button type="button" className="button_change_image">
+                  {" "}
+                  Changer de photo{" "}
+                </button>
               </div>
             </div>
             <h1 className="consultant_workit_title">Chez WorkIT</h1>
@@ -99,28 +121,13 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
                 />
               </label>
             </div>
+
+            <div className="fiche_consultant_footer">
+              <button type="submit" className="button_save_consultant">
+                SAUVEGARDER{" "}
+              </button>
+            </div>
           </form>
-          <div className="consultant_profile_image_container">
-            <img
-              src={profileimage}
-              alt="profileimage"
-              className="consultant_profile_image"
-            />
-            <button type="button" className="button_change_image">
-              {" "}
-              Changer de photo{" "}
-            </button>
-          </div>
-        </div>
-        <div className="fiche_consultant_footer">
-          <button
-            type="submit"
-            className="button_save_consultant"
-            onClick={handleClick}
-            onSubmit={postConsultant}
-          >
-            SAUVEGARDER{" "}
-          </button>
         </div>
       </div>
     </div>
