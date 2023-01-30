@@ -8,6 +8,6 @@ const requestApi = (finalUrl) => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const GetSpontaneousApplications = () => {
-  return requestApi("spontaneous_application/");
+export const GetCandidated = () => {
+  return requestApi("candidated/");
 };

@@ -193,6 +193,7 @@ CREATE TABLE `candidated` (
 	`candidated_id` INT auto_increment NOT NULL,
 	`user_id` int NOT NULL,
 	`offer_id` int NOT NULL,
+    `application_state_id` int NOT NULL,
 	PRIMARY KEY (
         `candidated_id`
     )
@@ -248,7 +249,9 @@ REFERENCES `user` (`id`) ;
 ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_offer_id` FOREIGN KEY(`offer_id`)
 REFERENCES `offer` (`id`) ;
 ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_user_id` FOREIGN KEY(`user_id`)
-REFERENCES `user` (`id`) ;
+REFERENCES `user` (`id`);
+ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_application_state_id` FOREIGN KEY(`application_state_id`)
+REFERENCES `application_state` (`id`);
 
 
 
@@ -302,7 +305,6 @@ INSERT INTO experience (experience) VALUES
      ('10 ans et +');
     
 INSERT INTO externatic.application_state (name) VALUES
-    ('En attente'),
     ('En cours de traitement'),
     ('Refusée'),
     ('Acceptée');
@@ -507,6 +509,6 @@ INSERT INTO externatic.favorite (user_id,offer_id) VALUES
 	 (1,8),
 	 (1,12);
 
-INSERT INTO externatic.candidated (user_id,offer_id) VALUES
-	 (1,8),
-	 (1,12);
+INSERT INTO externatic.candidated (user_id,offer_id,application_state_id) VALUES
+	 (1,8,1),
+	 (1,12,1);
