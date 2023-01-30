@@ -156,6 +156,8 @@ const OfferDetail = ({ show, onClose, offerId }) => {
 
           <h2 className="modal-subtitle">Expérience requise</h2>
           <p className="modal-text">{dataOffer.experience} </p>
+          <h2 className="modal-subtitle">Salaire brut annuel proposé</h2>
+          <p className="modal-text">{dataOffer.salary}€ </p>
         </div>
         <div className="modal-footer">
           <p className="send-candidature">{postulation}</p>
@@ -168,7 +170,6 @@ const OfferDetail = ({ show, onClose, offerId }) => {
             <button
               onClick={() => {
                 handleSubmit();
-                setReload(candidatedId);
               }}
               type="submit"
               className="postule-button"

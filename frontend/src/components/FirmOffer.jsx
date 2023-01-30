@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import PropTypes from "prop-types";
-import OfferDetail from "../modals/OfferDetail";
+import OfferCrud from "../modals/OfferCrud";
 import "../styles/Offer.css";
 
-const Offer = ({ firm, date, title, logo, city, id, setReload }) => {
+const FirmOffer = ({ firm, date, title, logo, city, id, setReload }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -26,7 +26,7 @@ const Offer = ({ firm, date, title, logo, city, id, setReload }) => {
           onKeyDown=""
           role="presentation"
         />
-        <OfferDetail
+        <OfferCrud
           show={show}
           onClose={() => {
             setShow(false);
@@ -49,7 +49,7 @@ const Offer = ({ firm, date, title, logo, city, id, setReload }) => {
   );
 };
 
-Offer.propTypes = {
+FirmOffer.propTypes = {
   date: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
@@ -59,4 +59,4 @@ Offer.propTypes = {
   setReload: PropTypes.func.isRequired,
 };
 
-export default Offer;
+export default FirmOffer;
