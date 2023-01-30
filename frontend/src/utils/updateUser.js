@@ -11,3 +11,23 @@ const requestApi = (finalUrl, data) => {
 export const UpdateUser = (user) => {
   return requestApi(`user/${user.id}`, user);
 };
+
+export const UpdateUserFile = (user) => {
+  return axios
+    .put(apiUrl + `user/upload/${user.id}`, user, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then((response) => response.data);
+};
+
+export const UpdateUserPhoto = (user) => {
+  return axios
+    .put(apiUrl + `user/uploadPhoto/${user.id}`, user, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then((response) => response.data);
+};
