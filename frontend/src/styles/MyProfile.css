@@ -30,6 +30,13 @@
   gap: 3vh;
 }
 
+.box-candidate-li {
+  cursor: pointer;
+}
+.box-candidate-li:hover {
+  text-decoration: underline;
+}
+
 .my-profile .box .box_candidate_body h3 {
   color: #4e55ad;
   padding-bottom: 4vh;
@@ -206,4 +213,9 @@
 .my-profile .btn-enregistrer[disabled] {
   opacity: 0.5;
   cursor: initial;
+}
+.fileName {
+  margin-top: 2vh;
+  font-size: 1.5em;
+  margin-left: 2vw;
 }

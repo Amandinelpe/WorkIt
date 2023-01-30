@@ -12,21 +12,23 @@ const BoxCandidate = ({ handleContent }) => {
   return (
     <div className="dashboard">
       {dataBox.map((box) => (
-        <div
-          key={box.id}
-          className="box_candidate"
-          onClick={(e) => onClick(e, box.link)}
-          onKeyDown={(e) => onClick(e, box.link)}
-          role="button"
-          tabIndex={0}
-        >
+        <div key={box.id} className="box_candidate">
           <div key={box.id} className="box_candidate_title">
             <h1>{box.title}</h1>
           </div>
           <div className="box_candidate_body">
             <ul>
               {box.sections.map((section) => (
-                <li>{section}</li>
+                <li
+                  className="box-candidate-li "
+                  onClick={(e) => onClick(e, section)}
+                  onKeyDown={(e) => onClick(e, section)}
+                  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                  role="button"
+                  tabIndex={0}
+                >
+                  {section}
+                </li>
               ))}
             </ul>
           </div>
