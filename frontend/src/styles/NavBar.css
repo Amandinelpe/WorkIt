@@ -18,8 +18,8 @@ a {
 }
 
 .items {
-  font-size: 0.8rem;
-  padding: 16px 40px;
+  font-size: 1rem;
+  padding: 14px 46px;
   margin: 0 20px 0 5px;
   color: white;
   list-style-type: none;
@@ -29,8 +29,8 @@ a {
   border-radius: 60px;
 }
 .items.active {
-  font-size: 0.8rem;
-  padding: 16px 40px;
+  font-size: 1rem;
+  padding: 14px 46px;
   margin: 0 20px 0 5px;
   color: white;
   list-style-type: none;
