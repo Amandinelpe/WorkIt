@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";

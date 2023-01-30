@@ -5,11 +5,9 @@ import { GetFirmData } from "../apis/firmApi";
 import DashboardFirmOffers from "./DashboardFirmOffers";
 import "../styles/FirmForm.css";
 
-const FirmForm = (firmOffer) => {
+const FirmForm = () => {
   const { id } = useParams();
   const [firm, setFirm] = useState([]);
-  const [message, setMessage] = useState();
-  const [disableSaveButton, setDisableSaveButton] = useState(true);
 
   const getFirmData = async () => {
     await GetFirmData(id)
@@ -22,8 +20,6 @@ const FirmForm = (firmOffer) => {
   }, []);
 
   const handleChange = (e, customValue) => {
-    setMessage(null);
-    setDisableSaveButton(false);
     const { name, value } = e.target;
     setFirm((prevState) => ({
       ...prevState,

@@ -28,4 +28,11 @@ const findByEmail = (email) => {
     .then(([res]) => res);
 };
 
-module.exports = { findAll, findOne, create, findByEmail };
+const deleteOne = (id) => {
+  return db
+    .promise()
+    .query("DELETE from consultant WHERE id = ?", [id])
+    .then((res) => res);
+};
+
+module.exports = { findAll, findOne, create, findByEmail, deleteOne };

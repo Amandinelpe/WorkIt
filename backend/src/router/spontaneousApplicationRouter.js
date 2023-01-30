@@ -1,4 +1,4 @@
-const express = require("express");
+/* const express = require("express");
 
 const spontaneousApplicationRouter = express.Router();
 
@@ -10,3 +10,4 @@ spontaneousApplicationRouter.get(
 );
 
 module.exports = spontaneousApplicationRouter;
+ */

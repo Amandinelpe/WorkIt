@@ -29,7 +29,6 @@ const cellNomPrenom = (props) => {
 };
 
 const cellEtat = (props) => {
-  console.log(props);
   let className = "";
 
   switch (props.dataItem.name) {

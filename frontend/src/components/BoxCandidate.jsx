@@ -22,6 +22,10 @@ const BoxCandidate = ({ handleContent }) => {
                 <li
                   className="box-candidate-li "
                   onClick={(e) => onClick(e, section)}
+                  onKeyDown={(e) => onClick(e, section)}
+                  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+                  role="button"
+                  tabIndex={0}
                 >
                   {section}
                 </li>
