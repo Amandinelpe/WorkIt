@@ -299,7 +299,6 @@ INSERT INTO experience (experience) VALUES
      ('10 ans et +');
     
 INSERT INTO externatic.application_state (name) VALUES
-    ('En attente'),
     ('En cours de traitement'),
     ('Refusée'),
     ('Acceptée');

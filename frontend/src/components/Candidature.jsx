@@ -52,15 +52,12 @@ const cellEtat = (props) => {
 
   switch (props.dataItem.application_state_id) {
     case 1:
-      className = "grey";
-      break;
-    case 2:
       className = "orange";
       break;
-    case 3:
+    case 2:
       className = "red";
       break;
-    case 4:
+    case 3:
       className = "green";
       break;
     default:
@@ -94,6 +91,14 @@ const Candidature = () => {
       <SearchBar />
       <div className="container">
         <div className="filter-box">{/** Filter box */}</div>
+        <div className="box_grid_consultant">
+          <h2>Candidatures</h2>
+          <div className="filtre_candidature">
+          <p>Candidatures acceptées</p>
+          <p>Candidatures en cours de traitement</p>
+          <p>Candidatures Refusées</p>
+          </div>
+        </div>
         <div className="grid-container-box">
           <div className="grid-container-box-title">
             <h2>Nouvelles candidatures spontanées</h2>
