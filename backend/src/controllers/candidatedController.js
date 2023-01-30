@@ -26,8 +26,9 @@ const candidatedController = {
   },
   postCandidated: (req, res, next) => {
     const { user_id, offer_id } = req.body;
+    const application_state_id = 1;
     candidatedModel
-      .createOne({ user_id, offer_id })
+      .createOne({ user_id, offer_id, application_state_id })
       .then((candidated) => res.status(200).send(candidated))
       .catch((err) => next(err));
   },
