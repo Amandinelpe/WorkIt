@@ -8,7 +8,7 @@ import "../styles/FirmForm.css";
 
 const FirmForm = () => {
   const { id } = useParams();
-  const [firm, setFirm] = useState({});
+  const [firm, setFirm] = useState([]);
   const [active, setActive] = useState(false);
   const [disableSaveButton, setDisableSaveButton] = useState(true);
 
@@ -182,7 +182,6 @@ const FirmForm = () => {
             >
               Enregistrer
             </button>
-            {/* <button className="cancel_button">Annuler</button> */}
           </div>
         </div>
       </div>

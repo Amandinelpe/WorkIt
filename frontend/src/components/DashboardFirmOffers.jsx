@@ -1,17 +1,23 @@
 import { React, useEffect, useState } from "react";
-import Offer from "./Offer";
+import PropTypes from "prop-types";
+import FirmOffer from "./FirmOffer";
 import { GetFirmOffer } from "../apis/firmApi";
 import OfferEmpty from "./OfferEmpty";
+import OfferForm from "../modals/OfferForm";
 
-const DashboardFirmOffers = () => {
-  // const { id } = useParams();
+const DashboardFirmOffers = ({ id }) => {
   const [firmOffers, setFirmOffers] = useState([]);
   const [reload, setReload] = useState(true);
+  const [show, setShow] = useState(false);
 
   const getFirmOffers = async () => {
-    await GetFirmOffer()
+    await GetFirmOffer(id)
       .then((res) => setFirmOffers(res.data))
       .catch((err) => console.warn(err));
+  };
+
+  const openCreateOffer = () => {
+    setShow(true);
   };
 
   useEffect(() => {
@@ -23,14 +29,32 @@ const DashboardFirmOffers = () => {
       <div className="my_favorites_body">
         <div className="my_favorites_offers">
           <div className="all_favorites_offers_titleblock">
-            <h2 className="all_favorites_offers_title">Mes coups de coeur</h2>
+            <h2 className="all_favorites_offers_title">Les offres en cours</h2>
+            <button
+              onClick={() => {
+                openCreateOffer();
+              }}
+              type="submit"
+              className="postule-button"
+            >
+              {" "}
+              Créer une annonce{" "}
+            </button>
+            <OfferForm
+              show={show}
+              onClose={() => {
+                setShow(false);
+                setReload(id + 1);
+              }}
+              firmId={id}
+            />
           </div>
           <div className="my_favorites_offers_body">
             {firmOffers.length === 0 ? (
               <OfferEmpty />
             ) : (
               firmOffers.map((offer) => (
-                <Offer
+                <FirmOffer
                   date={offer.date}
                   firm={offer.name}
                   title={offer.title}
@@ -47,6 +71,10 @@ const DashboardFirmOffers = () => {
       </div>
     </div>
   );
+};
+
+DashboardFirmOffers.propTypes = {
+  id: PropTypes.number.isRequired,
 };
 
 export default DashboardFirmOffers;

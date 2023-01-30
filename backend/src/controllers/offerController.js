@@ -83,6 +83,27 @@ const offerController = {
       .then((offers) => res.status(200).send(offers))
       .catch((err) => next(err));
   },
+  getAllOffersByFirm: (req, res, next) => {
+    const { id } = req.params;
+    offerModel
+      .findAllOffersByFirm(id)
+      .then(([offers]) => res.status(200).send(offers))
+      .catch((err) => next(err));
+  },
+  deleteOfferById: (req, res, next) => {
+    const { id } = req.params;
+    offerModel
+      .deleteOne(id)
+      .then(() => res.status(200).send("Deleted"))
+      .catch((err) => next(err));
+  },
+  createOffer: (req, res, next) => {
+    const offer = req.body;
+    offerModel
+      .createOne(offer)
+      .then(() => res.status(200).send("Created"))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = offerController;
