@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { GetOfferById, DeleteOfferById } from "../apis/offerApi";
 import { GetAllJobs, GetJobById } from "../apis/jobApi";
 import { GetAllExperiences } from "../apis/experienceApi";
+import formOffer from "../utils/formOffer";
 import close from "../assets/img/annuler.png";
 import "../styles/Modal.css";
 
@@ -12,8 +13,11 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     return null;
   }
   const [deleteMessage, setDeleteMessage] = useState("");
+  const [jobs, setJobs] = useState([]);
   const [dataOffer, setDataOffer] = useState({});
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [experiences, setExperiences] = useState([]);
+  const [disabled, setDisabled] = useState("disabled");
 
   const askConfirmDelete = () => {
     setConfirmDelete(true);
@@ -90,7 +94,23 @@ const OfferCrud = ({ show, onClose, offerId }) => {
             />
           </div>
           <div>
-            <h1 className="modal-title"> {dataOffer.title} </h1>
+          <label htmlFor="job_select">
+                <select
+                  required
+                  id="job_select"
+                  name="job_id"
+                  onChange={handleChange}
+                  autoComplete="on"
+                  className="modal-title"
+                  disabled={disabled}
+                >
+                  <option value="">{dataOffer.title}</option>
+                  {jobs.map((job) => (
+                    <option value={Number(job.id)}>{job.job_title}</option>
+                  ))}
+                </select>
+              </label>
+            {/* <h1 className="modal-title"> {dataOffer.title} </h1> */}
             <div className="header-img">
               <p>
                 {"   Offre publiée le "}{" "}
@@ -101,6 +121,39 @@ const OfferCrud = ({ show, onClose, offerId }) => {
         </div>
 
         <div className="modal-body">
+        {formOffer.map((input) => (
+              <div>
+                <h2 className="modal-subtitle">{input.title}</h2>
+                <input
+                  type={input.type}
+                  name={input.name}
+                  placeholder={input.placeholder}
+                  className="modal-subtitle"
+                  value={dataOffer[input.name]}
+                  onChange={handleChange}
+                  disabled={disabled}
+                />
+              </div>
+            ))}
+            <h2 className="modal-subtitle">Expérience requise</h2>
+            <label htmlFor="experience_select">
+              <select
+                required
+                id="experience_select"
+                name="experience_id"
+                onChange={handleChange}
+                autoComplete="on"
+                disabled={disabled}
+              >
+                <option disabled selected value>
+                {dataOffer.experience}
+                </option>
+                {experiences.map((experience) => (
+                  <option value={experience.id}>{experience.experience}</option>
+                ))}
+              </select>
+            </label>
+          
           <h2 className="modal-subtitle">Lieu</h2>
           <p className="modal-text-uppercase"> {dataOffer.firm_city} </p>
           <h2 className="modal-subtitle">Description de la société</h2>
