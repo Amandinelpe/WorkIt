@@ -1,7 +1,7 @@
 .hello_button {
   font-family: var(--text-font-family-jost);
   font-size: 0.9rem;
-  padding: 2vh 5vh;
+  padding: 2vh 3vh;
   width: 17vw;
   margin-right: 1vw;
   border-radius: 40px 40px 40px 40px;

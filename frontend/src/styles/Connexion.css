@@ -75,6 +75,7 @@ h3 {
   font-weight: bold;
   margin: 0;
   font-size: 2em;
+  margin-top: 1.2em;
 }
 
 .small_link {
@@ -87,7 +88,7 @@ h3 {
 
 .connexion-form .small_link a {
   color: var(--blue);
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 .connexion-button {

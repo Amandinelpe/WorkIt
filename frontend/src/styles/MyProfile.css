@@ -28,6 +28,7 @@
   box-sizing: border-box;
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
   gap: 3vh;
+  margin-right: 3vh;
 }
 
 .box-candidate-li {
