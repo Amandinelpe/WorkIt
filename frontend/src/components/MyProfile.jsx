@@ -121,6 +121,7 @@ const MyProfile = () => {
                           name="file"
                           id="file"
                           className="inputfile"
+                          accept="application/pdf"
                           onChange={handleCV}
                         />
                         <label htmlFor="file">Je dépose mon CV</label>
@@ -131,10 +132,6 @@ const MyProfile = () => {
                     </div>
                   </div>
                 </div>
-                {/* <div className="picture_profil flex flex-fd-column flex-ai-center flex-jc-center">
-                  <img src={user.photo} alt="utilisateur" />
-                </div> */}
-                {/* <ProfilePictucre user={user} setUser={setUser} /> */}
               </div>
             </div>
             <div>
