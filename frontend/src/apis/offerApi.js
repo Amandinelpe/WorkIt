@@ -29,3 +29,8 @@ export const GetOfferById = (id) => {
 export const DeleteOfferById = (id) => {
   return axios.delete(apiUrl + "offer/" + id);
 };
+
+export const PostOffer = (offer) => {
+  console.log(offer, "offer dans api")
+  return axios.post(apiUrl + "offer/create/", offer);
+}

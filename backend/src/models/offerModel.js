@@ -69,6 +69,13 @@ const findOffersByState = (where, limit) => {
     .query("DELETE FROM offer WHERE id = ?", [id])
     .then (([offer]) => offer)
   };
+  const createOne = (offer) => {
+    console.log(offer, "offer")
+    return db
+    .promise()
+    .query("INSERT INTO offer SET ?", [offer])
+    .then ((offer) => offer)
+  };
 
 
 module.exports = {
@@ -79,4 +86,5 @@ module.exports = {
   findOffersByState,
   findAllOffersByFirm,
   deleteOne,
+  createOne,
 };

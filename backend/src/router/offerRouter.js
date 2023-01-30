@@ -11,5 +11,6 @@ offerRouter.get("/:id", offerController.getOfferById);
 offerRouter.get("/firm/:id", offerController.getAllOffersByFirm);
 offerRouter.get("/city/:city", offerController.getOffersByCity);
 offerRouter.delete("/:id", offerController.deleteOfferById);
+offerRouter.post("/create", offerController.createOffer);
 
 module.exports = offerRouter;

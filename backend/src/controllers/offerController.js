@@ -96,6 +96,14 @@ const offerController = {
       .deleteOne(id)
       .then(() => res.status(200).send("Deleted"))
       .catch((err) => next(err));
+  },
+  createOffer: (req, res, next) => {
+    const offer = req.body;
+    console.log(offer, "offer controller");
+    offerModel
+      .createOne(offer)
+      .then(() => res.status(200).send("Created"))
+      .catch((err) => next(err));
   }
 };
 

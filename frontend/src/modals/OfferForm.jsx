@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { GetFirmData } from "../apis/firmApi";
 import { GetAllJobs, GetJobById } from "../apis/jobApi";
 import { GetAllExperiences } from "../apis/experienceApi";
+import { PostOffer } from "../apis/offerApi";
 import close from "../assets/img/annuler.png";
 import "../styles/Modal.css";
 
@@ -38,12 +39,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
         e.preventDefault();
         setDataOffer({ ...dataOffer, [e.target.name]: e.target.value });
     };
-    
-    const handleTitle = (e) => {
-        e.preventDefault();
-        setDataOffer({ ...dataOffer, [e.target.name]: e.target.value });
-    };
-    console.log(experiences,"experiences");
+  
     
     useEffect(() => {
         getFirmData();
@@ -56,8 +52,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
         firmData &&
         setDataOffer({
             ...dataOffer,
-            firm_id: firmData.id,
-            date: new Date().toLocaleDateString(),
+            firm_id: firmData.id
         });
     }, [firmData]);
     
@@ -68,7 +63,16 @@ const OfferForm = ({ show, onClose, firmId }) => {
         });
     }, [dataOffer.job_id]);
 
-    const postOffer = () => {};
+    const postOffer = (e) => {
+      e.preventDefault();
+        PostOffer(dataOffer)
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    };
     
     return ReactDOM.createPortal(
     <form onSubmit={postOffer}>
@@ -105,12 +109,12 @@ const OfferForm = ({ show, onClose, firmId }) => {
                   required
                   id="job_select"
                   name="job_id"
-                  onChange={handleTitle}
+                  onChange={handleChange}
                   autoComplete="on"
                 >
                   <option value="">Titre</option>
                   {jobs.map((job) => (
-                    <option value={job.id}>{job.job_title}</option>
+                    <option value={Number(job.id)}>{job.job_title}</option>
                   ))}
                 </select>
               </label>
@@ -122,7 +126,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
             <h2 className="modal-subtitle">Lieu</h2>
             <input
               type="text"
-              name="city"
+              name="firm_city"
               placeholder="Bordeaux"
               className="modal-subtitle"
               value={dataOffer.city}
@@ -175,7 +179,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
                 onChange={handleChange}
                 autoComplete="on"
               >
-                <option value="">Experience requise</option>
+                <option  disabled selected value>Experience requise</option>
                 {experiences.map((experience) => (
                   <option value={experience.id}>{experience.experience}</option>
                 ))}
@@ -193,7 +197,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
             />
           </div>
           <div className="modal-footer">
-            <button onClick={() => {}} type="submit" className="postule-button">
+            <button onClick={postOffer} type="submit" className="postule-button">
               {" "}
               Publier l'annonce{" "}
             </button>
@@ -208,7 +212,6 @@ const OfferForm = ({ show, onClose, firmId }) => {
 OfferForm.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  offerId: PropTypes.number.isRequired,
 };
 
 export default OfferForm;
