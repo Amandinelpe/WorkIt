@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import { GetOfferById, DeleteOfferById } from "../apis/offerApi";
+import { GetAllJobs, GetJobById } from "../apis/jobApi";
+import { GetAllExperiences } from "../apis/experienceApi";
 import close from "../assets/img/annuler.png";
 import "../styles/Modal.css";
 
@@ -28,9 +30,36 @@ const OfferCrud = ({ show, onClose, offerId }) => {
         console.warn(err);
       });
   };
+  const loadJobs = () => {
+    GetAllJobs().then((res) => {
+      setJobs(res.data);
+    });
+  };
+
+  const loadExperiences = () => {
+    GetAllExperiences().then((res) => {
+      setExperiences(res.data);
+    });
+  };
+
+
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setDataOffer({ ...dataOffer, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    dataOffer.job_id &&
+      GetJobById(dataOffer.job_id).then((res) => {
+        setDataOffer({ ...dataOffer, title: res.data.job_title });
+      });
+  }, [dataOffer.job_id]);
 
   useEffect(() => {
     GetOfferById(offerId).then((res) => setDataOffer(res.data));
+    loadJobs();
+    loadExperiences();
   }, []);
 
   return ReactDOM.createPortal(

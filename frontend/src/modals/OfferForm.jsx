@@ -111,6 +111,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
                   name="job_id"
                   onChange={handleChange}
                   autoComplete="on"
+                  className="modal-title"
                 >
                   <option value="">Titre</option>
                   {jobs.map((job) => (
