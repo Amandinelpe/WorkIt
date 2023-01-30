@@ -16,6 +16,7 @@ import ProtectedRouteAdmin from "./context/ProtectedRouteAdmin";
 import "@progress/kendo-theme-default/dist/all.css";
 import DashboardAdmin from "./pages/DashboardAdmin";
 import FirmForm from "./components/FirmForm";
+
 import "./styles/Flex.css";
 import FicheCandidat from "./components/FicheCandidat";
 

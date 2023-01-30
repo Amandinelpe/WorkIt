@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { GetFirmOffer } from "../apis/firmOfferApi";
 import "../styles/EnterpriseConsultant.css";
 import search from "../assets/img/logo_search_enterprises.png";
 import GridEntreprises from "./GridEntreprises";
-import { GetFirmOffer } from "../apis/firmOfferApi";
 
 const EnterpriseConsultant = () => {
   const [myEnterprises, setMyEnterprises] = useState([]);

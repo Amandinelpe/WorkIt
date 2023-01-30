@@ -1,52 +1,36 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import { authContext } from "../context/AuthContext";
-import { GetOfferById } from "../apis/offerApi";
-import {
-  GetFavoriteByUserAndOffer,
-  PostFavorite,
-  DeleteFavorite,
-} from "../apis/favoriteApi";
-import {
-  GetCandidatedByUserAndOffer,
-  PostCandidated,
-} from "../apis/candidatedApi";
+import { GetOfferById, DeleteOfferById } from "../apis/offerApi";
 import close from "../assets/img/annuler.png";
-import isfav from "../assets/img/fav.png";
-import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
 
-const OfferCrud = () => {
+const OfferCrud = ({ show, onClose, offerId }) => {
   if (!show) {
     return null;
   }
-  const [postulation, setPostulation] = useState("");
+  const [deleteMessage, setDeleteMessage] = useState("");
   const [dataOffer, setDataOffer] = useState({});
-  const { auth } = useContext(authContext);
-  const [favoriteId, setFavoriteId] = useState();
-  const [candidatedId, setCandidatedId] = useState();
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
-  const initUserOffer = () => {
-    if (auth.data) {
-      if (auth.data.role_id === 1) {
-        GetFavoriteByUserAndOffer(auth.data.id, offerId).then((res) => {
-          if (res.data) {
-            setFavoriteId(res.data.favorite_id);
-          }
-        });
-        GetCandidatedByUserAndOffer(auth.data.id, offerId).then((res) => {
-          if (res.data) {
-            setCandidatedId(res.data.candidated_id);
-          }
-        });
-      }
-    }
+  const askConfirmDelete = () => {
+    setConfirmDelete(true);
+  };
+
+  const deleteOffer = () => {
+    DeleteOfferById(offerId)
+      .then((res) => {
+        if (res.status === 200) {
+          setDeleteMessage("L'offre a bien été supprimée");
+        }
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
   };
 
   useEffect(() => {
     GetOfferById(offerId).then((res) => setDataOffer(res.data));
-    initUserOffer();
   }, []);
 
   return ReactDOM.createPortal(
@@ -83,19 +67,6 @@ const OfferCrud = () => {
                 {"   Offre publiée le "}{" "}
                 {new Date(dataOffer.date).toLocaleDateString()}{" "}
               </p>
-              {auth.data && auth.data.role_id === 1 ? (
-                <img
-                  className="header-button"
-                  aria-hidden="true"
-                  onClick={() => {
-                    setFavorite();
-                    setReload(favoriteId);
-                  }}
-                  onKeyDown={onClose}
-                  src={favoriteId ? isfav : notfav}
-                  alt="close"
-                />
-              ) : null}
             </div>
           </div>
         </div>
@@ -121,32 +92,65 @@ const OfferCrud = () => {
 
           <h2 className="modal-subtitle">Expérience requise</h2>
           <p className="modal-text">{dataOffer.experience} </p>
+          <h2 className="modal-subtitle">Salaire brut annuel proposé</h2>
+          <p className="modal-text">{dataOffer.salary}€ </p>
         </div>
         <div className="modal-footer">
-          <p className="send-candidature">{postulation}</p>
-          {candidatedId ? (
-            <p className="send-candidature">
-              Votre candidature a bien été envoyée. Votre interlocuteur vous
-              contactera prochainement.
-            </p>
-          ) : (
-            <button
-              onClick={() => {
-                handleSubmit();
-                setReload(candidatedId);
-              }}
-              type="submit"
-              className="postule-button"
-            >
-              {" "}
-              Je postule{" "}
-            </button>
-          )}
+          <p className="send-candidature">{deleteMessage}</p>
+          {deleteMessage === "" &&
+            (confirmDelete ? (
+              <div>
+                <p className="send-candidature">
+                  Etes vous sûr de vouloir supprimer cette offre ?
+                </p>
+                <div>
+                  <button
+                    onClick={() => {
+                      deleteOffer();
+                    }}
+                    type="submit"
+                    className="postule-button"
+                    style={{ color: "red" }}
+                  >
+                    {" "}
+                    Je confirme{" "}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setConfirmDelete(false);
+                    }}
+                    type="submit"
+                    className="postule-button"
+                  >
+                    {" "}
+                    Annuler{" "}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  askConfirmDelete();
+                }}
+                type="submit"
+                className="postule-button"
+                style={{ color: "red" }}
+              >
+                {" "}
+                Supprimer l'annonce{" "}
+              </button>
+            ))}
         </div>
       </div>
     </div>,
     document.getElementById("app")
   );
+};
+
+OfferCrud.propTypes = {
+  show: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  offerId: PropTypes.number.isRequired,
 };
 
 export default OfferCrud;

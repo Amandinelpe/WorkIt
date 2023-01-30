@@ -40,10 +40,10 @@ const DashboardCandidate = () => {
       transition={{ duration: 0.5 }}
     >
       <NavBar />
-      <div className="mydashboard_body">
+      <div className="mydashboard_candidate">
         <BoxCandidate handleContent={handleContent} />
+        {renderSwitch()}
       </div>
-      {renderSwitch()}
       <div>
         <Footer />
       </div>
