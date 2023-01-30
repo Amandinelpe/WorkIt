@@ -76,7 +76,7 @@ const createOne = (offer) => {
   return db
     .promise()
     .query("INSERT INTO offer SET ?", [offer])
-    .then((bibi) => bibi);
+    .then((res) => res);
 };
 
 module.exports = {

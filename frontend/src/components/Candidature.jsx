@@ -6,9 +6,8 @@ import {
   loadMessages,
 } from "@progress/kendo-react-intl";
 import frMessages from "../utils/fr.json";
-import { GetSpontaneousApplications } from "../utils/getSpontaneousApplications";
+import { GetCandidated } from "../utils/getSpontaneousApplications";
 import SearchBar from "./SearchBar";
-import Comparer from "../assets/img/comparer.png";
 import "../styles/GridContainer.css";
 import "../styles/KendoGrid.css";
 
@@ -17,24 +16,6 @@ loadMessages(frMessages, "fr-FR");
 const initialDataState = {
   skip: 0,
   take: 10,
-};
-
-const cellTraitement = () => {
-  const style = {
-    textAlign: "center",
-    verticalAlign: "middle",
-  };
-
-  const logoStyle = {
-    width: "20px",
-    height: "20px",
-  };
-
-  return (
-    <td style={style}>
-      <img src={Comparer} alt="Comparer" style={logoStyle} />
-    </td>
-  );
 };
 
 const cellNomPrenom = (props) => {
@@ -50,17 +31,14 @@ const cellNomPrenom = (props) => {
 const cellEtat = (props) => {
   let className = "";
 
-  switch (props.dataItem.application_state_id) {
-    case 1:
-      className = "grey";
-      break;
-    case 2:
+  switch (props.dataItem.name) {
+    case "En cours de traitement":
       className = "orange";
       break;
-    case 3:
+    case "Refusée":
       className = "red";
       break;
-    case 4:
+    case "Acceptée":
       className = "green";
       break;
     default:
@@ -75,24 +53,33 @@ const cellEtat = (props) => {
 
 const Candidature = () => {
   const [page, setPage] = React.useState(initialDataState);
-  const [spontaneousApplications, setSpontaneousApplications] = useState([]);
+  const [candidatures, setCandidatures] = useState([]);
 
   const pageChange = (event) => {
     setPage(event.page);
   };
 
-  const getSpontaneousApplications = async () => {
-    setSpontaneousApplications(await GetSpontaneousApplications());
+  const getCandidatures = async () => {
+    setCandidatures(await GetCandidated());
   };
 
   useEffect(() => {
-    getSpontaneousApplications();
+    getCandidatures();
   }, []);
 
   return (
     <div className="container-body">
       <SearchBar />
       <div className="container">
+        <div className="filter-box">{/** Filter box */}</div>
+        <div className="box_grid_consultant">
+          <h2>Candidatures</h2>
+          <div className="filtre_candidature">
+            <p>Candidatures acceptées</p>
+            <p>Candidatures en cours de traitement</p>
+            <p>Candidatures Refusées</p>
+          </div>
+        </div>
         <div className="grid-container-box">
           <div className="grid-container-box-title">
             <h2>Nouvelles candidatures spontanées</h2>
@@ -101,7 +88,7 @@ const Candidature = () => {
             <button
               type="submit"
               className="btn-container"
-              onClick={getSpontaneousApplications}
+              onClick={getCandidatures}
             >
               Actualiser
             </button>
@@ -109,34 +96,35 @@ const Candidature = () => {
               <IntlProvider locale="fr">
                 <Grid
                   className="grid"
-                  data={spontaneousApplications.slice(
-                    page.skip,
-                    page.take + page.skip
-                  )}
+                  data={candidatures.slice(page.skip, page.take + page.skip)}
                   skip={page.skip}
                   take={page.take}
-                  total={spontaneousApplications.length}
+                  total={candidatures.length}
                   pageable
                   onPageChange={pageChange}
                 >
-                  <GridColumn
-                    field="creation_date_convert"
-                    title="Date d'arrivée"
-                    width="120px"
-                  />
                   <GridColumn
                     title="Nom Prénom"
                     width="180px"
                     cell={cellNomPrenom}
                   />
-                  <GridColumn field="id" title="Id candidat" />
+                  <GridColumn field="user_id" title="Id candidat" />
                   <GridColumn
-                    field="job_title"
+                    field="title"
                     title="Intitulé du poste"
                     width="200px"
                   />
-                  <GridColumn title="Traitement" cell={cellTraitement} />
-                  <GridColumn title="Etat" cell={cellEtat} />
+                  <GridColumn
+                    field="offer_id"
+                    title="Id de l'offre"
+                    width="200px"
+                  />
+                  <GridColumn
+                    field="name"
+                    title="Etat de la candidature"
+                    width="200px"
+                    cell={cellEtat}
+                  />
                 </Grid>
               </IntlProvider>
             </LocalizationProvider>

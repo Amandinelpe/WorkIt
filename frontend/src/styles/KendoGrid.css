@@ -38,10 +38,6 @@
   color: var(--red);
 }
 
-.grid span.grey {
-  color: var(--grey-light);
-}
-
 .grid span.green {
   color: var(--green);
 }

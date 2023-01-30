@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import socketIO from "socket.io-client";
 import HelloButton from "./HelloButton";
-// import { HiOutlineUserCircle } from "react-icons/Hi";
 import { authContext } from "../context/AuthContext";
 import {
   navBarUser,
@@ -10,8 +10,10 @@ import {
   navBarSignIn,
 } from "../utils/navBarLinks";
 import "../styles/NavBar.css";
+import Notification from "./Notification";
 
 const NavBar = () => {
+  const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
   const { auth, logout } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
 
@@ -51,6 +53,9 @@ const NavBar = () => {
             {section.name}
           </NavLink>
         ))}
+        {auth.data && (auth.data.role_id === 1 || auth.data.role_id === 2) && (
+          <Notification socket={socket} />
+        )}
         {auth.data && <HelloButton />}
       </ul>
     </div>

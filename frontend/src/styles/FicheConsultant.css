@@ -27,6 +27,12 @@
   margin: 2.5vh 2vw;
 }
 
+.consultant_personal_information_block {
+  display: flex;
+  flex-direction: row;
+  align-items: top;
+}
+
 .fiche_consultant_body_footer {
   background-color: var(--white);
   border-radius: 0 0 20px 20px;
@@ -79,6 +85,11 @@
   text-align: center;
   width: 20vw;
 }
+.fiche_consultant_footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .button_save_consultant {
   border-radius: 20px;
@@ -104,6 +115,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 5vh 2vw;
 }
 
 .button_change_image {
@@ -115,8 +127,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 6vw;
-  height: 3vh;
+  width: 8vw;
+  height: 6vh;
   -webkit-box-shadow: -2px 3px 4px 0px rgb(184 197 235);
   box-shadow: -2px 3px 4px 0px rgb(184 197 235);
   border: unset;

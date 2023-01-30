@@ -51,14 +51,14 @@ CREATE TABLE `admin` (
 );
 CREATE TABLE `consultant` (
     `id` int AUTO_INCREMENT NOT NULL ,
-    `role_id` int  NOT NULL ,
+    `role_id` int  DEFAULT 2 ,
     `firstname` VARCHAR(30)  NOT NULL ,
     `lastname` VARCHAR(30)  NOT NULL ,
     `phone` VARCHAR(100)  NOT NULL ,
     `city` VARCHAR(100)  NOT NULL ,
-    `email` VARCHAR(40)  NOT NULL ,
+    `email` VARCHAR(40)  DEFAULT 'test' ,
     `password` VARCHAR(100)  NOT NULL ,
-    `linkedin` VARCHAR(100)  NOT NULL ,
+    `linkedin` VARCHAR(100) NULL ,
     PRIMARY KEY (
         `id`
     )
@@ -75,7 +75,7 @@ CREATE TABLE `firm` (
     `adress` VARCHAR(60)  NOT NULL ,
     `type` VARCHAR(100)  NOT NULL ,
     `logo_url` VARCHAR(150)  NOT NULL ,
-    `consultant_id` int  NOT NULL ,
+    `consultant_id` int NULL ,
     PRIMARY KEY (
         `id`
     )
@@ -193,6 +193,7 @@ CREATE TABLE `candidated` (
 	`candidated_id` INT auto_increment NOT NULL,
 	`user_id` int NOT NULL,
 	`offer_id` int NOT NULL,
+    `application_state_id` int NOT NULL,
 	PRIMARY KEY (
         `candidated_id`
     )
@@ -204,17 +205,17 @@ REFERENCES `role` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_job_id` FOREIGN KEY(`job_id`)
 REFERENCES `job` (`id`);
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_experience_id` FOREIGN KEY(`experience_id`)
-REFERENCES `experience` (`id`);
+REFERENCES `experience` (`id`) ON DELETE SET NULL;
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_contract_id` FOREIGN KEY(`contract_id`)
-REFERENCES `contract` (`id`);
+REFERENCES `contract` (`id`) ON DELETE SET NULL;
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_consultant_id` FOREIGN KEY(`consultant_id`)
-REFERENCES `consultant` (`id`);
+REFERENCES `consultant` (`id`) ON DELETE SET NULL;
 ALTER TABLE `admin` ADD CONSTRAINT `fk_admin_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
 ALTER TABLE `consultant` ADD CONSTRAINT `fk_consultant_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
 ALTER TABLE `firm` ADD CONSTRAINT `fk_firm_consultant_id` FOREIGN KEY(`consultant_id`)
-REFERENCES `consultant` (`id`);
+REFERENCES `consultant` (`id`) ON DELETE SET NULL;
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_firm_id` FOREIGN KEY(`firm_id`)
 REFERENCES `firm` (`id`);
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_job_id` FOREIGN KEY(`job_id`)
@@ -224,11 +225,11 @@ REFERENCES `experience` (`id`);
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_contract_type` FOREIGN KEY(`contract_type`)
 REFERENCES `contract` (`id`);
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_consultant_id` FOREIGN KEY(`consultant_id`)
-REFERENCES `consultant` (`id`);
+REFERENCES `consultant` (`id`) ON DELETE SET NULL;
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_urgence_id` FOREIGN KEY(`urgence_id`)
 REFERENCES `urgence` (`id`);
 ALTER TABLE `offer` ADD CONSTRAINT `fk_offer_state_offer_id` FOREIGN KEY(`state_offer_id`)
-REFERENCES `state_offer` (`id`);
+REFERENCES `state_offer` (`id`) ON DELETE SET NULL;
 
 ALTER TABLE `userOffer` ADD CONSTRAINT `fk_userOffer_offer_id` FOREIGN KEY(`offer_id`)
 REFERENCES `offer` (`id`);
@@ -238,17 +239,19 @@ REFERENCES `user` (`id`);
 ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_user_id` FOREIGN KEY(`user_id`)
 REFERENCES `user` (`id`);
 ALTER TABLE `spontaneous_application` ADD CONSTRAINT `fk_spontaneous_application_job_id` FOREIGN KEY(`job_id`)
-REFERENCES `job` (`id`);
+REFERENCES `job` (`id`) ;
 
 ALTER TABLE `favorite` ADD CONSTRAINT `fk_favorite_offer_id` FOREIGN KEY(`offer_id`)
-REFERENCES `offer` (`id`);
+REFERENCES `offer` (`id`) ;
 ALTER TABLE `favorite` ADD CONSTRAINT `fk_favorite_user_id` FOREIGN KEY(`user_id`)
-REFERENCES `user` (`id`);
+REFERENCES `user` (`id`) ;
 
 ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_offer_id` FOREIGN KEY(`offer_id`)
-REFERENCES `offer` (`id`);
+REFERENCES `offer` (`id`) ;
 ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_user_id` FOREIGN KEY(`user_id`)
 REFERENCES `user` (`id`);
+ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_application_state_id` FOREIGN KEY(`application_state_id`)
+REFERENCES `application_state` (`id`);
 
 
 
@@ -302,7 +305,6 @@ INSERT INTO experience (experience) VALUES
      ('10 ans et +');
     
 INSERT INTO externatic.application_state (name) VALUES
-    ('En attente'),
     ('En cours de traitement'),
     ('Refusée'),
     ('Acceptée');
@@ -507,6 +509,6 @@ INSERT INTO externatic.favorite (user_id,offer_id) VALUES
 	 (1,8),
 	 (1,12);
 
-INSERT INTO externatic.candidated (user_id,offer_id) VALUES
-	 (1,8),
-	 (1,12);
+INSERT INTO externatic.candidated (user_id,offer_id,application_state_id) VALUES
+	 (1,8,1),
+	 (1,12,1);
