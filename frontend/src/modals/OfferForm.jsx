@@ -19,6 +19,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
   const [jobs, setJobs] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [published, setPublished] = useState();
+  const [insertId, setInsertId] = useState();
 
   const getFirmData = async () => {
     await GetFirmData(firmId).then((res) => setFirmData(res.data));
@@ -70,6 +71,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
       .then((res) => {
         if (res.status === 200) {
           setPublished("Votre offre a bien été publiée");
+          setInsertId(res.data.insertId);
         }
       })
       .catch((err) => {

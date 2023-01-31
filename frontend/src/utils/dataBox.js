@@ -4,10 +4,11 @@ const dataBox = [
     title: "Mon espace",
     sections: [
       "Mes coups de coeur",
-      "Mes alertes",
       "Mes candidatures",
       "Mes informations personnelles",
       "Je rentre en contact avec un.e consultant.e",
+      "Mes alertes",
+      "Gérer mes alertes",
     ],
     link: "dashboard",
   },

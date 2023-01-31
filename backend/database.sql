@@ -199,6 +199,15 @@ CREATE TABLE `candidated` (
     )
 );
 
+CREATE TABLE `userAlert` (
+	`userAlert_id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`job_id` int NOT NULL,
+	PRIMARY KEY (
+        `userAlert_id`
+    )
+);
+
 
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
@@ -253,6 +262,8 @@ REFERENCES `user` (`id`);
 ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_application_state_id` FOREIGN KEY(`application_state_id`)
 REFERENCES `application_state` (`id`);
 
+ALTER TABLE `userAlert` ADD CONSTRAINT `fk_userAlert_job_id` FOREIGN KEY(`job_id`)
+REFERENCES `job` (`id`);
 
 
 INSERT INTO role (status) VALUES('user');
