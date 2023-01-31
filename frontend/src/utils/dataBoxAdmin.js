@@ -34,17 +34,6 @@ const dataBoxAdmin = [
     ],
     link: "consultant",
   },
-  // {
-  //   id: 4,
-  //   title: "Médias",
-  //   sections: [
-  //     "Mes médias en ligne",
-  //     "Ajouter un média",
-  //     "Modifier un média",
-  //     "Supprimer un média",
-  //   ],
-  //   link: "medias",
-  // },
 ];
 
 export default dataBoxAdmin;

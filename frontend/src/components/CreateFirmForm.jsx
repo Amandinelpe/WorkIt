@@ -53,18 +53,6 @@ const CreateFirmForm = () => {
         country: addNewFirm.country,
       })
       .then(() => {
-        console.log("ok");
-/*         setAddNewFirm({
-          name: null,
-          consultant_id: null,
-          logo_url: null,
-          email: null,
-          contact_phone: null,
-          adress: null,
-          city: null,
-          postal_code: null,
-          country: null,
-        }); */
       }
       )
       .catch((err) => console.warn(err));
