@@ -1,6 +1,5 @@
 .salary_box {
   margin: 1vw 4vw;
-  
 }
 .salary_titleblock {
   background-color: var(--purple-light);
@@ -24,7 +23,7 @@ h2.salary_title {
   background-color: var(--white);
   height: 13vh;
   width: 20vw;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;

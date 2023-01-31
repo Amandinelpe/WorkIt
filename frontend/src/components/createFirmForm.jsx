@@ -45,7 +45,7 @@ const CreateFirmForm = () => {
         contact_phone: addNewFirm.contact_phone,
         adress: addNewFirm.adress,
         city: addNewFirm.city,
-        postal_code: addNewFirm.contact_code,
+        postal_code: addNewFirm.postal_code,
         country: addNewFirm.country,
       })
       .then(() => {

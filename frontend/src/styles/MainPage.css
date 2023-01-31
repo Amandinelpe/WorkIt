@@ -5,11 +5,10 @@
   align-items: center;
 }
 
-
 .mainpage_introduction {
   margin-bottom: 3vw;
   color: var(--purple-dark);
-  font-size: 1.2vw
+  font-size: 1.2vw;
 }
 
 .filters_offers {

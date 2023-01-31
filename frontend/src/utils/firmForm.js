@@ -26,10 +26,6 @@ const firmForm = [
     value: "",
     className: "firmform-subtitle",
   },
-
-  {
-    id: 4,
-  },
   {
     id: 5,
     label: "Email de l'entreprise",

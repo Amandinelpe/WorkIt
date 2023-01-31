@@ -3,9 +3,13 @@
   font-size: 0.9rem;
   padding: 2vh 3vh;
   width: 17vw;
-  margin-right: 1vw;
+  margin-right: 3vw;
   border-radius: 40px 40px 40px 40px;
   color: white;
   background: var(--bleu);
   box-shadow: 4px 4px 2px 1px rgba(0, 0, 255, 0.2);
+}
+
+.hello_button h1 {
+  margin-left: 0.8vw;
 }
