@@ -5,20 +5,22 @@
   -moz-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
   color: #7bc5c6;
   margin-bottom: 2vh;
-  width: 50vw;
-  height: auto;
+  width: 70vw;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   border-radius: 25px;
   padding: 4vh 2vw;
-  padding-bottom: 1vh;
-  line-height: 1.8em;
+  line-height: 2.8em;
   text-justify: center;
+  margin-top: 6vw;
+  margin-bottom: 3vw;
 }
 
 .inscription_bloc p {
   margin-bottom: 3vh;
+  font-size: 1.5rem;
 }
 
 .inscription_button {
@@ -40,13 +42,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 3vh;
+  margin-top: 4vh;
 }
 
 .button_section a {
   color: var(--blue);
   font-weight: bold;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   margin: 0.5vh 2vw 2vh 2vw;
 }
 
@@ -58,6 +60,7 @@
   background: transparent;
   transition: border-color 0.2s;
   text-align: center;
+  font-size: 1rem;
 }
 
 select {
@@ -78,4 +81,5 @@ select:invalid {
   background: transparent;
   transition: border-color 0.2s;
   text-align: center;
+  font-size: 1rem;
 }

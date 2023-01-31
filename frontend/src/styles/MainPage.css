@@ -6,7 +6,8 @@
 }
 
 .mainpage_introduction {
-  margin-bottom: 2vw;
+  margin-bottom: 3vw;
+  margin-top: 2vw;
   color: var(--purple-dark);
   font-size: 1vw;
 }
