@@ -33,7 +33,7 @@ a {
   box-shadow: 4px 4px hsla(235, 48%, 57%, 0.502);
   padding: 14px 46px;
   font-size: 1rem;
-   margin: 0 20px 0 5px;
+  margin: 0 20px 0 5px;
   font-family: var(--text-font-family-jost);
   width: 10vw;
   background-color: var(--white);
