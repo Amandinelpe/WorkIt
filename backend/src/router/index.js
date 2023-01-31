@@ -20,7 +20,6 @@ const userOfferRouter = require("./userOfferRouter");
 const favoriteRouter = require("./favoriteRouter");
 const candidatedRouter = require("./candidatedRouter");
 
-
 router.use("/admin", adminRouter);
 router.use("/firm", firmRouter);
 router.use("/contract", contractRouter);

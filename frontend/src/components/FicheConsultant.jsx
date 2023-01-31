@@ -8,6 +8,7 @@ import close from "../assets/img/annuler.png";
 import "../styles/FicheConsultant.css";
 
 const FicheConsultant = ({ showFiche, setShowFiche }) => {
+  const [message, setMessage] = useState(false);
   const [addNewConsultant, setAddNewConsultant] = useState({
     role_id: 2,
     firstname: null,
@@ -67,6 +68,10 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
     setShowFiche(!showFiche);
   };
 
+  const showMessage = () => {
+    setMessage(!message);
+  };
+
   return (
     <div className="fiche_consultant_container">
       <div className="fiche_consultant_header">
@@ -115,7 +120,17 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
             </div>
 
             <div className="fiche_consultant_footer">
-              <button type="submit" className="button_save_consultant">
+              {message && (
+                <h1 className="popup_notification">
+                  {" "}
+                  Un(e) consultant(e) a bien été rajouté(e)
+                </h1>
+              )}
+              <button
+                type="submit"
+                className="button_save_consultant"
+                onClick={showMessage}
+              >
                 SAUVEGARDER{" "}
               </button>
             </div>
