@@ -48,6 +48,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
     firmData &&
       setDataOffer({
         ...dataOffer,
@@ -56,6 +57,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
   }, [firmData]);
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
     dataOffer.job_id &&
       GetJobById(dataOffer.job_id).then((res) => {
         setDataOffer({ ...dataOffer, title: res.data.job_title });

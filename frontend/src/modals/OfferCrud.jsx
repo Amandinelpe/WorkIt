@@ -77,6 +77,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
     infosOffer.job_id &&
       GetJobById(infosOffer.job_id).then((res) => {
         setInfosOffer({ ...infosOffer, title: res.data.job_title });
@@ -90,6 +91,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     loadExperiences();
   }, []);
 
+  // eslint-disable-next-line no-return-assign
   return ReactDOM.createPortal(
     <div
       className="modalCrudBox"
