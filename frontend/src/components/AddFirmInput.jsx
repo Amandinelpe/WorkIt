@@ -19,6 +19,8 @@ const AddFirmInput = ({
     });
   };
 
+
+
   return (
     <div key={id}>
       <label htmlFor={name}> {label}</label>
