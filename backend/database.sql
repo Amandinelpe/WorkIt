@@ -73,7 +73,7 @@ CREATE TABLE `firm` (
     `postal_code` int  NOT NULL ,
     `country` VARCHAR(100)  NOT NULL ,
     `adress` VARCHAR(60)  NOT NULL ,
-    `type` VARCHAR(100)  NOT NULL ,
+    `type` VARCHAR(100) DEFAULT 'IT' ,
     `logo_url` VARCHAR(150)  NOT NULL ,
     `consultant_id` int NULL ,
     PRIMARY KEY (

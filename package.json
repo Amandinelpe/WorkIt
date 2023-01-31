@@ -28,6 +28,7 @@
     "nodemailer": "^6.9.0",
     "react-autosuggestions": "^3.4.0",
     "react-icons": "^4.7.1",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.6.2",
     "uuidv4": "^6.2.13"
   }

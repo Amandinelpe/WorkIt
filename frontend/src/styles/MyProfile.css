@@ -153,11 +153,12 @@
 .my-profile .small-input,
 .my-profile .large-input {
   height: 4.5vh;
-  border: #d9d9d9 solid 1px;
+  border: #4e55ad solid 1px;
   padding: 8px;
   outline: none;
   color: #4e55ad;
   font-size: 0.9em;
+  border-radius: 23px;
 }
 
 .my-profile label {
