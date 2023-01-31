@@ -8,7 +8,6 @@
   margin-bottom: 10vh;
   margin-left: 10vh;
   margin-right: 10vh;
-  font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
 }
@@ -22,8 +21,6 @@
 }
 
 .box_firm_body_title {
-  font-family: var(--text-font-family-jost);
-
   padding: 4vh 7vh;
   width: 55vw;
   border-radius: 50px 50px 0 0;
@@ -37,10 +34,8 @@
   width: 55vw;
   display: flex;
   flex-direction: column;
-  font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
-
   padding: 4vh 6vw;
   border-radius: 0 0 50px 50px;
   background-color: #fffdfe;
@@ -57,7 +52,6 @@
   padding: 8px;
   outline: none;
   color: #4e55ad;
- 
 }
 
 .box_firm_body .small-input {
@@ -81,7 +75,6 @@
 
 .box_firm_body label,
 .box_firm_body .label {
-
 }
 
 .first_line_details {

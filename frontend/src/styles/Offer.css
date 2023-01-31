@@ -22,18 +22,16 @@
 
 #text_entreprise {
   margin-top: 0.5vh;
- 
+
   color: var(--bleu);
 }
 
 #text_job {
-  
   color: var(--purple-dark);
   margin-bottom: 1vh;
 }
 
 #text_date {
-
   color: var(--purple-dark);
   opacity: 0.7;
 }
@@ -52,7 +50,6 @@
   margin-right: 5%;
   display: flex;
   align-items: center;
-
 }
 
 #border_button_offer {
@@ -82,10 +79,8 @@
 }
 
 #full_earth {
-
   color: var(--red);
 }
-
 
 .offer_logo {
   width: 9vw;

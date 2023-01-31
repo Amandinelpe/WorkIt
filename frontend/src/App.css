@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   border: 0;
@@ -52,33 +52,34 @@ body {
   height: 100vh;
 }
 
-h1{
-    font-family: var(--title-font-family-jost);
-    font-size: 1vw;
-}
-h2{
-    font-family: var(--title-font-family-jost);
-    font-size: 1vw;
-  }
-h3{
-    font-family: var(--title-font-family-jost);
-    font-size: 1vw;
-  }
-h4{
-    font-family: var(--title-font-family-jost);
-    font-size: 1vw;
-  }
-h5{
-    font-family: var(--title-font-family-jost);
-    font-size: 1vw;
-  }
-h6{
+h1 {
   font-family: var(--title-font-family-jost);
   font-size: 1vw;
 }
-p, button{
-    font-family: var(--text-font-family-jost);
-    font-size: 1vw;
+h2 {
+  font-family: var(--title-font-family-jost);
+  font-size: 1.6vw;
+}
+h3 {
+  font-family: var(--title-font-family-jost);
+  font-size: 1.4vw;
+}
+h4 {
+  font-family: var(--title-font-family-jost);
+  font-size: 1vw;
+}
+h5 {
+  font-family: var(--title-font-family-jost);
+  font-size: 1vw;
+}
+h6 {
+  font-family: var(--title-font-family-jost);
+  font-size: 1vw;
+}
+p,
+button {
+  font-family: var(--text-font-family-jost);
+  font-size: 1.1vw;
 }
 
 .logo_workit {

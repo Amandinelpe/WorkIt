@@ -21,7 +21,6 @@ h2 .all_offres_title {
   border: none;
   box-shadow: 3px 3px rgb(147 169 235 / 50%);
   padding: 0.5rem;
-  font-family: var(--text-font-family-jost);
   width: 15vw;
   background-color: var(--white);
   color: var(--purple-dark);
