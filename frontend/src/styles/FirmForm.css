@@ -33,7 +33,6 @@
 }
 
 .box_firm_body {
-  padding: 4vh 2vw 2vh 2vw;
   border-radius: 0 0 20px 20px;
   width: 55vw;
   display: flex;
@@ -63,10 +62,16 @@
 
 .box_firm_body .small-input {
   width: 12vw;
+  border-radius: 18px;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 .box_firm_body .very-small-input {
   width: 2vw;
+  border-radius: 15px;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 .logo_firm_block img {
@@ -76,7 +81,7 @@
 
 .box_firm_body label,
 .box_firm_body .label {
-  font-size: 1.2em;
+  font-size: 1vw;
 }
 
 .first_line_details {
@@ -96,11 +101,11 @@
 }
 
 .first_line_details .very-small-input {
-  margin-left: 0.5vw;
+  border-radius: 15px;
 }
 
 .first_line_details .small-input {
-  margin-left: 0.5vw;
+  border-radius: 18px;
 }
 
 .second_line_details {
