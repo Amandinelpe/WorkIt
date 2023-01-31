@@ -49,7 +49,7 @@ const MyProfile = () => {
     formData.append("fileName", user.fileName);
     try {
       await UpdateUser(user);
-      if (user.fileName) {
+      if (user.file.name) {
         await UpdateUserFile(user);
       }
       setMessage("Mise à jour effectuée avec succès");
