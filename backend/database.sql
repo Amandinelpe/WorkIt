@@ -203,10 +203,22 @@ CREATE TABLE `userAlert` (
 	`userAlert_id` INT auto_increment NOT NULL,
 	`user_id` int NOT NULL,
 	`job_id` int NOT NULL,
+    `city` VARCHAR(100)  NOT NULL ,
 	PRIMARY KEY (
         `userAlert_id`
     )
 );
+
+CREATE TABLE `alert` (
+	`alert_id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`offer_id` int NOT NULL,
+	PRIMARY KEY (
+        `alert_id`
+    )
+);
+
+
 
 
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
@@ -263,7 +275,15 @@ ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_application_state_id` FOR
 REFERENCES `application_state` (`id`);
 
 ALTER TABLE `userAlert` ADD CONSTRAINT `fk_userAlert_job_id` FOREIGN KEY(`job_id`)
-REFERENCES `job` (`id`);
+REFERENCES `job` (`id`) ;
+ALTER TABLE `userAlert` ADD CONSTRAINT `fk_userAlert_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+
+ALTER TABLE `alert` ADD CONSTRAINT `fk_alert_offer_id` FOREIGN KEY(`offer_id`)
+REFERENCES `offer` (`id`);
+
+ALTER TABLE `alert` ADD CONSTRAINT `fk_alert_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`); 
 
 
 INSERT INTO role (status) VALUES('user');
@@ -523,3 +543,11 @@ INSERT INTO externatic.favorite (user_id,offer_id) VALUES
 INSERT INTO externatic.candidated (user_id,offer_id,application_state_id) VALUES
 	 (1,8,1),
 	 (1,12,1);
+
+INSERT INTO userAlert (user_id, job_id, city) VALUES(1, 1, "Bordeaux");
+
+INSERT INTO userAlert (user_id, job_id, city) VALUES(2, 1,"Bordeaux");
+
+INSERT INTO userAlert (user_id, job_id, city) VALUES(3, 1,"Bordeaux");
+
+INSERT INTO userAlert (user_id, job_id, city) VALUES(4, 1,"Bordeaux");
