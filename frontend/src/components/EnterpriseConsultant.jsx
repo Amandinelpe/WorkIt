@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { GetFirmOffer } from "../apis/firmOfferApi";
-import CreateFirmForm from "./createFirmForm";
+import CreateFirmForm from "./CreateFirmForm";
 import "../styles/EnterpriseConsultant.css";
 import search from "../assets/img/loupe.png";
 import GridEntreprises from "./GridEntreprises";
@@ -14,6 +14,7 @@ const EnterpriseConsultant = () => {
   const getFirmOffer = async () => {
     setMyEnterprises(await GetFirmOffer());
   };
+  console.log(myEnterprises, "myEnterprises");
 
   useEffect(() => {
     getFirmOffer();

@@ -18,9 +18,17 @@ const findOfferByFirm = () => {
   return db
     .promise()
     .query(
-      "select firm_id, name, contact_phone, email, city, count(*) as 'nbreoffers' from offer inner join firm on offer.firm_id = firm.id group by firm_id"
+      "select firm_id, name, contact_phone, email, city, count(*) as 'nbreoffers' from offer  join firm on offer.firm_id = firm.id  group by firm_id"
     )
     .then(([firmOffers]) => firmOffers);
 };
 
-module.exports = { findAll, findOne, findOfferByFirm };
+const createFirm = (firm) => {
+  
+  return db
+    .promise()
+    .query("INSERT INTO firm SET ?", [firm])
+    .then(([reponse]) => reponse);
+};
+
+module.exports = { findAll, findOne, findOfferByFirm, createFirm };
