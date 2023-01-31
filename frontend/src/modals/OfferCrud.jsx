@@ -27,7 +27,6 @@ const OfferCrud = ({ show, onClose, offerId }) => {
   const [disabled, setDisabled] = useState(true);
   const [infosOffer, setInfosOffer] = useState({});
 
-  console.log(disabled, "disabled");
   const askConfirmDelete = () => {
     setConfirmDelete(true);
   };
