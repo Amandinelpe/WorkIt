@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import NavBar from "./NavBar";
 import { GetFirmData } from "../apis/firmApi";
 import dataFirmStatus from "../utils/dataFirmStatus";
 import DashboardFirmOffers from "./DashboardFirmOffers";
 import "../styles/FirmForm.css";
+import NavBar from "./NavBar";
 
 const FirmForm = () => {
   const { id } = useParams();
@@ -81,7 +81,7 @@ const FirmForm = () => {
               <form>
                 Etat compte
                 {dataFirmStatus.radioButtons.account_state.map((state) => (
-                  <div key={state.id}>
+                  <div key={state}>
                     <input
                       type="radio"
                       id={state.labelName}

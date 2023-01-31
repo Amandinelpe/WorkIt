@@ -20,7 +20,6 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
   });
 
   const postConsultant = (event) => {
-    // console.log("postConsultant");
     event.preventDefault();
     if (
       addNewConsultant.firstname === null &&

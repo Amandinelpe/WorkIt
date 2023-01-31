@@ -119,6 +119,30 @@
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.button_create_firm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vh;
+  width: 15vw;
+  height: 5vh;
+  cursor: pointer;
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 18px;
+  border: none;
+}
+
 /* KENDO GRID */
 
 .grid_enterprise,
