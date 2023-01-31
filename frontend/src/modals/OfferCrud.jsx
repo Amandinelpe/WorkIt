@@ -2,17 +2,29 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import { GetOfferById, DeleteOfferById } from "../apis/offerApi";
+import {
+  UpdateOffer,
+  GetOfferById,
+  DeleteOfferById,
+  GetOnlyOfferInfos,
+} from "../apis/offerApi";
+import { GetAllJobs, GetJobById } from "../apis/jobApi";
+import { GetAllExperiences } from "../apis/experienceApi";
+import formOffer from "../utils/formOffer";
 import close from "../assets/img/annuler.png";
-import "../styles/Modal.css";
+import "../styles/ModalCrud.css";
 
 const OfferCrud = ({ show, onClose, offerId }) => {
   if (!show) {
     return null;
   }
   const [deleteMessage, setDeleteMessage] = useState("");
+  const [jobs, setJobs] = useState([]);
   const [dataOffer, setDataOffer] = useState({});
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [experiences, setExperiences] = useState([]);
+  const [disabled, setDisabled] = useState(true);
+  const [infosOffer, setInfosOffer] = useState({});
 
   const askConfirmDelete = () => {
     setConfirmDelete(true);
@@ -29,14 +41,57 @@ const OfferCrud = ({ show, onClose, offerId }) => {
         console.warn(err);
       });
   };
+  const loadJobs = () => {
+    GetAllJobs().then((res) => {
+      setJobs(res.data);
+    });
+  };
+
+  const loadExperiences = () => {
+    GetAllExperiences().then((res) => {
+      setExperiences(res.data);
+    });
+  };
+
+  const modifyOffer = () => {
+    setDisabled(false);
+  };
+
+  const confirmModification = (e) => {
+    e.preventDefault();
+    UpdateOffer(infosOffer, offerId)
+      .then((res) => {
+        if (res.status === 200) {
+          setDisabled(true);
+        }
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setInfosOffer({ ...infosOffer, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    infosOffer.job_id &&
+      GetJobById(infosOffer.job_id).then((res) => {
+        setInfosOffer({ ...infosOffer, title: res.data.job_title });
+      });
+  }, [infosOffer.job_id]);
 
   useEffect(() => {
     GetOfferById(offerId).then((res) => setDataOffer(res.data));
+    GetOnlyOfferInfos(offerId).then((res) => setInfosOffer(res.data));
+    loadJobs();
+    loadExperiences();
   }, []);
 
   return ReactDOM.createPortal(
     <div
-      className="modalBox"
+      className="modalCrudBox"
       onClick={onClose}
       onKeyDown={onClose}
       role="textbox"
@@ -44,14 +99,15 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     >
       <div
         role="textbox"
-        className="modalContent"
+        className="modalCrudContent"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={(e) => e.stopPropagation()}
         tabIndex={0}
       >
-        <div className="modal-header">
+        <div className="modalCrud-header">
           <div className="header-img">
             <img src={dataOffer.logo_url} alt={dataOffer.logo_url} width="8%" />
+
             <img
               className="header-button"
               aria-hidden="true"
@@ -62,7 +118,42 @@ const OfferCrud = ({ show, onClose, offerId }) => {
             />
           </div>
           <div>
-            <h1 className="modal-title"> {dataOffer.title} </h1>
+            <label htmlFor="job_select">
+              <select
+                required
+                id="job_select"
+                name="job_id"
+                onChange={handleChange}
+                autoComplete="on"
+                className="modalCrud-title"
+                disabled={disabled}
+              >
+                <option value="">{dataOffer.title}</option>
+                {jobs.map((job) => (
+                  <option value={Number(job.id)}>{job.job_title}</option>
+                ))}
+              </select>
+            </label>
+            {disabled ? (
+              <button
+                onClick={modifyOffer}
+                type="submit"
+                className="postule-button"
+              >
+                {" "}
+                Modifier l'annonce{" "}
+              </button>
+            ) : (
+              <button
+                onClick={confirmModification}
+                type="submit"
+                className="postule-button"
+                style={{ color: "red" }}
+              >
+                {" "}
+                Confirmer la modification{" "}
+              </button>
+            )}
             <div className="header-img">
               <p>
                 {"   Offre publiée le "}{" "}
@@ -72,32 +163,46 @@ const OfferCrud = ({ show, onClose, offerId }) => {
           </div>
         </div>
 
-        <div className="modal-body">
-          <h2 className="modal-subtitle">Lieu</h2>
-          <p className="modal-text-uppercase"> {dataOffer.firm_city} </p>
-          <h2 className="modal-subtitle">Description de la société</h2>
-          <p className="modal-text"> {dataOffer.description_firm} </p>
-          <h2 className="modal-subtitle">Mission proposée</h2>
-          <p className="modal-text"> {dataOffer.description_mission} </p>
-          <h2 className="modal-subtitle">Environnement technique</h2>
-          <p className="modal-text"> {dataOffer.hard_skills} </p>
-
-          {
-            (dataOffer.soft_skills = !"-" && (
-              <div>
-                <h2 className="modal-subtitle">Compétences relationnelles</h2>
-                <p className="modal-text"> {dataOffer.soft_skills} </p>{" "}
-              </div>
-            ))
-          }
-
-          <h2 className="modal-subtitle">Expérience requise</h2>
-          <p className="modal-text">{dataOffer.experience} </p>
-          <h2 className="modal-subtitle">Salaire brut annuel proposé</h2>
-          <p className="modal-text">{dataOffer.salary}€ </p>
+        <div className="modalCrud-body">
+          {formOffer.map(
+            (input) =>
+              dataOffer[input.name] && (
+                <div>
+                  <h2 className="modalCrud-subtitle">{input.title}</h2>
+                  <textarea
+                    type={input.type}
+                    name={input.name}
+                    placeholder={input.placeholder}
+                    className="modalCrud-input"
+                    value={dataOffer[input.name]}
+                    onChange={handleChange}
+                    disabled={disabled}
+                  />
+                </div>
+              )
+          )}
+          <h2 className="modalCrud-subtitle">Expérience requise</h2>
+          <label htmlFor="experience_select">
+            <select
+              required
+              id="experience_select"
+              name="experience_id"
+              onChange={handleChange}
+              autoComplete="on"
+              disabled={disabled}
+            >
+              <option disabled selected value>
+                {dataOffer.experience}
+              </option>
+              {experiences.map((experience) => (
+                <option value={experience.id}>{experience.experience}</option>
+              ))}
+            </select>
+          </label>
         </div>
-        <div className="modal-footer">
+        <div className="modalCrud-footer">
           <p className="send-candidature">{deleteMessage}</p>
+
           {deleteMessage === "" &&
             (confirmDelete ? (
               <div>

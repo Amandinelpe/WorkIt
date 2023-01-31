@@ -45,6 +45,7 @@
 .footer a {
   color: var(--white);
   padding-top: 5vh;
+  font-size: 1.3rem;
 }
 
 .footer ul {
@@ -63,6 +64,8 @@
 
 .footer ul li a {
   text-decoration: underline;
+  text-decoration: none;
+  list-style: none;
 }
 
 .copyright-icon {
