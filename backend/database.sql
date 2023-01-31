@@ -54,10 +54,10 @@ CREATE TABLE `consultant` (
     `role_id` int  DEFAULT 2 ,
     `firstname` VARCHAR(30)  NOT NULL ,
     `lastname` VARCHAR(30)  NOT NULL ,
-    `phone` VARCHAR(100)  NOT NULL ,
-    `city` VARCHAR(100)  NOT NULL ,
-    `email` VARCHAR(40)  DEFAULT 'test' ,
-    `password` VARCHAR(100)  NOT NULL ,
+    `phone` VARCHAR(100)  NULL ,
+    `city` VARCHAR(100)  NULL ,
+    `email` VARCHAR(40)  NULL ,
+    `password` VARCHAR(100)  NULL,
     `linkedin` VARCHAR(100) NULL ,
     PRIMARY KEY (
         `id`

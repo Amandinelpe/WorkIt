@@ -76,14 +76,14 @@ const createOne = (offer) => {
   return db
     .promise()
     .query("INSERT INTO offer SET ?", [offer])
-    .then((reponse) => reponse);
+    .then((res) => res);
 };
 
 const updateOne = (offer, id) => {
   return db
     .promise()
     .query("UPDATE offer SET ? WHERE id = ?", [offer, id])
-    .then((reponse) => reponse);
+    .then((res) => res);
 };
 const findOnlyOfferInfos = (id) => {
   return db

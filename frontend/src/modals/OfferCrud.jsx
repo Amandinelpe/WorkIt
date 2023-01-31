@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-return-assign */
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
