@@ -54,7 +54,8 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     });
   };
 
-  const modifyOffer = () => {
+  const modifyOffer = (e) => {
+    e.preventDefault();
     setDisabled(false);
   };
 
@@ -177,7 +178,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
                     name={input.name}
                     placeholder={input.placeholder}
                     className="modalCrud-input"
-                    value={dataOffer[input.name]}
+                    value={infosOffer[input.name]}
                     onChange={handleChange}
                     disabled={disabled}
                   />

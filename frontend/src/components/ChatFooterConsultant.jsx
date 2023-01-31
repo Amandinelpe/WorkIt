@@ -45,7 +45,6 @@ const ChatFooterConsultant = ({ socket, setTypingMessage }) => {
 
   return (
     <div className="chat__footer">
-      <div ref={isTyping}>est en train d'écrire...</div>
       <input
         type="text"
         placeholder="Ecrire un message"

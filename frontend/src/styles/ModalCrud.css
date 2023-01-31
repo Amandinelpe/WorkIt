@@ -81,13 +81,13 @@
 }
 
 .postule-button {
-  border-radius: 20px;
+  border-radius: 25px;
   border: none;
   box-shadow: 3px 3px rgb(147 169 235 / 50%);
   padding: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.9vw;
   font-family: var(--text-font-family-jost);
-  width: 15vw;
+  width: 13vw;
   background-color: var(--white);
   color: var(--purple-dark);
   cursor: pointer;

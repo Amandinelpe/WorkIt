@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useContext, useEffect } from "react";
+import { authContext } from "../context/AuthContext";
 import NavBar from "./NavBar";
+import { CreateFirm } from "../apis/firmApi";
 import AddFirmInput from "./AddFirmInput";
 import firmForm from "../utils/firmForm";
 import "../styles/CreateFirmForm.css";
 
 const CreateFirmForm = () => {
+  const { auth } = useContext(authContext);
+
   const [addNewFirm, setAddNewFirm] = useState({
     name: null,
-    consultant_id: null,
     logo_url: null,
     email: null,
     contact_phone: null,
@@ -18,13 +20,18 @@ const CreateFirmForm = () => {
     country: null,
   });
 
+  const [confirmMessage, setConfirmMessage] = useState(false);
+  useEffect(
+    () => setAddNewFirm({ ...addNewFirm, consultant_id: auth.data.id }),
+    [auth.data.id]
+  );
+
   const postFirm = (event) => {
     event.preventDefault();
     if (
       addNewFirm.name === null &&
       addNewFirm.consultant_id === null &&
       addNewFirm.logo_url === null &&
-      addNewFirm.id === null &&
       addNewFirm.email === null &&
       addNewFirm.contact_phone === null &&
       addNewFirm.adress === null &&
@@ -35,32 +42,21 @@ const CreateFirmForm = () => {
       // eslint-disable-next-line no-alert
       return alert("Veuillez remplir tous les champs");
     }
-    return axios
-      .post(`${process.env.VITE_BACKEND_URL}firm/createfirm`, {
-        name: addNewFirm.name,
-        consultant_id: addNewFirm.consultant_id,
-        logo_url: addNewFirm.logo_url,
-        id: addNewFirm.id,
-        email: addNewFirm.email,
-        contact_phone: addNewFirm.contact_phone,
-        adress: addNewFirm.adress,
-        city: addNewFirm.city,
-        postal_code: addNewFirm.postal_code,
-        country: addNewFirm.country,
-      })
-      .then(() => {
-        setAddNewFirm({
-          name: null,
-          consultant_id: null,
-          logo_url: null,
-          id: "",
-          email: null,
-          contact_phone: null,
-          adress: null,
-          city: null,
-          postal_code: null,
-          country: null,
-        });
+    return CreateFirm({
+      name: addNewFirm.name,
+      consultant_id: addNewFirm.consultant_id,
+      logo_url: addNewFirm.logo_url,
+      email: addNewFirm.email,
+      contact_phone: addNewFirm.contact_phone,
+      adress: addNewFirm.adress,
+      city: addNewFirm.city,
+      postal_code: addNewFirm.postal_code,
+      country: addNewFirm.country,
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setConfirmMessage("Votre entreprise a bien été créée");
+        }
       })
       .catch((err) => console.warn(err));
   };
@@ -89,11 +85,15 @@ const CreateFirmForm = () => {
                     className={data.className}
                     addNewFirm={addNewFirm}
                     setAddNewFirm={setAddNewFirm}
+                    confirmMessage={confirmMessage}
                   />
                 ))}
               </div>
             </div>
             <div className="firmform_footer">
+              {confirmMessage && (
+                <p style={{ color: "red" }}>{confirmMessage}</p>
+              )}
               <button type="submit" className="button_save_firm">
                 SAUVEGARDER{" "}
               </button>

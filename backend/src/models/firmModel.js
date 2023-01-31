@@ -23,4 +23,11 @@ const findOfferByFirm = () => {
     .then(([firmOffers]) => firmOffers);
 };
 
-module.exports = { findAll, findOne, findOfferByFirm };
+const createFirm = (firm) => {
+  return db
+    .promise()
+    .query("INSERT INTO firm SET ?", [firm])
+    .then(([reponse]) => reponse);
+};
+
+module.exports = { findAll, findOne, findOfferByFirm, createFirm };

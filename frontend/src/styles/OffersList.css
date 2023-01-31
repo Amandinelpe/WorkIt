@@ -23,8 +23,10 @@
 
 .all_offers_titleblock h2 {
   color: var(--white);
-  padding: 5vh 6vh;
+  padding: 5vh 4vh;
   font-size: 1.2em;
+  margin-top: 1.3vh;
+  border-radius: 40px 40px 0 0;
 }
 
 .all_offers_button {

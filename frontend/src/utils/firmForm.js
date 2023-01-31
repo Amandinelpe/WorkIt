@@ -26,8 +26,9 @@ const firmForm = [
     value: "",
     className: "firmform-subtitle",
   },
+
   {
-    id: 5,
+    id: 4,
     label: "Email de l'entreprise",
     type: "email",
     name: "email",
@@ -37,24 +38,24 @@ const firmForm = [
   },
 
   {
-    id: 6,
+    id: 5,
     label: "Numéro de téléphone de l'entreprise",
-    type: "number",
+    type: "text",
     name: "contact_phone",
     placeholder: "",
     value: "",
     className: "firmform-subtitle",
   },
   {
-    id: 7,
-    label: "text",
+    id: 6,
+    label: "Adresse de l'entreprise",
     name: "adress",
     placeholder: "",
     value: "",
     className: "firmform-subtitle",
   },
   {
-    id: 8,
+    id: 7,
     label: "Ville de l'entreprise",
     type: "text",
     name: "city",
@@ -63,9 +64,9 @@ const firmForm = [
     className: "firmform-subtitle",
   },
   {
-    id: 9,
+    id: 8,
     label: "Code postal de l'entreprise",
-    type: "text",
+    type: "number",
     name: "postal_code",
     placeholder: "",
     value: "",
@@ -73,7 +74,7 @@ const firmForm = [
   },
 
   {
-    id: 10,
+    id: 9,
     label: "Pays de l'entreprise",
     type: "text",
     name: "country",

@@ -11,3 +11,8 @@ export const GetFirmData = (id) => {
 export const GetFirmOffer = (id) => {
   return axios.get(`${apiUrl}offer/firm/${id}`);
 };
+
+export const CreateFirm = (firm) => {
+  console.log(firm, "firm");
+  return axios.post(`${apiUrl}firm/createFirm`, firm);
+};

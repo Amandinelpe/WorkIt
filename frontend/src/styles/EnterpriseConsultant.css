@@ -38,7 +38,7 @@
 
 .enterprise-details h2 {
   margin-top: 2vh;
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 .container_enterprise {
@@ -56,7 +56,7 @@
 }
 
 .logo-search-enterprises {
-  height: 5vh;
+  height: 4vh;
   display: flex;
   align-items: center;
   padding-top: 1vh;
@@ -75,16 +75,18 @@
   display: flex;
   flex-direction: row;
   margin-left: 3vw;
+  padding-top: 0.5vh;
 }
 
 .search-box-enterprise .search-input-enterprise {
   color: var(--purple-dark);
   border: 2px solid #ccc;
   box-shadow: 0 0 2px 2px var(--purple-dark);
+  width: 25vw;
 }
 
 .dashboard_enterprises {
-  padding: 5vh 2vw 5vh 10vw;
+  padding: 5vh 10vw 5vh 20vw;
   background-color: var(--white);
   border-radius: 0 0 20px 20px;
   display: flex;

@@ -66,11 +66,11 @@ CREATE TABLE `consultant` (
 CREATE TABLE `firm` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `email` VARCHAR(100)  NOT NULL ,
-    `password` VARCHAR(100)  NOT NULL ,
+    `password` VARCHAR(100)  NULL ,
     `name` VARCHAR(50)  NOT NULL ,
     `contact_phone` VARCHAR(100)  NOT NULL ,
     `city` VARCHAR(100)  NULL ,
-    `postal_code` int  NOT NULL ,
+    `postal_code` INT NULL ,
     `country` VARCHAR(100)  NOT NULL ,
     `adress` VARCHAR(60)  NOT NULL ,
     `type` VARCHAR(100) DEFAULT 'IT' ,

@@ -26,10 +26,7 @@ const dataBoxConsultants = [
   {
     id: 4,
     title: "Messagerie",
-    sections: [
-      "Je consulte mes messages",
-      "Je rentre en relation avec un candidat",
-    ],
+    sections: ["Je rentre en relation avec un candidat"],
     link: "messagerie",
   },
 ];
