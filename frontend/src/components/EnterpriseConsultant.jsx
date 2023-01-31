@@ -14,7 +14,6 @@ const EnterpriseConsultant = () => {
   const getFirmOffer = async () => {
     setMyEnterprises(await GetFirmOffer());
   };
-  console.log(myEnterprises, "myEnterprises");
 
   useEffect(() => {
     getFirmOffer();

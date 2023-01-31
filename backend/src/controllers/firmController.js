@@ -22,12 +22,11 @@ const firmController = {
   },
   createFirm: (req, res, next) => {
     const firm = req.body;
-    console.log(firm, "firm")
     firmModel
       .createFirm(firm)
       .then((reponse) => res.status(200).send(reponse))
       .catch((err) => next(err));
-  }
+  },
 };
 
 module.exports = firmController;

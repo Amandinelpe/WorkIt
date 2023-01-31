@@ -1,14 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { authContext } from "../context/AuthContext";
 import NavBar from "./NavBar";
-import {CreateFirm} from "../apis/firmApi"
+import { CreateFirm } from "../apis/firmApi";
 import AddFirmInput from "./AddFirmInput";
 import firmForm from "../utils/firmForm";
 import "../styles/CreateFirmForm.css";
 
 const CreateFirmForm = () => {
-  const {auth}=useContext(authContext)
-  console.log(auth.data.id, "auth")
+  const { auth } = useContext(authContext);
 
   const [addNewFirm, setAddNewFirm] = useState({
     name: null,
@@ -21,10 +20,12 @@ const CreateFirmForm = () => {
     country: null,
   });
 
-  useEffect(()=>
-  setAddNewFirm({...addNewFirm, consultant_id: auth.data.id}),[auth.data.id])
+  const [confirmMessage, setConfirmMessage] = useState(false);
+  useEffect(
+    () => setAddNewFirm({ ...addNewFirm, consultant_id: auth.data.id }),
+    [auth.data.id]
+  );
 
-  console.log(addNewFirm, "addNewFirm")
   const postFirm = (event) => {
     event.preventDefault();
     if (
@@ -41,20 +42,22 @@ const CreateFirmForm = () => {
       // eslint-disable-next-line no-alert
       return alert("Veuillez remplir tous les champs");
     }
-    return CreateFirm ({
-        name: addNewFirm.name,
-        consultant_id: addNewFirm.consultant_id,
-        logo_url: addNewFirm.logo_url,
-        email: addNewFirm.email,
-        contact_phone: addNewFirm.contact_phone,
-        adress: addNewFirm.adress,
-        city: addNewFirm.city,
-        postal_code: addNewFirm.postal_code,
-        country: addNewFirm.country,
+    return CreateFirm({
+      name: addNewFirm.name,
+      consultant_id: addNewFirm.consultant_id,
+      logo_url: addNewFirm.logo_url,
+      email: addNewFirm.email,
+      contact_phone: addNewFirm.contact_phone,
+      adress: addNewFirm.adress,
+      city: addNewFirm.city,
+      postal_code: addNewFirm.postal_code,
+      country: addNewFirm.country,
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setConfirmMessage("Votre entreprise a bien été créée");
+        }
       })
-      .then(() => {
-      }
-      )
       .catch((err) => console.warn(err));
   };
 
@@ -82,11 +85,15 @@ const CreateFirmForm = () => {
                     className={data.className}
                     addNewFirm={addNewFirm}
                     setAddNewFirm={setAddNewFirm}
+                    confirmMessage={confirmMessage}
                   />
                 ))}
               </div>
             </div>
             <div className="firmform_footer">
+              {confirmMessage && (
+                <p style={{ color: "red" }}>{confirmMessage}</p>
+              )}
               <button type="submit" className="button_save_firm">
                 SAUVEGARDER{" "}
               </button>
