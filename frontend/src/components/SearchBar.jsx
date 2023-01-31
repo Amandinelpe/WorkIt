@@ -37,7 +37,7 @@ const SearchBar = ({ setSelectedJob, setCity }) => {
               autoComplete="on"
             >
               <option disabled selected value>
-                Quoi?{" "}
+                Quoi ?{" "}
               </option>
               <option value="">Tous les postes</option>
               {job.map((work) => (
@@ -55,7 +55,7 @@ const SearchBar = ({ setSelectedJob, setCity }) => {
             >
               <option disabled selected value>
                 {" "}
-                Ou?{" "}
+                Ou ?{" "}
               </option>
               <option value="">Toutes les villes</option>
               {cities.map((city) => (

@@ -104,6 +104,21 @@ const offerController = {
       .then(() => res.status(200).send("Created"))
       .catch((err) => next(err));
   },
+  updateOffer: (req, res, next) => {
+    const { id } = req.params;
+    const offer = req.body;
+    offerModel
+      .updateOne(offer, id)
+      .then(() => res.status(200).send("Updated"))
+      .catch((err) => next(err));
+  },
+  loadOnlyOfferInfos: (req, res, next) => {
+    const { id } = req.params;
+    offerModel
+      .findOnlyOfferInfos(id)
+      .then(([offer]) => res.status(200).send(offer))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = offerController;
