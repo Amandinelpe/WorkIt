@@ -15,4 +15,4 @@ export const GetFirmOffer = (id) => {
 export const CreateFirm = (firm) => {
   console.log(firm, "firm");
   return axios.post(`${apiUrl}firm/createFirm`, firm);
-}
+};
