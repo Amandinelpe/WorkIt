@@ -83,7 +83,7 @@ const offerController = {
       .then((offers) => res.status(200).send(offers))
       .catch((err) => next(err));
   },
-  getAllOffersByFirm : (req, res, next) => {
+  getAllOffersByFirm: (req, res, next) => {
     const { id } = req.params;
     offerModel
       .findAllOffersByFirm(id)
@@ -99,12 +99,11 @@ const offerController = {
   },
   createOffer: (req, res, next) => {
     const offer = req.body;
-    console.log(offer, "offer controller");
     offerModel
       .createOne(offer)
       .then(() => res.status(200).send("Created"))
       .catch((err) => next(err));
-  }
+  },
 };
 
 module.exports = offerController;

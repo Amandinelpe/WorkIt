@@ -1,9 +1,21 @@
-import React from "react";
+import { React } from "react";
 import PropTypes from "prop-types";
 import consultantlogo from "../assets/img/personlogo.png";
+import { DeleteConsultant } from "../apis/consultant";
+import { GetAllConsultants } from "../utils/getAllConsultants";
 import "../styles/ConsultantLine.css";
 
-const ConsultantLine = ({ consultant }) => {
+const ConsultantLine = ({ consultant, setConsultants }) => {
+  const getListAllConsultants = async () => {
+    setConsultants(await GetAllConsultants());
+  };
+
+  const handleClick = () => {
+    DeleteConsultant(consultant.id)
+      .then(() => getListAllConsultants())
+      .catch((err) => console.warn(err));
+  };
+
   return (
     <div className="consultantline_body">
       <img src={consultantlogo} alt="logo" className="consultant_avatar" />
@@ -21,7 +33,11 @@ const ConsultantLine = ({ consultant }) => {
           {" "}
           Modifier
         </button>
-        <button type="button" className="button_consultant_delete">
+        <button
+          type="button"
+          className="button_consultant_delete"
+          onClick={handleClick}
+        >
           {" "}
           Supprimer
         </button>
@@ -32,6 +48,7 @@ const ConsultantLine = ({ consultant }) => {
 
 ConsultantLine.propTypes = {
   consultant: PropTypes.string.isRequired,
+  setConsultants: PropTypes.func.isRequired,
 };
 
 export default ConsultantLine;

@@ -58,25 +58,26 @@ const findOffersByState = (where, limit) => {
     )
     .then(([offers]) => offers);
 };
-  const findAllOffersByFirm = (id) => {
-    return db
+const findAllOffersByFirm = (id) => {
+  return db
     .promise()
-    .query("SELECT offer.id, firm.name, offer.title, offer.date, offer.firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id WHERE firm.id = ?", [id])
-  };
-  const deleteOne = (id) => {
-    return db
+    .query(
+      "SELECT offer.id, firm.name, offer.title, offer.date, offer.firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id WHERE firm.id = ?",
+      [id]
+    );
+};
+const deleteOne = (id) => {
+  return db
     .promise()
     .query("DELETE FROM offer WHERE id = ?", [id])
-    .then (([offer]) => offer)
-  };
-  const createOne = (offer) => {
-    console.log(offer, "offer")
-    return db
+    .then(([offer]) => offer);
+};
+const createOne = (offer) => {
+  return db
     .promise()
     .query("INSERT INTO offer SET ?", [offer])
-    .then ((offer) => offer)
-  };
-
+    .then((res) => res);
+};
 
 module.exports = {
   findAll,
