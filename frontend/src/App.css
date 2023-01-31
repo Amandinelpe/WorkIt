@@ -70,11 +70,15 @@ h4{
   }
 h5{
     font-family: var(--title-font-family-jost);
-    font-size: 4vw;
+    font-size: 1vw;
   }
 h6{
   font-family: var(--title-font-family-jost);
-  font-size: 4vw;
+  font-size: 1vw;
+}
+p, button{
+    font-family: var(--text-font-family-jost);
+    font-size: 1vw;
 }
 
 .logo_workit {
