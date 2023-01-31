@@ -15,7 +15,7 @@
 
 .box_admin_title {
   font-family: var(--text-font-family-jost);
-  font-size: 0.9rem;
+ 
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
@@ -27,7 +27,7 @@
   font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
-  font-size: 0.8rem;
+
   height: 22vh;
   padding: 5vh;
   display: flex;

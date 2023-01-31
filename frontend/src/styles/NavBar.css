@@ -18,7 +18,7 @@ a {
 }
 
 .items {
-  /* font-size: 1rem;
+  /*  
   padding: 14px 46px;
   margin: 0 20px 0 5px;
   color: white;
@@ -32,7 +32,7 @@ a {
   border: none;
   box-shadow: 4px 4px hsla(235, 48%, 57%, 0.502);
   padding: 14px 46px;
-  font-size: 1rem;
+   
    margin: 0 20px 0 5px;
   font-family: var(--text-font-family-jost);
   width: 10vw;
@@ -44,7 +44,7 @@ a {
 }
 
 .items.active {
-  font-size: 1rem;
+   
   padding: 14px 46px;
   margin: 0 20px 0 5px;
   color: var(--purple-dark);
@@ -73,7 +73,6 @@ a {
 }
 
 .my_profile_icon {
-  font-size: 55px;
   color: #4e55ad;
 }
 .my_profile_icon:hover {

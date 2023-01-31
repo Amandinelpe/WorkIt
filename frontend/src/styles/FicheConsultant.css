@@ -20,7 +20,7 @@
 
 .fiche_consultant_header h1 {
   padding: 2.7vh 3vw;
-  font-size: 1em;
+
 }
 
 .close_fiche_consultant {
@@ -99,7 +99,7 @@
   border: none;
   box-shadow: 3px 3px rgb(147, 169, 235, 0.5);
   padding: 0.5rem;
-  font-size: 0.8rem;
+ 
   font-family: var(--text-font-family-jost);
   width: 15vw;
   background-color: var(--white);
@@ -124,7 +124,7 @@
 .button_change_image {
   margin-top: 3vh;
   background: var(--white);
-  font-size: 0.8rem;
+  
   color: var(--purple-dark);
   border-radius: 60px;
   display: flex;

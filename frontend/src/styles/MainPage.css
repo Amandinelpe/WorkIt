@@ -9,7 +9,7 @@
   margin-bottom: 3vw;
   margin-top: 2vw;
   color: var(--purple-dark);
-  font-size: 1.5vw;
+
 }
 
 .filters_offers {
@@ -45,7 +45,7 @@
   border: none;
   box-shadow: 3px 3px rgb(147, 169, 235, 0.5);
   padding: 0.5rem;
-  font-size: 0.8rem;
+ 
   font-family: var(--text-font-family-jost);
   width: 15vw;
   background-color: var(--white);

@@ -33,7 +33,7 @@
   border: none;
   box-shadow: 3px 3px rgb(147, 169, 235, 0.5);
   padding: 0.5rem;
-  font-size: 0.8rem;
+ 
   font-family: var(--text-font-family-jost);
   width: 15vw;
   background-color: var(--white);
@@ -89,7 +89,7 @@
   border: none;
   box-shadow: 3px 3px rgb(147, 169, 235, 0.5);
   padding: 0.5rem;
-  font-size: 0.8rem;
+ 
   font-family: var(--text-font-family-jost);
   width: 15vw;
   background-color: var(--white);
@@ -103,7 +103,7 @@
   border: none;
   box-shadow: 3px 3px rgb(147, 169, 235, 0.5);
   padding: 0.5rem;
-  font-size: 0.8rem;
+ 
   font-family: var(--text-font-family-jost);
   width: 15vw;
   background-color: var(--white);
@@ -157,7 +157,7 @@
   border: none;
   box-shadow: 3px 3px rgb(147, 169, 235, 0.5);
   padding: 0.5rem;
-  font-size: 0.8rem;
+  
   font-family: var(--text-font-family-jost);
   width: 15vw;
   background-color: var(--white);
