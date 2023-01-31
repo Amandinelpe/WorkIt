@@ -17,10 +17,11 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
     email: null,
     password: null,
     linkedin: null,
+    position: null,
+    perimeter: null,
   });
 
   const postConsultant = (event) => {
-    // console.log("postConsultant");
     event.preventDefault();
     if (
       addNewConsultant.firstname === null &&
@@ -29,34 +30,37 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
       addNewConsultant.city === null &&
       addNewConsultant.email === null &&
       addNewConsultant.password === null &&
+      addNewConsultant.linkedin === null &&
+      addNewConsultant.password === null &&
       addNewConsultant.linkedin === null
     ) {
       // eslint-disable-next-line no-alert
-      return alert("Veuillez remplir tous les champs");
+      alert("Veuillez remplir tous les champs");
+    } else {
+      axios
+        .post(`${import.meta.env.VITE_BACKEND_URL}consultant/createprofile`, {
+          firstname: addNewConsultant.firstname,
+          lastname: addNewConsultant.lastname,
+          phone: addNewConsultant.phone,
+          city: addNewConsultant.city,
+          email: addNewConsultant.email,
+          password: addNewConsultant.password,
+          linkedin: addNewConsultant.linkedin,
+          role_id: addNewConsultant.role_id,
+        })
+        .then(() => {
+          setAddNewConsultant({
+            firstname: null,
+            lastname: null,
+            phone: null,
+            city: null,
+            email: null,
+            password: null,
+            linkedin: null,
+          });
+        })
+        .catch((err) => console.warn(err));
     }
-    return axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}consultant/createprofile`, {
-        firstname: addNewConsultant.firstname,
-        lastname: addNewConsultant.lastname,
-        phone: addNewConsultant.phone,
-        city: addNewConsultant.city,
-        email: addNewConsultant.email,
-        password: addNewConsultant.password,
-        linkedin: addNewConsultant.linkedin,
-        role_id: addNewConsultant.role_id,
-      })
-      .then(() => {
-        setAddNewConsultant({
-          firstname: null,
-          lastname: null,
-          phone: null,
-          city: null,
-          email: null,
-          password: null,
-          linkedin: null,
-        });
-      })
-      .catch((err) => console.warn(err));
   };
 
   const handleClick = () => {
@@ -108,28 +112,6 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
                   Changer de photo{" "}
                 </button>
               </div>
-            </div>
-            <h1 className="consultant_workit_title">Chez WorkIT</h1>
-            <div className="consultant_workit_block">
-              <label>
-                {" "}
-                Poste occupé
-                <input
-                  className="form_input_consultant"
-                  type="text"
-                  name="Poste chez WorkIT"
-                  placeholder="Consultant junior"
-                />
-              </label>{" "}
-              <label>
-                Périmètre attribué
-                <input
-                  className="form_input_consultant"
-                  type="text"
-                  name="Zone géographique"
-                  placeholder="Bordeaux et sa région"
-                />
-              </label>
             </div>
 
             <div className="fiche_consultant_footer">
