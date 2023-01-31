@@ -8,7 +8,7 @@ import { GetAllExperiences } from "../apis/experienceApi";
 import { PostOffer } from "../apis/offerApi";
 import formOffer from "../utils/formOffer";
 import close from "../assets/img/annuler.png";
-import "../styles/Modal.css";
+import "../styles/ModalCrud.css";
 
 const OfferForm = ({ show, onClose, firmId }) => {
   if (!show) {
@@ -78,7 +78,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
   return ReactDOM.createPortal(
     <form onSubmit={postOffer}>
       <div
-        className="modalBox"
+        className="modalCrudBox"
         onClick={onClose}
         onKeyDown={onClose}
         role="textbox"
@@ -86,12 +86,12 @@ const OfferForm = ({ show, onClose, firmId }) => {
       >
         <div
           role="textbox"
-          className="modalContent"
+          className="modalCrudContent"
           onClick={(e) => e.stopPropagation()}
           onKeyDown={(e) => e.stopPropagation()}
           tabIndex={0}
         >
-          <div className="modal-header">
+          <div className="modalCrud-header">
             <div className="header-img">
               <img src={firmData.logo_url} alt="" width="8%" />
               <img
@@ -104,7 +104,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
               />
             </div>
             <div>
-              <h1 className="modal-title"> Titre </h1>
+              <h1 className="modalCrud-title"> Titre </h1>
               <label htmlFor="job_select">
                 <select
                   required
@@ -112,6 +112,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
                   name="job_id"
                   onChange={handleChange}
                   autoComplete="on"
+                  className="modalCrud-title"
                 >
                   <option value="">Titre</option>
                   {jobs.map((job) => (
@@ -123,21 +124,21 @@ const OfferForm = ({ show, onClose, firmId }) => {
             </div>
           </div>
 
-          <div className="modal-body">
+          <div className="modalCrud-body">
             {formOffer.map((input) => (
               <div>
-                <h2 className="modal-subtitle">{input.title}</h2>
-                <input
+                <h2 className="modalCrud-subtitle">{input.title}</h2>
+                <textarea
                   type={input.type}
                   name={input.name}
                   placeholder={input.placeholder}
-                  className="modal-subtitle"
+                  className="modalCrud-input"
                   value={dataOffer[input.name]}
                   onChange={handleChange}
                 />
               </div>
             ))}
-            <h2 className="modal-subtitle">Expérience requise</h2>
+            <h2 className="modalCrud-subtitle">Expérience requise</h2>
             <label htmlFor="experience_select">
               <select
                 required
@@ -155,7 +156,7 @@ const OfferForm = ({ show, onClose, firmId }) => {
               </select>
             </label>
           </div>
-          <div className="modal-footer">
+          <div className="modalCrud-footer">
             <p className="send-candidature">{published}</p>
             {published ? null : (
               <button
