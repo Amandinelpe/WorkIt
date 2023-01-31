@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { GetFirmOffer } from "../apis/firmOfferApi";
 import CreateFirmForm from "./createFirmForm";
 import "../styles/EnterpriseConsultant.css";
-import search from "../assets/img/logo_search_enterprises.png";
+import search from "../assets/img/loupe.png";
 import GridEntreprises from "./GridEntreprises";
 
 const EnterpriseConsultant = () => {

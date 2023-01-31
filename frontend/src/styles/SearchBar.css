@@ -7,14 +7,14 @@
   justify-content: space-around;
   border: solid 2px var(--bleu);
   background-color: var(--bleu);
-  border-radius: 30vw;
-  padding: 16px;
+  border-radius: 6vw;
+  padding: 7px;
   width: auto;
   margin-bottom: 5vh;
 }
 
 .logo {
-  height: 7vh;
+  height: 6vh;
 }
 
 .inputBox2 {

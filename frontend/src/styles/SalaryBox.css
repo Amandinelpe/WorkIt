@@ -14,7 +14,7 @@
 h2.salary_title {
   color: var(--white);
   font-family: var(--text-font-family-jost);
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: lighter;
 }
 
