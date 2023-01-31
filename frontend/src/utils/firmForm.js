@@ -1,0 +1,90 @@
+const firmForm = [
+  {
+    id: 1,
+    label: "Nom de l'entreprise",
+    type: "text",
+    name: "name",
+    placeholder: "",
+    value: "",
+    className: "firmform-subtitle",
+  },
+  {
+    id: 2,
+    label: "Id du consultant",
+    type: "number",
+    name: "consultant_id",
+    placeholder: "",
+    value: "",
+    className: "firmform-subtitle",
+  },
+  {
+    id: 3,
+    label: "Logo de l'entreprise",
+    type: "text",
+    name: "logo_url",
+    placeholder: "Lien du logo de l'entreprise .png",
+    value: "",
+    className: "firmform-subtitle",
+  },
+
+  {
+    id: 4,
+  },
+  {
+    id: 5,
+    label: "Email de l'entreprise",
+    type: "email",
+    name: "email",
+    placeholder: "",
+    value: "",
+    className: "firmform-subtitle",
+  },
+
+  {
+    id: 6,
+    label: "Numéro de téléphone de l'entreprise",
+    type: "number",
+    name: "contact_phone",
+    placeholder: "",
+    value: "",
+    className: "firmform-subtitle",
+  },
+  {
+    id: 7,
+    label: "text",
+    name: "adress",
+    placeholder: "",
+    value: "",
+    className: "firmform-subtitle",
+  },
+  {
+    id: 8,
+    label: "Ville de l'entreprise",
+    type: "text",
+    name: "city",
+    placeholder: "",
+    value: "",
+    className: "firmform-subtitle",
+  },
+  {
+    id: 9,
+    label: "Code postal de l'entreprise",
+    type: "text",
+    name: "postal_code",
+    placeholder: "",
+    value: "",
+    className: "firmform-subtitle",
+  },
+
+  {
+    id: 10,
+    label: "Pays de l'entreprise",
+    type: "text",
+    name: "country",
+    placeholder: "",
+    value: "",
+    className: "firmform-subtitle",
+  },
+];
+
+export default firmForm;

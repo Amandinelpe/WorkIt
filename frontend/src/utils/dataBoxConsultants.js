@@ -2,11 +2,7 @@ const dataBoxConsultants = [
   {
     id: 1,
     title: "Mes entreprises",
-    sections: [
-      "Ajouter une entreprise",
-      "Modifier une entreprise",
-      "Supprimer une entreprise",
-    ],
+    sections: ["Liste de mes entreprises", "Ajouter une entreprise"],
     link: "entreprises",
   },
 
