@@ -85,7 +85,7 @@
   border: none;
   box-shadow: 3px 3px rgb(147 169 235 / 50%);
   padding: 0.5rem;
-  font-size: 0.8rem;
+ 
   font-family: var(--text-font-family-jost);
   width: 15vw;
   background-color: var(--white);
@@ -100,24 +100,24 @@
 }
 .modal-title {
   margin-bottom: 1vw;
-  font-size: 2vw;
+  
   color: var(--purple-dark);
 }
 
 .modal-subtitle {
-  font-size: 1.2rem;
+
   font-weight: bold;
   color: var(--purple-light);
   margin-bottom: 2vw;
 }
 .modal-text {
-  font-size: 1rem;
+ 
   color: var(--purple-dark);
   margin-bottom: 3vw;
   text-align: justify;
 }
 .modal-text-uppercase {
-  font-size: 1rem;
+
   color: var(--purple-dark);
   margin-bottom: 3vw;
   text-align: justify;

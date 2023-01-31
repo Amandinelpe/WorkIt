@@ -14,7 +14,7 @@
   font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
-  font-size: 0.8rem;
+    
   width: auto;
   height: auto;
   padding: 4vh 6vw;
@@ -41,7 +41,7 @@
 .my-profile .box .box_candidate_body h3 {
   color: #4e55ad;
   padding-bottom: 4vh;
-  font-size: 1.4em;
+
 }
 
 .my-profile .radio-button-container {
@@ -157,7 +157,7 @@
   padding: 8px;
   outline: none;
   color: #4e55ad;
-  font-size: 0.9em;
+      
   border-radius: 23px;
 }
 
@@ -169,11 +169,11 @@
 
 .my-profile label,
 .my-profile .label {
-  font-size: 1.2em;
+     
 }
 
 .my-profile p {
-  font-size: 0.9em;
+      
 }
 
 .flex-gap-3vh {
@@ -194,7 +194,7 @@
   justify-content: center;
   flex-direction: column;
   gap: 2vh;
-  font-size: 1.3em;
+ 
   width: 100%;
 }
 
@@ -218,6 +218,6 @@
 }
 .fileName {
   margin-top: 2vh;
-  font-size: 1.5em;
+ 
   margin-left: 2vw;
 }

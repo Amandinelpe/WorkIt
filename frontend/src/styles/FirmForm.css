@@ -23,7 +23,7 @@
 
 .box_firm_body_title {
   font-family: var(--text-font-family-jost);
-  font-size: 0.9rem;
+
   padding: 4vh 7vh;
   width: 55vw;
   border-radius: 50px 50px 0 0;
@@ -40,7 +40,7 @@
   font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
-  font-size: 0.8rem;
+
   padding: 4vh 6vw;
   border-radius: 0 0 50px 50px;
   background-color: #fffdfe;
@@ -57,7 +57,7 @@
   padding: 8px;
   outline: none;
   color: #4e55ad;
-  font-size: 0.9em;
+ 
 }
 
 .box_firm_body .small-input {
@@ -81,7 +81,7 @@
 
 .box_firm_body label,
 .box_firm_body .label {
-  font-size: 1vw;
+
 }
 
 .first_line_details {

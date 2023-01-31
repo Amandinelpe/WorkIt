@@ -16,7 +16,7 @@
   font-weight: 900;
 }
 .errorPage p {
-  font-size: 1vw;
+ 
   margin: 1vh 0 1vh 0;
   color: #4e55ad;
   padding: 0;
@@ -25,7 +25,7 @@
 }
 
 #projetsError {
-  font-size: 1vw;
+ 
   padding: 2vh 2.5vw;
   margin: 5vh 1.5vw 0 0.5vw;
   color: white;

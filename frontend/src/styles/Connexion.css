@@ -66,7 +66,7 @@
   align-items: center;
   justify-content: center;
   gap: 2vh;
-  font-size: 1.6em;
+ 
 }
 
 .connexion-candidat .title h1,
@@ -74,7 +74,7 @@ h3 {
   color: #ff5400;
   font-weight: bold;
   margin: 0;
-  font-size: 2em;
+
   margin-top: 1.2em;
 }
 
@@ -88,7 +88,7 @@ h3 {
 
 .connexion-form .small_link a {
   color: var(--blue);
-  font-size: 0.9em;
+
 }
 
 .connexion-button {
