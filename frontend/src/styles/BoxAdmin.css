@@ -14,8 +14,6 @@
 }
 
 .box_admin_title {
-  font-family: var(--text-font-family-jost);
- 
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
@@ -24,10 +22,8 @@
 }
 
 .box_admin_body ul {
-  font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
-
   height: 22vh;
   padding: 5vh;
   display: flex;

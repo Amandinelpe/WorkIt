@@ -27,7 +27,7 @@
   height: 20vh;
   width: 15vw;
   margin-right: 2vw;
-  
+
   border-radius: 0 0 50px 50px;
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
   display: flex;
@@ -47,8 +47,6 @@
 }
 
 .grid-container-box-title h2 {
-  font-family: var(--text-font-family-jost);
-  
   padding: 4vh 3vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
@@ -58,7 +56,6 @@
 }
 
 .grid-container .btn-container {
-
   color: white;
   background: #ff5400;
   border-radius: 60px;

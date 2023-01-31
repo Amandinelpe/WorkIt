@@ -32,9 +32,7 @@ a {
   border: none;
   box-shadow: 4px 4px hsla(235, 48%, 57%, 0.502);
   padding: 14px 46px;
-   
-   margin: 0 20px 0 5px;
-  font-family: var(--text-font-family-jost);
+  margin: 0 20px 0 5px;
   width: 10vw;
   background-color: var(--white);
   color: var(--purple-dark);
@@ -44,7 +42,6 @@ a {
 }
 
 .items.active {
-   
   padding: 14px 46px;
   margin: 0 20px 0 5px;
   color: var(--purple-dark);

@@ -30,19 +30,16 @@
 }
 
 .message__sender p {
-
 }
 
 .sender__name {
   text-align: right;
   margin-right: 1vw;
- 
 }
 
 .message__recepted__chats {
   text-align: left;
   margin-left: 0.5vw;
- 
 }
 
 .message__sender {
@@ -51,7 +48,6 @@
   padding: 10px;
   border-radius: 10px;
   margin-left: 31vw;
-
 }
 
 .message__recipient {
@@ -59,11 +55,9 @@
   width: 20vw;
   padding: 10px;
   border-radius: 10px;
-
 }
 
 .message__recipient p {
-
 }
 
 .chat_footer_body {
