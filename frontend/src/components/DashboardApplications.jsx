@@ -7,7 +7,7 @@ import { GetCandidatedsByUser } from "../apis/candidatedApi";
 const DashboardApplications = () => {
   const { auth } = useContext(authContext);
   const [myApplications, setMyApplications] = useState([]);
-  const [reload, setReload] = useState(true);
+  const [reload, setReload] = useState(0);
 
   const getAllApplicationsId = async () => {
     await GetCandidatedsByUser(auth.data.id).then((res) =>

@@ -27,6 +27,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
   const [disabled, setDisabled] = useState(true);
   const [infosOffer, setInfosOffer] = useState({});
 
+  console.log(disabled, "disabled");
   const askConfirmDelete = () => {
     setConfirmDelete(true);
   };
@@ -54,7 +55,8 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     });
   };
 
-  const modifyOffer = () => {
+  const modifyOffer = (e) => {
+    e.preventDefault();
     setDisabled(false);
   };
 
@@ -177,7 +179,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
                     name={input.name}
                     placeholder={input.placeholder}
                     className="modalCrud-input"
-                    value={dataOffer[input.name]}
+                    value={infosOffer[input.name]}
                     onChange={handleChange}
                     disabled={disabled}
                   />
