@@ -18,13 +18,12 @@ const findOfferByFirm = () => {
   return db
     .promise()
     .query(
-      "select firm_id, name, contact_phone, email, city, count(*) as 'nbreoffers' from offer  join firm on offer.firm_id = firm.id  group by firm_id"
+      "select firm_id, name, contact_phone, email, city, count(*) as 'nbreoffers' from firm  join offer on offer.firm_id = firm.id  group by firm_id"
     )
     .then(([firmOffers]) => firmOffers);
 };
 
 const createFirm = (firm) => {
-  
   return db
     .promise()
     .query("INSERT INTO firm SET ?", [firm])
