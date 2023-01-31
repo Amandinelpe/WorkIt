@@ -69,7 +69,6 @@ const Candidature = () => {
 
   return (
     <div className="container-body">
-      <SearchBar />
       <div className="container">
         <div className="filter-box">{/** Filter box */}</div>
         <div className="box_grid_consultant">
@@ -107,6 +106,7 @@ const Candidature = () => {
                     title="Nom Prénom"
                     width="180px"
                     cell={cellNomPrenom}
+                    onClick={getCandidatures}
                   />
                   <GridColumn field="user_id" title="Id candidat" />
                   <GridColumn

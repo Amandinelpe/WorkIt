@@ -17,9 +17,9 @@ const dataBoxConsultants = [
     id: 3,
     title: "Candidatures",
     sections: [
-      "Nouvelles candidatures",
-      "Candidatures en cours",
-      "Candidatures archivées",
+      "Candidatures acceptées",
+      "Candidatures en cours de traitement",
+      "Candidatures refusées",
     ],
     link: "candidatures",
   },
