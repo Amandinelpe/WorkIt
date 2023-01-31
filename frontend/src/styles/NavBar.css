@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 3vh;
   height: 15vh;
 }
 
@@ -27,6 +28,7 @@ a {
   opacity: 0.9;
   backdrop-filter: blur(20px);
   border-radius: 60px;
+  box-shadow: 4px 4px 2px 1px rgba(0, 0, 255, 0.2);
 }
 .items.active {
   font-size: 0.8rem;
