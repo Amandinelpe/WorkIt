@@ -10,7 +10,7 @@ import {
   navBarSignIn,
 } from "../utils/navBarLinks";
 import "../styles/NavBar.css";
-import Notification from "./Notification";
+
 
 const NavBar = () => {
   const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
@@ -53,9 +53,6 @@ const NavBar = () => {
             {section.name}
           </NavLink>
         ))}
-        {auth.data && (auth.data.role_id === 1 || auth.data.role_id === 2) && (
-          <Notification socket={socket} />
-        )}
         {auth.data && <HelloButton />}
       </ul>
     </div>

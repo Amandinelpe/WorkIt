@@ -1,11 +1,11 @@
 .hello_button {
   font-family: var(--text-font-family-jost);
   font-size: 0.9rem;
-  padding: 2vh 3vh;
-  width: 17vw;
+  padding: 1.6vh 2vh;
+  width: 16vw;
   margin-right: 1vw;
   border-radius: 40px 40px 40px 40px;
-  color: white;
-  background: var(--bleu);
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  color: var(--bleu);
+  background: var(--white);
+  box-shadow: 4px 4px 2px 1px rgba(83, 159, 169, 0.6);
 }
