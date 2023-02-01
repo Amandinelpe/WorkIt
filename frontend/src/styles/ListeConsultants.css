@@ -18,7 +18,6 @@
 
 .title_liste_consultants {
   padding: 2.7vh 3vw;
-  font-size: 1em;
 }
 
 .consultants-liste {
@@ -37,7 +36,7 @@
 
 .consultants_button_section button {
   background: var(--orange);
-  font-size: 0.8rem;
+
   color: white;
   border-radius: 60px;
   display: flex;
