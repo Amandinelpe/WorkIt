@@ -16,6 +16,7 @@ const userOfferRouter = require("./userOfferRouter");
 const favoriteRouter = require("./favoriteRouter");
 const candidatedRouter = require("./candidatedRouter");
 const userAlertRouter = require("./userAlertRouter");
+const alertRouter = require("./alertRouter");
 
 router.use("/admin", adminRouter);
 router.use("/firm", firmRouter);
@@ -32,4 +33,5 @@ router.use("/state_offer", stateOfferRouter);
 router.use("/favorite", favoriteRouter);
 router.use("/candidated", candidatedRouter);
 router.use("/userAlert", userAlertRouter);
+router.use("/alert", alertRouter);
 module.exports = router;

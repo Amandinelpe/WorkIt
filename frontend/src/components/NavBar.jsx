@@ -11,7 +11,6 @@ import {
 } from "../utils/navBarLinks";
 import "../styles/NavBar.css";
 
-
 const NavBar = () => {
   const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
   const { auth, logout } = useContext(authContext);
