@@ -77,7 +77,8 @@ h6 {
   font-size: 1vw;
 }
 p,
-button, li {
+button,
+li {
   font-family: var(--text-font-family-jost);
   font-size: 1.1vw;
 }

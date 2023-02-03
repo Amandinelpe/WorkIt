@@ -6,9 +6,9 @@
 }
 
 .chat__header {
-  margin: 50px 0 20px 0;
+  margin: 3vh 0 3vh 0;
 }
 .chat__users > * {
-  margin-bottom: 50px;
+  margin-bottom: 3vh;
   border: 1px solid black;
 }
