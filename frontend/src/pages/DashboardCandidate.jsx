@@ -28,10 +28,10 @@ const DashboardCandidate = () => {
         return <DashboardApplications />;
       case "Gérer mes alertes":
         return <DashboardAlerts />;
-        case "Mes nouvelles offres":
-          return <DashboardNewOffers />;
-          case "Mes coups de coeur":
-            return <Dashboard />;
+      case "Mes nouvelles offres":
+        return <DashboardNewOffers />;
+      case "Mes coups de coeur":
+        return <Dashboard />;
       default:
         return <DashboardNewOffers />;
     }

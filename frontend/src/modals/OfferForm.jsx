@@ -23,7 +23,6 @@ const OfferForm = ({ show, onClose, firmId }) => {
   const [published, setPublished] = useState();
   const [userAlerts, setUserAlerts] = useState([]);
 
-
   const GetAlerts = async () => {
     await GetUserAlerts(dataOffer.job_id, dataOffer.firm_city).then((res) =>
       setUserAlerts(res.data)
@@ -87,8 +86,8 @@ const OfferForm = ({ show, onClose, firmId }) => {
           setPublished("Votre offre a bien été publiée");
           userAlerts.forEach((user) => {
             LaunchAlerts(user.user_id, res.data.insertId)
-              .then((res) => {
-                console.warn(res.data);
+              .then((response) => {
+                console.warn(response.data);
               })
               .catch((err) => {
                 console.warn(err);

@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useMemo } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import { GetAlerts } from "../apis/alertApi";
 
 export const authContext = createContext({});
 
@@ -12,6 +13,7 @@ const AuthProvider = ({ children }) => {
   });
 
   const [user, setUser] = useState();
+  const [alerts, setAlerts] = useState([]);
 
   const login = (data) => {
     setAuth({ data });
@@ -25,6 +27,10 @@ const AuthProvider = ({ children }) => {
       setUser("user");
       navigate("/Main");
     }
+  };
+
+  const getAlerts = async () => {
+    await GetAlerts(auth.data.id).then((res) => setAlerts(res.data));
   };
 
   const logout = () => {
@@ -44,10 +50,11 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (auth.data) {
       window.localStorage.setItem("user", JSON.stringify(auth.data));
+      getAlerts();
     }
   }, [auth]);
 
-  const value = useMemo(() => ({ auth, login, logout, user }), [auth]);
+  const value = useMemo(() => ({ auth, login, logout, user, alerts }), [auth]);
 
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };

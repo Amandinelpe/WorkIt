@@ -9,6 +9,13 @@ const alertController = {
           .then((alert) => res.status(200).send(alert))
           .catch((err) => next(err));
       },
+        getAlerts: (req, res, next) => {
+            const { id } = req.params;
+            alertModel
+              .findAll(id)
+              .then((alerts) => res.status(200).send(alerts))
+              .catch((err) => next(err));
+          }
 };
 
 
