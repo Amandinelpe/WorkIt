@@ -13,7 +13,6 @@ import DashboardNewOffers from "../components/DashboardNewOffers";
 
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
-  const [alerts, setAlerts] = useState([]);
 
   const handleContent = (ctn) => {
     setContent(ctn);
@@ -34,7 +33,7 @@ const DashboardCandidate = () => {
       case "Mes coups de coeur":
         return <Dashboard />;
       default:
-        return <DashboardNewOffers setAlerts={setAlerts} alerts={alerts} />;
+        return <DashboardNewOffers />;
     }
   };
 
@@ -45,7 +44,7 @@ const DashboardCandidate = () => {
       exit={{ x: -100, opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <NavBar alerts={alerts} />
+      <NavBar />
       <div className="mydashboard_candidate">
         <BoxCandidate handleContent={handleContent} />
         {renderSwitch()}

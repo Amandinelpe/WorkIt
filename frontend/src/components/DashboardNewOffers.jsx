@@ -1,11 +1,10 @@
 import { React, useEffect, useState, useContext } from "react";
-import PropTypes from "prop-types";
 import { authContext } from "../context/AuthContext";
 import { GetAlerts, DeleteAlert } from "../apis/alertApi";
 import Offer from "./Offer";
 import OfferEmpty from "./OfferEmpty";
 
-const DashboardNewOffers = ({ setAlerts }) => {
+const DashboardNewOffers = () => {
   const [reload, setReload] = useState(0);
   const { auth, setNotification } = useContext(authContext);
   const [myOffers, setMyOffers] = useState([]);
@@ -68,7 +67,3 @@ const DashboardNewOffers = ({ setAlerts }) => {
 };
 
 export default DashboardNewOffers;
-
-DashboardNewOffers.propTypes = {
-  setAlerts: PropTypes.func.isRequired,
-};

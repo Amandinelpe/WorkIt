@@ -16,7 +16,7 @@ const findAllUserId = (job_id, city) => {
     return db
         .promise()
         .query(
-        "SELECT * FROM userAlert WHERE user_id = ?",
+        "SELECT * FROM userAlert JOIN job on job.id = userAlert.job_id WHERE user_id = ?",
         [user_id]
         )
         .then(([users]) => users);
@@ -38,7 +38,7 @@ const findAllUserId = (job_id, city) => {
         .promise()
     .query( 
         "DELETE FROM userAlert WHERE userAlert_id = ?",[userAlert_id])
-        .then(([users]) => users);
+        .then((users) => users);
 }
   modifyUserAlert = (user_id, job_id, city) => {
     return db

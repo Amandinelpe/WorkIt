@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
 import socketIO from "socket.io-client";
 import HelloButton from "./HelloButton";
 import { authContext } from "../context/AuthContext";

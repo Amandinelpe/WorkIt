@@ -21,9 +21,9 @@ const userAlertController = {
       .catch((err) => next(err));
    },
    deleteUserAlert(req, res, next) {
-      const {userAlert_id} = req.params;
+      const {id} = req.params;
       userAlertModel
-      .deleteUserAlert(userAlert_id)
+      .deleteUserAlert(id)
       .then((users) => res.status(200).send(users))
       .catch((err) => next(err));
    },

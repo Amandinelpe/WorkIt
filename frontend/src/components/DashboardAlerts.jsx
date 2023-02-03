@@ -10,12 +10,6 @@ const DashboardAlerts = () => {
             <h2 className="job_alerts_title">Mes alertes</h2>
           </div>
           <div className="job_alerts_created">
-            <div className="create_new_alert">
-              <button type="button" className="create_new_alert_button">
-                {" "}
-                Créer une nouvelle alerte{" "}
-              </button>
-            </div>
             <div className="my_alerts_offers_body">
               <JobAlert />
             </div>
