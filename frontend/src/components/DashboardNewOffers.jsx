@@ -7,19 +7,17 @@ import OfferEmpty from "./OfferEmpty";
 
 const DashboardNewOffers = ({ setAlerts }) => {
   const [reload, setReload] = useState(0);
-  const { auth } = useContext(authContext);
+  const { auth, setNotification } = useContext(authContext);
   const [myOffers, setMyOffers] = useState([]);
 
   const getAlerts = async () => {
     if (auth.data.role_id === 1) {
       await GetAlerts(auth.data.id).then((res) => {
         setMyOffers(res.data);
-        setAlerts(res.data);
+        setNotification(res.data.length);
       });
     }
   };
-
-  /*   console.log("myOffers", myOffers); */
 
   const handleDelete = (id) => {
     DeleteAlert(id).then((res) => {
@@ -54,7 +52,10 @@ const DashboardNewOffers = ({ setAlerts }) => {
                   id={offer.offer_id}
                   setReload={setReload}
                 />
-                <button type ="submit" onClick={() => handleDelete(offer.alert_id)}>
+                <button
+                  type="submit"
+                  onClick={() => handleDelete(offer.alert_id)}
+                >
                   Marquer comme vu
                 </button>
               </div>

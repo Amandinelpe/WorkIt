@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     return data ? { data: JSON.parse(data) } : {};
   });
   const [user, setUser] = useState();
+  const [notification, setNotification] = useState();
 
   const login = (data) => {
     setAuth({ data });
@@ -45,7 +46,10 @@ const AuthProvider = ({ children }) => {
     }
   }, [auth]);
 
-  const value = useMemo(() => ({ auth, login, logout, user }), [auth]);
+  const value = useMemo(
+    () => ({ auth, login, logout, user, notification, setNotification }),
+    [auth, notification]
+  );
 
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };
