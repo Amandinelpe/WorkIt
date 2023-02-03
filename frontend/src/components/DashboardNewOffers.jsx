@@ -1,22 +1,26 @@
 import { React, useEffect, useState, useContext } from "react";
+import PropTypes from "prop-types";
 import { authContext } from "../context/AuthContext";
+import { GetAlerts } from "../apis/alertApi";
 import Offer from "./Offer";
 import OfferEmpty from "./OfferEmpty";
-import { GetCandidatedsByUser } from "../apis/candidatedApi";
 
-const DashboardNewOffers = () => {
-  const { auth } = useContext(authContext);
-  const [myApplications, setMyApplications] = useState([]);
+const DashboardNewOffers = ({ setAlerts }) => {
   const [reload, setReload] = useState(0);
+  const { auth } = useContext(authContext);
+  const [myOffers, setMyOffers] = useState([]);
 
-  const getAllApplicationsId = async () => {
-    await GetCandidatedsByUser(auth.data.id).then((res) =>
-      setMyApplications(res.data)
-    );
+  const getAlerts = async () => {
+    await GetAlerts(auth.data.id).then((res) => {
+      setMyOffers(res.data);
+      setAlerts(res.data);
+    });
   };
 
+  /*   console.log("myOffers", myOffers); */
+
   useEffect(() => {
-    getAllApplicationsId();
+    getAlerts();
   }, [reload]);
 
   return (
@@ -26,10 +30,10 @@ const DashboardNewOffers = () => {
           <h2 className="my_applications_title"> Mes nouvelles offres </h2>
         </div>
         <div className="my_applications_offers_body">
-          {myApplications.length === 0 ? (
+          {myOffers.length === 0 ? (
             <OfferEmpty />
           ) : (
-            myApplications.map((offer) => (
+            myOffers.map((offer) => (
               <Offer
                 date={offer.date}
                 firm={offer.name}
@@ -48,3 +52,7 @@ const DashboardNewOffers = () => {
 };
 
 export default DashboardNewOffers;
+
+DashboardNewOffers.propTypes = {
+  setAlerts: PropTypes.func.isRequired,
+};

@@ -551,3 +551,9 @@ INSERT INTO userAlert (user_id, job_id, city) VALUES(2, 1,"Bordeaux");
 INSERT INTO userAlert (user_id, job_id, city) VALUES(3, 1,"Bordeaux");
 
 INSERT INTO userAlert (user_id, job_id, city) VALUES(4, 1,"Bordeaux");
+
+INSERT INTO externatic.alert (user_id,offer_id) VALUES
+	 (1,23),
+	 (1,25),
+	 (1,45),
+	 (1,25);

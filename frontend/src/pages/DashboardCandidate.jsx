@@ -13,10 +13,13 @@ import DashboardNewOffers from "../components/DashboardNewOffers";
 
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
+  const [alerts, setAlerts] = useState([]);
 
   const handleContent = (ctn) => {
     setContent(ctn);
   };
+
+  /*   console.log(alerts, "alerts in dashboard candidate"); */
 
   const renderSwitch = () => {
     switch (content) {
@@ -33,7 +36,7 @@ const DashboardCandidate = () => {
       case "Mes coups de coeur":
         return <Dashboard />;
       default:
-        return <DashboardNewOffers />;
+        return <DashboardNewOffers setAlerts={setAlerts} alerts={alerts} />;
     }
   };
 

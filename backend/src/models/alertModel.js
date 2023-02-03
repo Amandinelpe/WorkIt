@@ -3,7 +3,7 @@ const db = require("../../config");
 const findAll = (id) => {
   return db
     .promise()
-    .query("SELECT alert_id, offer_id, title, firm_id, date, logo_url, firm_city  FROM alert JOIN offer ON alert.offer_id = offer.id JOIN firm ON offer.firm_id = firm.id WHERE alert.user_id = ?", [id])
+    .query("SELECT alert_id, offer_id, title, firm_id, date, logo_url, firm_city, name  FROM alert JOIN offer ON alert.offer_id = offer.id JOIN firm ON offer.firm_id = firm.id WHERE alert.user_id = ?", [id])
     .then(([alert]) => alert);
 };
 
