@@ -11,3 +11,7 @@ export const LaunchAlerts = (user_id, offer_id) => {
 export const GetAlerts = (id) => {
   return axios.get(apiUrl + "alert/" + id);
 };
+
+export const DeleteAlert = (id) => {
+  return axios.delete(apiUrl + "alert/" + id);
+};

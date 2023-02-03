@@ -19,10 +19,6 @@ const DashboardAlerts = () => {
             <div className="my_alerts_offers_body">
               <JobAlert />
             </div>
-            <button type="button" className="job_alerts_button">
-              {" "}
-              Voir plus d'alertes{" "}
-            </button>
           </div>
         </div>
       </div>

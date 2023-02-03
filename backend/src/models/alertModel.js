@@ -21,6 +21,13 @@ const create = (alert) => {
         .then((alert) => alert);
 };
 
+const deleteAlert = (id) => {
+    return db
+        .promise()
+        .query("DELETE FROM alert WHERE alert_id = ?", [id])
+        .then((alert) => alert);
+};
 
 
-module.exports = { findAll, findOne, create };
+
+module.exports = { findAll, findOne, create, deleteAlert };

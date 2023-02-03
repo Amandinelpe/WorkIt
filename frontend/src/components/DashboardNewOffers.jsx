@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { authContext } from "../context/AuthContext";
-import { GetAlerts } from "../apis/alertApi";
+import { GetAlerts, DeleteAlert } from "../apis/alertApi";
 import Offer from "./Offer";
 import OfferEmpty from "./OfferEmpty";
 
@@ -11,13 +11,23 @@ const DashboardNewOffers = ({ setAlerts }) => {
   const [myOffers, setMyOffers] = useState([]);
 
   const getAlerts = async () => {
-    await GetAlerts(auth.data.id).then((res) => {
-      setMyOffers(res.data);
-      setAlerts(res.data);
-    });
+    if (auth.data.role_id === 1) {
+      await GetAlerts(auth.data.id).then((res) => {
+        setMyOffers(res.data);
+        setAlerts(res.data);
+      });
+    }
   };
 
   /*   console.log("myOffers", myOffers); */
+
+  const handleDelete = (id) => {
+    DeleteAlert(id).then((res) => {
+      if (res.status === 200) {
+        getAlerts();
+      }
+    });
+  };
 
   useEffect(() => {
     getAlerts();
@@ -34,15 +44,20 @@ const DashboardNewOffers = ({ setAlerts }) => {
             <OfferEmpty />
           ) : (
             myOffers.map((offer) => (
-              <Offer
-                date={offer.date}
-                firm={offer.name}
-                title={offer.title}
-                logo={offer.logo_url}
-                city={offer.firm_city}
-                id={offer.id}
-                setReload={setReload}
-              />
+              <div>
+                <Offer
+                  date={offer.date}
+                  firm={offer.name}
+                  title={offer.title}
+                  logo={offer.logo_url}
+                  city={offer.firm_city}
+                  id={offer.offer_id}
+                  setReload={setReload}
+                />
+                <button type ="submit" onClick={() => handleDelete(offer.alert_id)}>
+                  Marquer comme vu
+                </button>
+              </div>
             ))
           )}
         </div>

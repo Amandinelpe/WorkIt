@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 import socketIO from "socket.io-client";
 import HelloButton from "./HelloButton";
 import { authContext } from "../context/AuthContext";
@@ -11,7 +12,7 @@ import {
 } from "../utils/navBarLinks";
 import "../styles/NavBar.css";
 
-const NavBar = () => {
+const NavBar = ({ alerts }) => {
   const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
   const { auth, logout } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
@@ -53,9 +54,17 @@ const NavBar = () => {
           </NavLink>
         ))}
         {auth.data && <HelloButton />}
+        {auth.data.role_id === 1 && alerts && (
+          <div style={{ color: "red" }}>{alerts.length}</div>
+        )}
       </ul>
     </div>
   );
 };
 
 export default NavBar;
+
+/* eslint react/forbid-prop-types: 0 */
+NavBar.propTypes = {
+  alerts: PropTypes.array,
+};

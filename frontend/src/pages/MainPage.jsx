@@ -18,6 +18,7 @@ const MainPage = () => {
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
   const [limit, setLimit] = useState(5);
+
   const handleLimit = () => {
     setLimit(limit + 5);
   };

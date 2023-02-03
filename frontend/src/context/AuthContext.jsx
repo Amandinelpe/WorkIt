@@ -10,7 +10,6 @@ const AuthProvider = ({ children }) => {
     const data = window.localStorage.getItem("user");
     return data ? { data: JSON.parse(data) } : {};
   });
-
   const [user, setUser] = useState();
 
   const login = (data) => {

@@ -1,17 +1,22 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
+import { authContext } from "../context/AuthContext";
 import "../styles/JobAlert.css";
-import { GetMyAlerts } from "../utils/getMyAlerts";
+import { GetMyUserAlerts } from "../apis/userAlertApi";
 import notificationAlert from "../assets/img/notification-alert.png";
 import modifyButton from "../assets/img/modify-button.png";
 import deleteButton from "../assets/img/delete-button.png";
 
 const JobAlert = () => {
   const [isAlert, setIsAlert] = useState(false);
+  const { auth } = useContext(authContext);
 
   const [alerts, setAlerts] = useState([]);
 
   const getAllMyAlerts = async () => {
-    setAlerts(await GetMyAlerts());
+    auth.data &&
+      (await GetMyUserAlerts(auth.data.id).then((res) => {
+        setAlerts(res.data);
+      }));
   };
 
   useEffect(() => {
@@ -35,10 +40,6 @@ const JobAlert = () => {
               {alert.contract_type}-{alert.job_id}
             </p>
             <p id="job_location">{alert.firm_city}</p>
-
-            <div className="border_button_offer">
-              <button type="submit">Voir l'offre</button>
-            </div>
             <div className="offer_block_options">
               <div className="modify_option">
                 <img src={modifyButton} alt="bouton modifier" />

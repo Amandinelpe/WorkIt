@@ -19,8 +19,6 @@ const DashboardCandidate = () => {
     setContent(ctn);
   };
 
-  /*   console.log(alerts, "alerts in dashboard candidate"); */
-
   const renderSwitch = () => {
     switch (content) {
       case "Mes informations personnelles":
@@ -47,7 +45,7 @@ const DashboardCandidate = () => {
       exit={{ x: -100, opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <NavBar />
+      <NavBar alerts={alerts} />
       <div className="mydashboard_candidate">
         <BoxCandidate handleContent={handleContent} />
         {renderSwitch()}
