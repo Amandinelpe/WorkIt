@@ -1,5 +1,7 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useContext } from "react";
 import { motion } from "framer-motion";
+import { authContext } from "../context/AuthContext";
+import { GetAlerts } from "../apis/alertApi";
 import OfferEmpty from "../components/OfferEmpty";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
@@ -18,6 +20,8 @@ const MainPage = () => {
   const [choosenDate, setChoosenDate] = useState("");
   const [salary, setSalary] = useState(0);
   const [limit, setLimit] = useState(5);
+  const { auth, setNotification } = useContext(authContext);
+
   const handleLimit = () => {
     setLimit(limit + 5);
   };
@@ -29,6 +33,19 @@ const MainPage = () => {
       }
     );
   };
+
+  const getAlerts = async () => {
+    if (auth.data.role_id === 1) {
+      await GetAlerts(auth.data.id).then((res) => {
+        setNotification(res.data.length);
+      });
+    }
+  };
+
+  useEffect(() => {
+    getAlerts();
+  }, []);
+
   useEffect(() => {
     filterOffers();
   }, [city, selectedJob, choosenDate, salary, limit]);

@@ -11,10 +11,9 @@ import {
 } from "../utils/navBarLinks";
 import "../styles/NavBar.css";
 
-
 const NavBar = () => {
   const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
-  const { auth, logout } = useContext(authContext);
+  const { auth, logout, notification } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
 
   const handleLogout = (id) => {
@@ -54,6 +53,9 @@ const NavBar = () => {
           </NavLink>
         ))}
         {auth.data && <HelloButton />}
+        {auth.data.role_id === 1 && (
+          <div style={{ color: "red" }}>{notification}</div>
+        )}
       </ul>
     </div>
   );

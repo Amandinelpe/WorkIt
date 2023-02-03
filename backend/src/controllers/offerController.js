@@ -101,7 +101,7 @@ const offerController = {
     const offer = req.body;
     offerModel
       .createOne(offer)
-      .then(() => res.status(200).send("Created"))
+      .then(([result]) => res.status(200).send(result))
       .catch((err) => next(err));
   },
   updateOffer: (req, res, next) => {
