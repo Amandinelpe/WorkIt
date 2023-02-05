@@ -5,7 +5,7 @@ const findAll = () => {
   return db
     .promise()
     .query(
-      `SELECT c.user_id, c.offer_id, u.firstname, u.lastname, o.title, a.name 
+      `SELECT c.user_id, c.offer_id, u.firstname, u.lastname, o.title, a.name, a.id AS state_id
         FROM candidated AS c 
         JOIN user AS u ON c.user_id = u.id 
         JOIN offer AS o ON c.offer_id = o.id 

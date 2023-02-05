@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Modal from "react-modal";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import {
   IntlProvider,
@@ -7,9 +8,10 @@ import {
 } from "@progress/kendo-react-intl";
 import frMessages from "../utils/fr.json";
 import { GetCandidated } from "../utils/getSpontaneousApplications";
-import SearchBar from "./SearchBar";
 import "../styles/GridContainer.css";
 import "../styles/KendoGrid.css";
+import "../styles/Candidature.css";
+import CandidatureFilter from "./CandidatureFilter";
 
 loadMessages(frMessages, "fr-FR");
 
@@ -18,49 +20,99 @@ const initialDataState = {
   take: 10,
 };
 
-const cellNomPrenom = (props) => {
-  return (
-    <td>
-      <span>
-        {props.dataItem.lastname} {props.dataItem.firstname}
-      </span>
-    </td>
-  );
-};
-
-const cellEtat = (props) => {
-  let className = "";
-
-  switch (props.dataItem.name) {
-    case "En cours de traitement":
-      className = "orange";
-      break;
-    case "Refusée":
-      className = "red";
-      break;
-    case "Acceptée":
-      className = "green";
-      break;
-    default:
-      break;
-  }
-  return (
-    <td>
-      <span className={className}>{props.dataItem.name}</span>
-    </td>
-  );
-};
-
 const Candidature = () => {
   const [page, setPage] = React.useState(initialDataState);
   const [candidatures, setCandidatures] = useState([]);
+  const [candidaturesToShow, setCandidaturesToShow] = useState(candidatures);
+  const [candidatureFilter, setCandidatureFilter] = useState({
+    state_id: 0,
+  });
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const handleStateClick = (estEnCoursDeTraitement) => {
+    if (estEnCoursDeTraitement) {
+      openModal();
+    }
+  };
+
+  const cellNomPrenom = (item) => {
+    return (
+      <td>
+        <span>
+          {item.dataItem.lastname} {item.dataItem.firstname}
+        </span>
+      </td>
+    );
+  };
+
+  const cellEtat = (item) => {
+    let className = "";
+    let estEnCoursDeTraitement = false;
+
+    switch (item.dataItem.name) {
+      case "En cours de traitement":
+        estEnCoursDeTraitement = true;
+        className = "orange";
+        break;
+      case "Refusée":
+        className = "red";
+        break;
+      case "Acceptée":
+        className = "green";
+        break;
+      default:
+        break;
+    }
+
+    return (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+      <td
+        onClick={() => handleStateClick(estEnCoursDeTraitement)}
+        className={estEnCoursDeTraitement ? "cursor" : ""}
+      >
+        <span className={className}>{item.dataItem.name}</span>
+      </td>
+    );
+  };
 
   const pageChange = (event) => {
     setPage(event.page);
   };
 
+  const filter = (candidaturesList, stateId) => {
+    if (stateId === 0) {
+      setCandidaturesToShow(candidaturesList);
+    } else {
+      setCandidaturesToShow(
+        candidaturesList.filter((candidature) => {
+          return candidature.state_id === stateId;
+        })
+      );
+    }
+  };
+
+  const onFilterChange = (e) => {
+    const { name, value } = e.target;
+    setCandidatureFilter({
+      ...candidatureFilter,
+      [name]: Number(value),
+    });
+
+    filter(candidatures, Number(value));
+  };
+
   const getCandidatures = async () => {
-    setCandidatures(await GetCandidated());
+    const candidated = await GetCandidated();
+    setCandidatures(candidated);
+    filter(candidated, candidatureFilter.state_id);
   };
 
   useEffect(() => {
@@ -68,16 +120,13 @@ const Candidature = () => {
   }, []);
 
   return (
-    <div className="container-body">
+    <div className="candidature container-body">
       <div className="container">
-        <div className="filter-box">{/** Filter box */}</div>
-        <div className="box_grid_consultant">
-          <h2>Candidatures</h2>
-          <div className="filtre_candidature">
-            <p>Candidatures acceptées</p>
-            <p>Candidatures en cours de traitement</p>
-            <p>Candidatures Refusées</p>
-          </div>
+        <div className="filter-box">
+          <CandidatureFilter
+            onFilterChange={onFilterChange}
+            candidatureFilter={candidatureFilter}
+          />
         </div>
         <div className="grid-container-box">
           <div className="grid-container-box-title">
@@ -95,10 +144,13 @@ const Candidature = () => {
               <IntlProvider locale="fr">
                 <Grid
                   className="grid"
-                  data={candidatures.slice(page.skip, page.take + page.skip)}
+                  data={candidaturesToShow.slice(
+                    page.skip,
+                    page.take + page.skip
+                  )}
                   skip={page.skip}
                   take={page.take}
-                  total={candidatures.length}
+                  total={candidaturesToShow.length}
                   pageable
                   onPageChange={pageChange}
                 >
@@ -131,6 +183,23 @@ const Candidature = () => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+        className="modal"
+        overlayClassName="overlay"
+      >
+        <div className="title">Veuillez saisir votre choix</div>
+        <div className="content">
+          <button type="button" className="button" onClick={closeModal}>
+            Accepter la candidature
+          </button>
+          <button type="button" className="button" onClick={closeModal}>
+            Refuser la candidature
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };
