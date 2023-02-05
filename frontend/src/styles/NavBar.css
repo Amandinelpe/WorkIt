@@ -24,7 +24,7 @@ a {
   box-shadow: 4px 4px hsla(235, 48%, 57%, 0.502);
   padding: 14px 46px;
   font-size: 1rem;
-   margin: 0 20px 0 5px;
+  margin: 0 20px 0 5px;
   font-family: var(--text-font-family-jost);
   width: 10vw;
   background-color: var(--white);
@@ -38,9 +38,9 @@ a {
   font-size: 1rem;
   padding: 14px 46px;
   margin: 0 20px 0 5px;
-  color: var(--purple-dark);
+  color: var(--white);
   list-style-type: none;
-  background-color: var(--white);
+  background-color: var(--purple-dark);
   opacity: 0.9;
   backdrop-filter: blur(20px);
   border-radius: 60px;

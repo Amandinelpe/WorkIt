@@ -9,7 +9,6 @@ export const GetAllCandidated = () => {
 };
 
 export const GetCandidatedByUserAndOffer = (user_id, offer_id) => {
-  console.log("user_id, offer_id", user_id, offer_id);
   return axios.get(
     apiUrl + "candidated/user/" + `?user_id=${user_id}&offer_id=${offer_id}`
   );

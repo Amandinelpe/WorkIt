@@ -9,6 +9,7 @@ import MyProfile from "../components/MyProfile";
 import Chat from "../components/Chat";
 import DashboardAlerts from "../components/DashboardAlerts";
 import "../styles/DashboardCandidate.css";
+import DashboardNewOffers from "../components/DashboardNewOffers";
 
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
@@ -25,10 +26,14 @@ const DashboardCandidate = () => {
         return <Chat />;
       case "Mes candidatures":
         return <DashboardApplications />;
-      case "Mes alertes":
+      case "Gérer mes alertes":
         return <DashboardAlerts />;
-      default:
+      case "Mes nouvelles offres":
+        return <DashboardNewOffers />;
+      case "Mes coups de coeur":
         return <Dashboard />;
+      default:
+        return <DashboardNewOffers />;
     }
   };
 
