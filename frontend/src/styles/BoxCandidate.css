@@ -15,8 +15,6 @@
 }
 
 .box_candidate_title {
-  font-family: var(--text-font-family-jost);
-  font-size: 0.9rem;
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
@@ -26,10 +24,8 @@
 }
 
 .box_candidate_body ul {
-  font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
-  font-size: 0.8rem;
   height: 9vw;
   padding: 3vh;
   display: flex;
@@ -46,7 +42,6 @@
 
 .box_candidate_body ul li {
   margin-top: 1vh;
-  font-size: 0.9rem;
 }
 
 .box_candidate_body ul:hover,

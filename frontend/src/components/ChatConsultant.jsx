@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
 import socketIO from "socket.io-client";
 import React from "react";
-import ChatBody from "./ChatBody";
+import ChatBodyConsultant from "./ChatBodyConsultant";
+import ChatBarConsultant from "./ChatBarConsultant";
 import "../styles/Chat.css";
 
 const ChatConsultant = () => {
@@ -13,14 +13,13 @@ const ChatConsultant = () => {
           <h2 className="my_inbox_title">Ma messagerie</h2>
         </div>
         <div className="chatBox">
-          <ChatBody socket={socket} />
+          <ChatBarConsultant socket={socket} />
+          <div className="chatMain">
+            <ChatBodyConsultant socket={socket} />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 export default ChatConsultant;
-ChatConsultant.propTypes = {
-  // eslint-disable-next-line react/no-unused-prop-types
-  socket: PropTypes.objectOf.isRequired,
-};

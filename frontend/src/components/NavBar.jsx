@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import socketIO from "socket.io-client";
 import HelloButton from "./HelloButton";
 import { authContext } from "../context/AuthContext";
 import {
@@ -12,7 +11,6 @@ import {
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
   const { auth, logout, notification } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
 
