@@ -64,13 +64,13 @@ const CreateFirmForm = () => {
   return (
     <div>
       <NavBar />
-      <div className="firm_form_dashboard">
+      <div className="firm__form__dashboard">
         <div className="box_firm_body_title">
-          <h2>Fiche entreprise</h2>
+          <h2>Création fiche entreprise</h2>
         </div>
-        <div className="box_firm_body">
-          <form className="fiche_consultant_form" onSubmit={postFirm}>
-            <h1>Informations sur l'entreprise</h1>
+        <div className="box__firm__body">
+          <form className="box__firm__input" onSubmit={postFirm}>
+            <h1>Informations de la nouvelle entreprise entrante</h1>
             <div className="informations-entreprise-block">
               <div className="informations-entreprises-inputs">
                 {firmForm.map((data) => (
