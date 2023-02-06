@@ -49,14 +49,10 @@ const DashboardNewOffers = () => {
                   logo={offer.logo_url}
                   city={offer.firm_city}
                   id={offer.offer_id}
+                  alert={offer.alert_id}
                   setReload={setReload}
+                  handleDelete={handleDelete}
                 />
-                <button
-                  type="submit"
-                  onClick={() => handleDelete(offer.alert_id)}
-                >
-                  Marquer comme vu
-                </button>
               </div>
             ))
           )}

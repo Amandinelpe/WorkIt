@@ -8,7 +8,6 @@ const Offer = ({ firm, date, title, logo, city, id, setReload, reload }) => {
   const [show, setShow] = useState(false);
 
   const formatedDate = new Date(date).toLocaleDateString();
-
   return (
     <div className="bloc_offer">
       <div className="offer_block_job">
@@ -28,6 +27,7 @@ const Offer = ({ firm, date, title, logo, city, id, setReload, reload }) => {
         />
         <OfferDetail
           show={show}
+          alert={alert}
           onClose={() => {
             setShow(false);
             setReload(reload + 1);

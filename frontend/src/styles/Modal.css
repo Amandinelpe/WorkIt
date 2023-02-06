@@ -18,15 +18,16 @@
   right: 2vw;
   margin-left: auto;
   margin-right: auto;
-  width: 85vw;
+  width: 60vw;
   height: 85%;
-  background-color: #fff;
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 2vw;
   padding-bottom: 0;
   animation: 1s rotateOnOpen;
+  border-radius: 20px;
 }
 
 @keyframes rotateOnOpen {
@@ -48,17 +49,34 @@
 
 .header-img {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   padding-bottom: 1.5vw;
 }
 
-.header-button {
-  width: 4%;
+.offer_detail_image {
+  height: 6vh;
+}
+
+.offer_close_button {
+  height: 6vh;
   cursor: pointer;
   padding: 0.5vw;
   border-radius: 30%;
 }
-.header-button:hover {
+
+.offer_header_block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.offer_favourite_button {
+  height: 6vh;
+  cursor: pointer;
+  padding: 0.5vw;
+}
+.offer_favourite_button:hover {
   transform: scale(1.5);
 }
 
@@ -67,6 +85,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 0vh 2vw;
 }
 
 .modal-body::-webkit-scrollbar {
@@ -76,11 +95,15 @@
 .modal-footer {
   border-bottom: 1px solid #ccc;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  padding-top: 1vw;
+  padding-bottom: 2vh;
+  margin-bottom: 2vh;
 }
 
-.postule-button {
+.modal-footer button {
   border-radius: 20px;
   border: none;
   box-shadow: 3px 3px rgb(147 169 235 / 50%);
@@ -89,32 +112,26 @@
   background-color: var(--white);
   color: var(--purple-dark);
   cursor: pointer;
-  margin-top: 2vw;
-  margin-bottom: 2vh;
+  margin-right: 2vw;
 }
-.postule-button:hover {
+.modal-footer button:hover {
   box-shadow: 4px 4px 2px 1px var(--orange);
   transform: scale(1.1);
 }
 .modal-title {
   margin-bottom: 1vw;
-
   color: var(--purple-dark);
 }
 
 .modal-subtitle {
   font-weight: bold;
   color: var(--purple-light);
-  margin-bottom: 2vw;
+  margin: 3vh 2vw 1vh 0;
 }
 .modal-text {
-  color: var(--purple-dark);
-  margin-bottom: 3vw;
   text-align: justify;
 }
 .modal-text-uppercase {
-  color: var(--purple-dark);
-  margin-bottom: 3vw;
   text-align: justify;
   font-weight: bold;
   text-transform: uppercase;

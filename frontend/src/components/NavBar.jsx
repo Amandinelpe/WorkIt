@@ -8,17 +8,12 @@ import {
   navBarConsultants,
   navBarSignIn,
 } from "../utils/navBarLinks";
+import cloche from "../assets/img/notification-alert.png";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const { auth, logout, notification } = useContext(authContext);
+  const { auth, notification } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
-
-  const handleLogout = (id) => {
-    if (id === 3) {
-      logout();
-    }
-  };
 
   useEffect(() => {
     if (auth.data) {
@@ -41,17 +36,17 @@ const NavBar = () => {
     <div className="navbar">
       <ul>
         {navBar.map((section) => (
-          <NavLink
-            to={section.link}
-            className="items"
-            key={section.id}
-            onClick={() => handleLogout(section.id)}
-          >
+          <NavLink to={section.link} className="items" key={section.id}>
             {section.name}
           </NavLink>
         ))}
+        {auth.data && auth.data.role_id === 1 ? (
+          <div className="notifications">
+            <img src={cloche} alt="cloche" className="cloche_alerte" />
+            {auth.data && <div className="number_alerte">{notification}</div>}
+          </div>
+        ) : null}
         {auth.data && <HelloButton />}
-        {auth.data && <div style={{ color: "red" }}>{notification}</div>}
       </ul>
     </div>
   );
