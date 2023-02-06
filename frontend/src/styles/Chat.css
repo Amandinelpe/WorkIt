@@ -1,27 +1,27 @@
 .my_inbox_box_container {
   margin: 10vh 10vh 10vh 0;
-    width: 60vw;
-    display: flex;
-    flex-direction: column;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
 }
 
 .my_inbox_titleblock {
   color: var(--white);
-    background-color: var(--purple-light);
-    box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
-    height: 12vh;
-    border-radius: 50px 50px 0 0;
+  background-color: var(--purple-light);
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  height: 12vh;
+  border-radius: 50px 50px 0 0;
 }
 
 .my_inbox_body {
   padding: 4vh 2vw 2vh 2vw;
-    background-color: #FFFDFE;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  background-color: #fffdfe;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
 .my_inbox_titleblock {
- color: var(--white);
+  color: var(--white);
   background-color: var(--purple-light);
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
   height: 12vh;

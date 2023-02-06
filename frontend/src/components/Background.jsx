@@ -7,7 +7,7 @@ const Background = () => {
   return (
     <div
       className={
-        auth.data && auth.data.role_id == 2
+        auth.data && auth.data.role_id === 2
           ? "site_background"
           : "site_background_normal"
       }
