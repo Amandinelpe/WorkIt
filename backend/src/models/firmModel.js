@@ -30,4 +30,25 @@ const createFirm = (firm) => {
     .then(([reponse]) => reponse);
 };
 
-module.exports = { findAll, findOne, findOfferByFirm, createFirm };
+const deleteFirm = (id) => {
+  return db
+    .promise()
+    .query("DELETE from firm WHERE id = ?", [id])
+    .then((res) => res);
+};
+
+const updateFirm = (firm, id) => {
+  return db
+    .promise()
+    .query("UPDATE firm SET ? WHERE id = ?", [firm, Number(id)])
+    .then((res) => res);
+};
+
+module.exports = {
+  findAll,
+  findOne,
+  findOfferByFirm,
+  createFirm,
+  deleteFirm,
+  updateFirm,
+};
