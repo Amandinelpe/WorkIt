@@ -1,51 +1,35 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState, useRef } from "react";
-import "../styles/ChatFooter.css";
+import React, { useState, useContext } from "react";
+import { authContext } from "../context/AuthContext";
+import "../styles/Chat.css";
 
-const ChatFooterConsultant = ({ socket, setTypingMessage }) => {
+const ChatFooterConsultant = ({ socket }) => {
   const [message, setMessage] = useState("");
-  const isTyping = useRef(null);
+  const { auth } = useContext(authContext);
 
   const handleSendMessage = (e) => {
     e.preventDefault();
     socket.emit("sendMessage", {
+      image: auth.data.image,
+      userName: auth.data.lastname,
       socketID: socket.id,
       message,
     });
     setMessage("");
   };
-
-  let timeOut;
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      clearTimeout(timeOut);
-      handleSendMessage(e);
-      socket.emit("typing", { typing: false });
-      isTyping.current.style.display = "none";
-    } else {
-      socket.emit("typing", { typing: true });
-      clearTimeout(timeOut);
-      isTyping.current.style.display = "block";
-      isTyping.current.style.fontSize = "14px";
-      isTyping.current.style.color = "grey";
-      isTyping.current.style.marginLeft = "3vw";
-      timeOut = setTimeout(() => {
-        socket.emit("typing", { typing: false });
-        isTyping.current.style.display = "none";
-      }, 4000);
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      socket.emit("sendMessage", {
+        userName: auth.data.lastname,
+        socketID: socket.id,
+        message,
+      });
+      setMessage("");
     }
   };
-
-  useEffect(() => {
-    socket.on("isTyping", (data) => {
-      setTypingMessage(data);
-    });
-  }, [socket]);
-
   return (
     <div className="chat__footer">
-      <div ref={isTyping}>est en train d'écrire...</div>
       <input
         type="text"
         placeholder="Ecrire un message"
@@ -60,13 +44,11 @@ const ChatFooterConsultant = ({ socket, setTypingMessage }) => {
     </div>
   );
 };
-
 ChatFooterConsultant.propTypes = {
   socket: PropTypes.shape({
     on: PropTypes.func,
     emit: PropTypes.func,
     id: PropTypes.string,
   }).isRequired,
-  setTypingMessage: PropTypes.func.isRequired,
 };
 export default ChatFooterConsultant;

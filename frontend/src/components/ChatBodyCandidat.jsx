@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import ChatFooter from "./ChatFooter";
-import "../styles/ChatBody.css";
+import ChatFooter from "./ChatFooterCandidat";
+import "../styles/Chat.css";
 
 const ChatBody = ({ socket }) => {
   const [chatMessages, setChatMessages] = useState([]);

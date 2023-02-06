@@ -62,7 +62,7 @@ const findAllOffersByFirm = (id) => {
   return db
     .promise()
     .query(
-      "SELECT offer.id, firm.name, offer.title, offer.date, offer.firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id WHERE firm.id = ?",
+      "SELECT offer.id, firm.name, offer.title, offer.date, offer.firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id WHERE firm.id = ? ORDER BY offer.date DESC",
       [id]
     );
 };
@@ -76,7 +76,7 @@ const createOne = (offer) => {
   return db
     .promise()
     .query("INSERT INTO offer SET ?", [offer])
-    .then((res) => res);
+    .then((result) => result);
 };
 
 const updateOne = (offer, id) => {

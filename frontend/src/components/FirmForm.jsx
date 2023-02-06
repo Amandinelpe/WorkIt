@@ -46,8 +46,8 @@ const FirmForm = () => {
           <div className="informations-entreprise">
             <div className="first_line_details">
               <div className="entreprise_name">
+                Nom de l'entreprise
                 <label>
-                  Nom de l'entreprise
                   <input
                     type="text"
                     name="entreprise"
@@ -57,8 +57,8 @@ const FirmForm = () => {
                 </label>
               </div>
               <div className="consultant_firm">
+                Consultant.e attitré.e
                 <label>
-                  Consultant.e attitré.e
                   <input
                     type="text"
                     name="consultant"
@@ -78,8 +78,8 @@ const FirmForm = () => {
           </div>
           <div className="second_line_details">
             <div className="account_state">
+              Etat compte
               <form>
-                Etat compte
                 {dataFirmStatus.radioButtons.account_state.map((state) => (
                   <div key={state}>
                     <input
@@ -96,8 +96,8 @@ const FirmForm = () => {
               </form>
             </div>
             <div className="Id_firm">
+              Id client
               <label>
-                Id client
                 <input
                   type="text"
                   name="firm_id"

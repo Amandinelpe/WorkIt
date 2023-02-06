@@ -9,7 +9,6 @@ const ForgottenPassword = () => {
   const tempoSendEmail = () => {
     resetPassword(email)
       .then((response) => {
-        console.warn(response.data);
         setMessage({ ...response.data });
         setTimeout(() => {
           window.location.replace(response.data.preview);

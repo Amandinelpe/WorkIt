@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import socketIO from "socket.io-client";
-import ChatBody from "./ChatBody";
+import ChatBody from "./ChatBodyCandidat";
 import "../styles/MessagerieCandidat.css";
 
 const MessagerieCandidat = () => {

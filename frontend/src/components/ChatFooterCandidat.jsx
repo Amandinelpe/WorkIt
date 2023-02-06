@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useRef } from "react";
-import "../styles/ChatFooter.css";
 
-const ChatFooter = ({ socket, setTypingMessage }) => {
+const ChatFooterCandidat = ({ socket, setTypingMessage }) => {
   const [message, setMessage] = useState("");
   const isTyping = useRef(null);
 
@@ -45,7 +44,6 @@ const ChatFooter = ({ socket, setTypingMessage }) => {
 
   return (
     <div className="chat__footer">
-      <div ref={isTyping}>est en train d'écrire...</div>
       <input
         type="text"
         placeholder="Ecrire un message"
@@ -61,7 +59,7 @@ const ChatFooter = ({ socket, setTypingMessage }) => {
   );
 };
 
-ChatFooter.propTypes = {
+ChatFooterCandidat.propTypes = {
   socket: PropTypes.shape({
     on: PropTypes.func,
     emit: PropTypes.func,
@@ -69,4 +67,4 @@ ChatFooter.propTypes = {
   }).isRequired,
   setTypingMessage: PropTypes.func.isRequired,
 };
-export default ChatFooter;
+export default ChatFooterCandidat;

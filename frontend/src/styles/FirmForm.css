@@ -8,7 +8,6 @@
   margin-bottom: 10vh;
   margin-left: 10vh;
   margin-right: 10vh;
-  font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
 }
@@ -22,8 +21,6 @@
 }
 
 .box_firm_body_title {
-  font-family: var(--text-font-family-jost);
-  font-size: 0.9rem;
   padding: 4vh 7vh;
   width: 55vw;
   border-radius: 50px 50px 0 0;
@@ -33,15 +30,12 @@
 }
 
 .box_firm_body {
-  padding: 4vh 2vw 2vh 2vw;
   border-radius: 0 0 20px 20px;
   width: 55vw;
   display: flex;
   flex-direction: column;
-  font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
-  font-size: 0.8rem;
   padding: 4vh 6vw;
   border-radius: 0 0 50px 50px;
   background-color: #fffdfe;
@@ -58,15 +52,20 @@
   padding: 8px;
   outline: none;
   color: #4e55ad;
-  font-size: 0.9em;
 }
 
 .box_firm_body .small-input {
   width: 12vw;
+  border-radius: 18px;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 .box_firm_body .very-small-input {
   width: 2vw;
+  border-radius: 15px;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 
 .logo_firm_block img {
@@ -76,7 +75,6 @@
 
 .box_firm_body label,
 .box_firm_body .label {
-  font-size: 1.2em;
 }
 
 .first_line_details {
@@ -96,11 +94,11 @@
 }
 
 .first_line_details .very-small-input {
-  margin-left: 0.5vw;
+  border-radius: 15px;
 }
 
 .first_line_details .small-input {
-  margin-left: 0.5vw;
+  border-radius: 18px;
 }
 
 .second_line_details {

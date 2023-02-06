@@ -14,8 +14,6 @@
 
 .date_title {
   color: var(--white);
-  font-family: var(--text-font-family-jost);
-  font-size: 1rem;
   font-weight: lighter;
 }
 
@@ -27,9 +25,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0 0 20px 20px;
+  border-radius: 10px 10px 20px 20px;
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
-  color: var(--purple-light);
+  color: var(--purple-dark);
 }
 
 .input_date {
