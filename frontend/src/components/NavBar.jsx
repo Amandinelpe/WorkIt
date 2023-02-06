@@ -36,19 +36,16 @@ const NavBar = () => {
     <div className="navbar">
       <ul>
         {navBar.map((section) => (
-          <NavLink
-            to={section.link}
-            className="items"
-            key={section.id}
-          >
+          <NavLink to={section.link} className="items" key={section.id}>
             {section.name}
           </NavLink>
         ))}
-        <div className="notifications">
-          <img src={cloche} alt="cloche" className="cloche_alerte" />
-          {auth.data && <div className="number_alerte">{notification}</div>}
-        </div>
-
+        {auth.data && auth.data.role_id === 1 ? (
+          <div className="notifications">
+            <img src={cloche} alt="cloche" className="cloche_alerte" />
+            {auth.data && <div className="number_alerte">{notification}</div>}
+          </div>
+        ) : null}
         {auth.data && <HelloButton />}
       </ul>
     </div>
