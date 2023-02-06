@@ -1,21 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "../styles/RadioButton.css";
 
 const RadioButton = (props) => {
   const { labelName, inputName, inputValue, checked, onChange } = props;
 
   return (
-    <label className="radio-button-container">
-      <p>{labelName}</p>
+    <div className="radio-button-container">
+      <label htmlFor={inputName} className="radio-button-label">
+        {labelName}{" "}
+      </label>
       <input
         type="radio"
         name={inputName}
+        id={inputName}
         value={inputValue}
         defaultChecked={checked}
         onChange={onChange}
       />
       <span className="checkmark" />
-    </label>
+    </div>
   );
 };
 

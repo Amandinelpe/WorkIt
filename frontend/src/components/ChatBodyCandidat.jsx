@@ -33,7 +33,7 @@ const ChatBody = ({ socket }) => {
           )
         )}
       </div>
-      <div className="chat_footer_body">
+      <div className="chat_footer">
         <ChatFooter
           socket={socket}
           setTypingMessage={setTypingMessage}

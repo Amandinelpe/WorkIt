@@ -1,6 +1,7 @@
 .my_profile {
   margin: 10vh 10vh 10vh 0;
-  width: 60vw;
+  width: 65vw;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
@@ -16,12 +17,13 @@
   padding: 5vh 6vh;
 }
 .my_profile_body {
-  padding: 4vh 2vw 2vh 6vw;
+  padding: 4vh 3vw 4vh 3vw;
+  height: auto;
   background-color: #fffdfe;
   border-radius: 0 0 20px 20px;
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
-.my_profile_body h4 {
+.my_profile_body h3 {
   color: var(--purple-dark);
   margin-bottom: 2vh;
 }
@@ -38,12 +40,13 @@
   flex-direction: column;
   gap: 1vh;
 }
-.my_profile_input_block label {
+.my_profile_input_block label,
+.my_profile_label {
   color: var(--purple-light);
   font-size: 1.2vw;
 }
 .my_profile_small_input {
-  width: 13vw;
+  width: 15vw;
   background-color: var(--white);
   height: 4.5vh;
   outline: none;
@@ -53,14 +56,16 @@
   color: var(--purple-dark);
 }
 .my_profile_large_input {
-  width: 15vw;
-  background-color: var(--white);
-  height: 4.5vh;
+  width: 26vw;
   outline: none;
-  border: var(--purple-dark) 1px solid;
+  border-bottom: var(--purple-dark) 1px solid;
   padding: 1vh 0.5vw;
-  border-radius: 15px;
   color: var(--purple-dark);
+}
+
+.my_profile_radio_buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 .my_profile_drop_cv {
@@ -89,7 +94,56 @@
 .my_profile_drop_cv input {
   display: none;
 }
-.my_profyle_fileName{
+.my_profyle_fileName {
   padding-top: 1.5vh;
   color: var(--purple-dark);
+}
+
+.my_profile_current_situation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2vw;
+  margin-top: 3vh;
+}
+
+.my_profile_current_situation_two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8vw;
+  margin-top: 3vh;
+  width: 60%;
+}
+
+.my_profile_current_situation input,
+.my_profile_current_situation label {
+  margin-top: 2vh;
+}
+
+.my_profile_current_situation_two input,
+.my_profile_current_situation_two label {
+  margin-top: 2vh;
+}
+
+.my_profile_btn_enregistrer {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 3px 3px rgb(147 169 235 / 50%);
+  padding: 0.5rem;
+  width: 15vw;
+  background-color: var(--purple-light);
+  color: var(--white);
+  cursor: pointer;
+  margin-right: 2vw;
+  margin-top: 5vh;
+}
+.my_profile_btn_enregistrer:hover {
+  box-shadow: 4px 4px 2px 1px var(--orange);
+  transform: scale(1.1);
+}
+
+.my_profile_actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -64,82 +64,83 @@ const MyProfile = () => {
         <div className="my_profile_title">
           <h3>Mon Profil</h3>
         </div>
-        <div className="my_profile_body">
-          <div>
-            <h4>Mes informations personnelles</h4>
-            <div className="my_profile_informations_personnelles">
-              <div className="my_profile_input_block">
-                <label htmlFor="firstname">Prénom</label>
-                <input
-                  type="text"
-                  id="firstname"
-                  name="firstname"
-                  className="my_profile_small_input"
-                  value={user.firstname}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="my_profile_input_block">
-                <label htmlFor="lastname">Nom</label>
-                <input
-                  type="text"
-                  id="lastname"
-                  name="lastname"
-                  className="my_profile_small_input"
-                  value={user.lastname}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="my_profile_input_block">
-                <label htmlFor="email">Email</label>
-                <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  className="my_profile_small_input"
-                  value={user.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="my_profile_input_block">
-                <label htmlFor="city">Localisation</label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  className="my_profile_small_input"
-                  value={user.city}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="my_profile_drop_cv">
-                <div>
+        <form>
+          <div className="my_profile_body">
+            <div>
+              <h3>Mes informations personnelles</h3>
+              <div className="my_profile_informations_personnelles">
+                <div className="my_profile_input_block">
+                  <label htmlFor="firstname">Prénom</label>
                   <input
-                    type="file"
-                    id="file"
-                    name="file"
-                    className="my_profile_inputfile"
-                    accept="application/pdf"
-                    onChange={handleCV}
+                    type="text"
+                    id="firstname"
+                    name="firstname"
+                    className="my_profile_small_input"
+                    value={user.firstname}
+                    onChange={handleChange}
                   />
-                  <label htmlFor="file">Je dépose mon CV</label>
+                </div>
+                <div className="my_profile_input_block">
+                  <label htmlFor="lastname">Nom</label>
+                  <input
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    className="my_profile_small_input"
+                    value={user.lastname}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="my_profile_input_block">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    className="my_profile_small_input"
+                    value={user.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="my_profile_input_block">
+                  <label htmlFor="city">Localisation</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    className="my_profile_small_input"
+                    value={user.city}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="my_profile_drop_cv">
+                  <div>
+                    <input
+                      type="file"
+                      id="file"
+                      name="file"
+                      className="my_profile_inputfile"
+                      accept="application/pdf"
+                      onChange={handleCV}
+                    />
+                    <label htmlFor="file">Je dépose mon CV</label>
+                  </div>
+                </div>
+                <div className="my_profyle_fileName">
+                  {user.fileName && <p>{user.fileName}</p>}
                 </div>
               </div>
-              <div className="my_profyle_fileName">
-                {user.fileName && <p>{user.fileName}</p>}
-              </div>
             </div>
-          </div>
-          <div>
-            <h4>Ma situation actuelle </h4>
-            <div className="">
-              <div className="">
+            <div>
+              <h3>Ma situation actuelle </h3>
+              <div className="my_profile_current_situation">
                 <div className="my_profile_input_block">
                   <label htmlFor="job_id">Poste recherché </label>
                   <select
                     value={user.job_id}
                     name="job_id"
                     id="job_id"
+                    className="my_profile_large_input"
                     onChange={handleChange}
                   >
                     {jobs.map((job) => (
@@ -149,9 +150,37 @@ const MyProfile = () => {
                     ))}
                   </select>
                 </div>
+                <div className="my_profile_input_block">
+                  <label htmlFor="actual_job">Poste actuel</label>
+                  <input
+                    type="text"
+                    id="actual_job"
+                    name="actual_job"
+                    className="my_profile_small_input"
+                    value={user.actual_job}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <p className="my_profile_label">Niveau d'expérience</p>
+                  <div className="my_profile_radio_buttons">
+                    {experiences.map((item) => {
+                      return (
+                        <RadioButton
+                          key={item.id}
+                          labelName={item.experience}
+                          inputName="experience_id"
+                          inputValue={item.id}
+                          checked={item.experience_id === item.id}
+                          onChange={handleChange}
+                        />
+                      );
+                    })}
+                  </div>{" "}
+                </div>
                 <div>
                   <p className="my_profile_label">Disponibilité</p>
-                  <div className="">
+                  <div className="my_profile_radio_buttons">
                     {dataMyProfile.radioButtons.disponibility.map((item) => (
                       <RadioButton
                         key={item.id}
@@ -161,7 +190,9 @@ const MyProfile = () => {
                       />
                     ))}
                   </div>
-                </div>
+                </div>{" "}
+              </div>
+              <div className="my_profile_current_situation_two">
                 <div className="my_profile_input_block">
                   <label htmlFor="diploma">Niveau d'études</label>
                   <input
@@ -184,11 +215,34 @@ const MyProfile = () => {
                     onChange={handleChange}
                   />
                 </div>
+                <div className="my_profile_input_block">
+                  <label htmlFor="salary">Salaire (annuel brut)</label>
+                  <input
+                    type="number"
+                    name="salary"
+                    id="salary"
+                    className="my_profile_small_input"
+                    value={user.salary}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <div className="my_profile_input_block">
+                  <label htmlFor="github">Mon GitHub</label>
+                  <input
+                    type="text"
+                    name="github"
+                    id="github"
+                    className="my_profile_small_input"
+                    value={user.github}
+                    onChange={handleChange}
+                  />
+                </div>
                 <div>
                   <p className="my_profile_label">
                     Reconnu travailleur handicapé
                   </p>
-                  <div className="">
+                  <div className="my_profile_radio_buttons">
                     {dataMyProfile.radioButtons.recognizedDisabledWorker.map(
                       (item) => (
                         <RadioButton
@@ -202,71 +256,19 @@ const MyProfile = () => {
                   </div>
                 </div>
               </div>
-              <div className="">
-                <div className="my_profile_input_block">
-                  <label htmlFor="actual_job">Situation actuelle</label>
-                  <input
-                    type="text"
-                    id="actual_job"
-                    name="actual_job"
-                    className="my_profile_large_input"
-                    value={user.actual_job}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <p className="label">Niveau d'expérience</p>
-                  <div className="">
-                    {experiences.map((item) => {
-                      return (
-                        <RadioButton
-                          key={item.id}
-                          labelName={item.experience}
-                          inputName="experience_id"
-                          inputValue={item.id}
-                          checked={item.experience_id === item.id}
-                          onChange={handleChange}
-                        />
-                      );
-                    })}
-                  </div>
-                </div>
-                <div className="my_profile_input_block">
-                  <label htmlFor="salary">Salaire (annuel brut)</label>
-                  <input
-                    type="number"
-                    name="salary"
-                    id="salary"
-                    className="my_profile_small_input"
-                    value={user.salary}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="my_profile_input_block">
-                  <label htmlFor="github">Mon GitHub</label>
-                  <input
-                    type="text"
-                    name="github"
-                    id="github"
-                    className="my_profile_small_input"
-                    value={user.github}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
+            </div>
+            <div className="my_profile_actions">
+              <button
+                type="submit"
+                className="my_profile_btn_enregistrer"
+                onClick={updateUser}
+              >
+                Enregistrer
+              </button>
+              {message && <p>{message}</p>}
             </div>
           </div>
-          <div className="actions">
-            <button
-              type="submit"
-              className="btn-enregistrer"
-              onClick={updateUser}
-            >
-              Enregistrer
-            </button>
-            {message && <p>{message}</p>}
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   );

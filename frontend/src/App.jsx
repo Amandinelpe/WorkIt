@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
-import { authContext } from "./context/AuthContext";
 import { AnimatePresence } from "framer-motion";
+import { authContext } from "./context/AuthContext";
 import Home from "./pages/Home";
 import MainPage from "./pages/MainPage";
 import CreateProfile from "./pages/CreateProfile";
@@ -79,7 +79,7 @@ const App = () => {
       </AnimatePresence>
       <Background />
       <Link to="/Main">
-        {auth.data && auth.data.role_id == 2 ? (
+        {auth.data && auth.data.role_id === 2 ? (
           <img className="logo_workit" src={LOGOWHITE} alt="logo" />
         ) : (
           <img className="logo_workit" src={LOGO} alt="logo" />
