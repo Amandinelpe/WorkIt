@@ -38,7 +38,8 @@
   flex-direction: column;
   gap: 1vh;
 }
-.my_profile_input_block label, .my_profile_label {
+.my_profile_input_block label,
+.my_profile_label {
   color: var(--purple-light);
   font-size: 1.2vw;
 }
@@ -60,7 +61,7 @@
   color: var(--purple-dark);
 }
 
-.my_profile_radio_buttons{
+.my_profile_radio_buttons {
   display: flex;
   flex-direction: row;
 }
