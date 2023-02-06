@@ -66,7 +66,6 @@ CREATE TABLE `consultant` (
 CREATE TABLE `firm` (
     `id` int AUTO_INCREMENT NOT NULL ,
     `email` VARCHAR(100)  NOT NULL ,
-    `password` VARCHAR(100)  NULL ,
     `name` VARCHAR(50)  NOT NULL ,
     `contact_phone` VARCHAR(100)  NOT NULL ,
     `city` VARCHAR(100)  NULL ,
@@ -199,6 +198,27 @@ CREATE TABLE `candidated` (
     )
 );
 
+CREATE TABLE `userAlert` (
+	`userAlert_id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`job_id` int NOT NULL,
+    `city` VARCHAR(100)  NOT NULL ,
+	PRIMARY KEY (
+        `userAlert_id`
+    )
+);
+
+CREATE TABLE `alert` (
+	`alert_id` INT auto_increment NOT NULL,
+	`user_id` int NOT NULL,
+	`offer_id` int NOT NULL,
+	PRIMARY KEY (
+        `alert_id`
+    )
+);
+
+
+
 
 ALTER TABLE `user` ADD CONSTRAINT `fk_user_role_id` FOREIGN KEY(`role_id`)
 REFERENCES `role` (`id`);
@@ -253,6 +273,16 @@ REFERENCES `user` (`id`);
 ALTER TABLE `candidated` ADD CONSTRAINT `fk_candidated_application_state_id` FOREIGN KEY(`application_state_id`)
 REFERENCES `application_state` (`id`);
 
+ALTER TABLE `userAlert` ADD CONSTRAINT `fk_userAlert_job_id` FOREIGN KEY(`job_id`)
+REFERENCES `job` (`id`) ;
+ALTER TABLE `userAlert` ADD CONSTRAINT `fk_userAlert_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`);
+
+ALTER TABLE `alert` ADD CONSTRAINT `fk_alert_offer_id` FOREIGN KEY(`offer_id`)
+REFERENCES `offer` (`id`);
+
+ALTER TABLE `alert` ADD CONSTRAINT `fk_alert_user_id` FOREIGN KEY(`user_id`)
+REFERENCES `user` (`id`); 
 
 
 INSERT INTO role (status) VALUES('user');
@@ -324,22 +354,22 @@ INSERT INTO consultant (role_id,firstname,lastname,phone,city,email,password,lin
      (2,'Amandine','Leporace','0768076995','Bordeaux','leporace.amandine@gmail.com','$argon2id$v=19$m=16,t=2,p=1$ZWd3QjVPSmpUWFdyWDV1Vg$69CKCWqeR7Jo6OZxzVbGWA','https://www.linkedin.com/in/amandine-leporace-aa023222a/');
 
 
-     INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
-VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
-('contact@cdiscount.com', 'password', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
-('contact@kwantic.com', 'password', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3),
-('contact@fictivtech.com', 'password', 'FictivTech', '05 40 20 10 30', 'Toulouse', 31000, 'France', '50 Avenue des Minimes', 'IT', 'https://i.imgur.com/ad10O6I.png', 4),
-('contact@virtuosoft.com', 'password', 'Virtuosoft', '05 67 89 12 34', 'Pau', 64000, 'France', '12 Rue de la Paix', 'IT', 'https://i.imgur.com/aSn3btX.png', 5),
-('contact@innovasys.com', 'password', 'Innovasys', '05 57 88 99 01', 'Agen', 47000, 'France', '1 Place des Lices', 'IT', 'https://i.imgur.com/bAflqnS.png', 6),
-('contact@techonix.com', 'password', 'Techonix', '05 56 45 33 21', 'Bordeaux', 33000, 'France', '5 Avenue de la Victoire', 'IT', 'https://i.imgur.com/U9BJ3oG.png', 7),
-('contact@softwaresolutions.com', 'password', 'Software Solutions', '05 78 23 67 89', 'Toulouse', 31000, 'France', '3 Rue des Carmes', 'IT', 'https://i.imgur.com/U0bOMYC.png', 8),
-('contact@digitalexpert.com', 'password', 'Digital Expert', '05 12 34 56 78', 'Pau', 64000, 'France', '4 Avenue Charles de Gaulle', 'IT', 'https://i.imgur.com/5K9qZs0.png', 9),
-('contact@cybertechgroup.com', 'password', 'Cybertech Group', '05 67 89 01 23', 'Agen', 47000, 'France', '2 Place de la Republique', 'IT', 'https://i.imgur.com/lIqdysJ.png', 10),
-('contact@infotechplus.com', 'password', 'Infotech Plus', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '1 Rue de la Bourse', 'IT', 'https://i.imgur.com/SAQVt0b.png', 11),
-('contact@cloudtechconsulting.com', 'password', 'Cloudtech Consulting', '05 78 90 12 34', 'Toulouse', 31000, 'France', '6 Boulevard de Strasbourg', 'IT', 'https://i.imgur.com/k1hg6Ok.png', 12),
-('contact@datatechpro.com', 'password', 'Datatech Pro', '05 12 34 56 78', 'Pau', 64000, 'France', '7 Avenue des Pyrenees', 'IT', 'https://i.imgur.com/b6NLZ9b.png', 11),
-('contact@techminds.com', 'password', 'TechMinds', '05 67 89 01 23', 'Agen', 47000, 'France', '8 Place de la Gare', 'IT', 'https://i.imgur.com/2CxRzMh.png', 4),
-('contact@digisolutions.com', 'password', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
+     INSERT INTO firm (email, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
+VALUES('contact@betclic.com', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
+('contact@cdiscount.com', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
+('contact@kwantic.com', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3),
+('contact@fictivtech.com', 'FictivTech', '05 40 20 10 30', 'Toulouse', 31000, 'France', '50 Avenue des Minimes', 'IT', 'https://i.imgur.com/ad10O6I.png', 4),
+('contact@virtuosoft.com', 'Virtuosoft', '05 67 89 12 34', 'Pau', 64000, 'France', '12 Rue de la Paix', 'IT', 'https://i.imgur.com/aSn3btX.png', 5),
+('contact@innovasys.com', 'Innovasys', '05 57 88 99 01', 'Agen', 47000, 'France', '1 Place des Lices', 'IT', 'https://i.imgur.com/bAflqnS.png', 6),
+('contact@techonix.com', 'Techonix', '05 56 45 33 21', 'Bordeaux', 33000, 'France', '5 Avenue de la Victoire', 'IT', 'https://i.imgur.com/U9BJ3oG.png', 7),
+('contact@softwaresolutions.com', 'Software Solutions', '05 78 23 67 89', 'Toulouse', 31000, 'France', '3 Rue des Carmes', 'IT', 'https://i.imgur.com/U0bOMYC.png', 8),
+('contact@digitalexpert.com', 'Digital Expert', '05 12 34 56 78', 'Pau', 64000, 'France', '4 Avenue Charles de Gaulle', 'IT', 'https://i.imgur.com/5K9qZs0.png', 9),
+('contact@cybertechgroup.com', 'Cybertech Group', '05 67 89 01 23', 'Agen', 47000, 'France', '2 Place de la Republique', 'IT', 'https://i.imgur.com/lIqdysJ.png', 10),
+('contact@infotechplus.com', 'Infotech Plus', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '1 Rue de la Bourse', 'IT', 'https://i.imgur.com/SAQVt0b.png', 11),
+('contact@cloudtechconsulting.com', 'Cloudtech Consulting', '05 78 90 12 34', 'Toulouse', 31000, 'France', '6 Boulevard de Strasbourg', 'IT', 'https://i.imgur.com/k1hg6Ok.png', 12),
+('contact@datatechpro.com', 'Datatech Pro', '05 12 34 56 78', 'Pau', 64000, 'France', '7 Avenue des Pyrenees', 'IT', 'https://i.imgur.com/b6NLZ9b.png', 11),
+('contact@techminds.com', 'TechMinds', '05 67 89 01 23', 'Agen', 47000, 'France', '8 Place de la Gare', 'IT', 'https://i.imgur.com/2CxRzMh.png', 4),
+('contact@digisolutions.com', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
 
 INSERT INTO externatic.admin (role_id,gender,firstname,lastname,email,password) VALUES
 	 (3,'homme','Michael','Birepinte','mickael.birepinte@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM'),
@@ -378,22 +408,22 @@ INSERT INTO externatic.`user` (role_id,gender,firstname,lastname,email,city,post
      (1,'homme','Jean','Leroy','jeanleroy@gmail.com','Nantes',44000,'FRANCE','2 rue des remparts','0640899999',1,'jeanleroy@linkedin.com','https://www.jeanleroy.fr',NULL,'Directeur des ventes',6,NULL,NULL,0,'$argon2id$v=19$m=65536,t=3,p=4$wLubu1w/HZ/IoOXLX/Dg+Q$Y6u3DEhcUo/Scr/b33V/5lgqc4VpeYbTr9rXx22EAGM',NULL,NULL,NULL,4,NULL,NULL,"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png");
 
     
-     INSERT INTO firm (email, password, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
-VALUES('contact@betclic.com', 'password', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
-('contact@cdiscount.com', 'password', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
-('contact@kwantic.com', 'password', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3),
-('contact@fictivtech.com', 'password', 'FictivTech', '05 40 20 10 30', 'Toulouse', 31000, 'France', '50 Avenue des Minimes', 'IT', 'https://i.imgur.com/ad10O6I.png', 4),
-('contact@virtuosoft.com', 'password', 'Virtuosoft', '05 67 89 12 34', 'Pau', 64000, 'France', '12 Rue de la Paix', 'IT', 'https://i.imgur.com/aSn3btX.png', 5),
-('contact@innovasys.com', 'password', 'Innovasys', '05 57 88 99 01', 'Agen', 47000, 'France', '1 Place des Lices', 'IT', 'https://i.imgur.com/bAflqnS.png', 6),
-('contact@techonix.com', 'password', 'Techonix', '05 56 45 33 21', 'Bordeaux', 33000, 'France', '5 Avenue de la Victoire', 'IT', 'https://i.imgur.com/U9BJ3oG.png', 7),
-('contact@softwaresolutions.com', 'password', 'Software Solutions', '05 78 23 67 89', 'Toulouse', 31000, 'France', '3 Rue des Carmes', 'IT', 'https://i.imgur.com/U0bOMYC.png', 8),
-('contact@digitalexpert.com', 'password', 'Digital Expert', '05 12 34 56 78', 'Pau', 64000, 'France', '4 Avenue Charles de Gaulle', 'IT', 'https://i.imgur.com/5K9qZs0.png', 9),
-('contact@cybertechgroup.com', 'password', 'Cybertech Group', '05 67 89 01 23', 'Agen', 47000, 'France', '2 Place de la Republique', 'IT', 'https://i.imgur.com/lIqdysJ.png', 10),
-('contact@infotechplus.com', 'password', 'Infotech Plus', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '1 Rue de la Bourse', 'IT', 'https://i.imgur.com/SAQVt0b.png', 11),
-('contact@cloudtechconsulting.com', 'password', 'Cloudtech Consulting', '05 78 90 12 34', 'Toulouse', 31000, 'France', '6 Boulevard de Strasbourg', 'IT', 'https://i.imgur.com/k1hg6Ok.png', 12),
-('contact@datatechpro.com', 'password', 'Datatech Pro', '05 12 34 56 78', 'Pau', 64000, 'France', '7 Avenue des Pyrenees', 'IT', 'https://i.imgur.com/b6NLZ9b.png', 11),
-('contact@techminds.com', 'password', 'TechMinds', '05 67 89 01 23', 'Agen', 47000, 'France', '8 Place de la Gare', 'IT', 'https://i.imgur.com/2CxRzMh.png', 4),
-('contact@digisolutions.com', 'password', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
+     INSERT INTO firm (email, name, contact_phone, city, postal_code, country, adress, type, logo_url, consultant_id) 
+VALUES('contact@betclic.com', 'Betclic Group', '05 10 20 30 40', 'Bordeaux', 33000, 'France', '117 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Logo_Betclic_2019.svg/langfr-340px-Logo_Betclic_2019.svg.png', 1),
+('contact@cdiscount.com', 'Cdiscount', '05 56 89 09 76', 'Bordeaux', 33000, 'France', '120-126 Quai de Bacalan', 'IT', 'https://upload.wikimedia.org/wikipedia/fr/thumb/7/74/Logo-Cdiscount-baseline.png/560px-Logo-Cdiscount-baseline.png', 2),
+('contact@kwantic.com', 'Kwantic', '05 30 90 78 65', 'Bordeaux', 33000, 'France', '74 Rue Georges Bonnac', 'IT', 'https://kwantic.fr/wp-content/uploads/2022/01/logo-kwantic-noir-et-blanc-sur-jaune.svg', 3),
+('contact@fictivtech.com', 'FictivTech', '05 40 20 10 30', 'Toulouse', 31000, 'France', '50 Avenue des Minimes', 'IT', 'https://i.imgur.com/ad10O6I.png', 4),
+('contact@virtuosoft.com', 'Virtuosoft', '05 67 89 12 34', 'Pau', 64000, 'France', '12 Rue de la Paix', 'IT', 'https://i.imgur.com/aSn3btX.png', 5),
+('contact@innovasys.com', 'Innovasys', '05 57 88 99 01', 'Agen', 47000, 'France', '1 Place des Lices', 'IT', 'https://i.imgur.com/bAflqnS.png', 6),
+('contact@techonix.com', 'Techonix', '05 56 45 33 21', 'Bordeaux', 33000, 'France', '5 Avenue de la Victoire', 'IT', 'https://i.imgur.com/U9BJ3oG.png', 7),
+('contact@softwaresolutions.com', 'Software Solutions', '05 78 23 67 89', 'Toulouse', 31000, 'France', '3 Rue des Carmes', 'IT', 'https://i.imgur.com/U0bOMYC.png', 8),
+('contact@digitalexpert.com', 'Digital Expert', '05 12 34 56 78', 'Pau', 64000, 'France', '4 Avenue Charles de Gaulle', 'IT', 'https://i.imgur.com/5K9qZs0.png', 9),
+('contact@cybertechgroup.com', 'Cybertech Group', '05 67 89 01 23', 'Agen', 47000, 'France', '2 Place de la Republique', 'IT', 'https://i.imgur.com/lIqdysJ.png', 10),
+('contact@infotechplus.com', 'Infotech Plus', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '1 Rue de la Bourse', 'IT', 'https://i.imgur.com/SAQVt0b.png', 11),
+('contact@cloudtechconsulting.com', 'Cloudtech Consulting', '05 78 90 12 34', 'Toulouse', 31000, 'France', '6 Boulevard de Strasbourg', 'IT', 'https://i.imgur.com/k1hg6Ok.png', 12),
+('contact@datatechpro.com', 'Datatech Pro', '05 12 34 56 78', 'Pau', 64000, 'France', '7 Avenue des Pyrenees', 'IT', 'https://i.imgur.com/b6NLZ9b.png', 11),
+('contact@techminds.com', 'TechMinds', '05 67 89 01 23', 'Agen', 47000, 'France', '8 Place de la Gare', 'IT', 'https://i.imgur.com/2CxRzMh.png', 4),
+('contact@digisolutions.com', 'DigiSolutions', '05 23 45 67 89', 'Bordeaux', 33000, 'France', '9 Rue des Faienceries', 'IT', 'https://i.imgur.com/k1sJtUp.png', 3);
 
 INSERT INTO externatic.`spontaneous_application` (`user_id`,`job_id`,`application_state_id`, `creation_date` )
 VALUES
@@ -512,3 +542,17 @@ INSERT INTO externatic.favorite (user_id,offer_id) VALUES
 INSERT INTO externatic.candidated (user_id,offer_id,application_state_id) VALUES
 	 (1,8,1),
 	 (1,12,1);
+
+INSERT INTO userAlert (user_id, job_id, city) VALUES(1, 1, "Bordeaux");
+
+INSERT INTO userAlert (user_id, job_id, city) VALUES(2, 1,"Bordeaux");
+
+INSERT INTO userAlert (user_id, job_id, city) VALUES(3, 1,"Bordeaux");
+
+INSERT INTO userAlert (user_id, job_id, city) VALUES(4, 1,"Bordeaux");
+
+INSERT INTO externatic.alert (user_id,offer_id) VALUES
+	 (1,23),
+	 (1,25),
+	 (1,45),
+	 (1,25);

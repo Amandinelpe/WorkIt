@@ -52,7 +52,6 @@
   color: var(--white);
   background: var(--purple-light);
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
-  width: 62.5vw;
 }
 
 .grid-container .btn-container {
@@ -81,7 +80,6 @@
   align-items: flex-end;
   box-shadow: 6px 6px 2px 1px rgb(0 0 255 / 20%);
   gap: 20px;
-  margin-right: 2vw;
 }
 
 .grid-container .text_cross {

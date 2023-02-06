@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import socketIO from "socket.io-client";
 import React from "react";
-import ChatBody from "./ChatBody";
+import ChatBodyCandidat from "./ChatBodyCandidat";
 import "../styles/Chat.css";
 
-const Chat = () => {
+const ChatCandidat = () => {
   const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
   return (
     <div className="my_inbox_box_body">
@@ -13,14 +13,16 @@ const Chat = () => {
           <h2 className="my_inbox_title">Ma messagerie</h2>
         </div>
         <div className="chatBox">
-          <ChatBody socket={socket} />
+          <div className="chatMain">
+            <ChatBodyCandidat socket={socket} />
+          </div>
         </div>
       </div>
     </div>
   );
 };
-export default Chat;
-Chat.propTypes = {
+export default ChatCandidat;
+ChatCandidat.propTypes = {
   // eslint-disable-next-line react/no-unused-prop-types
   socket: PropTypes.objectOf.isRequired,
 };

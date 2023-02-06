@@ -11,7 +11,7 @@ import {
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const { auth, logout } = useContext(authContext);
+  const { auth, logout, notification } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
 
   const handleLogout = (id) => {
@@ -51,6 +51,7 @@ const NavBar = () => {
           </NavLink>
         ))}
         {auth.data && <HelloButton />}
+        {auth.data && <div style={{ color: "red" }}>{notification}</div>}
       </ul>
     </div>
   );

@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { GetFirmData } from "../apis/firmApi";
 import { GetAllJobs, GetJobById } from "../apis/jobApi";
 import { GetAllExperiences } from "../apis/experienceApi";
+import { GetUserAlerts } from "../apis/userAlertApi";
+import { LaunchAlerts } from "../apis/alertApi";
 import { PostOffer } from "../apis/offerApi";
 import formOffer from "../utils/formOffer";
 import close from "../assets/img/annuler.png";
@@ -19,6 +21,13 @@ const OfferForm = ({ show, onClose, firmId }) => {
   const [jobs, setJobs] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [published, setPublished] = useState();
+  const [userAlerts, setUserAlerts] = useState([]);
+
+  const GetAlerts = async () => {
+    await GetUserAlerts(dataOffer.job_id, dataOffer.firm_city).then((res) =>
+      setUserAlerts(res.data)
+    );
+  };
 
   const getFirmData = async () => {
     await GetFirmData(firmId).then((res) => setFirmData(res.data));
@@ -58,6 +67,11 @@ const OfferForm = ({ show, onClose, firmId }) => {
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-expressions
+    dataOffer.job_id && dataOffer.firm_city && GetAlerts();
+  }, [dataOffer.job_id, dataOffer.firm_city]);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
     dataOffer.job_id &&
       GetJobById(dataOffer.job_id).then((res) => {
         setDataOffer({ ...dataOffer, title: res.data.job_title });
@@ -70,6 +84,15 @@ const OfferForm = ({ show, onClose, firmId }) => {
       .then((res) => {
         if (res.status === 200) {
           setPublished("Votre offre a bien été publiée");
+          userAlerts.forEach((user) => {
+            LaunchAlerts(user.user_id, res.data.insertId)
+              .then((response) => {
+                console.warn(response.data);
+              })
+              .catch((err) => {
+                console.warn(err);
+              });
+          });
         }
       })
       .catch((err) => {

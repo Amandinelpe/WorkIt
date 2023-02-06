@@ -1,17 +1,18 @@
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import ChatFooter from "./ChatFooter";
-import "../styles/ChatBody.css";
+import ChatFooterConsultant from "./ChatFooterConsultant";
+import "../styles/Chat.css";
 
 const ChatBodyConsultant = ({ socket }) => {
   const [chatMessages, setChatMessages] = useState([]);
   const [typingMessage, setTypingMessage] = useState("");
 
   useEffect(() => {
-    socket.on("newMessage", (messages) => {
-      setChatMessages([...chatMessages, messages]);
+    socket.on("newMessage", (message) => {
+      setChatMessages([...chatMessages, message]);
     });
-  }, [chatMessages]);
+  }, [socket]);
+
   return (
     <div className="chat_box_container">
       <div className="message__container">
@@ -24,8 +25,8 @@ const ChatBodyConsultant = ({ socket }) => {
               </div>
             </div>
           ) : (
-            <div className="message__recepted__chats">
-              <p>{message.userName}Votre interlocuteur</p>
+            <div className="message__recepted__chats" key={message.id}>
+              <p className="sender__name">{message.username}</p>
               <div className="message__recipient">
                 <p>{message.message}</p>
               </div>
@@ -34,7 +35,7 @@ const ChatBodyConsultant = ({ socket }) => {
         )}
       </div>
       <div className="chat_footer_body">
-        <ChatFooter
+        <ChatFooterConsultant
           socket={socket}
           setTypingMessage={setTypingMessage}
           typingMessage={typingMessage}
@@ -43,10 +44,12 @@ const ChatBodyConsultant = ({ socket }) => {
     </div>
   );
 };
+
 ChatBodyConsultant.propTypes = {
   socket: PropTypes.shape({
     id: PropTypes.string,
     on: PropTypes.func,
   }).isRequired,
 };
+
 export default ChatBodyConsultant;

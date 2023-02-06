@@ -140,6 +140,7 @@
   color: var(--white);
   border-radius: 18px;
   border: none;
+  box-shadow: 3px 3px rgba(240, 239, 239, 0.5);
 }
 
 /* KENDO GRID */

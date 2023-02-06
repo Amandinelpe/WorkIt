@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import "../styles/AddFirmInput.css";
 
 const AddFirmInput = ({
   id,
@@ -20,14 +21,14 @@ const AddFirmInput = ({
   };
 
   return (
-    <div key={id}>
+    <div key={id} className={`input-container ${className}`}>
       <label htmlFor={name}> {label}</label>
       <input
         type={type}
         name={name}
         placeholder={placeholder}
         value={value}
-        className={className}
+        className="input"
         onChange={handleChange}
       />
     </div>
@@ -41,9 +42,13 @@ AddFirmInput.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   addNewFirm: PropTypes.func.isRequired,
   setAddNewFirm: PropTypes.func.isRequired,
+};
+
+AddFirmInput.defaultProps = {
+  className: "",
 };
 
 export default AddFirmInput;
