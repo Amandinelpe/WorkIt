@@ -37,14 +37,17 @@
   justify-content: flex-start;
   box-sizing: border-box;
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
-  padding-right: 6vw;
 }
 
 .box_candidate_body ul li {
-  margin-top: 1vh;
+  margin: 0vh 3vw 1vh 3vw;
 }
 
 .box_candidate_body ul:hover,
 .box_candidate:hover .box_candidate_body ul {
   box-shadow: 4px 4px 2px 1px #ff8150;
+}
+.box_candidate_body ul li:hover {
+ color:var(--orange);
+ text-decoration: none;
 }

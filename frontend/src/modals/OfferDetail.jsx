@@ -17,7 +17,8 @@ import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
 
-const OfferDetail = ({ show, onClose, offerId }) => {
+const OfferDetail = ({ show, onClose, offerId, handleDelete, alert }) => {
+  console.log(alert, "alert");
   if (!show) {
     return null;
   }
@@ -176,6 +177,15 @@ const OfferDetail = ({ show, onClose, offerId }) => {
             >
               {" "}
               Je postule{" "}
+            </button>
+          )}
+          {alert !== null && (
+            <button
+              type="submit"
+              className="alert_seen_button"
+              onClick={() => handleDelete(alert)}
+            >
+              Marquer comme vu
             </button>
           )}
         </div>

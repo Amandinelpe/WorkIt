@@ -37,9 +37,11 @@ h3.salary_title {
 .minimal_salary {
   color: var(--purple-dark);
   font-weight: normal;
+  font-size: 2.2vh;
 }
 
 .amount_salary {
   color: var(--purple-dark);
   font-weight: bold;
+  font-size: 2.2vh;
 }
