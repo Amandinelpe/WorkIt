@@ -5,7 +5,7 @@ const findAll = () => {
   return db
     .promise()
     .query(
-      `SELECT c.user_id, c.offer_id, u.firstname, u.lastname, o.title, a.name 
+      `SELECT c.candidated_id, c.user_id, c.offer_id, u.firstname, u.lastname, o.title, a.name, a.id AS state_id
         FROM candidated AS c 
         JOIN user AS u ON c.user_id = u.id 
         JOIN offer AS o ON c.offer_id = o.id 
@@ -37,6 +37,13 @@ const createOne = (payload) => {
     .then((candidated) => candidated);
 };
 
+const updateOne = (id, payload) => {
+  return db
+    .promise()
+    .query("UPDATE candidated SET ? WHERE candidated_id = ?", [payload, id])
+    .then((candidated) => candidated);
+};
+
 const deleteOne = (id) => {
   return db
     .promise()
@@ -58,6 +65,7 @@ module.exports = {
   findOne,
   findOneByUser,
   createOne,
+  updateOne,
   deleteOne,
   findAllByUser,
 };
