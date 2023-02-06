@@ -79,12 +79,13 @@ const Candidature = () => {
     }
 
     return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
       <td
         onClick={() =>
           handleStateClick(item.dataItem.candidated_id, estEnCoursDeTraitement)
         }
         className={estEnCoursDeTraitement ? "cursor" : ""}
+        onKeyDown={(e) => e.preventDefault()}
+        role="presentation"
       >
         <span className={className}>{item.dataItem.name}</span>
       </td>
