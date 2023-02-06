@@ -71,7 +71,7 @@ const MainPage = () => {
           </div>
           <div className="mainPage_offers">
             <div className="all_offers_titleblock">
-              <h2 className="all_offers_title">Les offres du moment</h2>
+              <h3 className="all_offers_title">Les offres du moment</h3>
             </div>
             <div className="offers_body">
               {offers.length === 0 ? (
