@@ -6,7 +6,6 @@ import { GetAllConsultants } from "../utils/getAllConsultants";
 import "../styles/ConsultantLine.css";
 
 const ConsultantLine = ({ consultant, setConsultants }) => {
-
   const [confirmDelete, setConfirmDelete] = useState(false);
   const getListAllConsultants = async () => {
     setConsultants(await GetAllConsultants());
@@ -35,38 +34,45 @@ const ConsultantLine = ({ consultant, setConsultants }) => {
         </div>
       </div>
       <div className="modify_delete_buttons">
-        {confirmDelete ?
-          (<button type="button" onClick={askConfirmation} className="button_consultant_modify">
-          {" "}
-          Annuler
-        </button>):
-        (<button
-        type="button"
-        className="button_consultant_delete"
- /*        onClick={handleClick} */
-        >
-          {" "}
-          Modifier
-        </button>)
-        }
-        {confirmDelete ?  (
-        <button
-          type="button"
-          style={{color :"red"}}
-          className="button_consultant_delete"
-          onClick={handleClick}
-        >
-          {" "}
-          Confirmer 
-        </button>):(
-        <button
-          type="button"
-          className="button_consultant_delete"
-          onClick={askConfirmation}
-        >
-          {" "}
-          Supprimer
-        </button>)}
+        {confirmDelete ? (
+          <button
+            type="button"
+            onClick={askConfirmation}
+            className="button_consultant_modify"
+          >
+            {" "}
+            Annuler
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="button_consultant_delete"
+            /*        onClick={handleClick} */
+          >
+            {" "}
+            Modifier
+          </button>
+        )}
+        {confirmDelete ? (
+          <button
+            type="button"
+            style={{ color: "red" }}
+            className="button_consultant_delete"
+            onClick={handleClick}
+          >
+            {" "}
+            Confirmer
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="button_consultant_delete"
+            onClick={askConfirmation}
+          >
+            {" "}
+            Supprimer
+          </button>
+        )}
       </div>
     </div>
   );

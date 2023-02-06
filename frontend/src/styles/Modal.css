@@ -109,7 +109,7 @@
   box-shadow: 3px 3px rgb(147 169 235 / 50%);
   padding: 0.5rem;
   width: 15vw;
-  background-color:var(--purple-light); 
+  background-color: var(--purple-light);
   color: var(--white);
   cursor: pointer;
   margin-right: 2vw;
@@ -144,6 +144,6 @@
   cursor: pointer;
   margin-bottom: 2vh;
 }
-.alert_seen_button{
+.alert_seen_button {
   margin-top: 2vh;
 }
