@@ -43,13 +43,14 @@ const DashboardNewOffers = () => {
             myOffers.map((offer) => (
               <div>
                 <Offer
+                  alertId={offer.alert_id}
                   date={offer.date}
                   firm={offer.name}
                   title={offer.title}
                   logo={offer.logo_url}
                   city={offer.firm_city}
                   id={offer.offer_id}
-                  alert={offer.alert_id}
+                  button="ok"
                   setReload={setReload}
                   handleDelete={handleDelete}
                 />

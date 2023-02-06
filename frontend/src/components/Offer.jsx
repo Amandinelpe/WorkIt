@@ -13,11 +13,11 @@ const Offer = ({
   setReload,
   reload,
   handleDelete,
-  alert,
+  button,
+  alertId,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [show, setShow] = useState(false);
-  
 
   const formatedDate = new Date(date).toLocaleDateString();
   return (
@@ -39,13 +39,14 @@ const Offer = ({
         />
         <OfferDetail
           show={show}
-          alert={alert}
+          button={button}
           handleDelete={handleDelete}
           onClose={() => {
             setShow(false);
             setReload(reload + 1);
           }}
           offerId={id}
+          alertId={alertId}
         />
       </div>
       <img src={logo} alt="logo entreprise" className="offer_logo" />
