@@ -76,7 +76,7 @@ const EnterpriseConsultant = () => {
         className="modal"
         overlayClassName="overlay"
       >
-        <CreateFirmForm />
+        <CreateFirmForm setShowForm={setShowForm} />
       </Modal>
     </div>
   );
