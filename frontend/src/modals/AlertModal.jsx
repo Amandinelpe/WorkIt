@@ -81,7 +81,6 @@ const AlertModal = ({ show, onClose, reload, setReload }) => {
                 onChange={handleChange}
                 autoComplete="on"
                 className="modalCrud-title"
-                /* disabled={disabled} */
               >
                 <option value="">{infosOffer.title}</option>
                 {jobs.map((job) => (
