@@ -30,8 +30,8 @@
   margin: 1vh 1vw;
   background: var(--white);
   border-radius: 30vw;
-  color: var(--purple-light);
-
+  color: var(--black);
+  font-size: 1.8vh;
   border: none;
   height: 5vh;
 }

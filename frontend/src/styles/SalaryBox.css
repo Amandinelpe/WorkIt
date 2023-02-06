@@ -12,7 +12,7 @@
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
-h2.salary_title {
+h3.salary_title {
   color: var(--white);
   font-weight: lighter;
 }

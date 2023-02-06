@@ -26,7 +26,7 @@
 .box_candidate_body ul {
   color: var(--purple-light);
   align-items: left;
-  height: 9vw;
+  height: auto;
   padding: 3vh;
   display: flex;
   flex-direction: column;
