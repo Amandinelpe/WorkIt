@@ -1,5 +1,6 @@
 .salary_box {
-  margin: 1vw 4vw;
+ width: 20vw;
+ margin-bottom: 5vh;
 }
 .salary_titleblock {
   background-color: var(--purple-light);
@@ -19,14 +20,12 @@ h3.salary_title {
 
 .salary_body {
   background-color: var(--white);
-  height: 13vh;
-  width: 20vw;
-
+  padding: 3vh 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px 10px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
@@ -38,6 +37,10 @@ h3.salary_title {
   color: var(--purple-dark);
   font-weight: normal;
   font-size: 2.2vh;
+}
+.slider {
+  width: 60%;
+  margin: 1vh 0 0 0;
 }
 
 .amount_salary {

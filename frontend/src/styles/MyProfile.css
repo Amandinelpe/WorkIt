@@ -1,211 +1,85 @@
-.my-profile .box {
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-  width: 75vw;
+.my_profile{
+  margin: 10vh 10vh 10vh 0;
+  width: 60vw;
   display: flex;
   flex-direction: column;
 }
-
-.my-profile .box .box_candidate {
-  padding: 4vh 6vw;
-}
-
-.my-profile .box .box_candidate_body {
-  color: var(--purple-light);
-  align-items: left;
-  width: auto;
-  height: auto;
-  padding: 4vh 6vw;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  margin-top: 0.1vh;
-  border-radius: 0 0 50px 50px;
-  background-color: #fffdfe;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
-  gap: 3vh;
-  margin-right: 3vh;
-}
-
-.box-candidate-li {
-  cursor: pointer;
-}
-.box-candidate-li:hover {
-  text-decoration: underline;
-}
-
-.my-profile .box .box_candidate_body h3 {
-  color: #4e55ad;
-  padding-bottom: 4vh;
-}
-
-.my-profile .radio-button-container {
-  display: block;
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.my-profile .radio-button-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.my-profile .radio-button-container .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 18px;
-  width: 18px;
-  background-color: #eee;
-  border-radius: 50%;
-}
-
-.my-profile .radio-button-container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-.my-profile .radio-button-container input:checked ~ .checkmark {
+.my_profile_title {
+  color: var(--white);
   background-color: var(--purple-light);
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  height: 12vh;
+  border-radius: 50px 50px 0 0;
 }
-
-.my-profile .radio-button-container .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+.my_profile_title h3 {
+  color: var(--white);
+  padding: 5vh 6vh;
 }
-
-.my-profile .radio-button-container input:checked ~ .checkmark:after {
-  display: block;
+.my_profile_body{
+  padding: 4vh 2vw 2vh 2vw;
+  background-color: #FFFDFE;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
-
-.my-profile .radio-button-container p {
-  margin-top: 3px;
+.my_profile_body h4 {
+  color: var(--purple-dark);
+  margin-bottom: 2vh;
 }
-
-.my-profile .field {
-  gap: 3vw;
-  padding: 3vh 0 3vh 0;
-}
-
-.my-profile .informations-personnelles {
-  width: 100%;
+.my_profile_informations_personnelles{
+  margin-top: 5vh;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 2vw;
 }
-
-.my-profile .informations-personnelles div:nth-child(1) {
-  width: 40vw;
+.my_profile_input_block{
+ 
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  
 }
-
-.my-profile .picture_profil img {
+.my_profile_input_block label{
+  color: var(--purple-light);
+  font-size: 1.2vw;
+}
+.my_profile_small_input{
   width: 13vw;
-  height: auto;
-  border-radius: 50%;
+  background-color: var(--white);
+  height: 4.5vh;
+  outline: none;
+  border: var(--purple-dark) 1px solid;
+  padding: 1vh 0.5vw;
+  border-radius: 15px;
+  color: var(--purple-dark);
 }
-
-.my-profile .picture_profil {
-  gap: 2vh;
-  color: grey;
+.my_profile_drop_cv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
-.my-profile .inputfile {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.my-profile .inputfile + label {
-  width: 14vw;
-  height: 5vh;
+ .my_profile_drop_cv label{
+  width: 13vw;
+  height: 4.5vh;
+  font-size: 2vh;
+  color: var(--purple-dark);
   cursor: pointer;
-  -webkit-box-shadow: 2px 2px 0px 2px #ff5400;
-  box-shadow: 2px 2px 0px 2px #ff5400;
+  box-shadow: 4px 4px hsl(235deg 48% 57% / 50%);
   display: flex;
   align-items: center;
   justify-content: center;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
+  margin: 0 0 5vh 0;
 }
-
-.my-profile .small-input {
-  width: 18vw;
+ .my_profile_drop_cv label:hover {
+  box-shadow: 4px 4px var(--orange);
+ }
+.my_profile_drop_cv input{
+  display: none;
 }
-
-.my-profile .large-input {
-  width: 30vw;
-}
-
-.my-profile .small-input,
-.my-profile .large-input {
-  height: 4.5vh;
-  border: #4e55ad solid 1px;
-  padding: 8px;
-  outline: none;
-  color: #4e55ad;
-
-  border-radius: 23px;
-}
-
-.my-profile label {
-  display: flex;
-  flex-direction: column;
-  gap: 2vh;
-}
-
-.flex-gap-3vh {
-  gap: 3vh;
-}
-
-.flex-gap-2vh {
-  gap: 2vh;
-}
-
-.flex-gap-7vh {
-  gap: 7vh;
-}
-
-.my-profile .actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 2vh;
-
-  width: 100%;
-}
-
-.my-profile .btn-enregistrer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 10vw;
-  height: 4vh;
-  cursor: pointer;
-  background-color: var(--bleu);
-  color: var(--white);
-  border-radius: 15px;
-  border: none;
-}
-
-.my-profile .btn-enregistrer:disabled,
-.my-profile .btn-enregistrer[disabled] {
-  opacity: 0.5;
-  cursor: initial;
-}
-.fileName {
-  margin-top: 2vh;
-
-  margin-left: 2vw;
+.my_profyle_fileName{
+  color: black;
 }

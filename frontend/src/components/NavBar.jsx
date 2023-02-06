@@ -41,10 +41,12 @@ const NavBar = () => {
           </NavLink>
         ))}
         {auth.data && auth.data.role_id === 1 ? (
-          <div className="notifications">
-            <img src={cloche} alt="cloche" className="cloche_alerte" />
-            {auth.data && <div className="number_alerte">{notification}</div>}
-          </div>
+          <NavLink to="/DashboardCandidate">
+            <div className="notifications">
+              <img src={cloche} alt="cloche" className="cloche_alerte" />
+              {auth.data && <div className="number_alerte">{notification}</div>}
+            </div>
+          </NavLink>
         ) : null}
         {auth.data && <HelloButton />}
       </ul>
