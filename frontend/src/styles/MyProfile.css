@@ -81,5 +81,6 @@
   display: none;
 }
 .my_profyle_fileName{
-  color: black;
+  padding-top: 1.5vh;
+  color: var(--purple-dark);
 }
