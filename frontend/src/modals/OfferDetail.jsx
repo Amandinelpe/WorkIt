@@ -177,16 +177,18 @@ const OfferDetail = ({
               contactera prochainement.
             </p>
           ) : (
-            <button
-              onClick={() => {
-                handleSubmit();
-              }}
-              type="submit"
-              className="postule_button_offer"
-            >
-              {" "}
-              Je postule{" "}
-            </button>
+            <div className="offer_button_postulation">
+              <button
+                onClick={() => {
+                  handleSubmit();
+                }}
+                type="submit"
+                className="postule_button_offer"
+              >
+                {" "}
+                Je postule{" "}
+              </button>
+            </div>
           )}
           {button === "ok" && (
             <button

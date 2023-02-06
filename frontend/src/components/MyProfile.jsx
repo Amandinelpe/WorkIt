@@ -69,9 +69,10 @@ const MyProfile = () => {
             <h4>Mes informations personnelles</h4>
             <div className="my_profile_informations_personnelles">
               <div className="my_profile_input_block">
-                <label>Prénom</label>
+                <label htmlFor="firstname">Prénom</label>
                 <input
                   type="text"
+                  id="firstname"
                   name="firstname"
                   className="my_profile_small_input"
                   value={user.firstname}
@@ -79,9 +80,10 @@ const MyProfile = () => {
                 />
               </div>
               <div className="my_profile_input_block">
-                <label>Nom</label>
+                <label htmlFor="lastname">Nom</label>
                 <input
                   type="text"
+                  id="lastname"
                   name="lastname"
                   className="my_profile_small_input"
                   value={user.lastname}
@@ -89,9 +91,10 @@ const MyProfile = () => {
                 />
               </div>
               <div className="my_profile_input_block">
-                <label>Email</label>
+                <label htmlFor="email">Email</label>
                 <input
                   type="text"
+                  id="email"
                   name="email"
                   className="my_profile_small_input"
                   value={user.email}
@@ -99,9 +102,10 @@ const MyProfile = () => {
                 />
               </div>
               <div className="my_profile_input_block">
-                <label>Localisation</label>
+                <label htmlFor="city">Localisation</label>
                 <input
                   type="text"
+                  id="city"
                   name="city"
                   className="my_profile_small_input"
                   value={user.city}
@@ -112,8 +116,8 @@ const MyProfile = () => {
                 <div>
                   <input
                     type="file"
-                    name="file"
                     id="file"
+                    name="file"
                     className="my_profile_inputfile"
                     accept="application/pdf"
                     onChange={handleCV}
@@ -130,21 +134,20 @@ const MyProfile = () => {
             <h4>Ma situation actuelle </h4>
             <div className="">
               <div className="">
-                <div>
-                  <label>
-                    Poste recherché
-                    <select
-                      value={user.job_id}
-                      name="job_id"
-                      onChange={handleChange}
-                    >
-                      {jobs.map((job) => (
-                        <option key={job.id} value={job.id}>
-                          {job.job_title}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
+                <div className="my_profile_input_block">
+                  <label htmlFor="job_id">Poste recherché </label>
+                  <select
+                    value={user.job_id}
+                    name="job_id"
+                    id="job_id"
+                    onChange={handleChange}
+                  >
+                    {jobs.map((job) => (
+                      <option key={job.id} value={job.id}>
+                        {job.job_title}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 <div>
                   <p className="my_profile_label">Disponibilité</p>
@@ -159,20 +162,22 @@ const MyProfile = () => {
                     ))}
                   </div>
                 </div>
-                <div className="">
-                  <label>Niveau d'études</label>
+                <div className="my_profile_input_block">
+                  <label htmlFor="diploma">Niveau d'études</label>
                   <input
                     type="text"
+                    id="diploma"
                     name="diploma"
                     className="my_profile_small_input"
                     value={user.diploma}
                     onChange={handleChange}
                   />
                 </div>
-                <div className="">
-                  <label>Mon site internet</label>
+                <div className="my_profile_input_block">
+                  <label htmlFor="website">Mon site internet</label>
                   <input
                     type="text"
+                    id="website"
                     name="website"
                     className="my_profile_small_input"
                     value={user.website}
@@ -198,10 +203,11 @@ const MyProfile = () => {
                 </div>
               </div>
               <div className="">
-                <div>
-                  <label>Situation actuelle</label>
+                <div className="my_profile_input_block">
+                  <label htmlFor="actual_job">Situation actuelle</label>
                   <input
                     type="text"
+                    id="actual_job"
                     name="actual_job"
                     className="my_profile_large_input"
                     value={user.actual_job}
@@ -225,21 +231,23 @@ const MyProfile = () => {
                     })}
                   </div>
                 </div>
-                <div>
-                  <label>Salaire (annuel brut)</label>
+                <div className="my_profile_input_block">
+                  <label htmlFor="salary">Salaire (annuel brut)</label>
                   <input
                     type="number"
                     name="salary"
+                    id="salary"
                     className="my_profile_small_input"
                     value={user.salary}
                     onChange={handleChange}
                   />
                 </div>
-                <div>
-                  <label>Mon GitHub</label>
+                <div className="my_profile_input_block">
+                  <label htmlFor="github">Mon GitHub</label>
                   <input
                     type="text"
                     name="github"
+                    id="github"
                     className="my_profile_small_input"
                     value={user.github}
                     onChange={handleChange}

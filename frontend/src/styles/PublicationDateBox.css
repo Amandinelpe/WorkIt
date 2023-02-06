@@ -1,5 +1,5 @@
 .publication_date_box {
-width: 20vw;
+  width: 20vw;
 }
 
 .date_titleblock {
@@ -30,7 +30,7 @@ width: 20vw;
 }
 
 .input_date {
-  width: 2vw ;
+  width: 2vw;
   margin-top: 2vh;
 }
 

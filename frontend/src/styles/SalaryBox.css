@@ -1,6 +1,6 @@
 .salary_box {
- width: 20vw;
- margin-bottom: 5vh;
+  width: 20vw;
+  margin-bottom: 5vh;
 }
 .salary_titleblock {
   background-color: var(--purple-light);

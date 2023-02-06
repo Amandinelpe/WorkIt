@@ -23,7 +23,7 @@ const adminController = {
       .findByEmail(email)
       .then(async ([admin]) => {
         if (!admin) {
-          res.status(401).send({ message: "Invalid email or password" });
+          res.status(401).send({ message: "Email ou mot de passe invalide" });
         } else {
           const {
             id,
@@ -51,7 +51,7 @@ const adminController = {
                 role_id,
               });
           } else {
-            res.status(404).send({ message: "Invalid email or password" });
+            res.status(404).send({ message: "Email ou mot de passe invalide" });
           }
         }
       })
