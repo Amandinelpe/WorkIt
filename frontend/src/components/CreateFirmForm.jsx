@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 import { authContext } from "../context/AuthContext";
 import NavBar from "./NavBar";
 import { CreateFirm } from "../apis/firmApi";
 import AddFirmInput from "./AddFirmInput";
 import firmForm from "../utils/firmForm";
+import close from "../assets/img/annuler.png";
 import "../styles/CreateFirmForm.css";
 
-const CreateFirmForm = () => {
+const CreateFirmForm = ({ setShowForm }) => {
   const { auth } = useContext(authContext);
 
   const [addNewFirm, setAddNewFirm] = useState({
@@ -61,6 +63,11 @@ const CreateFirmForm = () => {
       .catch((err) => console.warn(err));
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    setShowForm(false);
+  };
+
   return (
     <div>
       <NavBar />
@@ -95,7 +102,14 @@ const CreateFirmForm = () => {
                 <p style={{ color: "red" }}>{confirmMessage}</p>
               )}
               <button type="submit" className="button_save_firm">
-                SAUVEGARDER{" "}
+                Enregistrer{" "}
+              </button>
+              <button
+                type="button"
+                className="close_fiche_consultant"
+                onClick={handleClick}
+              >
+                <img src={close} alt="close" style={{ width: "7%" }} />
               </button>
             </div>
           </form>
@@ -103,6 +117,10 @@ const CreateFirmForm = () => {
       </div>
     </div>
   );
+};
+
+CreateFirmForm.propTypes = {
+  setShowForm: PropTypes.func.isRequired,
 };
 
 export default CreateFirmForm;

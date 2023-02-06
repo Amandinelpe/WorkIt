@@ -1,5 +1,5 @@
 .publication_date_box {
-  margin: 0vh 4vw 5vh 4vw;
+  width: 20vw;
 }
 
 .date_titleblock {
@@ -25,7 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px 10px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
   color: var(--purple-dark);
 }

@@ -13,6 +13,13 @@ export const GetFirmOffer = (id) => {
 };
 
 export const CreateFirm = (firm) => {
-  console.log(firm, "firm");
   return axios.post(`${apiUrl}firm/createFirm`, firm);
+};
+
+export const DeleteFirm = (id) => {
+  return axios.delete(`${apiUrl}firm/deleteFirm/${id}`);
+};
+
+export const UpdateFirm = (firm, id) => {
+  return axios.put(`${apiUrl}firm/updateFirm/${id}`, firm);
 };

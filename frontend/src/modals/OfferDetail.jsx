@@ -170,7 +170,7 @@ const OfferDetail = ({
           <p className="modal-text">{dataOffer.salary}€ </p>
         </div>
         <div className="modal-footer">
-          <p className="send-candidature">{postulation}</p>
+          <p className="send-signIn">{postulation}</p>
           {candidatedId ? (
             <p className="send-candidature">
               Votre candidature a bien été envoyée. Votre interlocuteur vous

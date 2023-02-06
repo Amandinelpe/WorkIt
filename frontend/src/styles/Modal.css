@@ -95,7 +95,7 @@
 .modal-footer {
   border-bottom: 1px solid #ccc;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding-top: 1vw;
@@ -109,8 +109,8 @@
   box-shadow: 3px 3px rgb(147 169 235 / 50%);
   padding: 0.5rem;
   width: 15vw;
-  background-color: var(--white);
-  color: var(--purple-dark);
+  background-color: var(--purple-light);
+  color: var(--white);
   cursor: pointer;
   margin-right: 2vw;
 }
@@ -139,8 +139,11 @@
 .send-candidature {
   color: red;
 }
-
-.offer_button_postulation {
-  display: flex;
-  flex-direction: column;
+.send-signIn {
+  color: red;
+  cursor: pointer;
+  margin-bottom: 2vh;
+}
+.alert_seen_button {
+  margin-top: 2vh;
 }

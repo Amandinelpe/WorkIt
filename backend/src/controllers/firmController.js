@@ -27,6 +27,23 @@ const firmController = {
       .then((reponse) => res.status(200).send(reponse))
       .catch((err) => next(err));
   },
+
+  deleteFirm: (req, res, next) => {
+    const { id } = req.params;
+    firmModel
+      .deleteFirm(id)
+      .then(() => res.status(200).send("deleted"))
+      .catch((err) => next(err));
+  },
+
+  updateFirm: (req, res, next) => {
+    const { id } = req.params;
+    const firm = req.body;
+    firmModel
+      .updateFirm(firm, id)
+      .then(() => res.status(200).send("Updated"))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = firmController;
