@@ -80,7 +80,7 @@
   align-items: center;
 }
 
-.postule-button {
+.postule-button, .alert_seen_button {
   border-radius: 20px;
   border: none;
   box-shadow: 3px 3px rgb(147 169 235 / 50%);
@@ -89,10 +89,10 @@
   background-color: var(--white);
   color: var(--purple-dark);
   cursor: pointer;
-  margin-top: 2vw;
+  margin-top: 1vw;
   margin-bottom: 2vh;
 }
-.postule-button:hover {
+.postule-button:hover, .alert_seen_button:hover {
   box-shadow: 4px 4px 2px 1px var(--orange);
   transform: scale(1.1);
 }

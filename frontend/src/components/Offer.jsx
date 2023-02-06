@@ -3,12 +3,23 @@ import PropTypes from "prop-types";
 import OfferDetail from "../modals/OfferDetail";
 import "../styles/Offer.css";
 
-const Offer = ({ firm, date, title, logo, city, id, setReload, reload }) => {
+const Offer = ({
+  firm,
+  date,
+  title,
+  logo,
+  city,
+  id,
+  setReload,
+  reload,
+  handleDelete,
+  alert,
+}) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [show, setShow] = useState(false);
+  
 
   const formatedDate = new Date(date).toLocaleDateString();
-
   return (
     <div className="bloc_offer">
       <div className="offer_block_job">
@@ -28,6 +39,8 @@ const Offer = ({ firm, date, title, logo, city, id, setReload, reload }) => {
         />
         <OfferDetail
           show={show}
+          alert={alert}
+          handleDelete={handleDelete}
           onClose={() => {
             setShow(false);
             setReload(reload + 1);
