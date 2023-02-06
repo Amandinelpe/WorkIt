@@ -7,7 +7,10 @@ import {
   loadMessages,
 } from "@progress/kendo-react-intl";
 import frMessages from "../utils/fr.json";
-import { GetCandidated } from "../utils/getSpontaneousApplications";
+import {
+  GetCandidated,
+  PutCandidated,
+} from "../utils/getSpontaneousApplications";
 import "../styles/GridContainer.css";
 import "../styles/KendoGrid.css";
 import "../styles/Candidature.css";
@@ -28,18 +31,21 @@ const Candidature = () => {
     state_id: 0,
   });
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [idCandidature, setIdCandidature] = useState(null);
 
-  const openModal = () => {
+  const openActionCandidatureModal = (id) => {
+    setIdCandidature(id);
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
+    setIdCandidature(null);
   };
 
-  const handleStateClick = (estEnCoursDeTraitement) => {
+  const handleStateClick = (id, estEnCoursDeTraitement) => {
     if (estEnCoursDeTraitement) {
-      openModal();
+      openActionCandidatureModal(id);
     }
   };
 
@@ -75,7 +81,9 @@ const Candidature = () => {
     return (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
       <td
-        onClick={() => handleStateClick(estEnCoursDeTraitement)}
+        onClick={() =>
+          handleStateClick(item.dataItem.candidated_id, estEnCoursDeTraitement)
+        }
         className={estEnCoursDeTraitement ? "cursor" : ""}
       >
         <span className={className}>{item.dataItem.name}</span>
@@ -113,6 +121,17 @@ const Candidature = () => {
     const candidated = await GetCandidated();
     setCandidatures(candidated);
     filter(candidated, candidatureFilter.state_id);
+  };
+
+  const handleActionCandidature = (action) => {
+    if (action === "accept") {
+      PutCandidated(idCandidature, { application_state_id: 3 });
+    } else {
+      PutCandidated(idCandidature, { application_state_id: 2 });
+    }
+
+    getCandidatures();
+    closeModal();
   };
 
   useEffect(() => {
@@ -187,15 +206,23 @@ const Candidature = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="modal"
-        overlayClassName="overlay"
+        className="candidature-modal"
+        overlayClassName="candidature-overlay"
       >
         <div className="title">Veuillez saisir votre choix</div>
         <div className="content">
-          <button type="button" className="button" onClick={closeModal}>
+          <button
+            type="button"
+            className="button"
+            onClick={() => handleActionCandidature("accept")}
+          >
             Accepter la candidature
           </button>
-          <button type="button" className="button" onClick={closeModal}>
+          <button
+            type="button"
+            className="button"
+            onClick={() => handleActionCandidature("refuse")}
+          >
             Refuser la candidature
           </button>
         </div>
