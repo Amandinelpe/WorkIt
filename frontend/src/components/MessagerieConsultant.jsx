@@ -46,12 +46,7 @@ const MessagerieConsultant = () => {
             <h2>Messagerie</h2>
           </div>
           <div className="grid-container">
-            <button
-              type="submit"
-              className="btn-container"
-              // eslint-disable-next-line no-alert
-              onClick={() => alert("Actualiser")}
-            >
+            <button type="submit" className="btn-container">
               Actualiser
             </button>
             <LocalizationProvider language="fr-FR">
