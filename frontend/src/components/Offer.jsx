@@ -72,6 +72,9 @@ Offer.propTypes = {
   id: PropTypes.number.isRequired,
   reload: PropTypes.number.isRequired,
   setReload: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  button: PropTypes.func.isRequired,
+  alertId: PropTypes.number.isRequired,
 };
 
 export default Offer;

@@ -15,6 +15,8 @@ const HelloButton = () => {
         src={logoutButton}
         alt="logout"
         onClick={logout}
+        onKeyDown=""
+        role="presentation"
         className="logout_logo"
         description="deconnexion"
       />

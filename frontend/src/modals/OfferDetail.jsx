@@ -33,7 +33,6 @@ const OfferDetail = ({
   const { auth } = useContext(authContext);
   const [favoriteId, setFavoriteId] = useState();
   const [candidatedId, setCandidatedId] = useState();
-  console.log(alertId);
   const initUserOffer = () => {
     if (auth.data) {
       if (auth.data.role_id === 1) {
@@ -109,9 +108,13 @@ const OfferDetail = ({
       >
         <div className="modal-header">
           <div className="header-img">
-            <img src={dataOffer.logo_url} alt={dataOffer.logo_url} width="8%" />
             <img
-              className="header-button"
+              src={dataOffer.logo_url}
+              alt={dataOffer.logo_url}
+              className="offer_detail_image"
+            />
+            <img
+              className="offer_close_button"
               aria-hidden="true"
               onClick={onClose}
               onKeyDown={onClose}
@@ -119,51 +122,51 @@ const OfferDetail = ({
               alt="close"
             />
           </div>
-          <div>
-            <h1 className="modal-title"> {dataOffer.title} </h1>
-            <div className="header-img">
+          <div className="offer_header_block">
+            <div className="offer_header_block_one">
+              <h3 className="modal-title"> {dataOffer.title} </h3>
               <p>
                 {"   Offre publiée le "}{" "}
                 {new Date(dataOffer.date).toLocaleDateString()}{" "}
               </p>
-              {auth.data && auth.data.role_id === 1 ? (
-                <img
-                  className="header-button"
-                  aria-hidden="true"
-                  onClick={() => {
-                    setFavorite();
-                  }}
-                  onKeyDown={onClose}
-                  src={favoriteId ? isfav : notfav}
-                  alt="close"
-                />
-              ) : null}
             </div>
+            {auth.data && auth.data.role_id === 1 ? (
+              <img
+                className="offer_favourite_button"
+                aria-hidden="true"
+                onClick={() => {
+                  setFavorite();
+                }}
+                onKeyDown={onClose}
+                src={favoriteId ? isfav : notfav}
+                alt="close"
+              />
+            ) : null}
           </div>
         </div>
 
         <div className="modal-body">
-          <h2 className="modal-subtitle">Lieu</h2>
+          <h3 className="modal-subtitle">Lieu</h3>
           <p className="modal-text-uppercase"> {dataOffer.firm_city} </p>
-          <h2 className="modal-subtitle">Description de la société</h2>
+          <h3 className="modal-subtitle">Description de la société</h3>
           <p className="modal-text"> {dataOffer.description_firm} </p>
-          <h2 className="modal-subtitle">Mission proposée</h2>
+          <h3 className="modal-subtitle">Mission proposée</h3>
           <p className="modal-text"> {dataOffer.description_mission} </p>
-          <h2 className="modal-subtitle">Environnement technique</h2>
+          <h3 className="modal-subtitle">Environnement technique</h3>
           <p className="modal-text"> {dataOffer.hard_skills} </p>
 
           {
             (dataOffer.soft_skills = !"-" && (
               <div>
-                <h2 className="modal-subtitle">Compétences relationnelles</h2>
+                <h3 className="modal-subtitle">Compétences relationnelles</h3>
                 <p className="modal-text"> {dataOffer.soft_skills} </p>{" "}
               </div>
             ))
           }
 
-          <h2 className="modal-subtitle">Expérience requise</h2>
+          <h3 className="modal-subtitle">Expérience requise</h3>
           <p className="modal-text">{dataOffer.experience} </p>
-          <h2 className="modal-subtitle">Salaire brut annuel proposé</h2>
+          <h3 className="modal-subtitle">Salaire brut annuel proposé</h3>
           <p className="modal-text">{dataOffer.salary}€ </p>
         </div>
         <div className="modal-footer">
@@ -179,7 +182,7 @@ const OfferDetail = ({
                 handleSubmit();
               }}
               type="submit"
-              className="postule-button"
+              className="postule_button_offer"
             >
               {" "}
               Je postule{" "}
@@ -205,5 +208,8 @@ OfferDetail.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   offerId: PropTypes.number.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  button: PropTypes.func.isRequired,
+  alertId: PropTypes.number.isRequired,
 };
 export default OfferDetail;
