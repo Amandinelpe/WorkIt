@@ -92,6 +92,7 @@
 .my_profile_drop_cv input {
   display: none;
 }
-.my_profyle_fileName {
-  color: black;
+.my_profyle_fileName{
+  padding-top: 1.5vh;
+  color: var(--purple-dark);
 }

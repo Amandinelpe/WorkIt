@@ -18,6 +18,7 @@
 .all_favorites_offers_titleblock {
   color: var(--white);
   background-color: var(--purple-light);
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
   height: 12vh;
   border-radius: 50px 50px 0 0;
   display: flex;
@@ -137,6 +138,7 @@
 .my_applications_titleblock {
   color: var(--white);
   background-color: var(--purple-light);
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
   height: 12vh;
   border-radius: 50px 50px 0 0;
 }

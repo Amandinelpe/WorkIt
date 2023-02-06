@@ -1,30 +1,31 @@
-.my_inbox_box_body {
-  margin-top: 10vh;
-  height: 95vh;
-  width: 95vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.my_inbox_body {
-  width: 75vw;
-  margin-top: 5vh;
-  margin-left: 4vw;
-}
-
-.chatBox {
-  width: 95vw;
-  display: flex;
-  flex-direction: row;
+.my_inbox_box_container {
+  margin: 10vh 10vh 10vh 0;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .my_inbox_titleblock {
   color: var(--white);
+    background-color: var(--purple-light);
+    box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+    height: 12vh;
+    border-radius: 50px 50px 0 0;
+}
+
+.my_inbox_body {
+  padding: 4vh 2vw 2vh 2vw;
+    background-color: #FFFDFE;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+}
+
+.my_inbox_titleblock {
+ color: var(--white);
   background-color: var(--purple-light);
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
   height: 12vh;
   border-radius: 50px 50px 0 0;
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
 .my_inbox_titleblock h2 {
