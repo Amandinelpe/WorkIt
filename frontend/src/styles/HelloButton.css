@@ -10,7 +10,5 @@
 
 .hello_button h1 {
   margin-left: 0.8vw;
-  color: var(--bleu);
-  background: var(--white);
-  box-shadow: 4px 4px 2px 1px rgba(83, 159, 169, 0.6);
+  color: var(--white);
 }

@@ -32,10 +32,8 @@ a {
   border-radius: 20px;
   border: none;
   box-shadow: 4px 4px hsla(235, 48%, 57%, 0.502);
-  padding: 14px 46px;
-  font-size: 1rem;
-  margin: 0 20px 0 5px;
-  font-family: var(--text-font-family-jost);
+  padding: 2vh 3vw;
+  margin: 0 2vw 0 1vw;
   width: 10vw;
   background-color: var(--white);
   color: var(--purple-dark);
@@ -44,9 +42,8 @@ a {
   justify-content: center;
 }
 .items.active {
-  font-size: 0.8rem;
-  padding: 16px 40px;
-  margin: 0 20px 0 5px;
+  padding: 2vh 5vw;
+  margin: 0 2vw 0 1vw;
   color: var(--white);
   list-style-type: none;
   background-color: var(--purple-dark);
