@@ -90,3 +90,7 @@ li {
   width: 11vw;
   margin: 3vh 3vw;
 }
+
+.cursor {
+  cursor: pointer;
+}

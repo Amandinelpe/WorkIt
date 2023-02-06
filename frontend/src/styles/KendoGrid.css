@@ -1,3 +1,7 @@
+.grid {
+  width: 65vw;
+}
+
 .grid,
 .grid .k-table-thead,
 .k-table-header,
