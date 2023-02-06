@@ -133,75 +133,75 @@ const MyProfile = () => {
           <div>
             <h4>Ma situation actuelle </h4>
             <div className="">
-              <div className="">
-                <div className="my_profile_input_block">
-                  <label htmlFor="job_id">Poste recherché </label>
-                  <select
-                    value={user.job_id}
-                    name="job_id"
-                    id="job_id"
-                    onChange={handleChange}
-                  >
-                    {jobs.map((job) => (
-                      <option key={job.id} value={job.id}>
-                        {job.job_title}
-                      </option>
-                    ))}
-                  </select>
+              <div className="my_profile_input_block">
+                <label htmlFor="job_id">Poste recherché </label>
+                <select
+                  value={user.job_id}
+                  name="job_id"
+                  id="job_id"
+                  className="my_profile_large_input"
+                  onChange={handleChange}
+                >
+                  {jobs.map((job) => (
+                    <option key={job.id} value={job.id}>
+                      {job.job_title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <p className="my_profile_label">Disponibilité</p>
+                <div className="my_profile_radio_buttons">
+                  {dataMyProfile.radioButtons.disponibility.map((item) => (
+                    <RadioButton
+                      key={item.id}
+                      labelName={item.labelName}
+                      inputName="disponibilite"
+                      inputValue={item.inputValue}
+                    />
+                  ))}
                 </div>
-                <div>
-                  <p className="my_profile_label">Disponibilité</p>
-                  <div className="">
-                    {dataMyProfile.radioButtons.disponibility.map((item) => (
+              </div>
+              <div className="my_profile_input_block">
+                <label htmlFor="diploma">Niveau d'études</label>
+                <input
+                  type="text"
+                  id="diploma"
+                  name="diploma"
+                  className="my_profile_small_input"
+                  value={user.diploma}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="my_profile_input_block">
+                <label htmlFor="website">Mon site internet</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  className="my_profile_small_input"
+                  value={user.website}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <p className="my_profile_label">
+                  Reconnu travailleur handicapé
+                </p>
+                <div className="my_profile_radio_buttons">
+                  {dataMyProfile.radioButtons.recognizedDisabledWorker.map(
+                    (item) => (
                       <RadioButton
                         key={item.id}
                         labelName={item.labelName}
-                        inputName="disponibilite"
+                        inputName="travailleur-handicape"
                         inputValue={item.inputValue}
                       />
-                    ))}
-                  </div>
-                </div>
-                <div className="my_profile_input_block">
-                  <label htmlFor="diploma">Niveau d'études</label>
-                  <input
-                    type="text"
-                    id="diploma"
-                    name="diploma"
-                    className="my_profile_small_input"
-                    value={user.diploma}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="my_profile_input_block">
-                  <label htmlFor="website">Mon site internet</label>
-                  <input
-                    type="text"
-                    id="website"
-                    name="website"
-                    className="my_profile_small_input"
-                    value={user.website}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <p className="my_profile_label">
-                    Reconnu travailleur handicapé
-                  </p>
-                  <div className="">
-                    {dataMyProfile.radioButtons.recognizedDisabledWorker.map(
-                      (item) => (
-                        <RadioButton
-                          key={item.id}
-                          labelName={item.labelName}
-                          inputName="travailleur-handicape"
-                          inputValue={item.inputValue}
-                        />
-                      )
-                    )}
-                  </div>
+                    )
+                  )}
                 </div>
               </div>
+
               <div className="">
                 <div className="my_profile_input_block">
                   <label htmlFor="actual_job">Situation actuelle</label>
@@ -216,7 +216,7 @@ const MyProfile = () => {
                 </div>
                 <div>
                   <p className="label">Niveau d'expérience</p>
-                  <div className="">
+                  <div className="my_profile_radio_buttons">
                     {experiences.map((item) => {
                       return (
                         <RadioButton

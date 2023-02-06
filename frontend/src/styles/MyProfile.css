@@ -38,7 +38,7 @@
   flex-direction: column;
   gap: 1vh;
 }
-.my_profile_input_block label {
+.my_profile_input_block label, .my_profile_label {
   color: var(--purple-light);
   font-size: 1.2vw;
 }
@@ -53,14 +53,16 @@
   color: var(--purple-dark);
 }
 .my_profile_large_input {
-  width: 15vw;
-  background-color: var(--white);
-  height: 4.5vh;
+  width: 28vw;
   outline: none;
-  border: var(--purple-dark) 1px solid;
+  border-bottom: var(--purple-dark) 1px solid;
   padding: 1vh 0.5vw;
-  border-radius: 15px;
   color: var(--purple-dark);
+}
+
+.my_profile_radio_buttons{
+  display: flex;
+  flex-direction: row;
 }
 
 .my_profile_drop_cv {
