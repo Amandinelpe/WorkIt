@@ -21,7 +21,7 @@ const BoxAdmin = ({ handleContent }) => {
           tabIndex={0}
         >
           <div key={box.id} className="box_admin_title">
-            <h1>{box.title}</h1>
+            <h4>{box.title}</h4>
           </div>
           <div className="box_admin_body">
             <ul>

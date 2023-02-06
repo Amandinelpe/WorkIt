@@ -19,7 +19,6 @@
   display: flex;
   flex-direction: column;
   width: 25vw;
-  font-size: 0.8em;
 }
 
 .consultant_name {
@@ -38,7 +37,7 @@
 
 .modify_delete_buttons button {
   background: var(--white);
-  font-size: 0.8rem;
+
   color: var(--purple-dark);
   border-radius: 60px;
   display: flex;

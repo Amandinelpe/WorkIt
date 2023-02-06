@@ -1,0 +1,16 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1vh;
+}
+
+.input-container label {
+  color: var(--purple-light);
+  margin-bottom: 0.5vh;
+}
+
+.input {
+  padding: 0.5vh 0.5vw;
+  border: 1px solid var(--purple-light);
+  border-radius: 5px;
+}

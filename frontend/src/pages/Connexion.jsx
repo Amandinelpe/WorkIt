@@ -57,12 +57,12 @@ const Connexion = ({ user }) => {
         transition={{ duration: 0.5 }}
       >
         <div className="title">
-          <h1>Connecte toi</h1>
-          <h3>
+          <h2>Connecte toi</h2>
+          <h2>
             à ton espace {user === "user" ? "personnel" : ""}{" "}
             {user === "consultant" ? "consultant" : ""}{" "}
             {user === "admin" ? "administrateur" : ""}
-          </h3>
+          </h2>
         </div>
         <form
           name="connexion"
