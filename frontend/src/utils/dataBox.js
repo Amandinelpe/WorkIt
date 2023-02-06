@@ -7,7 +7,7 @@ const dataBox = [
       "Mes coups de coeur",
       "Mes candidatures",
       "Mes informations personnelles",
-      "Je rentre en contact avec un.e consultant.e",
+      "Contacter mon conseiller",
       "Gérer mes alertes",
     ],
     link: "dashboard",

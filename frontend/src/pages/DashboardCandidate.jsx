@@ -22,7 +22,7 @@ const DashboardCandidate = () => {
     switch (content) {
       case "Mes informations personnelles":
         return <MyProfile />;
-      case "Je rentre en contact avec un.e consultant.e":
+      case "Contacter mon conseiller":
         return <Chat />;
       case "Mes candidatures":
         return <DashboardApplications />;

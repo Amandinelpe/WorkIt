@@ -7,10 +7,6 @@
   box-sizing: border-box;
 }
 
-body {
-  line-height: 1;
-}
-
 ol,
 ul {
   list-style: none;
@@ -42,15 +38,27 @@ ul {
 }
 
 body {
-  background-image: url("./assets/img/workit02-fond.png");
-  background-size: cover;
-  background-attachment: fixed;
+  line-height: 1;
+}
+.site_background img{
+  background-color: rgba(0, 0, 0, 0.815);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.site_background_normal img {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
-.App {
-  width: 100vw;
-  height: 100vh;
-}
 
 h1 {
   font-family: var(--title-font-family-jost);
