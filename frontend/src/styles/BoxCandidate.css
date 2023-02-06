@@ -11,7 +11,7 @@
 
 .box_candidate {
   margin-top: 3vh;
-  /*  height: auto; */
+
 }
 
 .box_candidate_title {
@@ -40,7 +40,7 @@
 }
 
 .box_candidate_body ul li {
-  margin: 0vh 3vw 1vh 3vw;
+  margin: 0vh 3vw 1vh 2vw;
 }
 
 .box_candidate_body ul:hover,

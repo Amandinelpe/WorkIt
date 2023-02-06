@@ -59,85 +59,78 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="my-profile">
-      <div className="flex flex-fd-column flex-ai-center flex-jc-center">
-        <div className="box box_candidate">
-          <div className="box_candidate_title">
-            <h1>Mon Profil</h1>
-          </div>
-          <div className="box_candidate_body">
-            <div>
-              <h3>Mes informations personnelles</h3>
-              <div className="informations-personnelles flex flex-fd-row flex-ai-flex-start flex-jc-space-between">
+    <div className="my_profile">
+      <div className="my_profile_box_candidate">
+        <div className="my_profile_title">
+          <h3>Mon Profil</h3>
+        </div>
+        <div className="my_profile_body">
+          <div>
+            <h4>Mes informations personnelles</h4>
+            <div className="my_profile_informations_personnelles">
+              <div className="my_profile_input_block">
+                <label>Prénom</label>
+                <input
+                  type="text"
+                  name="firstname"
+                  className="my_profile_small_input"
+                  value={user.firstname}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="my_profile_input_block">
+                <label>Nom</label>
+                <input
+                  type="text"
+                  name="lastname"
+                  className="my_profile_small_input"
+                  value={user.lastname}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="my_profile_input_block">
+                <label>Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  className="my_profile_small_input"
+                  value={user.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="my_profile_input_block">
+                <label>Localisation</label>
+                <input
+                  type="text"
+                  name="city"
+                  className="my_profile_small_input"
+                  value={user.city}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="my_profile_drop_cv">
                 <div>
-                  <div className="gender" />
-                  <div className="flex flex-fd-row flex-jc-space-between">
-                    <div className="flex flex-fd-column flex-gap-3vh">
-                      <label>
-                        Prénom
-                        <input
-                          type="text"
-                          name="firstname"
-                          className="small-input"
-                          value={user.firstname}
-                          onChange={handleChange}
-                        />
-                      </label>
-                      <label>
-                        Email
-                        <input
-                          type="text"
-                          name="email"
-                          className="small-input"
-                          value={user.email}
-                          onChange={handleChange}
-                        />
-                      </label>
-                      <label>
-                        Localisation
-                        <input
-                          type="text"
-                          name="city"
-                          className="small-input"
-                          value={user.city}
-                          onChange={handleChange}
-                        />
-                      </label>
-                    </div>
-                    <div className="flex flex-fd-column flex-gap-7vh">
-                      <label>
-                        Nom
-                        <input
-                          type="text"
-                          name="lastname"
-                          className="small-input"
-                          value={user.lastname}
-                          onChange={handleChange}
-                        />
-                      </label>
-                      <div>
-                        <input
-                          type="file"
-                          name="file"
-                          id="file"
-                          className="inputfile"
-                          accept="application/pdf"
-                          onChange={handleCV}
-                        />
-                        <label htmlFor="file">Je dépose mon CV</label>
-                        <div className="fileName">
-                          {user.fileName && <p>{user.fileName}</p>}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <input
+                    type="file"
+                    name="file"
+                    id="file"
+                    className="my_profile_inputfile"
+                    accept="application/pdf"
+                    onChange={handleCV}
+                  />
+                  <label htmlFor="file">Je dépose mon CV</label>
                 </div>
               </div>
+              <div className="my_profyle_fileName">
+                {user.fileName && <p>{user.fileName}</p>}
+              </div>
             </div>
-            <div>
-              <h3>Ma situation actuelle </h3>
-              <div className="flex flex-fd-row flex-ai-flex-start flex-jc-space-between">
-                <div className="flex flex-fd-column flex-gap-3vh">
+          </div>
+          <div>
+            <h4>Ma situation actuelle </h4>
+            <div className="">
+              <div className="">
+                <div>
                   <label>
                     Poste recherché
                     <select
@@ -152,116 +145,118 @@ const MyProfile = () => {
                       ))}
                     </select>
                   </label>
-                  <div>
-                    <p className="label">Disponibilité</p>
-                    <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
-                      {dataMyProfile.radioButtons.disponibility.map((item) => (
+                </div>
+                <div>
+                  <p className="my_profile_label">Disponibilité</p>
+                  <div className="">
+                    {dataMyProfile.radioButtons.disponibility.map((item) => (
+                      <RadioButton
+                        key={item.id}
+                        labelName={item.labelName}
+                        inputName="disponibilite"
+                        inputValue={item.inputValue}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="">
+                  <label>Niveau d'études</label>
+                  <input
+                    type="text"
+                    name="diploma"
+                    className="my_profile_small_input"
+                    value={user.diploma}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="">
+                  <label>Mon site internet</label>
+                  <input
+                    type="text"
+                    name="website"
+                    className="my_profile_small_input"
+                    value={user.website}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <p className="my_profile_label">
+                    Reconnu travailleur handicapé
+                  </p>
+                  <div className="">
+                    {dataMyProfile.radioButtons.recognizedDisabledWorker.map(
+                      (item) => (
                         <RadioButton
                           key={item.id}
                           labelName={item.labelName}
-                          inputName="disponibilite"
+                          inputName="travailleur-handicape"
                           inputValue={item.inputValue}
                         />
-                      ))}
-                    </div>
-                  </div>
-                  <label>
-                    Niveau d'étude
-                    <input
-                      type="text"
-                      name="diploma"
-                      className="small-input"
-                      value={user.diploma}
-                      onChange={handleChange}
-                    />
-                  </label>
-                  <label>
-                    Mon site internet
-                    <input
-                      type="text"
-                      name="website"
-                      className="small-input"
-                      value={user.website}
-                      onChange={handleChange}
-                    />
-                  </label>
-                  <div>
-                    <p className="label">Reconnu travailleur handicapé</p>
-                    <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
-                      {dataMyProfile.radioButtons.recognizedDisabledWorker.map(
-                        (item) => (
-                          <RadioButton
-                            key={item.id}
-                            labelName={item.labelName}
-                            inputName="travailleur-handicape"
-                            inputValue={item.inputValue}
-                          />
-                        )
-                      )}
-                    </div>
+                      )
+                    )}
                   </div>
                 </div>
-                <div className="flex flex-fd-column flex-gap-3vh">
-                  <label>
-                    Situation actuelle
-                    <input
-                      type="text"
-                      name="actual_job"
-                      className="large-input"
-                      value={user.actual_job}
-                      onChange={handleChange}
-                    />
-                  </label>
-                  <div>
-                    <p className="label">Niveau d'expérience</p>
-                    <div className="flex flex-fd-row flex-ai-center flex-jc-flex-start field">
-                      {experiences.map((item) => {
-                        return (
-                          <RadioButton
-                            key={item.id}
-                            labelName={item.experience}
-                            inputName="experience_id"
-                            inputValue={item.id}
-                            checked={item.experience_id === item.id}
-                            onChange={handleChange}
-                          />
-                        );
-                      })}
-                    </div>
+              </div>
+              <div className="">
+                <div>
+                  <label>Situation actuelle</label>
+                  <input
+                    type="text"
+                    name="actual_job"
+                    className="my_profile_large_input"
+                    value={user.actual_job}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <p className="label">Niveau d'expérience</p>
+                  <div className="">
+                    {experiences.map((item) => {
+                      return (
+                        <RadioButton
+                          key={item.id}
+                          labelName={item.experience}
+                          inputName="experience_id"
+                          inputValue={item.id}
+                          checked={item.experience_id === item.id}
+                          onChange={handleChange}
+                        />
+                      );
+                    })}
                   </div>
-                  <label>
-                    Salaire (annuel brut)
-                    <input
-                      type="number"
-                      name="salary"
-                      className="small-input"
-                      value={user.salary}
-                      onChange={handleChange}
-                    />
-                  </label>
-                  <label>
-                    Mon GitHub
-                    <input
-                      type="text"
-                      name="github"
-                      className="small-input"
-                      value={user.github}
-                      onChange={handleChange}
-                    />
-                  </label>
+                </div>
+                <div>
+                  <label>Salaire (annuel brut)</label>
+                  <input
+                    type="number"
+                    name="salary"
+                    className="my_profile_small_input"
+                    value={user.salary}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label>Mon GitHub</label>
+                  <input
+                    type="text"
+                    name="github"
+                    className="my_profile_small_input"
+                    value={user.github}
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
             </div>
-            <div className="actions">
-              <button
-                type="submit"
-                className="btn-enregistrer"
-                onClick={updateUser}
-              >
-                Enregistrer
-              </button>
-              {message && <p>{message}</p>}
-            </div>
+          </div>
+          <div className="actions">
+            <button
+              type="submit"
+              className="btn-enregistrer"
+              onClick={updateUser}
+            >
+              Enregistrer
+            </button>
+            {message && <p>{message}</p>}
           </div>
         </div>
       </div>

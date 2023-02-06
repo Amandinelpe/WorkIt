@@ -14,7 +14,7 @@ const BoxCandidate = ({ handleContent }) => {
       {dataBox.map((box) => (
         <div key={box.id} className="box_candidate">
           <div key={box.id} className="box_candidate_title">
-            <h1>{box.title}</h1>
+            <h3>{box.title}</h3>
           </div>
           <div className="box_candidate_body">
             <ul>
