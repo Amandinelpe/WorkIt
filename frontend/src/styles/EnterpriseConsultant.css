@@ -14,21 +14,19 @@
 
 .container_enterprise_body .container_enterprise .enterprise-box {
   width: 84vw;
-  height: 70vh;
+  height: 100vh;
 }
 
 .container_enterprise_body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2vw;
+  padding-top: 10vh;
 }
 
 .enterprise-details {
   display: flex;
   flex-direction: row;
-  font-family: var(--text-font-family-jost);
-  font-size: 0.9rem;
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
@@ -45,8 +43,17 @@
   margin-bottom: 2vw;
 }
 
+.search-box-enterprise {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-box-enterprise img {
+  margin-right: 3vw;
+}
+
 .logo-search-enterprises {
-  height: 5vh;
+  height: 4vh;
   display: flex;
   align-items: center;
   padding-top: 1vh;
@@ -58,23 +65,25 @@
   border-radius: 40px;
   border: 1px solid var(--purple-light);
   padding: 0 10px;
-  margin: 10px 10px;
+  margin: 2vh 2vw;
 }
 
 .enterprise-details form {
   display: flex;
   flex-direction: row;
   margin-left: 3vw;
+  padding-top: 0.5vh;
 }
 
-.enterprise-details .search-input-enterprise {
+.search-box-enterprise .search-input-enterprise {
   color: var(--purple-dark);
   border: 2px solid #ccc;
   box-shadow: 0 0 2px 2px var(--purple-dark);
+  width: 25vw;
 }
 
 .dashboard_enterprises {
-  padding: 5vh 2vw 5vh 10vw;
+  padding: 5vh 10vw 5vh 20vw;
   background-color: var(--white);
   border-radius: 0 0 20px 20px;
   display: flex;
@@ -94,6 +103,46 @@
   color: #93a9eb;
 }
 
+.enterprise-box .btn_create_firmform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14vw;
+  height: 5vh;
+  cursor: pointer;
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 20px;
+  border: none;
+  margin-top: 1vh;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.button_create_firm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1vh;
+  width: 15vw;
+  height: 5vh;
+  cursor: pointer;
+  background-color: var(--orange);
+  color: var(--white);
+  border-radius: 18px;
+  border: none;
+  box-shadow: 3px 3px rgba(240, 239, 239, 0.5);
+}
+
 /* KENDO GRID */
 
 .grid_enterprise,
@@ -107,7 +156,7 @@
 .grid_enterprise .k-column-title {
   white-space: break-spaces;
   height: 35px;
-  font-size: 13px;
+
   font-weight: 600;
 }
 

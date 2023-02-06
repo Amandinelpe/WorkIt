@@ -22,6 +22,8 @@ const BoxCandidate = ({ handleContent }) => {
                 <li
                   className="box-candidate-li "
                   onClick={(e) => onClick(e, section)}
+                  onKeyDown={(e) => onClick(e, section)}
+                  role="presentation"
                 >
                   {section}
                 </li>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Modal from "react-modal";
 import { GetFirmOffer } from "../apis/firmOfferApi";
+import CreateFirmForm from "./CreateFirmForm";
 import "../styles/EnterpriseConsultant.css";
 import search from "../assets/img/loupe.png";
 import GridEntreprises from "./GridEntreprises";
@@ -7,6 +9,7 @@ import GridEntreprises from "./GridEntreprises";
 const EnterpriseConsultant = () => {
   const [myEnterprises, setMyEnterprises] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   const getFirmOffer = async () => {
     setMyEnterprises(await GetFirmOffer());
@@ -22,6 +25,10 @@ const EnterpriseConsultant = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+  };
+
+  const handleShowForm = () => {
+    setShowForm(!showForm);
   };
 
   const filteredFirms = myEnterprises.filter((firm) => {
@@ -50,12 +57,27 @@ const EnterpriseConsultant = () => {
                 />
               </form>
             </div>
+            <button
+              type="button"
+              className="button_create_firm"
+              onClick={handleShowForm}
+            >
+              Créer une fiche entreprise
+            </button>
           </div>
           <div className="dashboard_body">
             <GridEntreprises filteredFirms={filteredFirms} />
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={showForm}
+        onRequestClose={handleShowForm}
+        className="modal"
+        overlayClassName="overlay"
+      >
+        <CreateFirmForm />
+      </Modal>
     </div>
   );
 };

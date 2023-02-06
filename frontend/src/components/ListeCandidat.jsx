@@ -49,11 +49,7 @@ const ListeCandidat = () => {
             <h2>Mes candidats</h2>
           </div>
           <div className="grid-container">
-            <button
-              type="submit"
-              className="btn-container"
-              onClick={() => alert("Actualiser")}
-            >
+            <button type="submit" className="btn-container">
               Actualiser
             </button>
             <LocalizationProvider language="fr-FR">

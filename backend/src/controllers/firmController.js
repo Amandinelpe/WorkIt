@@ -20,6 +20,13 @@ const firmController = {
       .then((firmOffers) => res.status(200).send(firmOffers))
       .catch((err) => next(err));
   },
+  createFirm: (req, res, next) => {
+    const firm = req.body;
+    firmModel
+      .createFirm(firm)
+      .then((reponse) => res.status(200).send(reponse))
+      .catch((err) => next(err));
+  },
 };
 
 module.exports = firmController;

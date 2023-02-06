@@ -7,7 +7,7 @@ const StateBox = ({ setFilterOffer, filterOffer }) => {
   return (
     <div className="publication_date_box">
       <div className="date_titleblock">
-        <h2 className="date_title">ETAT DE L'OFFRE</h2>
+        <h3 className="date_title">ETAT DE L'OFFRE</h3>
       </div>
       <div className="date_body">
         <fieldset>

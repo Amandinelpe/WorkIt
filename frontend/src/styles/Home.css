@@ -7,15 +7,13 @@
 
 .title_block {
   margin: 20vh 0 5vh 0;
-  font-size: 1.1rem;
   color: var(--purple-dark);
   width: 60vw;
   text-align: center;
 }
 
-.title_block h1 {
+.title_block h2 {
   margin-top: 2vh;
-  font-size: 3vh;
 }
 
 .main_container_home {
@@ -58,8 +56,7 @@
   position: relative;
 }
 
-.container_text h2 {
-  font-size: 1.2rem;
+.container_text h3 {
   margin-bottom: 6vh;
 }
 
@@ -70,7 +67,6 @@
   left: -26vw;
   top: -18vh;
   color: var(--bleu);
-  font-size: 2vh;
 }
 
 .container_consultant {
@@ -80,7 +76,6 @@
   top: -18vh;
   right: -28vw;
   color: var(--white);
-  font-size: 2vh;
 }
 
 .button_mainpage_candidat {
@@ -90,9 +85,7 @@
   border-radius: 20px;
   border: none;
   box-shadow: 3px 3px rgb(186, 185, 185);
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  color: white;
+  color: var(--white);
   width: 15vw;
 }
 
@@ -101,16 +94,15 @@
   border-radius: 20px;
   border: none;
   box-shadow: 3px 3px rgb(186, 185, 185);
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  font-family: var(--text-font-family-jost);
+  padding: 1.2vh;
   width: 15vw;
 }
 
 .button_mainpage_candidat {
   background-color: var(--bleu);
-  color: white;
+  color: var(--white);
   margin-top: 5vh;
+  margin-bottom: 1vh;
   cursor: pointer;
 }
 
@@ -122,8 +114,8 @@
 }
 
 .p_small {
-  font-size: 0.9rem;
   margin: 2vh 0;
+  font-size: 1.8vh;
 }
 
 .link_p {

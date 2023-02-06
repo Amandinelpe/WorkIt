@@ -116,15 +116,14 @@ const userController = {
       })
       .catch((err) => next(err));
   },
-  /* eslint-disable no-unused-vars */
-  resetPassword: (req, res, next) => {
+
+  resetPassword: (req, res) => {
     const { email } = req.body;
     userModel.findByEmail(email).then(([user]) => {
       if (!user) {
         res.status(404).send("User not found");
       }
       const token = jwtSign({ id: user.id, email }, { expiresIn: "15m" });
-
       const newData = {
         reset_token: token,
       };

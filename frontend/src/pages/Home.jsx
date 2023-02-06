@@ -26,10 +26,10 @@ const Home = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="title_block">
-        <h1>
+        <h2>
           Chez WorkIT, nous te connectons avec les meilleures entreprises.
-        </h1>
-        <h1> Viens nous parler de toi... </h1>
+        </h2>
+        <h2> Viens nous parler de toi... </h2>
       </div>
       <div className="main_container_home">
         <img className="shape1" src={shape1} alt="polygone" />
@@ -37,7 +37,7 @@ const Home = () => {
         <img className="shape2" src={shape2} alt="polygone" />
         <div className="container_text">
           <div className="container_candidat">
-            <h2>Espace candidat</h2>
+            <h3 className="connexion_block_home">Espace candidat</h3>
             <p>
               Rejoins notre communauté de workers et trouve une entreprise qui
               te correspond
@@ -62,7 +62,7 @@ const Home = () => {
             </p>
           </div>
           <div className="container_consultant">
-            <h2>Espace consultant</h2>
+            <h3 className="connexion_block_home">Espace consultant</h3>
             <p>Trouve un candidat idéal pour tes clients</p>
             <Link to="/ConnexionConsultant">
               <button type="button" className="button_mainpage_consultant">

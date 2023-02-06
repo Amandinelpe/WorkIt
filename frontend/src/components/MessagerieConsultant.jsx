@@ -41,17 +41,12 @@ const MessagerieConsultant = () => {
   return (
     <div className="container-body">
       <div className="container">
-        <div className="filter-box">{/** Filter box */}</div>
         <div className="grid-container-box">
           <div className="grid-container-box-title">
             <h2>Messagerie</h2>
           </div>
           <div className="grid-container">
-            <button
-              type="submit"
-              className="btn-container"
-              onClick={() => alert("Actualiser")}
-            >
+            <button type="submit" className="btn-container">
               Actualiser
             </button>
             <LocalizationProvider language="fr-FR">

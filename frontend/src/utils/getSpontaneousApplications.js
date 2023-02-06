@@ -11,3 +11,8 @@ const requestApi = (finalUrl) => {
 export const GetCandidated = () => {
   return requestApi("candidated/");
 };
+
+// eslint-disable-next-line import/prefer-default-export
+export const PutCandidated = (id, payload) => {
+  return axios.put(`${apiUrl}candidated/${id}`, payload);
+};

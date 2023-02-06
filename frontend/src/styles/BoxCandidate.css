@@ -11,26 +11,23 @@
 
 .box_candidate {
   margin-top: 3vh;
+  /*  height: auto; */
 }
 
 .box_candidate_title {
-  font-family: var(--text-font-family-jost);
-  font-size: 0.9rem;
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
   background: var(--purple-light);
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
-  padding-top: 3.5vh;
+  padding-top: 4.5vh;
 }
 
 .box_candidate_body ul {
-  font-family: var(--text-font-family-jost);
   color: var(--purple-light);
   align-items: left;
-  font-size: 0.8rem;
-  height: 10vw;
-  padding: 4vh;
+  height: auto;
+  padding: 3vh;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -40,11 +37,11 @@
   justify-content: flex-start;
   box-sizing: border-box;
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  padding-right: 6vw;
 }
 
 .box_candidate_body ul li {
   margin-top: 1vh;
-  margin-left: 1.5vw;
 }
 
 .box_candidate_body ul:hover,

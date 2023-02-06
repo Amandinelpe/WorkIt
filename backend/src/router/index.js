@@ -1,8 +1,4 @@
 const express = require("express");
-/* Will serve later
- */ /* const multer = require"multer"); */
-
-/* const uploadCv = multer({ dest: "uploadsCV/" }); */
 
 const router = express.Router();
 const adminRouter = require("./adminRouter");
@@ -19,7 +15,8 @@ const stateOfferRouter = require("./stateOfferRouter");
 const userOfferRouter = require("./userOfferRouter");
 const favoriteRouter = require("./favoriteRouter");
 const candidatedRouter = require("./candidatedRouter");
-const spontaneousApplicationRouter = require("./spontaneousApplicationRouter");
+const userAlertRouter = require("./userAlertRouter");
+const alertRouter = require("./alertRouter");
 
 router.use("/admin", adminRouter);
 router.use("/firm", firmRouter);
@@ -33,7 +30,8 @@ router.use("/offer", offerRouter);
 router.use("/userOffer", userOfferRouter);
 router.use("/urgence", urgencyRouter);
 router.use("/state_offer", stateOfferRouter);
-router.use("/spontaneous_application", spontaneousApplicationRouter);
 router.use("/favorite", favoriteRouter);
 router.use("/candidated", candidatedRouter);
+router.use("/userAlert", userAlertRouter);
+router.use("/alert", alertRouter);
 module.exports = router;

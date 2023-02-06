@@ -21,8 +21,6 @@ const ResetPassword = () => {
       .catch((error) => console.warn(error));
   }, [token]);
 
-  // ici il faut faire un state pour afficher une erreur si le password expire (renvoyer user vrs login)
-
   const handleSubmit = (event) => {
     event.preventDefault();
     modifyPassword(id, password)

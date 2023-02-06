@@ -11,10 +11,12 @@
   padding: 7px;
   width: auto;
   margin-bottom: 5vh;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
 .logo {
   height: 6vh;
+  padding-right: 1vh;
 }
 
 .inputBox2 {
@@ -28,8 +30,8 @@
   margin: 1vh 1vw;
   background: var(--white);
   border-radius: 30vw;
-  color: var(--purple-light);
-  font-size: 1.2em;
+  color: var(--black);
+  font-size: 1.8vh;
   border: none;
   height: 5vh;
 }

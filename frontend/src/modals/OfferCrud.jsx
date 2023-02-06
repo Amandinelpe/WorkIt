@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-return-assign */
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
@@ -52,7 +54,8 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     });
   };
 
-  const modifyOffer = () => {
+  const modifyOffer = (e) => {
+    e.preventDefault();
     setDisabled(false);
   };
 
@@ -75,6 +78,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
     infosOffer.job_id &&
       GetJobById(infosOffer.job_id).then((res) => {
         setInfosOffer({ ...infosOffer, title: res.data.job_title });
@@ -88,6 +92,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
     loadExperiences();
   }, []);
 
+  // eslint-disable-next-line no-return-assign
   return ReactDOM.createPortal(
     <div
       className="modalCrudBox"
@@ -173,7 +178,7 @@ const OfferCrud = ({ show, onClose, offerId }) => {
                     name={input.name}
                     placeholder={input.placeholder}
                     className="modalCrud-input"
-                    value={dataOffer[input.name]}
+                    value={infosOffer[input.name]}
                     onChange={handleChange}
                     disabled={disabled}
                   />

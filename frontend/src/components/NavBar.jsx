@@ -9,12 +9,9 @@ import {
   navBarSignIn,
 } from "../utils/navBarLinks";
 import "../styles/NavBar.css";
-import Notification from "./Notification";
-import socketIO from "socket.io-client";
 
 const NavBar = () => {
-  const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
-  const { auth, logout } = useContext(authContext);
+  const { auth, logout, notification } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
 
   const handleLogout = (id) => {
@@ -53,10 +50,10 @@ const NavBar = () => {
             {section.name}
           </NavLink>
         ))}
-        {auth.data && (auth.data.role_id === 1 || auth.data.role_id === 2) && (
-          <Notification socket={socket} />
-        )}
         {auth.data && <HelloButton />}
+        {auth.data && auth.data.role_id === 1 ? (
+          <div style={{ color: "red" }}>{notification}</div>
+        ) : null}
       </ul>
     </div>
   );

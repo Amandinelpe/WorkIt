@@ -5,16 +5,17 @@
   -moz-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
   color: #7bc5c6;
   margin-bottom: 2vh;
-  width: 50vw;
-  height: auto;
+  width: 70vw;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   border-radius: 25px;
   padding: 4vh 2vw;
-  padding-bottom: 1vh;
-  line-height: 1.8em;
+  line-height: 2.8em;
   text-justify: center;
+  margin-top: 6vw;
+  margin-bottom: 3vw;
 }
 
 .inscription_bloc p {
@@ -27,8 +28,6 @@
   border: none;
   box-shadow: 3px 3px rgb(186, 185, 185);
   padding: 0.5rem;
-  font-size: 0.8rem;
-  font-family: var(--text-font-family-jost);
   width: 15vw;
   align-self: center;
   background-color: var(--orange);
@@ -40,13 +39,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 3vh;
+  margin-top: 4vh;
 }
 
 .button_section a {
   color: var(--blue);
   font-weight: bold;
-  font-size: 0.7rem;
+
   margin: 0.5vh 2vw 2vh 2vw;
 }
 

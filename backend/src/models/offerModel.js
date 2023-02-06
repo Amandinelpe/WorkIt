@@ -58,41 +58,42 @@ const findOffersByState = (where, limit) => {
     )
     .then(([offers]) => offers);
 };
-  const findAllOffersByFirm = (id) => {
-    return db
+const findAllOffersByFirm = (id) => {
+  return db
     .promise()
-    .query("SELECT offer.id, firm.name, offer.title, offer.date, offer.firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id WHERE firm.id = ?", [id])
-  };
-  const deleteOne = (id) => {
-    return db
+    .query(
+      "SELECT offer.id, firm.name, offer.title, offer.date, offer.firm_city, firm.logo_url  FROM offer JOIN job ON offer.job_id = job.id JOIN firm ON offer.firm_id = firm.id WHERE firm.id = ? ORDER BY offer.date DESC",
+      [id]
+    );
+};
+const deleteOne = (id) => {
+  return db
     .promise()
     .query("DELETE FROM offer WHERE id = ?", [id])
-    .then (([offer]) => offer)
-  };
-  const createOne = (offer) => {
-    console.log(offer, "offer")
-    return db
+    .then(([offer]) => offer);
+};
+const createOne = (offer) => {
+  return db
     .promise()
     .query("INSERT INTO offer SET ?", [offer])
-    .then ((offer) => offer)
-  };
+    .then((result) => result);
+};
 
-  const updateOne = (offer, id) => {
-    return db
+const updateOne = (offer, id) => {
+  return db
     .promise()
-    .query("UPDATE offer SET ? WHERE id = ?", [offer,id])
-    .then ((offer) => offer)
-  };
-  const findOnlyOfferInfos = (id) => {
-    return db
-      .promise()
-      .query(
-        "SELECT title, firm_id, firm_city, salary, description_firm, description_mission, soft_skills, hard_skills, experience_id  FROM offer WHERE offer.id = ?",
-        [id]
-      )
-      .then(([offer]) => offer);
-  };
-
+    .query("UPDATE offer SET ? WHERE id = ?", [offer, id])
+    .then((res) => res);
+};
+const findOnlyOfferInfos = (id) => {
+  return db
+    .promise()
+    .query(
+      "SELECT title, firm_id, firm_city, salary, description_firm, description_mission, soft_skills, hard_skills, experience_id  FROM offer WHERE offer.id = ?",
+      [id]
+    )
+    .then(([offer]) => offer);
+};
 
 module.exports = {
   findAll,
