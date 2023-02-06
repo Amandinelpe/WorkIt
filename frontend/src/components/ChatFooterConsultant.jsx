@@ -38,7 +38,11 @@ const ChatFooterConsultant = ({ socket }) => {
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={(e) => handleKeyDown(e)}
       />
-      <button type="button" className="sendBtn" onClick={handleSendMessage}>
+      <button
+        type="button"
+        className="chat_sendBtn"
+        onClick={handleSendMessage}
+      >
         Envoyer
       </button>
     </div>
