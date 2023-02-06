@@ -17,7 +17,14 @@ import isfav from "../assets/img/fav.png";
 import notfav from "../assets/img/notfav.png";
 import "../styles/Modal.css";
 
-const OfferDetail = ({ show, onClose, offerId }) => {
+const OfferDetail = ({
+  show,
+  onClose,
+  offerId,
+  handleDelete,
+  button,
+  alertId,
+}) => {
   if (!show) {
     return null;
   }
@@ -26,7 +33,6 @@ const OfferDetail = ({ show, onClose, offerId }) => {
   const { auth } = useContext(authContext);
   const [favoriteId, setFavoriteId] = useState();
   const [candidatedId, setCandidatedId] = useState();
-
   const initUserOffer = () => {
     if (auth.data) {
       if (auth.data.role_id === 1) {
@@ -182,8 +188,12 @@ const OfferDetail = ({ show, onClose, offerId }) => {
               Je postule{" "}
             </button>
           )}
-          {alert !== null && (
-            <button type="submit" className="alert_seen_button">
+          {button === "ok" && (
+            <button
+              type="submit"
+              className="alert_seen_button"
+              onClick={() => handleDelete(alertId)}
+            >
               Marquer comme vu
             </button>
           )}
@@ -198,5 +208,8 @@ OfferDetail.propTypes = {
   show: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   offerId: PropTypes.number.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  button: PropTypes.func.isRequired,
+  alertId: PropTypes.number.isRequired,
 };
 export default OfferDetail;
