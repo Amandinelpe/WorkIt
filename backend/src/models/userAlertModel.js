@@ -15,7 +15,6 @@ const findAllUserId = (job_id, city) => {
 // eslint-disable-next-line camelcase
 const findUserAlert = (user_id) => {
   // eslint-disable-next-line no-restricted-syntax
-  console.log(user_id);
   return db
     .promise()
     .query(

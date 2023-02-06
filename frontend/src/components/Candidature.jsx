@@ -79,7 +79,6 @@ const Candidature = () => {
     }
 
     return (
-      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
       <td
         onClick={() =>
           handleStateClick(item.dataItem.candidated_id, estEnCoursDeTraitement)
