@@ -76,7 +76,7 @@ a {
   transform: scale(1.1);
 }
 .cloche_alerte{
- height: 7vh;
+ height: 6vh;
  rotate: 10deg;
  background-color: var(--white);
  padding: 15%;

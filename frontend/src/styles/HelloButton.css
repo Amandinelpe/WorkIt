@@ -18,3 +18,6 @@
 .logout_logo{
   height: 4vh;
 }
+.logout_logo:hover {
+  transform: scale(1.1);
+}

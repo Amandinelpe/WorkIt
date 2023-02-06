@@ -11,7 +11,13 @@ const HelloButton = () => {
       <h1>
         Bonjour {auth.data.firstname} {auth.data.lastname}
       </h1>
-      <img src={logoutButton} alt="logout" onClick={logout} className="logout_logo"/>
+      <img
+        src={logoutButton}
+        alt="logout"
+        onClick={logout}
+        className="logout_logo"
+        description="deconnexion"
+      />
     </div>
   );
 };
