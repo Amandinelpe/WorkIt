@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import socketIO from "socket.io-client";
 import HelloButton from "./HelloButton";
 import { authContext } from "../context/AuthContext";
 import {
@@ -12,7 +11,6 @@ import {
 import "../styles/NavBar.css";
 
 const NavBar = () => {
-  const socket = socketIO.connect(import.meta.env.VITE_BACKEND_URL_FORCHAT);
   const { auth, logout, notification } = useContext(authContext);
   const [navBar, setNavBar] = useState([]);
 
@@ -53,9 +51,7 @@ const NavBar = () => {
           </NavLink>
         ))}
         {auth.data && <HelloButton />}
-        {auth.data.role_id === 1 && (
-          <div style={{ color: "red" }}>{notification}</div>
-        )}
+        {auth.data && <div style={{ color: "red" }}>{notification}</div>}
       </ul>
     </div>
   );

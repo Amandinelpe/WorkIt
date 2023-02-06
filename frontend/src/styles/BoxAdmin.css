@@ -14,20 +14,16 @@
 }
 
 .box_admin_title {
-  font-family: var(--text-font-family-jost);
-  font-size: 0.9rem;
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
-  background: var(--purple-light);
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  background: var(--bleu);
+  box-shadow: 6px 6px 2px 1px #1a6e6a33;
 }
 
 .box_admin_body ul {
-  font-family: var(--text-font-family-jost);
-  color: var(--purple-light);
+  color: var(--bleu);
   align-items: left;
-  font-size: 0.8rem;
   height: 22vh;
   padding: 5vh;
   display: flex;
@@ -38,7 +34,7 @@
   background: var(--white);
   justify-content: flex-start;
   box-sizing: border-box;
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  box-shadow: 6px 6px 2px 1px #1a6e6a33;
 }
 
 .box_admin_body ul li {

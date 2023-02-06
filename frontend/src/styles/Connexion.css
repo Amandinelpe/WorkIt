@@ -15,12 +15,12 @@
   margin-top: 0;
   width: 30vw;
   text-align: left;
-  padding: 20px;
+  padding: 1.5vw;
   background: #ffffff;
-  box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
-  -webkit-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
-  -moz-box-shadow: 0px 0px 8px 1px rgba(123, 197, 198, 0.78);
-  color: #7bc5c6;
+  box-shadow: 0px 0px 8px 1px var(--bleu);
+  -webkit-box-shadow: 0px 0px 8px 1px var(--bleu);
+  -moz-box-shadow: 0px 0px 8px 1px var(--bleu);
+  color: var(--bleu);
   height: 45vh;
   border-radius: 25px;
   gap: 4vh;
@@ -38,11 +38,11 @@
 
 .connexion-input input,
 .connexion-button button {
-  padding: 1rem;
+  padding: 2.5vh;
   border-radius: 10px;
-  border: #7bc5c6 1px solid;
+  border: var(--bleu) 1px solid;
   background: white;
-  color: #7bc5c6;
+  color: var(--bleu);
   width: 20vw;
   height: 2vh;
   box-shadow: rgba(0, 0, 0, 0);
@@ -54,8 +54,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  background-color: #7bc5c6;
-  color: #ffffff;
+  background-color: var(--bleu);
+  color: var(--white);
   width: 14vw;
   cursor: pointer;
 }
@@ -66,16 +66,10 @@
   align-items: center;
   justify-content: center;
   gap: 2vh;
-  font-size: 1.6em;
-}
-
-.connexion-candidat .title h1,
-h3 {
-  color: #ff5400;
+  color: var(--orange);
   font-weight: bold;
   margin: 0;
-  font-size: 2em;
-  margin-top: 1.2em;
+  margin-top: 2vh;
 }
 
 .small_link {
@@ -88,7 +82,7 @@ h3 {
 
 .connexion-form .small_link a {
   color: var(--blue);
-  font-size: 0.9em;
+  font-size: 1.5vh;
 }
 
 .connexion-button {

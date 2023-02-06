@@ -32,6 +32,14 @@ const candidatedController = {
       .then((candidated) => res.status(200).send(candidated))
       .catch((err) => next(err));
   },
+  putCandidated: (req, res, next) => {
+    const { id } = req.params;
+    const { application_state_id } = req.body;
+    candidatedModel
+      .updateOne(id, { application_state_id })
+      .then((candidated) => res.status(200).send(candidated))
+      .catch((err) => next(err));
+  },
   deleteCandidated: (req, res, next) => {
     const { id } = req.params;
     candidatedModel

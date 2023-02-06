@@ -24,8 +24,6 @@
 }
 
 .nouvelles_candidatures {
-  font-family: var(--text-font-family-jost);
-  font-size: 1.2rem;
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
@@ -36,7 +34,6 @@
 }
 
 .dashboard_candidature .btn-container {
-  font-size: 0.8rem;
   color: white;
   background: #ff5400;
   border-radius: 60px;

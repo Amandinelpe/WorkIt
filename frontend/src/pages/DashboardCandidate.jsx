@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Dashboard from "../components/Dashboard";
 import DashboardApplications from "../components/DashboardApplications";
 import MyProfile from "../components/MyProfile";
-import Chat from "../components/Chat";
+import Chat from "../components/ChatCandidat";
 import DashboardAlerts from "../components/DashboardAlerts";
 import "../styles/DashboardCandidate.css";
 import DashboardNewOffers from "../components/DashboardNewOffers";
