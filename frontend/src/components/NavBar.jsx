@@ -51,7 +51,9 @@ const NavBar = () => {
           </NavLink>
         ))}
         {auth.data && <HelloButton />}
-        {auth.data && <div style={{ color: "red" }}>{notification}</div>}
+        {auth.data && auth.data.role_id === 1 ? (
+          <div style={{ color: "red" }}>{notification}</div>
+        ) : null}
       </ul>
     </div>
   );
