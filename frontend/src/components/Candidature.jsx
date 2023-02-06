@@ -83,6 +83,7 @@ const Candidature = () => {
         onClick={() =>
           handleStateClick(item.dataItem.candidated_id, estEnCoursDeTraitement)
         }
+        onKeyDown={(e) => e.preventDefault()}
         className={estEnCoursDeTraitement ? "cursor" : ""}
       >
         <span className={className}>{item.dataItem.name}</span>
