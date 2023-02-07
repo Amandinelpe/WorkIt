@@ -1,7 +1,17 @@
 .firm__form__dashboard {
   margin: 10vh 30vw;
 }
+.box_firm_body_title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 2vw;
 
+}
+.box_firm_body_title img{
+  width: 2vw;
+}
 .firm__form__dashboard .box_firm_body_title {
   width: 40vw;
 }
@@ -15,6 +25,8 @@
   height: auto;
   background-color: var(--white);
   border-radius: 0 0 25px 25px;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  overflow: hidden;
 }
 
 .box__firm__input {
@@ -28,18 +40,23 @@
   font-size: 2.5vh;
   margin: 4vh 0;
 }
-
-.button_save_firm {
+.firmform_footer{
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 10vw;
-  height: 4vh;
-  margin-left: 7vw;
-  margin-top: 2vh;
-  cursor: pointer;
+}
+.button_save_firm {
+  font-size: 2.2vh;
+  list-style-type: none;
+  margin: 2vh 0;
+  opacity: 0.9;
+  border-radius: 25px;
+  border: none;
+  box-shadow: 4px 4px hsla(235, 48%, 57%, 0.502);
+  padding: 2vh 3vw;
+  width: auto;
   background-color: var(--bleu);
   color: var(--white);
-  border-radius: 18px;
-  border: none;
+  cursor: pointer;
+  display: flex;
 }
