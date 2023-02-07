@@ -23,7 +23,7 @@ const ListeConsultants = () => {
   return (
     <div className="liste_consultants">
       <div className="title_header_liste_consultants">
-        <h1 className="title_liste_consultants">Mes consultant.e.s</h1>
+        <h3 className="title_liste_consultants">Mes consultant.e.s</h3>
       </div>
       <div className="liste_consultants_body">
         <div className="liste_consultants_header">

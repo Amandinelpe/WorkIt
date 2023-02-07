@@ -10,14 +10,14 @@
 
 .title_header_liste_consultants {
   color: var(--white);
-  background-color: var(--purple-light);
-  height: 8vh;
+  background-color: var(--bleu);
+  height: 11vh;
   border-radius: 50px 50px 0 0;
   box-shadow: 3px 3px 2px 1px rgb(0 0 255 / 20%);
 }
 
 .title_liste_consultants {
-  padding: 2.7vh 3vw;
+  padding: 3.7vh 3vw;
 }
 
 .consultants-liste {
