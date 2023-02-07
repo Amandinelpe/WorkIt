@@ -6,7 +6,13 @@
 
 .radio-button-label {
   font-size: 1.8vh;
-  color: var(--purple-light);
+  color: var(--purple-);
+  width: 5.4vw;
+  margin-left: 0.5vw;
+}
+.radio-button-label-candidature {
+  font-size: 1.8vh;
+  color: var(--purple-);
   width: 5.4vw;
   margin-left: 0.5vw;
 }

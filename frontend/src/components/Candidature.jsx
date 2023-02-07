@@ -141,21 +141,21 @@ const Candidature = () => {
 
   return (
     <div className="candidature_container_body">
-      <div className="container">
-        <div className="filter-box">
+      <div className="container_candidature">
+        <div className="filter-box-candidature">
           <CandidatureFilter
             onFilterChange={onFilterChange}
             candidatureFilter={candidatureFilter}
           />
         </div>
-        <div className="grid-container-box">
-          <div className="grid-container-box-title">
+        <div className="candidature-box-candidature">
+          <div className="nouvelles_candidatures_candidatures">
             <h2>Nouvelles candidatures spontanées</h2>
           </div>
-          <div className="grid-container">
+          <div className="dashboard_candidature_candidature">
             <button
               type="submit"
-              className="btn-container"
+              className="button-container"
               onClick={getCandidatures}
             >
               Actualiser
@@ -180,7 +180,11 @@ const Candidature = () => {
                     cell={cellNomPrenom}
                     onClick={getCandidatures}
                   />
-                  <GridColumn field="user_id" title="Id candidat" />
+                  <GridColumn
+                    field="user_id"
+                    title="Id candidat"
+                    width="150px"
+                  />
                   <GridColumn
                     field="title"
                     title="Intitulé du poste"
@@ -189,7 +193,7 @@ const Candidature = () => {
                   <GridColumn
                     field="offer_id"
                     title="Id de l'offre"
-                    width="200px"
+                    width="130px"
                   />
                   <GridColumn
                     field="name"
