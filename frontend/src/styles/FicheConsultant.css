@@ -129,3 +129,7 @@
   border: unset;
   cursor: pointer;
 }
+.close_fiche_consultant_admin{
+  height: 5vh;
+  margin: 3vh 3vw;
+}

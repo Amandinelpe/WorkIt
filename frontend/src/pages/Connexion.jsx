@@ -6,6 +6,7 @@ import axios from "axios";
 import Background from "../components/Background";
 import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
+import LOGOWHITE from "../assets/img/logo-white.png";
 import "../styles/Connexion.css";
 
 const Connexion = ({ user }) => {
@@ -110,7 +111,6 @@ const Connexion = ({ user }) => {
           </div>
         </form>
         <div>{user === "user" && <BannierePartenaire />}</div>
-        <Background user={user} />
       </motion.div>
     </div>
   );
