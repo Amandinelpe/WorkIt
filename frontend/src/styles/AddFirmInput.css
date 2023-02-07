@@ -1,16 +1,17 @@
 .input-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1vh;
+  margin-bottom: 1.5vh;
 }
 
 .input-container label {
   color: var(--purple-light);
-  margin-bottom: 0.5vh;
+  margin-bottom: 1vh;
 }
 
 .input {
   padding: 0.5vh 0.5vw;
+  width: 30vw;
   border: 1px solid var(--purple-light);
   border-radius: 5px;
 }

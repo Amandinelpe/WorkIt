@@ -36,15 +36,15 @@ const GridEntreprises = ({ filteredFirms }) => {
             pageable
             onPageChange={pageChange}
           >
-            <GridColumn title="Id entreprise" field="firm_id" width="70vw" />
+            <GridColumn title="Id" field="firm_id" width="50vw" />
             <GridColumn
               title="Nom de l'entreprise"
               field="name"
-              width="285vw"
+              width="240vw"
             />
-            <GridColumn title="Téléphone" field="contact_phone" width="200vw" />
+            <GridColumn title="Téléphone" field="contact_phone" width="150vw" />
             <GridColumn title="Email" field="email" width="200vw" />
-            <GridColumn title="Ville" field="city" width="200vw" />
+            <GridColumn title="Ville" field="city" width="150vw" />
             <GridColumn
               title="Nombre d'annonces"
               field="nbreoffers"
@@ -52,7 +52,7 @@ const GridEntreprises = ({ filteredFirms }) => {
             />
             <GridColumn
               title="Actions"
-              width="100vw"
+              width="140vw"
               cell={(props) => (
                 <td>
                   <Link to={`/FicheEntreprise/${props.dataItem.firm_id}`}>
