@@ -22,7 +22,7 @@ const firmForm = [
     label: "Logo de l'entreprise",
     type: "text",
     name: "logo_url",
-    placeholder: "Lien du logo de l'entreprise .png",
+    placeholder: "lien http du logo",
     value: "",
     className: "firmform-subtitle",
   },

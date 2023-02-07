@@ -7,7 +7,12 @@
 }
 
 .enterprise-box {
-  width: 85vw;
+  width: 86.5vw;
+}
+
+.modal{
+  height: 208vh;
+  overflow: hidden;
 }
 
 .enterprise-details {

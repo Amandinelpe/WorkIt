@@ -77,7 +77,7 @@ const CreateFirmForm = ({ setShowForm }) => {
         </div>
         <div className="box__firm__body">
           <form className="box__firm__input" onSubmit={postFirm}>
-            <h1>Informations de la nouvelle entreprise entrante</h1>
+            <h3>Informations de la nouvelle entreprise entrante</h3>
             <div className="informations-entreprise-block">
               <div className="informations-entreprises-inputs">
                 {firmForm.map((data) => (
