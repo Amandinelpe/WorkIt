@@ -110,7 +110,11 @@ const OfferCrud = ({ show, onClose, offerId }) => {
       >
         <div className="modalCrud-header">
           <div className="header-img">
-            <img src={dataOffer.logo_url} alt={dataOffer.logo_url} width="8%" />
+            <img
+              src={dataOffer.logo_url}
+              alt={dataOffer.logo_url}
+              className="offer-crud-img"
+            />
 
             <img
               className="header-button"
