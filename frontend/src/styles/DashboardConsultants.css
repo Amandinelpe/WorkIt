@@ -1,3 +1,8 @@
+.mydashboard_render {
+  display: flex;
+  justify-content: center;
+}
+
 .my_favorites_body {
   margin-top: 10vh;
   display: flex;
