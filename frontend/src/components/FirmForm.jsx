@@ -58,28 +58,26 @@ const FirmForm = ({ setMessage }) => {
               <div className="first_line_details">
                 <div className="first_line_text">
                   <div className="entreprise_name">
-                    Nom de l'entreprise
-                    <label>
-                      <input
-                        type="text"
-                        name="name"
-                        className="small-input"
-                        value={firm.name}
-                        onChange={handleChange}
-                      />
-                    </label>
+                    <label htmlFor="name">Nom de l'entreprise</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      className="small-input"
+                      value={firm.name}
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="consultant_firm">
-                    Consultant attitré
-                    <label>
-                      <input
-                        type="text"
-                        name="consultant_id"
-                        className="very-small-input"
-                        value={firm.consultant_id}
-                        onChange={handleChange}
-                      />
-                    </label>
+                    <label htmlFor="consultant_id"> Consultant attitré</label>
+                    <input
+                      type="text"
+                      name="consultant_id"
+                      id="consultant_id"
+                      className="very-small-input"
+                      value={firm.consultant_id}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
                 <div className="logo_firm_block">
@@ -92,77 +90,87 @@ const FirmForm = ({ setMessage }) => {
               </div>
             </div>
             <div className="Id_firm">
-              Id client
-              <label>
-                <input
-                  type="text"
-                  name="firm_id"
-                  className="very-small-input"
-                  value={firm.id}
-                />
-              </label>
-              <label>
-                Secteur
-                <input
-                  type="text"
-                  name="type"
-                  className="very-small-input"
-                  value={firm.type}
-                  onChange={handleChange}
-                />
-              </label>
+              <label htmlFor="consultant_id"> Id client </label>
+              <input
+                type="text"
+                name="consultant_id"
+                id="consultant_id"
+                className="very-small-input"
+                value={firm.id}
+              />
+
+              <label htmlFor="type"> Secteur </label>
+              <input
+                type="text"
+                name="type"
+                id="type"
+                className="very-small-input"
+                value={firm.type}
+                onChange={handleChange}
+              />
             </div>
+
             <div className="third_line-details">
-              <label>
-                Email
+              <div className="third_line-details-block">
+                <label htmlFor="email">Email</label>
                 <input
                   type="text"
                   name="email"
+                  id="email"
                   className="small-input"
                   value={firm.email}
                   onChange={handleChange}
                 />
-              </label>
-              <label>
-                Téléphone
+              </div>
+              <div className="third_line-details-block">
+                <label htmlFor="contact_phone">Téléphone</label>
                 <input
                   type="text"
                   name="contact_phone"
+                  id="contact_phone"
                   className="small-input"
                   value={firm.contact_phone}
                   onChange={handleChange}
                 />
-              </label>
-              <label>
-                Adresse
+              </div>
+
+              <div className="third_line-details-block">
+                {" "}
+                <label htmlFor="adress">Adresse</label>
                 <input
                   type="text"
                   name="adress"
+                  id="adress"
                   className="small-input"
                   value={firm.adress}
                   onChange={handleChange}
                 />
-              </label>
-              <label>
-                Ville
+              </div>
+
+              <div className="third_line-details-block">
+                <label htmlFor="city">Ville</label>
                 <input
                   type="text"
                   name="city"
+                  id="city"
                   className="small-input"
                   value={firm.city}
                   onChange={handleChange}
                 />
-              </label>
-              <label>
-                Pays
+              </div>
+
+              <div className="third_line-details-block">
+                {" "}
+                <label htmlFor="country">Pays </label>
                 <input
                   type="text"
                   name="country"
+                  id="country"
                   className="small-input"
                   value={firm.country}
                   onChange={handleChange}
                 />
-              </label>
+              </div>
             </div>
             <div className="box_firm_footer">
               <div className="validate_edit">

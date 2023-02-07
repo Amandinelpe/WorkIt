@@ -93,8 +93,13 @@
   justify-content: space-between;
 }
 
-.fourth_line_details {
+.third_line-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.third_line-details-block {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 3vh;
 }
