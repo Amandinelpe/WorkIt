@@ -66,20 +66,20 @@ const JobAlert = () => {
                   Supprimer
                 </button>
               </div>
-              <AlertModal
-                show={show}
-                setShow={setShow}
-                onClose={() => {
-                  setShow(false);
-                  setReload(reload + 1);
-                }}
-                reload={reload}
-                setReload={setReload}
-              />
             </div>
           </div>
         </div>
       ))}
+      <AlertModal
+        show={show}
+        setShow={setShow}
+        onClose={() => {
+          setShow(false);
+          setReload(reload + 1);
+        }}
+        reload={reload}
+        setReload={setReload}
+      />
     </div>
   );
 };
