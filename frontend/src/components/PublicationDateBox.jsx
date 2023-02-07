@@ -34,7 +34,7 @@ const PublicationDateBox = ({ setDate }) => {
 
   return (
     <div className="publication_date_box">
-      <div className="date_titleblock">
+      <div className="date_titleblock_section">
         <h3 className="date_title"> Date de publication</h3>
       </div>
       <div className="date_body">

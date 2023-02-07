@@ -1,4 +1,3 @@
-
 .firm__form__dashboard {
   margin: 10vh 30vw;
 }
@@ -36,10 +35,10 @@
   align-items: center;
   background-color: var(--white);
 }
-.box__firm__input h3{
-color: var(--purple-dark);
-font-size: 2.5vh;
-margin: 4vh 0;
+.box__firm__input h3 {
+  color: var(--purple-dark);
+  font-size: 2.5vh;
+  margin: 4vh 0;
 }
 .firmform_footer{
   display: flex;
