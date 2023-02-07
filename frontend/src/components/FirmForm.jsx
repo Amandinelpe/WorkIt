@@ -58,111 +58,133 @@ const FirmForm = ({ setMessage }) => {
               <div className="first_line_details">
                 <div className="first_line_text">
                   <div className="entreprise_name">
-                    Nom de l'entreprise
-                    <label>
-                      <input
-                        type="text"
-                        name="name"
-                        className="small-input"
-                        value={firm.name}
-                        onChange={handleChange}
-                      />
+                    <label
+                      htmlFor="name"
+                      className="firm_form_enterprise_label"
+                    >
+                      Nom de l'entreprise
                     </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      className="small-input"
+                      value={firm.name}
+                      onChange={handleChange}
+                    />
                   </div>
                   <div className="consultant_firm">
-                    Consultant attitré
-                    <label>
-                      <input
-                        type="text"
-                        name="consultant_id"
-                        className="very-small-input"
-                        value={firm.consultant_id}
-                        onChange={handleChange}
-                      />
-                    </label>
+                    <label htmlFor="consultant_id"> Consultant attitré</label>
+                    <input
+                      type="text"
+                      name="consultant_id"
+                      id="consultant_id"
+                      className="very-small-input"
+                      value={firm.consultant_id}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
-                <div className="logo_firm_block">
-                  <img
-                    src={firm.logo_url}
-                    alt="Logo_firm"
+                <div className="Id_firm">
+                  <label htmlFor="consultant_id"> Id client </label>
+                  <input
+                    type="text"
+                    name="consultant_id"
+                    id="consultant_id"
+                    className="very-small-input"
+                    value={firm.id}
+                  />
+
+                  <label htmlFor="type"> Secteur </label>
+                  <input
+                    type="text"
+                    name="type"
+                    id="type"
+                    className="very-small-input"
+                    value={firm.type}
                     onChange={handleChange}
                   />
-                </div>
+                </div>{" "}
               </div>
-            </div>
-            <div className="Id_firm">
-              Id client
-              <label>
-                <input
-                  type="text"
-                  name="firm_id"
-                  className="very-small-input"
-                  value={firm.id}
-                />
-              </label>
-              <label>
-                Secteur
-                <input
-                  type="text"
-                  name="type"
-                  className="very-small-input"
-                  value={firm.type}
+              <div className="logo_firm_block">
+                <img
+                  src={firm.logo_url}
+                  alt="Logo_firm"
                   onChange={handleChange}
                 />
-              </label>
+              </div>
             </div>
             <div className="third_line-details">
-              <label>
-                Email
+              <div className="third_line-details-block">
+                <label htmlFor="email" className="firm_form_label">
+                  Email
+                </label>
                 <input
                   type="text"
                   name="email"
+                  id="email"
                   className="small-input"
                   value={firm.email}
                   onChange={handleChange}
                 />
-              </label>
-              <label>
-                Téléphone
+              </div>
+              <div className="third_line-details-block">
+                <label htmlFor="contact_phone" className="firm_form_label">
+                  Téléphone
+                </label>
                 <input
                   type="text"
                   name="contact_phone"
+                  id="contact_phone"
                   className="small-input"
                   value={firm.contact_phone}
                   onChange={handleChange}
                 />
-              </label>
-              <label>
-                Adresse
+              </div>
+
+              <div className="third_line-details-block">
+                {" "}
+                <label htmlFor="adress" className="firm_form_label">
+                  Adresse
+                </label>
                 <input
                   type="text"
                   name="adress"
+                  id="adress"
                   className="small-input"
                   value={firm.adress}
                   onChange={handleChange}
                 />
-              </label>
-              <label>
-                Ville
+              </div>
+
+              <div className="third_line-details-block">
+                <label htmlFor="city" className="firm_form_label">
+                  Ville
+                </label>
                 <input
                   type="text"
                   name="city"
+                  id="city"
                   className="small-input"
                   value={firm.city}
                   onChange={handleChange}
                 />
-              </label>
-              <label>
-                Pays
+              </div>
+
+              <div className="third_line-details-block">
+                {" "}
+                <label htmlFor="country" className="firm_form_label">
+                  Pays{" "}
+                </label>
                 <input
                   type="text"
                   name="country"
+                  id="country"
                   className="small-input"
                   value={firm.country}
                   onChange={handleChange}
                 />
-              </label>
+              </div>
             </div>
             <div className="box_firm_footer">
               <div className="validate_edit">
@@ -175,13 +197,17 @@ const FirmForm = ({ setMessage }) => {
                     Enregistrer
                   </button>
                 ) : (
-                  <button type="submit" onClick={() => setIsEditing(true)}>
+                  <button
+                    type="submit"
+                    className="firm_form_modify_button"
+                    onClick={() => setIsEditing(true)}
+                  >
                     Modifier
                   </button>
                 )}
                 <button
                   type="submit"
-                  className="delete_button"
+                  className="firm_form_delete_button"
                   onClick={handleDelete}
                 >
                   Supprimer
