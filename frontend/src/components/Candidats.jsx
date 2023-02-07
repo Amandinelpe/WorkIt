@@ -71,7 +71,7 @@ const Candidats = () => {
         </div>
         <div className="candidature-box">
           <div className="nouvelles_candidatures">
-            <h2>LES CANDIDATS </h2>
+            <h3>Les candidats </h3>
           </div>
           <div className="dashboard_candidature">
             <button type="submit" className="btn-container" onClick={getUsers}>

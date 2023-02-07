@@ -37,7 +37,6 @@
 
 .modify_delete_buttons button {
   background: var(--white);
-
   color: var(--purple-dark);
   border-radius: 60px;
   display: flex;
@@ -55,5 +54,13 @@
 
 .modify_delete_buttons button:hover {
   background: var(--orange);
+  color: var(--white);
+}
+
+.button_consultant_delete {
+  color: var(--red);
+}
+
+.button_consultant_delete:hover {
   color: var(--white);
 }

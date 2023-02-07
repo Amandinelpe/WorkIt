@@ -28,11 +28,11 @@
   margin-bottom: 2vh;
 }
 .my_profile_informations_personnelles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.8vw;
-    margin-top: 3vh;
-    width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8vw;
+  margin-top: 3vh;
+  width: 60%;
 }
 .my_profile_input_block {
   width: auto;
@@ -117,13 +117,11 @@
 .my_profile_current_situation input,
 .my_profile_current_situation label {
   margin-top: 2vh;
-  
 }
 
 .my_profile_current_situation_two input,
 .my_profile_current_situation_two label {
   margin-top: 2vh;
-  
 }
 
 .my_profile_btn_enregistrer {

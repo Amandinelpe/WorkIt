@@ -17,7 +17,7 @@ const ConsultantsFilter = ({ setFilterUser, filterUser }) => {
   return (
     <div className="publication_date_box">
       <div className="date_titleblock">
-        <h3 className="date_title">PAR CONSULTANTS</h3>
+        <h3 className="date_title">Par consultant</h3>
       </div>
       <div className="date_body">
         <fieldset>

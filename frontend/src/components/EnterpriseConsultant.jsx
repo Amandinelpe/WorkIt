@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Modal from "react-modal";
+import { authContext } from "../context/AuthContext";
 import { GetFirmOffer } from "../apis/firmOfferApi";
 import CreateFirmForm from "./CreateFirmForm";
-import "../styles/EnterpriseConsultant.css";
 import search from "../assets/img/search_icon2.png";
 import GridEntreprises from "./GridEntreprises";
+import "../styles/EnterpriseConsultant.css";
 
 const EnterpriseConsultant = () => {
   const [myEnterprises, setMyEnterprises] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const { auth } = useContext(authContext);
 
   const getFirmOffer = async () => {
     setMyEnterprises(await GetFirmOffer());
@@ -38,7 +40,13 @@ const EnterpriseConsultant = () => {
   return (
     <div className="container_enterprise_body">
       <div className="enterprise-box">
-        <div className="enterprise-details">
+        <div
+          className={
+            auth.data.role_id === 2
+              ? "enterprise-details"
+              : "enterprise-details-admin"
+          }
+        >
           <h2>Mes entreprises</h2>
           <div className="search-box-enterprise">
             <form onSubmit={handleSubmit}>

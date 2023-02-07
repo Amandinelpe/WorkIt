@@ -44,11 +44,7 @@ const ConsultantLine = ({ consultant, setConsultants }) => {
             Annuler
           </button>
         ) : (
-          <button
-            type="button"
-            className="button_consultant_delete"
-            /*        onClick={handleClick} */
-          >
+          <button type="button" className="button_consultant_modify">
             {" "}
             Modifier
           </button>
@@ -56,7 +52,6 @@ const ConsultantLine = ({ consultant, setConsultants }) => {
         {confirmDelete ? (
           <button
             type="button"
-            style={{ color: "red" }}
             className="button_consultant_delete"
             onClick={handleClick}
           >

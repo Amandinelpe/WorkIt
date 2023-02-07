@@ -75,7 +75,7 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
   return (
     <div className="fiche_consultant_container">
       <div className="fiche_consultant_header">
-        <h1> Fiche consultant.e</h1>
+        <h3> Fiche consultant.e</h3>
         <div
           onClick={handleClick}
           onKeyDown={handleClick}
