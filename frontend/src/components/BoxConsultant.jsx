@@ -1,34 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
-import dataBoxConsultants from "../utils/dataBoxConsultants";
-import "../styles/BoxCandidate.css";
+import dataBoxConsultant from "../utils/dataBoxConsultants";
+import "../styles/BoxConsultant.css";
 
-const BoxCandidate = ({ handleContent }) => {
+const BoxConsultant = ({ handleContent }) => {
   const onClick = (e, link) => {
     e.preventDefault();
     handleContent(link);
   };
 
   return (
-    <div className="dashboard">
-      {dataBoxConsultants.map((box) => (
+    <div className="dashboard_consultant">
+      {dataBoxConsultant.map((box) => (
         <div
           key={box.id}
-          className="box_candidate"
+          className="box_consultant"
           onClick={(e) => onClick(e, box.link)}
           onKeyDown={(e) => onClick(e, box.link)}
           role="button"
           tabIndex={0}
         >
-          <div key={box.id} className="box_candidate_title">
-            <h1>{box.title}</h1>
+          <div key={box.id} className="box_consultant_title">
+            <h4>{box.title}</h4>
           </div>
-          <div className="box_candidate_body">
+          <div className="box_consultant_body">
             <ul>
               {box.sections.map((section) => (
                 // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
                 <li
-                  className="box-candidate-li "
+                  className="box-consultant-li "
                   onClick={(e) => onClick(e, section)}
                 >
                   {section}
@@ -42,8 +42,8 @@ const BoxCandidate = ({ handleContent }) => {
   );
 };
 
-export default BoxCandidate;
+export default BoxConsultant;
 
-BoxCandidate.propTypes = {
+BoxConsultant.propTypes = {
   handleContent: PropTypes.func.isRequired,
 };
