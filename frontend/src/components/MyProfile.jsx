@@ -150,17 +150,19 @@ const MyProfile = () => {
                     ))}
                   </select>
                 </div>
-                <div className="my_profile_input_block">
-                  <label htmlFor="actual_job">Poste actuel</label>
-                  <input
-                    type="text"
-                    id="actual_job"
-                    name="actual_job"
-                    className="my_profile_small_input"
-                    value={user.actual_job}
-                    onChange={handleChange}
-                  />
-                </div>
+                <div>
+                  <p className="my_profile_label">Disponibilité</p>
+                  <div className="my_profile_radio_buttons">
+                    {dataMyProfile.radioButtons.disponibility.map((item) => (
+                      <RadioButton
+                        key={item.id}
+                        labelName={item.labelName}
+                        inputName="disponibilite"
+                        inputValue={item.inputValue}
+                      />
+                    ))}
+                  </div>
+                </div>{" "}
                 <div>
                   <p className="my_profile_label">Niveau d'expérience</p>
                   <div className="my_profile_radio_buttons">
@@ -178,19 +180,18 @@ const MyProfile = () => {
                     })}
                   </div>{" "}
                 </div>
-                <div>
-                  <p className="my_profile_label">Disponibilité</p>
-                  <div className="my_profile_radio_buttons">
-                    {dataMyProfile.radioButtons.disponibility.map((item) => (
-                      <RadioButton
-                        key={item.id}
-                        labelName={item.labelName}
-                        inputName="disponibilite"
-                        inputValue={item.inputValue}
-                      />
-                    ))}
-                  </div>
-                </div>{" "}
+                <div></div>
+                <div className="my_profile_input_block">
+                  <label htmlFor="actual_job">Poste actuel</label>
+                  <input
+                    type="text"
+                    id="actual_job"
+                    name="actual_job"
+                    className="my_profile_small_input"
+                    value={user.actual_job}
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
               <div className="my_profile_current_situation_two">
                 <div className="my_profile_input_block">
