@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import Background from "../components/Background";
 import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
 import "../styles/Connexion.css";
-import Background from "@components/Background";
-
 
 const Connexion = ({ user }) => {
   const navigate = useNavigate();
