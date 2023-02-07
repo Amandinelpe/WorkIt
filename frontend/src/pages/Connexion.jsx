@@ -6,6 +6,8 @@ import axios from "axios";
 import { authContext } from "../context/AuthContext";
 import BannierePartenaire from "../components/BannierePartenaire";
 import "../styles/Connexion.css";
+import Background from "@components/Background";
+
 
 const Connexion = ({ user }) => {
   const navigate = useNavigate();
@@ -109,6 +111,7 @@ const Connexion = ({ user }) => {
           </div>
         </form>
         <div>{user === "user" && <BannierePartenaire />}</div>
+        <Background user={user} />
       </motion.div>
     </div>
   );
