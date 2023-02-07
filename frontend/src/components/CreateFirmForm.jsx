@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import { CreateFirm } from "../apis/firmApi";
 import AddFirmInput from "./AddFirmInput";
 import firmForm from "../utils/firmForm";
-import close from "../assets/img/annuler.png";
+import close from "../assets/img/close.png";
 import "../styles/CreateFirmForm.css";
 
 const CreateFirmForm = ({ setShowForm }) => {
@@ -74,6 +74,7 @@ const CreateFirmForm = ({ setShowForm }) => {
       <div className="firm__form__dashboard">
         <div className="box_firm_body_title">
           <h2>Création fiche entreprise</h2>
+          <img src={close} alt="close" onClick={handleClick} />
         </div>
         <div className="box__firm__body">
           <form className="box__firm__input" onSubmit={postFirm}>
@@ -103,13 +104,6 @@ const CreateFirmForm = ({ setShowForm }) => {
               )}
               <button type="submit" className="button_save_firm">
                 Enregistrer{" "}
-              </button>
-              <button
-                type="button"
-                className="close_fiche_consultant"
-                onClick={handleClick}
-              >
-                <img src={close} alt="close" style={{ width: "7%" }} />
               </button>
             </div>
           </form>

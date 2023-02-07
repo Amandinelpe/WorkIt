@@ -3,30 +3,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  padding-top: 7vh;
-  margin-top: 2vh;
+  margin-top: 10vh;
   margin-bottom: 10vh;
-  margin-left: 10vh;
-  margin-right: 10vh;
-  color: var(--purple-light);
-  align-items: left;
-}
-
-.firm_form_dashboard label {
-  color: var(--purple-light);
-}
-
-.firm_form_dashboard p {
   color: var(--purple-light);
 }
 
 .box_firm_body_title {
   padding: 4vh 7vh;
   width: 55vw;
-  border-radius: 50px 50px 0 0;
   color: var(--white);
-  background: var(--purple-light);
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  background-color: var(--purple-light);
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  height: 12vh;
+  border-radius: 50px 50px 0 0;
 }
 
 .box_firm_body {
@@ -37,12 +26,13 @@
   color: var(--purple-light);
   align-items: left;
   padding: 4vh 6vw;
-  border-radius: 0 0 50px 50px;
   background-color: #fffdfe;
   justify-content: flex-start;
   box-sizing: border-box;
-  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
   gap: 3vh;
+  height: auto;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
 .box_firm_body .small-input,
@@ -57,8 +47,6 @@
 .box_firm_body .small-input {
   width: 12vw;
   border-radius: 18px;
-  margin-left: 1vw;
-  margin-right: 1vw;
 }
 
 .box_firm_body .very-small-input {
@@ -69,18 +57,16 @@
 }
 
 .logo_firm_block img {
-  width: 190px;
+  width: 15vw;
   height: auto;
 }
-
-.box_firm_body label,
-.box_firm_body .label {
-}
-
 .first_line_details {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+}
+.first_line_text{
+  display: flex;
+  flex-direction: column;
 }
 
 .first_line_details .logo_firm_block {

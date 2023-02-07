@@ -5,13 +5,15 @@
 }
 
 .input-container label {
-  color: var(--purple-light);
+  color: var(--purple-dark);
   margin-bottom: 1vh;
 }
 
 .input {
   padding: 0.5vh 0.5vw;
-  width: 30vw;
+  width: 27vw;
+  margin: 0.5vh 0;
+  color:var(--purple-dark); 
   border: 1px solid var(--purple-light);
   border-radius: 5px;
 }
