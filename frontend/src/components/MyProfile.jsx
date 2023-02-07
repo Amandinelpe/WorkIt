@@ -180,7 +180,7 @@ const MyProfile = () => {
                     })}
                   </div>{" "}
                 </div>
-                <div></div>
+                <div />
                 <div className="my_profile_input_block">
                   <label htmlFor="actual_job">Poste actuel</label>
                   <input
