@@ -140,7 +140,7 @@ const Candidature = () => {
   }, []);
 
   return (
-    <div className="candidature container-body">
+    <div className="candidature_container_body">
       <div className="container">
         <div className="filter-box">
           <CandidatureFilter
