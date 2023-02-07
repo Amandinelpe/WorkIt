@@ -58,7 +58,12 @@ const FirmForm = ({ setMessage }) => {
               <div className="first_line_details">
                 <div className="first_line_text">
                   <div className="entreprise_name">
-                    <label htmlFor="name">Nom de l'entreprise</label>
+                    <label
+                      htmlFor="name"
+                      className="firm_form_enterprise_label"
+                    >
+                      Nom de l'entreprise
+                    </label>
                     <input
                       type="text"
                       name="name"
@@ -80,39 +85,40 @@ const FirmForm = ({ setMessage }) => {
                     />
                   </div>
                 </div>
-                <div className="logo_firm_block">
-                  <img
-                    src={firm.logo_url}
-                    alt="Logo_firm"
+                <div className="Id_firm">
+                  <label htmlFor="consultant_id"> Id client </label>
+                  <input
+                    type="text"
+                    name="consultant_id"
+                    id="consultant_id"
+                    className="very-small-input"
+                    value={firm.id}
+                  />
+
+                  <label htmlFor="type"> Secteur </label>
+                  <input
+                    type="text"
+                    name="type"
+                    id="type"
+                    className="very-small-input"
+                    value={firm.type}
                     onChange={handleChange}
                   />
-                </div>
+                </div>{" "}
+              </div>
+              <div className="logo_firm_block">
+                <img
+                  src={firm.logo_url}
+                  alt="Logo_firm"
+                  onChange={handleChange}
+                />
               </div>
             </div>
-            <div className="Id_firm">
-              <label htmlFor="consultant_id"> Id client </label>
-              <input
-                type="text"
-                name="consultant_id"
-                id="consultant_id"
-                className="very-small-input"
-                value={firm.id}
-              />
-
-              <label htmlFor="type"> Secteur </label>
-              <input
-                type="text"
-                name="type"
-                id="type"
-                className="very-small-input"
-                value={firm.type}
-                onChange={handleChange}
-              />
-            </div>
-
             <div className="third_line-details">
               <div className="third_line-details-block">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email" className="firm_form_label">
+                  Email
+                </label>
                 <input
                   type="text"
                   name="email"
@@ -123,7 +129,9 @@ const FirmForm = ({ setMessage }) => {
                 />
               </div>
               <div className="third_line-details-block">
-                <label htmlFor="contact_phone">Téléphone</label>
+                <label htmlFor="contact_phone" className="firm_form_label">
+                  Téléphone
+                </label>
                 <input
                   type="text"
                   name="contact_phone"
@@ -136,7 +144,9 @@ const FirmForm = ({ setMessage }) => {
 
               <div className="third_line-details-block">
                 {" "}
-                <label htmlFor="adress">Adresse</label>
+                <label htmlFor="adress" className="firm_form_label">
+                  Adresse
+                </label>
                 <input
                   type="text"
                   name="adress"
@@ -148,7 +158,9 @@ const FirmForm = ({ setMessage }) => {
               </div>
 
               <div className="third_line-details-block">
-                <label htmlFor="city">Ville</label>
+                <label htmlFor="city" className="firm_form_label">
+                  Ville
+                </label>
                 <input
                   type="text"
                   name="city"
@@ -161,7 +173,9 @@ const FirmForm = ({ setMessage }) => {
 
               <div className="third_line-details-block">
                 {" "}
-                <label htmlFor="country">Pays </label>
+                <label htmlFor="country" className="firm_form_label">
+                  Pays{" "}
+                </label>
                 <input
                   type="text"
                   name="country"
@@ -183,13 +197,17 @@ const FirmForm = ({ setMessage }) => {
                     Enregistrer
                   </button>
                 ) : (
-                  <button type="submit" onClick={() => setIsEditing(true)}>
+                  <button
+                    type="submit"
+                    className="firm_form_modify_button"
+                    onClick={() => setIsEditing(true)}
+                  >
                     Modifier
                   </button>
                 )}
                 <button
                   type="submit"
-                  className="delete_button"
+                  className="firm_form_delete_button"
                   onClick={handleDelete}
                 >
                   Supprimer
