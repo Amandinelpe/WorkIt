@@ -57,7 +57,6 @@
 
 .logo_firm_block img {
   width: 13vw;
-
 }
 .first_line_details {
   display: flex;
@@ -71,18 +70,17 @@
 .first_line_details .small-input {
   border-radius: 18px;
 }
-.informations-entreprise{
+.informations-entreprise {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.entreprise_name{
-  width:25vw;
+.entreprise_name {
+  width: 25vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 
 .consultant_firm {
@@ -132,7 +130,7 @@
   color: var(--white);
 }
 
-.firm_form_delete_button{
+.firm_form_delete_button {
   background-color: var(--white);
   color: var(--purple-light);
   border: var(--purple-light) 1px solid;
@@ -140,9 +138,9 @@
 
 .firm_form_modify_button:hover,
 .firm_form_delete_button:hover {
-    background-color: var(--orange);
+  background-color: var(--orange);
 }
 
-.firm_form_delete_button:hover{
+.firm_form_delete_button:hover {
   color: var(--white);
 }
