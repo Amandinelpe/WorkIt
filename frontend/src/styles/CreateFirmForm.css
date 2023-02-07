@@ -1,15 +1,14 @@
 .firm__form__dashboard {
   margin: 10vh 30vw;
 }
-.box_firm_body_title{
+.box_firm_body_title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 2vh 2vw;
-
 }
-.box_firm_body_title img{
+.box_firm_body_title img {
   width: 2vw;
 }
 .firm__form__dashboard .box_firm_body_title {
@@ -40,7 +39,7 @@
   font-size: 2.5vh;
   margin: 4vh 0;
 }
-.firmform_footer{
+.firmform_footer {
   display: flex;
   flex-direction: column;
   align-items: center;
