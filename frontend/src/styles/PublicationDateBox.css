@@ -1,15 +1,16 @@
 .publication_date_box {
-  margin: 0vh 4vw 5vh 4vw;
+  width: 20vw;
 }
 
-.date_titleblock {
+.date_titleblock_section {
   background-color: var(--purple-light);
   height: 8vh;
-  border-radius: 40px 40px 0 0;
+  border-radius: 50px 50px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
 }
 
 .date_title {
@@ -19,8 +20,7 @@
 
 .date_body {
   background-color: var(--white);
-  height: auto;
-  width: 20vw;
+  padding: 3vh 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,11 +30,11 @@
 }
 
 .input_date {
+  width: 2vw;
   margin-top: 2vh;
 }
 
 .date_body label {
+  font-size: 2.2vh;
   margin-left: 1vw;
 }
-
-

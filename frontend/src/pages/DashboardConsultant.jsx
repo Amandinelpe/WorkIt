@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { motion } from "framer-motion";
 import NavBar from "../components/NavBar";
-import BoxConsultants from "../components/BoxConsultants";
+import BoxConsultant from "../components/BoxConsultant";
 import ChatConsultant from "../components/ChatConsultant";
 import Footer from "../components/Footer";
 import Candidature from "../components/Candidature";
@@ -40,7 +40,7 @@ const DashboardConsultant = () => {
     >
       <NavBar />
       <div className="mydashboard_body">
-        <BoxConsultants handleContent={handleContent} />
+        <BoxConsultant handleContent={handleContent} />
       </div>
       <div className="mydashboard_render">{renderSwitch()}</div>
       <div>

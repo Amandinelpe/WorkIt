@@ -6,7 +6,6 @@ export const navBarSignIn = [
 export const navBarUser = [
   { id: 1, name: "Recherche", link: "/Main" },
   { id: 2, name: "Mon espace", link: "/DashboardCandidate" },
-
 ];
 
 export const navBarConsultants = [

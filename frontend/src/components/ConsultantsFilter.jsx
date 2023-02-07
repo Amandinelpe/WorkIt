@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { GetConsultants } from "../utils/getConsultants";
+import { authContext } from "../context/AuthContext";
 import "../styles/ConsultantsFilter.css";
 
 const ConsultantsFilter = ({ setFilterUser, filterUser }) => {
   const [consultant, setConsultant] = useState([]);
+  const { auth } = useContext(authContext);
 
   const getConsultantslist = async () => {
     setConsultant(await GetConsultants());
@@ -16,8 +18,12 @@ const ConsultantsFilter = ({ setFilterUser, filterUser }) => {
 
   return (
     <div className="publication_date_box">
-      <div className="date_titleblock">
-        <h3 className="date_title">PAR CONSULTANTS</h3>
+      <div
+        className={
+          auth.data.role_id === 2 ? "date_titleblock" : "date_titleblock-admin"
+        }
+      >
+        <h3 className="date_title">Par consultant</h3>
       </div>
       <div className="date_body">
         <fieldset>

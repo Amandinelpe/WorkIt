@@ -5,6 +5,7 @@
   align-items: flex-start;
   width: 100%;
   gap: 8px;
+  margin-top: 5vh;
 }
 
 .container_body .container .filter-box {
@@ -28,6 +29,16 @@
   border-radius: 50px 50px 0 0;
   color: var(--white);
   background: var(--purple-light);
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  width: 65vw;
+  margin-left: 5vw;
+}
+
+.nouvelles_candidatures-admin {
+  padding: 4vh 7vh;
+  border-radius: 50px 50px 0 0;
+  color: var(--white);
+  background: var(--bleu);
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
   width: 65vw;
   margin-left: 5vw;

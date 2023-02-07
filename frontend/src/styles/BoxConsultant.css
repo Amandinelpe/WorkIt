@@ -1,4 +1,4 @@
-.dashboard {
+.dashboard_consultant {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9,11 +9,12 @@
   border-radius: 1vh;
 }
 
-.box_candidate {
+.box_consultant {
   margin-top: 3vh;
+  width: 20vw;
 }
 
-.box_candidate_title {
+.box_consultant_title {
   padding: 4vh 7vh;
   border-radius: 50px 50px 0 0;
   color: var(--white);
@@ -22,10 +23,10 @@
   padding-top: 4.5vh;
 }
 
-.box_candidate_body ul {
+.box_consultant_body ul {
   color: var(--purple-light);
   align-items: left;
-  height: auto;
+  height: 23vh;
   padding: 3vh;
   display: flex;
   flex-direction: column;
@@ -38,16 +39,16 @@
   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
-.box_candidate_body ul li {
+.box_consultant_body ul li {
   margin: 0vh 3vw 1vh 2vw;
   cursor: pointer;
 }
 
-.box_candidate_body ul:hover,
-.box_candidate:hover .box_candidate_body ul {
+.box_consultant_body ul:hover,
+.box_consultant:hover .box_consultant_body ul {
   box-shadow: 4px 4px 2px 1px #ff8150;
 }
-.box_candidate_body ul li:hover {
+.box_consultant_body ul li:hover {
   color: var(--orange);
   text-decoration: none;
 }

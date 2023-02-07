@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import {
   IntlProvider,
@@ -6,6 +6,7 @@ import {
   loadMessages,
 } from "@progress/kendo-react-intl";
 import frMessages from "../utils/fr.json";
+import { authContext } from "../context/AuthContext";
 import { GetUsers } from "../utils/getUsers";
 import ConsultantsFilter from "./ConsultantsFilter";
 import "../styles/Candidats.css";
@@ -47,6 +48,7 @@ const Candidats = () => {
   const [filterUser, setFilterUser] = useState({
     consultant_id: 0,
   });
+  const { auth } = useContext(authContext);
 
   const pageChange = (event) => {
     setPage(event.page);
@@ -70,8 +72,14 @@ const Candidats = () => {
           />
         </div>
         <div className="candidature-box">
-          <div className="nouvelles_candidatures">
-            <h2>LES CANDIDATS </h2>
+          <div
+            className={
+              auth.data.role_id === 2
+                ? "nouvelles_candidatures"
+                : "nouvelles_candidatures-admin"
+            }
+          >
+            <h3>Les candidats </h3>
           </div>
           <div className="dashboard_candidature">
             <button type="submit" className="btn-container" onClick={getUsers}>

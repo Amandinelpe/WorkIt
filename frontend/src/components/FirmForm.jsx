@@ -56,29 +56,31 @@ const FirmForm = ({ setMessage }) => {
           <div className="box_firm_body">
             <div className="informations-entreprise">
               <div className="first_line_details">
-                <div className="entreprise_name">
-                  Nom de l'entreprise
-                  <label>
-                    <input
-                      type="text"
-                      name="name"
-                      className="small-input"
-                      value={firm.name}
-                      onChange={handleChange}
-                    />
-                  </label>
-                </div>
-                <div className="consultant_firm">
-                  Consultant.e attitré.e
-                  <label>
-                    <input
-                      type="text"
-                      name="consultant_id"
-                      className="very-small-input"
-                      value={firm.consultant_id}
-                      onChange={handleChange}
-                    />
-                  </label>
+                <div className="first_line_text">
+                  <div className="entreprise_name">
+                    Nom de l'entreprise
+                    <label>
+                      <input
+                        type="text"
+                        name="name"
+                        className="small-input"
+                        value={firm.name}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </div>
+                  <div className="consultant_firm">
+                    Consultant attitré
+                    <label>
+                      <input
+                        type="text"
+                        name="consultant_id"
+                        className="very-small-input"
+                        value={firm.consultant_id}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </div>
                 </div>
                 <div className="logo_firm_block">
                   <img

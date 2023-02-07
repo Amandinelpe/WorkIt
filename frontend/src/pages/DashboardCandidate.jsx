@@ -8,8 +8,8 @@ import DashboardApplications from "../components/DashboardApplications";
 import MyProfile from "../components/MyProfile";
 import Chat from "../components/ChatCandidat";
 import DashboardAlerts from "../components/DashboardAlerts";
-import "../styles/DashboardCandidate.css";
 import DashboardNewOffers from "../components/DashboardNewOffers";
+import "../styles/DashboardCandidate.css";
 
 const DashboardCandidate = () => {
   const [content, setContent] = useState("dashboard");
@@ -22,7 +22,7 @@ const DashboardCandidate = () => {
     switch (content) {
       case "Mes informations personnelles":
         return <MyProfile />;
-      case "Je rentre en contact avec un.e consultant.e":
+      case "Contacter mon conseiller":
         return <Chat />;
       case "Mes candidatures":
         return <DashboardApplications />;

@@ -4,7 +4,6 @@
   align-items: center;
   margin-top: 3vh;
   height: 15vh;
-  
 }
 
 .navbar ul {
@@ -65,22 +64,22 @@ a {
   color: #ff8150;
   transform: scale(1.1);
 }
-.notifications{
+.notifications {
   display: flex;
   flex-direction: row;
   align-items: center;
-  position:relative;
+  position: relative;
   margin-right: 2vw;
 }
 .notifications:hover {
   transform: scale(1.1);
 }
-.cloche_alerte{
- height: 6vh;
- rotate: 10deg;
- background-color: var(--white);
- padding: 15%;
- border-radius: 50%;
+.cloche_alerte {
+  height: 6vh;
+  rotate: 10deg;
+  background-color: var(--white);
+  padding: 15%;
+  border-radius: 50%;
 }
 .number_alerte {
   font-size: 2vh;
@@ -89,7 +88,7 @@ a {
   padding: 10% 15%;
   border-radius: 50%;
   position: absolute;
-  right:-10%;
+  right: -10%;
   top: -15%;
 }
 @keyframes tilt-shaking {

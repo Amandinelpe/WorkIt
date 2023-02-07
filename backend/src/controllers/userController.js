@@ -69,7 +69,7 @@ const userController = {
       .findByEmail(email)
       .then(async ([user]) => {
         if (!user) {
-          res.status(401).send({ message: "Invalid email or password" });
+          res.status(401).send({ message: "Email ou mot de passe invalide" });
         } else {
           const {
             id,
@@ -97,7 +97,7 @@ const userController = {
                 role_id,
               });
           } else {
-            res.status(404).send({ message: "Invalid email or password" });
+            res.status(404).send({ message: "Email ou mot de passe invalide" });
           }
         }
       })

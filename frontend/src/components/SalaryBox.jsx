@@ -15,6 +15,7 @@ const SalaryBox = ({ salary, setSalary }) => {
           min="0"
           max="100000"
           value={salary}
+          className="slider"
           onChange={(e) => setSalary(Number(e.target.value))}
         />{" "}
         <h3>
