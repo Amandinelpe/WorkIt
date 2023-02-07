@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  gap: 1vw;
+  
 }
 
 .radio-button-label {
-  font-size: 2.3vh;
+  font-size: 1.8vh;
   color: var(--purple-light);
   width: 5.4vw;
+  margin-left: 0.5vw;
 }

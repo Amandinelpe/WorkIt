@@ -1,6 +1,6 @@
 .my_profile {
   margin: 10vh 10vh 10vh 0;
-  width: 65vw;
+  width: 55vw;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
   padding: 5vh 6vh;
 }
 .my_profile_body {
-  padding: 4vh 3vw 4vh 3vw;
+  padding: 7vh 3vw 4vh 7vw;
   height: auto;
   background-color: #fffdfe;
   border-radius: 0 0 20px 20px;
@@ -28,11 +28,11 @@
   margin-bottom: 2vh;
 }
 .my_profile_informations_personnelles {
-  margin-top: 5vh;
-  width: 80%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8vw;
+    margin-top: 3vh;
+    width: 60%;
 }
 .my_profile_input_block {
   width: auto;
@@ -117,11 +117,13 @@
 .my_profile_current_situation input,
 .my_profile_current_situation label {
   margin-top: 2vh;
+  
 }
 
 .my_profile_current_situation_two input,
 .my_profile_current_situation_two label {
   margin-top: 2vh;
+  
 }
 
 .my_profile_btn_enregistrer {
