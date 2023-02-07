@@ -36,8 +36,7 @@
   align-items: center;
 }
 
-.enterprise-details,
-.enterprise-details-admin form {
+.form-box-enterprise {
   margin: 0 3vw;
   display: flex;
   flex-direction: row;

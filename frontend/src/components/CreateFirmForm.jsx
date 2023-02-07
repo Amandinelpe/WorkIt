@@ -74,7 +74,13 @@ const CreateFirmForm = ({ setShowForm }) => {
       <div className="firm__form__dashboard">
         <div className="box_firm_body_title">
           <h2>Création fiche entreprise</h2>
-          <img src={close} alt="close" onClick={handleClick} />
+          <img
+            src={close}
+            alt="close"
+            onClick={handleClick}
+            onKeyDown=""
+            role="presentation"
+          />
         </div>
         <div className="box__firm__body">
           <form className="box__firm__input" onSubmit={postFirm}>

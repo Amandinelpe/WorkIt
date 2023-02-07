@@ -49,7 +49,7 @@ const EnterpriseConsultant = () => {
         >
           <h2>Mes entreprises</h2>
           <div className="search-box-enterprise">
-            <form onSubmit={handleSubmit}>
+            <form className="form-box-enterprise" onSubmit={handleSubmit}>
               <input
                 className="search-input-enterprise"
                 type="text"
