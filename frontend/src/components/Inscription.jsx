@@ -142,7 +142,9 @@ const Inscription = () => {
           </button>
           <p>
             {" "}
-            <Link to="/ConnexionCandidat">Déjà un compte ? Log in ici </Link>
+            <Link to="/ConnexionCandidat">
+              Déjà un compte ? Connecte toi ici !{" "}
+            </Link>
           </p>{" "}
         </div>
       </form>

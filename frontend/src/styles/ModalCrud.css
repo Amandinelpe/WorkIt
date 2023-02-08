@@ -186,7 +186,8 @@
   text-transform: uppercase;
 }
 .send-candidature {
-  color: red;
+  color: green;
+  margin: 3vh 0;
 }
 
 .alert-save {
