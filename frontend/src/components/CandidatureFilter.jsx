@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../styles/ConsultantsFilter.css";
-
 import dataCandidatureFilter from "../utils/dataCandidatureFilter";
 import RadioButton from "./RadioButton";
 import "../styles/CandidatureFilter.css";

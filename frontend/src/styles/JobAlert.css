@@ -13,7 +13,7 @@
 .alert_block {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border: 0.5px solid var(--purple-dark);
   margin-bottom: 2vh;
   padding: 0vh 1vw;

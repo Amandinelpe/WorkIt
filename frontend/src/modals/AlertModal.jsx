@@ -78,31 +78,34 @@ const AlertModal = ({ show, onClose, reload, setReload }) => {
                 required
                 id="job_select"
                 name="job_id"
+                placeholder="Métier re"
                 onChange={handleChange}
                 autoComplete="on"
-                className="modalCrud-title"
+                className="modalCrud-select"
               >
+                <option disabled selected value>Métier recherché</option>
                 <option value="">{infosOffer.title}</option>
                 {jobs.map((job) => (
                   <option value={Number(job.id)}>{job.job_title}</option>
                 ))}
               </select>
             </label>
+            <p className="alert_body_text">
+              à
+            </p>
             <div>
               <input
                 type="text"
                 name="city"
                 placeholder="Ville"
-                className="modalCrud-input"
+                className="modalCrud-alert-input"
                 value={infosOffer.name}
                 onChange={handleChange}
               />
             </div>
-
-            <p id="job_location">{infosOffer.city}</p>
             <div className="offer_block_options">
               <div className="modify_option">
-                <img src={modifyButton} alt="bouton modifier" />
+                <img src={modifyButton} alt="bouton modifier" className="alert-save"/>
                 <button type="submit" onClick={(e) => createMyAlert(e)}>
                   Enregistrer
                 </button>
