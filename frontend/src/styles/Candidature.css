@@ -1,4 +1,3 @@
-
 .candidature_container_body .container_candidature {
   display: flex;
   flex-direction: row;
@@ -108,6 +107,6 @@
   border: unset;
   cursor: pointer;
 }
-.grid{
-   width: 60vw;
+.grid {
+  width: 60vw;
 }
