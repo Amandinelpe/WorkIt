@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import PropTypes from "prop-types";
 import { GetFirmData, UpdateFirm, DeleteFirm } from "../apis/firmApi";
 import DashboardFirmOffers from "./DashboardFirmOffers";
 import { GetAllFirms } from "../utils/getAllEnterprises";
 import "../styles/FirmForm.css";
 import NavBar from "./NavBar";
 
-const FirmForm = ({ setMessage }) => {
+const FirmForm = () => {
   const { id } = useParams();
   const [firm, setFirm] = useState([]);
-  const [isEditing, setIsEditing] = useState(false);
+  const [message, setMessage] = useState("");
 
   const getFirmData = async () => {
     await GetFirmData(id)
@@ -187,24 +186,17 @@ const FirmForm = ({ setMessage }) => {
               </div>
             </div>
             <div className="box_firm_footer">
+              <div className="firm_form_message_spe">
+                <p>{message}</p>
+              </div>
               <div className="validate_edit">
-                {isEditing ? (
-                  <button
-                    type="submit"
-                    className="btn-enregistrer"
-                    onClick={updateFirm}
-                  >
-                    Enregistrer
-                  </button>
-                ) : (
-                  <button
-                    type="submit"
-                    className="firm_form_modify_button"
-                    onClick={() => setIsEditing(true)}
-                  >
-                    Modifier
-                  </button>
-                )}
+                <button
+                  type="submit"
+                  className="firm_form_modify_button"
+                  onClick={updateFirm}
+                >
+                  Modifier
+                </button>
                 <button
                   type="submit"
                   className="firm_form_delete_button"
@@ -222,10 +214,6 @@ const FirmForm = ({ setMessage }) => {
       </div>
     </>
   );
-};
-
-FirmForm.propTypes = {
-  setMessage: PropTypes.func.isRequired,
 };
 
 export default FirmForm;

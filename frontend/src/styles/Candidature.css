@@ -1,3 +1,56 @@
+
+.candidature_container_body .container_candidature {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+  gap: 8px;
+  margin-top: 9vh;
+}
+.candidature_container_body .container_candidature .filter-box-candidature {
+  display: flex;
+  width: 20vw;
+}
+
+.nouvelles_candidatures_candidatures {
+  padding: 4vh 7vh;
+  border-radius: 50px 50px 0 0;
+  color: var(--white);
+  background: var(--purple-light);
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, 0.2);
+  width: 65vw;
+  margin-left: 5vw;
+}
+
+.dashboard_candidature_candidature {
+  padding: 4vh 2vw 2vh 2vw;
+  width: 65vw;
+  background-color: var(--white);
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
+  gap: 20px;
+  margin-left: 5vw;
+  overflow: hidden;
+}
+.dashboard_candidature_candidature .button-container {
+  color: white;
+  background: #ff5400;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 30px;
+  text-transform: uppercase;
+  -webkit-box-shadow: -2px 3px 4px 0px rgba(184, 197, 235, 1);
+  box-shadow: -2px 3px 4px 0px rgba(184, 197, 235, 1);
+  border: unset;
+  cursor: pointer;
+}
 .candidature-modal {
   position: absolute;
   top: 25vh;
@@ -54,4 +107,7 @@
   box-shadow: -2px 3px 4px 0px rgb(184 197 235);
   border: unset;
   cursor: pointer;
+}
+.grid{
+   width: 60vw;
 }
