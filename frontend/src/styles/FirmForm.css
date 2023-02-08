@@ -144,7 +144,7 @@
 .firm_form_delete_button:hover {
   color: var(--white);
 }
-.firm_form_message_spe{
+.firm_form_message_spe {
   margin: 5vh 0vw 0vh 0vw;
   display: flex;
   justify-content: center;

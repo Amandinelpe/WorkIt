@@ -110,7 +110,6 @@
 
 .chat__footer {
   width: 50vw;
-  margin-left: 2vw;
   margin-top: 0.8vw;
 }
 
@@ -127,15 +126,16 @@
   font-family: var(--text-font-family-jost);
 }
 .chat_sendBtn {
-  width: 150px;
+  width: 12vw;
   background-color: var(--purple-dark);
   border-radius: 16px;
-  padding: 10px;
+  padding: 2vh 2vw;
   border: none;
   outline: none;
   color: var(--white);
   cursor: pointer;
   margin-top: 2.7vh;
+  margin-bottom: 2.7vh;
 }
 
 .chat_sendBtn:hover {

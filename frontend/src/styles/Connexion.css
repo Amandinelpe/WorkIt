@@ -96,3 +96,7 @@
 .error-message {
   color: red;
 }
+
+.title h2 {
+  font-size: 5vh;
+}

@@ -22,7 +22,7 @@
   padding: 3.7vh 3vw;
 }
 
-.close_fiche_consultant{
+.close_fiche_consultant {
   height: 5vh;
   margin: 3vh 3vw;
 }
@@ -134,7 +134,7 @@
   border: unset;
   cursor: pointer;
 }
-.close_fiche_consultant_admin{
+.close_fiche_consultant_admin {
   height: 5vh;
   margin: 3vh 3vw;
 }
