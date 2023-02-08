@@ -82,7 +82,11 @@ const FicheConsultant = ({ showFiche, setShowFiche }) => {
           role="button"
           tabIndex={0}
         >
-          <img src={close} alt="close" className="close_fiche_consultant" />
+          <img
+            src={close}
+            alt="close"
+            className="close_fiche_consultant_admin"
+          />
         </div>
       </div>
       <div className="fiche_consultant_body_footer">

@@ -22,6 +22,11 @@
   padding: 3.7vh 3vw;
 }
 
+.close_fiche_consultant {
+  height: 5vh;
+  margin: 3vh 3vw;
+}
+
 .consultant_personal_information_block {
   display: flex;
   flex-direction: row;
@@ -128,4 +133,8 @@
   box-shadow: -2px 3px 4px 0px rgb(184 197 235);
   border: unset;
   cursor: pointer;
+}
+.close_fiche_consultant_admin {
+  height: 5vh;
+  margin: 3vh 3vw;
 }

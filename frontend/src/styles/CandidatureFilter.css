@@ -1,6 +1,10 @@
+.candidature-filter {
+  width: 20vw;
+}
+
 .candidature-filter .title-box {
   background-color: var(--purple-light);
-  height: 8vh;
+  height: 10vh;
   border-radius: 50px 50px 0 0;
   display: flex;
   flex-direction: column;
@@ -10,8 +14,6 @@
 
 .candidature-filter .title {
   color: var(--white);
-  font-family: var(--text-font-family-jost);
-  font-size: 1rem;
   font-weight: lighter;
 }
 

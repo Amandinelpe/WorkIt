@@ -67,10 +67,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
   box-shadow: 3px 3px rgba(184, 197, 235, 0.5);
   gap: 20px;
   margin-left: 5vw;
+  overflow: hidden;
 }
 
 .dashboard_candidature .text_cross {
@@ -91,6 +91,8 @@
 .k-table-group-sticky-header,
 .grid_candidature .k-button-flat-primary {
   color: var(--purple-light) !important;
+}
+.grid_candidature {
 }
 
 .grid_candidature .k-column-title {

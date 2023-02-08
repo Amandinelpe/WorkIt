@@ -1,10 +1,10 @@
 import { React, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "../styles/Inscription.css";
 import dislike from "../assets/img/dislike.png";
 import like from "../assets/img/like.png";
 import { CreateUser } from "../apis/user";
 import { GetAllJobs } from "../apis/jobApi";
+import "../styles/Inscription.css";
 
 const Inscription = () => {
   const [profile, setProfile] = useState({ role_id: 1 });
@@ -74,6 +74,7 @@ const Inscription = () => {
             required
             id="job-select"
             name="job_id"
+            className="job_select_inscription"
             onChange={updateProfile}
           >
             <option value="">Mon métier rercherché</option>
