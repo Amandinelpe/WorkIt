@@ -40,7 +40,7 @@
   margin-right: auto;
   width: 60vw;
   height: 20%;
-  border-radius: 5vw;
+  border-radius: 2vw;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -136,11 +136,35 @@
   font-size: 3vh;
 }
 
+
 .modalCrud-subtitle {
   font-weight: bold;
   color: var(--purple-light);
   margin-bottom: 2vw;
 }
+
+.modalCrud-select {
+  font-weight: bold;
+  color: var(--purple-dark);
+  text-align: left;
+  border-bottom: 0;
+  font-size: 1vw;
+  width: 60%;
+}
+
+.modalCrud-alert-input {
+  font-weight: bold;
+  color: var(--purple-dark);
+  width: 60%;
+  border: none;
+  text-align: justify;
+  font-size: 1vw;
+  height: auto;
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
+
+
 
 .modalCrud-input {
   font-weight: bold;
@@ -166,4 +190,10 @@
 }
 .send-candidature {
   color: red;
+}
+
+.alert-save{
+  margin-left: 1vw;
+  margin-right: 1vw;
+
 }
