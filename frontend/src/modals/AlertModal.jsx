@@ -105,7 +105,7 @@ const AlertModal = ({ show, onClose, reload, setReload }) => {
             </div>
             <div className="offer_block_options">
               <div className="modify_option">
-                <img src={modifyButton} alt="bouton modifier" />
+                <img src={modifyButton} alt="bouton modifier" className="alert-save"/>
                 <button type="submit" onClick={(e) => createMyAlert(e)}>
                   Enregistrer
                 </button>

@@ -40,7 +40,7 @@
   margin-right: auto;
   width: 60vw;
   height: 20%;
-  border-radius: 5vw;
+  border-radius: 2vw;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -155,7 +155,7 @@
 .modalCrud-alert-input {
   font-weight: bold;
   color: var(--purple-dark);
-  width: 100%;
+  width: 60%;
   border: none;
   text-align: justify;
   font-size: 1vw;
@@ -190,4 +190,10 @@
 }
 .send-candidature {
   color: red;
+}
+
+.alert-save{
+  margin-left: 1vw;
+  margin-right: 1vw;
+
 }
