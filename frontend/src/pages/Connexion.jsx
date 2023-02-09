@@ -76,7 +76,7 @@ const Connexion = ({ user }) => {
               type="email"
               name="email"
               id="email"
-              placeholder="test@blabla.com"
+              placeholder=""
               value={formData.email}
               onChange={handleChange}
             />
