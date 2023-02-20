@@ -25,6 +25,7 @@
   padding: 4vh 2vw 2vh 2vw;
   background-color: #fffdfe;
   height: auto;
+  width: 150vw;
   border-radius: 0 0 20px 0;
   display: flex;
   flex-direction: column;
@@ -45,27 +46,28 @@
   padding: 5vh 6vh;
 }
 
-.consultant__chat__bar {
+.consultantchatbar {
   background-color: #ffffff;
   width: 20vw;
-  height: 75vh;
+  height: 80vh;
   border-radius: 0 0 0 30px;
 }
 
-.consultant_chat__header {
+.consultant_chatheader {
   padding-top: 3vh;
   text-align: center;
   color: var(--purple-dark);
+  background-color: #ffffff;
 }
 
-.consultant_chat__users > * {
+.consultant_chatusers > * {
   display: flex;
   margin-bottom: 10px;
   color: #607eaa;
   font-size: 2.5vh;
   border: 1px solid rgb(179, 15, 15);
 }
-.consultant_chat__user img {
+.consultant_chatuser img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -74,10 +76,20 @@
   border: 1px solid rgb(179, 15, 15);
 }
 
-.consultant_p__chat__bar {
+.consultant_chat__bar {
   align-items: center;
   display: flex;
   color: #0c3944;
   font-size: 1.1rem;
   margin-right: 1rem;
+}
+
+.consultant_chat__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  height: 80vh;
+  border-radius: 0 0 0 23px;
 }
